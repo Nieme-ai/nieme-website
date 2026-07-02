@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Nieme is the operating system for AI — a runtime that turns knowledge, laws and AI into a living organization.">
+    <meta name="theme-color" content="#090a0f">
+    <title>Nieme — The operating system for AI</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Nieme home">
+        <span class="glyph glyph--small" aria-hidden="true"><i></i></span>
+        <span>NIEME</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#runtime">Runtime</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#private-beta">Private Beta</a>
+      </nav>
+      <a class="button button--compact button--glass" href="#private-beta">Request Invite</a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__glow" aria-hidden="true"></div>
+        <div class="hero__copy">
+          <p class="kicker">The operating system for AI</p>
+          <h1 id="hero-title">Your organization should keep working while you sleep.</h1>
+          <p class="hero__subhead">Nieme is the runtime that turns knowledge, laws and AI into a living organization.</p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#private-beta">Request Invite</a>
+            <a class="button button--text" href="#how-it-works">See How It Works <span aria-hidden="true">↘</span></a>
+          </div>
+        </div>
+
+        <div class="runtime-frame" aria-label="Example of Nieme's overnight outcomes">
+          <div class="runtime-frame__top">
+            <div class="runtime-frame__identity">
+              <span class="glyph" aria-hidden="true"><i></i></span>
+              <span>Runtime</span>
+            </div>
+            <span class="status"><i aria-hidden="true"></i> Active</span>
+          </div>
+          <div class="runtime-frame__body">
+            <div class="runtime-frame__heading">
+              <p>Overnight</p>
+              <time datetime="2026-07-01T06:42">06:42</time>
+            </div>
+            <ul class="outcomes">
+              <li><span class="mark mark--done" aria-hidden="true">✓</span><span>Morning briefing prepared.</span></li>
+              <li><span class="mark mark--done" aria-hidden="true">✓</span><span>Customer replies drafted.</span></li>
+              <li><span class="mark mark--attention" aria-hidden="true">!</span><span>One renewal needs attention.</span></li>
+              <li><span class="mark mark--review" aria-hidden="true">✎</span><span>Board presentation ready for review.</span></li>
+              <li><span class="mark mark--done" aria-hidden="true">✓</span><span>Calendar optimized for today.</span></li>
+            </ul>
+          </div>
+          <div class="runtime-frame__base" aria-hidden="true"><span></span></div>
+        </div>
+      </section>
+
+      <section class="runtime-section" id="runtime" aria-labelledby="runtime-title">
+        <div class="section-marker"><span>01</span><i></i><span>Runtime</span></div>
+        <div class="runtime-section__content">
+          <h2 id="runtime-title">Chat waits for prompts.<br>Nieme accepts intent.</h2>
+          <p>Tell Nieme what you want to accomplish. The runtime turns that intent into background work, prepared artifacts, and moments where your judgment is actually needed.</p>
+        </div>
+      </section>
+
+      <section class="how-section" id="how-it-works" aria-labelledby="how-title">
+        <div class="section-marker"><span>02</span><i></i><span>How it works</span></div>
+        <h2 id="how-title">A system shaped around<br>how you operate.</h2>
+        <ol class="steps">
+          <li>
+            <span class="steps__number">01</span>
+            <h3>Context</h3>
+            <p>Give Nieme the knowledge that makes your organization distinct.</p>
+          </li>
+          <li>
+            <span class="steps__number">02</span>
+            <h3>Principles</h3>
+            <p>Define what matters and how decisions should be approached.</p>
+          </li>
+          <li>
+            <span class="steps__number">03</span>
+            <h3>Rules</h3>
+            <p>Set clear boundaries for what can happen and when to ask.</p>
+          </li>
+          <li>
+            <span class="steps__number">04</span>
+            <h3>Background Work</h3>
+            <p>Let the runtime carry intent forward without waiting for prompts.</p>
+          </li>
+          <li>
+            <span class="steps__number">05</span>
+            <h3>Artifacts</h3>
+            <p>Return to prepared work, clear decisions, and forward motion.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="beta-section" id="private-beta" aria-labelledby="beta-title">
+        <div class="beta-section__glow" aria-hidden="true"></div>
+        <span class="glyph glyph--large" aria-hidden="true"><i></i></span>
+        <p class="kicker">Private Beta</p>
+        <h2 id="beta-title">Nieme is currently private.</h2>
+        <p>We are opening access carefully to founders and teams building autonomous organizations.</p>
+        <form class="invite-form" id="invite-form">
+          <label class="sr-only" for="email">Work email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="Work email" required>
+          <button class="button button--primary" type="submit">Request Invite</button>
+        </form>
+        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand" href="#top" aria-label="Nieme home">NIEME</a>
+      <p>The operating system for AI.</p>
+      <p>Private Beta.</p>
+    </footer>
+
+    <script>
+      document.getElementById('invite-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        this.hidden = true;
+        document.getElementById('form-message').textContent = 'Thank you. We’ll be in touch.';
+      });
+    </script>
+  </body>
+</html>
