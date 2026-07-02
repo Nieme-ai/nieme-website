@@ -36,60 +36,8 @@
     sections.forEach((section) => observer.observe(section));
   };
 
-  const initRuntimeCycle = () => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    const lines = Array.from(document.querySelectorAll('.log p'));
-    if (!lines.length) {
-      return;
-    }
-
-    const events = [
-      ['08:16', 'Quarterly report generated.'],
-      ['08:24', 'Contract ready for review.'],
-      ['08:37', 'Supplier update summarized.'],
-      ['08:45', 'Morning briefing prepared.'],
-      ['08:52', 'Customer replies drafted.'],
-      ['09:04', 'One renewal needs attention.'],
-      ['09:12', 'Board presentation ready for review.']
-    ];
-
-    let index = 0;
-
-    const rotateLine = () => {
-      const line = lines[index % lines.length];
-      const event = events[index % events.length];
-      const timeNode = line.querySelector('time');
-      const textNode = line.childNodes[1];
-
-      line.classList.add('is-changing');
-
-      window.setTimeout(() => {
-        if (timeNode) {
-          timeNode.textContent = event[0];
-        }
-
-        if (textNode) {
-          textNode.textContent = ` ${event[1]}`;
-        }
-
-        line.classList.remove('is-changing');
-      }, 320);
-
-      index += 1;
-    };
-
-    window.setTimeout(() => {
-      rotateLine();
-      window.setInterval(rotateLine, 9000);
-    }, 1500);
-  };
-
   const boot = () => {
     initReveal();
-    initRuntimeCycle();
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(addMotionReady);
     });
