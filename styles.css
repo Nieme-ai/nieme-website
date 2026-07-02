@@ -15,3 +15,52 @@ body{margin:0;background:radial-gradient(circle at 80% 5%,#17264f 0%,transparent
 .demo{padding:120px 8vw;display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}.demo h2,.final h2{font-size:clamp(42px,5vw,82px);line-height:1;letter-spacing:-.06em;font-weight:420;margin:0 0 26px}.demo p,.final p{font-size:21px;line-height:1.5;color:#b6bac8}.artifact-stack{display:grid;gap:18px}.artifact{border:1px solid var(--line);border-radius:26px;padding:26px;background:linear-gradient(180deg,#ffffff0b,#ffffff04)}.artifact span{font-size:12px;color:#9a7cff;text-transform:uppercase;letter-spacing:.12em}.artifact h4{font-size:22px;margin:14px 0 8px}.artifact p{font-size:15px;margin:0;color:#8e93a7}
 .final{padding:140px 8vw 180px;text-align:center}.final em{font-style:normal;color:#8d6cff;text-shadow:0 0 28px #724cff}
 @media(max-width:900px){.nav{padding:0 22px}.nav nav{display:none}.brand{font-size:18px}.primitives,.demo{grid-template-columns:1fr}h1{font-size:56px}}
+
+/* Material motion */
+.button{cursor:pointer;transition:transform 250ms ease,filter 250ms ease,box-shadow 250ms ease}
+.button:hover{transform:translateY(-3px);filter:brightness(1.06)}
+.button.primary:hover{box-shadow:0 8px 54px #654cff80}
+.button.ghost:hover{box-shadow:0 8px 34px #654cff26}
+
+.nav nav a{position:relative;isolation:isolate;transition:color 250ms ease,text-shadow 250ms ease}
+.nav nav a:not(.nav-cta)::before{position:absolute;inset:-9px -12px;z-index:-1;border:1px solid transparent;border-radius:999px;background:#ffffff00;content:"";transition:background 250ms ease,border-color 250ms ease,box-shadow 250ms ease}
+.nav nav a:not(.nav-cta):hover::before{border-color:#ffffff0b;background:#ffffff0a;box-shadow:0 0 22px #7657ff1f}
+.nav nav a:hover{color:#f5f4ff;text-shadow:0 0 16px #9a7cff4d}
+.nav-cta{transition:transform 250ms ease,background 250ms ease,border-color 250ms ease,box-shadow 250ms ease,color 250ms ease!important}
+.nav-cta:hover{transform:translateY(-3px);border-color:#ffffff24;background:#ffffff0d;box-shadow:0 8px 30px #7657ff26}
+
+.terminal,.primitives article,.artifact{position:relative;transition:transform 300ms ease,border-color 300ms ease,box-shadow 300ms ease,backdrop-filter 300ms ease,-webkit-backdrop-filter 300ms ease}
+.primitives article,.artifact{overflow:hidden}
+.terminal:hover,.primitives article:hover,.artifact:hover{transform:translateY(-4px);border-color:#ffffff26;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 28px 80px #00000066,0 16px 46px #654cff1f}
+.terminal::after,.primitives article::after,.artifact::after{position:absolute;inset:-50% auto -50% -55%;width:24%;z-index:2;pointer-events:none;background:linear-gradient(90deg,transparent,#ffffff0d,transparent);content:"";transform:skewX(-16deg);animation:glass-light 26s ease-in-out infinite}
+.primitives article:nth-child(2)::after,.artifact:nth-child(2)::after{animation-delay:2s}
+.primitives article:nth-child(3)::after,.artifact:nth-child(3)::after{animation-delay:4s}
+.primitives article:nth-child(4)::after{animation-delay:6s}
+.primitives article:nth-child(5)::after{animation-delay:8s}
+
+.hero-bg{animation:atmosphere-drift 16s ease-in-out infinite alternate}
+.log p{transition:opacity 320ms ease}
+.log p.is-changing{opacity:0}
+
+.reveal{opacity:0;transform:translateY(12px);transition:opacity 500ms ease,transform 500ms ease}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+
+@keyframes atmosphere-drift{
+  from{opacity:.78;transform:translate3d(-3px,2px,0)}
+  to{opacity:.82;transform:translate3d(4px,-2px,0)}
+}
+
+@keyframes glass-light{
+  0%,72%{left:-55%;opacity:0}
+  76%{opacity:.22}
+  88%{opacity:.16}
+  92%,100%{left:135%;opacity:0}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-bg,.terminal::after,.primitives article::after,.artifact::after{animation:none}
+  .button,.nav nav a,.nav nav a::before,.nav-cta,.terminal,.primitives article,.artifact,.log p,.reveal{transition:none}
+  .button:hover,.nav-cta:hover,.terminal:hover,.primitives article:hover,.artifact:hover{transform:none}
+  .reveal,.reveal.is-visible{opacity:1;transform:none}
+}
