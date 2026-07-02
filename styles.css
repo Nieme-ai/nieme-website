@@ -221,7 +221,8 @@ h1 {
 .runtime-frame__heading p { margin: 0; color: #777685; font-size: 10px; font-weight: 650; letter-spacing: 0.18em; text-transform: uppercase; }
 .runtime-frame__heading time { color: #62616d; font-size: 10px; font-variant-numeric: tabular-nums; }
 .outcomes { margin: 0; padding: 0; list-style: none; }
-.outcomes li { min-height: 54px; display: flex; align-items: center; gap: 14px; border-top: 1px solid var(--line-soft); color: #c5c3cc; font-size: 13px; }
+.outcomes li { min-height: 54px; display: flex; align-items: center; gap: 14px; border-top: 1px solid var(--line-soft); color: #c5c3cc; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13px; }
+.outcomes time { flex: 0 0 auto; color: #8fcae3; font-size: 11px; font-variant-numeric: tabular-nums; }
 .mark { width: 20px; height: 20px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid; border-radius: 50%; font-size: 10px; }
 .mark--done { border-color: rgba(132,123,203,0.35); color: #a79ce9; background: rgba(97,80,195,0.08); }
 .mark--attention { border-color: rgba(212,174,102,0.32); color: #d6b879; background: rgba(170,122,52,0.07); }
