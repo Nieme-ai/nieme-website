@@ -17,8 +17,8 @@ body{margin:0;background:radial-gradient(circle at 80% 5%,#17264f 0%,transparent
 @media(max-width:900px){.nav{padding:0 22px}.nav nav{display:none}.brand{font-size:18px}.primitives,.demo{grid-template-columns:1fr}h1{font-size:56px}}
 
 /* Material motion */
-.button{cursor:pointer;transition:transform 250ms ease,filter 250ms ease,box-shadow 250ms ease}
-.button:hover{transform:translateY(-3px);filter:brightness(1.06)}
+.button{cursor:pointer;transition:transform 250ms ease,box-shadow 250ms ease,border-color 250ms ease,background 250ms ease}
+.button:hover{transform:translateY(-3px)}
 .button.primary:hover{box-shadow:0 8px 54px #654cff80}
 .button.ghost:hover{box-shadow:0 8px 34px #654cff26}
 
@@ -29,20 +29,20 @@ body{margin:0;background:radial-gradient(circle at 80% 5%,#17264f 0%,transparent
 .nav-cta{transition:transform 250ms ease,background 250ms ease,border-color 250ms ease,box-shadow 250ms ease,color 250ms ease!important}
 .nav-cta:hover{transform:translateY(-3px);border-color:#ffffff24;background:#ffffff0d;box-shadow:0 8px 30px #7657ff26}
 
-.terminal,.primitives article,.artifact{position:relative;transition:transform 300ms ease,border-color 300ms ease,box-shadow 300ms ease,backdrop-filter 300ms ease,-webkit-backdrop-filter 300ms ease}
+.terminal,.primitives article,.artifact{position:relative;transition:transform 300ms ease,border-color 300ms ease,box-shadow 300ms ease}
 .primitives article,.artifact{overflow:hidden}
-.terminal:hover,.primitives article:hover,.artifact:hover{transform:translateY(-4px);border-color:#ffffff26;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 28px 80px #00000066,0 16px 46px #654cff1f}
-.terminal::after,.primitives article::after,.artifact::after{position:absolute;inset:-50% auto -50% -55%;width:24%;z-index:2;pointer-events:none;background:linear-gradient(90deg,transparent,#ffffff0d,transparent);content:"";transform:skewX(-16deg);animation:glass-light 26s ease-in-out infinite}
-.primitives article:nth-child(2)::after,.artifact:nth-child(2)::after{animation-delay:2s}
-.primitives article:nth-child(3)::after,.artifact:nth-child(3)::after{animation-delay:4s}
-.primitives article:nth-child(4)::after{animation-delay:6s}
-.primitives article:nth-child(5)::after{animation-delay:8s}
+.terminal:hover,.primitives article:hover,.artifact:hover{transform:translateY(-4px);border-color:#ffffff26;box-shadow:0 28px 80px #00000066,0 16px 46px #654cff1f}
 
-.hero-bg{animation:atmosphere-drift 16s ease-in-out infinite alternate}
-.log p{transition:opacity 320ms ease}
+.statement,.flow,.primitives,.demo,.final{content-visibility:auto;contain-intrinsic-size:800px}
+.hero-bg,.glyph b{animation:none}
+.motion-ready .hero-bg{animation:atmosphere-drift 16s ease-in-out infinite alternate}
+.motion-ready .glyph b{animation:logo-orbit 40s linear infinite}
+.log p{transition:none}
 .log p.is-changing{opacity:0}
 
-.reveal{opacity:0;transform:translateY(12px);transition:opacity 500ms ease,transform 500ms ease}
+.reveal{opacity:0;transform:translateY(12px)}
+.motion-ready .log p{transition:opacity 320ms ease}
+.motion-ready .reveal{transition:opacity 500ms ease,transform 500ms ease}
 .reveal.is-visible{opacity:1;transform:translateY(0)}
 
 @keyframes atmosphere-drift{
@@ -54,16 +54,9 @@ body{margin:0;background:radial-gradient(circle at 80% 5%,#17264f 0%,transparent
   to{transform:rotate(360deg)}
 }
 
-@keyframes glass-light{
-  0%,72%{left:-55%;opacity:0}
-  76%{opacity:.22}
-  88%{opacity:.16}
-  92%,100%{left:135%;opacity:0}
-}
-
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .glyph b,.hero-bg,.terminal::after,.primitives article::after,.artifact::after{animation:none}
+  .glyph b,.hero-bg{animation:none}
   .button,.nav nav a,.nav nav a::before,.nav-cta,.terminal,.primitives article,.artifact,.log p,.reveal{transition:none}
   .button:hover,.nav-cta:hover,.terminal:hover,.primitives article:hover,.artifact:hover{transform:none}
   .reveal,.reveal.is-visible{opacity:1;transform:none}
