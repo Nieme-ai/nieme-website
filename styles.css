@@ -66,7 +66,9 @@ body{margin:0;background:radial-gradient(circle at 80% 5%,#17264f 0%,transparent
 @media(max-width:900px){.nav{padding:0 22px}.nav nav{display:none}.brand{font-size:18px}.primitives,.demo{grid-template-columns:1fr}h1{font-size:56px}}
 
 /* Material motion */
-.button{cursor:pointer;transition:transform 250ms ease,box-shadow 250ms ease,border-color 250ms ease,background 250ms ease}
+.button{padding:16px 24px;border-radius:999px;text-decoration:none;color:white;border:1px solid var(--line);cursor:pointer;transition:transform 250ms ease,box-shadow 250ms ease,border-color 250ms ease,background 250ms ease}
+.primary{background:linear-gradient(135deg,var(--purple),#4d9fff);box-shadow:0 0 44px #654cff66}
+.ghost{background:#ffffff08}
 .mock-control{cursor:default;pointer-events:none;transition:transform 250ms ease,box-shadow 250ms ease,border-color 250ms ease,background 250ms ease}
 .button:hover{transform:translateY(-3px)}
 .button.primary:hover{box-shadow:0 8px 54px #654cff80}
@@ -76,7 +78,7 @@ body{margin:0;background:radial-gradient(circle at 80% 5%,#17264f 0%,transparent
 .nav nav a:not(.nav-cta)::before{position:absolute;inset:-9px -12px;z-index:-1;border:1px solid transparent;border-radius:999px;background:#ffffff00;content:"";transition:background 250ms ease,border-color 250ms ease,box-shadow 250ms ease}
 .nav nav a:not(.nav-cta):hover::before{border-color:#ffffff0b;background:#ffffff0a;box-shadow:0 0 22px #7657ff1f}
 .nav nav a:hover{color:#f5f4ff;text-shadow:0 0 16px #9a7cff4d}
-.nav-cta{transition:transform 250ms ease,background 250ms ease,border-color 250ms ease,box-shadow 250ms ease,color 250ms ease!important}
+.nav-cta{border:1px solid var(--line);padding:12px 18px;border-radius:999px;background:#ffffff08;transition:transform 250ms ease,background 250ms ease,border-color 250ms ease,box-shadow 250ms ease,color 250ms ease!important}
 .nav-cta:hover{transform:translateY(-3px);border-color:#ffffff24;background:#ffffff0d;box-shadow:0 8px 30px #7657ff26}
 
 .terminal,.primitives article,.artifact,.narrative-surface{position:relative;will-change:transform;transition:transform 300ms ease,border-color 300ms ease,box-shadow 300ms ease}
