@@ -105,15 +105,16 @@ h3{font-size:26px;margin:16px 0}
 .curve-ticks text,.curve-axis-labels text{fill:#9ba0b4;font-size:12px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}
 .curve-fill{fill:rgba(123,77,255,.09)}
 .curve-line{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
-.curve-typical{stroke:rgba(255,255,255,.42);stroke-width:2;stroke-dasharray:5 4;stroke-dashoffset:100}
+.curve-typical{stroke:rgba(255,255,255,.42);stroke-width:2;stroke-dasharray:5 4}
 .curve-nieme{stroke:var(--purple);stroke-width:2;stroke-dasharray:100;stroke-dashoffset:100}
+.curve-reveal{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100;stroke-dashoffset:100}
 .curve-legend{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:18px;color:#9ba0b4;font-size:12px;line-height:1.4}
 .curve-legend > div{display:flex;align-items:center;gap:10px}
 .curve-swatch{width:10px;height:10px;display:inline-block;border-radius:2px}
 .curve-swatch--typical{background:rgba(255,255,255,.42)}
 .curve-swatch--nieme{background:var(--purple)}
 .curve-caption{max-width:1440px;margin:44px auto 0;text-align:center;font-size:clamp(34px,4vw,58px);line-height:1.06;letter-spacing:-.06em;color:#eef0f7;padding:0 64px}
-.motion-ready .capability-curve.is-visible .curve-typical{animation:curve-draw 1.2s ease forwards}
+.motion-ready .capability-curve.is-visible .curve-reveal--typical{animation:curve-draw 1.2s ease forwards}
 .motion-ready .capability-curve.is-visible .curve-nieme{animation:curve-draw 1.2s ease forwards}
 .runtime-intelligence-shell{max-width:1440px;margin:0 auto;padding:34px 34px 30px;overflow:hidden}
 .runtime-diagram{position:relative}
@@ -151,6 +152,7 @@ h3{font-size:26px;margin:16px 0}
 .runtime-mobile-return span{display:block}
 .statement{padding:150px 8vw;text-align:center}.statement p{font-size:21px;line-height:1.5;color:#a8adbd;max-width:920px;margin:30px auto 0}.statement h2{font-size:clamp(44px,6vw,92px);font-weight:400;margin:0;letter-spacing:-.06em}
 .definition,.flow,.trust{padding:120px 8vw}.definition .section-copy,.flow .section-copy,.trust .section-copy{max-width:1100px}.definition h2,.flow h2,.trust h2{font-size:clamp(42px,5vw,82px);line-height:1;letter-spacing:-.06em;font-weight:420;margin:0 0 26px}.definition p,.flow p,.trust p{font-size:21px;line-height:1.5;color:#b6bac8;margin:0;max-width:920px}
+.hero .definition{padding:120px 0}
 .primitives{padding:100px 8vw;display:grid;grid-template-columns:repeat(5,1fr);gap:18px}.primitives article{min-height:270px;border:1px solid var(--line);border-radius:28px;padding:28px;background:#ffffff06}.primitives span{color:#756cff}.primitives h3{font-size:26px;margin:60px 0 16px}.primitives p{color:#aeb3c4;line-height:1.55}
 .demo{padding:120px 8vw;display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}.demo h2,.final h2{font-size:clamp(42px,5vw,82px);line-height:1;letter-spacing:-.06em;font-weight:420;margin:0 0 26px}.demo p,.final p{font-size:21px;line-height:1.5;color:#b6bac8}.artifact-stack{display:grid;gap:18px}.artifact{border:1px solid var(--line);border-radius:26px;padding:26px;background:linear-gradient(180deg,#ffffff0b,#ffffff04)}.artifact span{font-size:12px;color:#9a7cff;text-transform:uppercase;letter-spacing:.12em}.artifact h4{font-size:22px;margin:14px 0 8px}.artifact p{font-size:15px;margin:0;color:#8e93a7}
 .final{padding:140px 8vw 180px;text-align:center}.final em{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45),0 0 28px rgba(123,92,255,.38),0 0 70px rgba(123,92,255,.22),0 0 140px rgba(123,92,255,.10)}
@@ -221,8 +223,8 @@ footer{padding:0 8vw 48px;text-align:center;color:var(--muted);font-size:14px}
   .button,.nav nav a:not(.button),.nav nav a:not(.button)::before,.primitives article,.artifact,.narrative-surface,.reveal{transition:none}
   .button:hover,.primitives article:hover,.artifact:hover,.narrative-surface:hover{transform:none}
   .reveal,.reveal.is-visible{opacity:1;transform:none}
-  .capability-curve .curve-typical,.capability-curve .curve-nieme,.runtime-pulse,.motion-ready .runtime-intelligence.is-visible .runtime-pulse{animation:none;display:none}
-  .capability-curve .curve-typical,.capability-curve .curve-nieme{stroke-dashoffset:0}
+  .capability-curve .curve-reveal,.capability-curve .curve-nieme{animation:none;stroke-dashoffset:0}
+  .runtime-pulse,.motion-ready .runtime-intelligence.is-visible .runtime-pulse{display:none}
 }
 @media(max-width:900px){
   .hero{padding:160px 22px 70px}
