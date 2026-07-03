@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nieme | The operating system for AI</title>
-  <meta name="description" content="Nieme turns knowledge, governance, and AI into a living organization that keeps work moving while you sleep." />
-  <meta property="og:title" content="Nieme | The operating system for AI" />
-  <meta property="og:description" content="Your organization should keep working while you sleep. Nieme preserves context, governance, and continuity across people, models, tools, and time." />
+  <title>Nieme | The team you used to have</title>
+  <meta name="description" content="Nieme turns one person into a full organization. Brief it in the morning, review finished work by noon. It learns from everything you have ever produced, and nothing ships without your approval." />
+  <meta property="og:title" content="Nieme | The team you used to have" />
+  <meta property="og:description" content="Nieme turns one person into a full organization. Brief it in the morning, review finished work by noon. It learns from everything you have ever produced, and nothing ships without your approval." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nieme.ai" />
   <meta property="og:site_name" content="Nieme" />
@@ -43,9 +43,9 @@
     </a>
     <nav>
       <a href="#runtime">Runtime</a>
-      <a href="#primitives">How It Works</a>
-      <a href="#how-it-works">Prepared Work</a>
-      <button class="button ghost" type="button">Request Invite</button>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#primitives">Prepared Work</a>
+      <button class="button ghost" type="button" data-invite-trigger>Request Invite</button>
     </nav>
   </header>
 
@@ -311,7 +311,12 @@
     <section class="final">
       <h2>AI forgets.<br><em>Nieme doesn't.</em></h2>
       <p>Continuity. Interoperability. Persistence. Privacy by design.</p>
-      <button class="button primary" type="button">Request Invite</button>
+      <form class="invite-form" id="invite-form" novalidate>
+        <label class="sr-only" for="invite-email">Email address</label>
+        <input id="invite-email" name="email" type="email" autocomplete="email" placeholder="Email address" required />
+        <button class="button primary" type="submit">Request Invite</button>
+        <p class="invite-status" role="status" aria-live="polite"></p>
+      </form>
     </section>
   </main>
   <script src="/script.js" defer></script>

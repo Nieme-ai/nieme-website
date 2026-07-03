@@ -1,5 +1,54 @@
 (() => {
+  // Create a free Formspree or Basin endpoint and paste it here.
+  const FORM_ENDPOINT = 'REPLACE_WITH_FORM_ENDPOINT';
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const initInviteForm = () => {
+    const form = document.querySelector('#invite-form');
+    const email = form?.querySelector('input[type="email"]');
+    const button = form?.querySelector('button[type="submit"]');
+    const status = form?.querySelector('.invite-status');
+
+    document.querySelectorAll('[data-invite-trigger]').forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        form?.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center' });
+        email?.focus({ preventScroll: true });
+      });
+    });
+
+    if (!form || !button || !status) {
+      return;
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) {
+        return;
+      }
+
+      button.disabled = true;
+      status.textContent = '';
+
+      try {
+        const response = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+
+        if (!response.ok) {
+          throw new Error('Invite request failed');
+        }
+
+        form.reset();
+        status.textContent = 'You are on the list. Invites go out in waves.';
+      } catch {
+        status.textContent = 'Something went wrong. Try again in a minute.';
+      } finally {
+        button.disabled = false;
+      }
+    });
+  };
 
   const addMotionReady = () => {
     document.body.classList.add('motion-ready');
@@ -37,6 +86,7 @@
   };
 
   const boot = () => {
+    initInviteForm();
     initReveal();
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(addMotionReady);
