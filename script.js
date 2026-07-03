@@ -54,6 +54,41 @@
     document.body.classList.add('motion-ready');
   };
 
+  const initAnimationActivity = () => {
+    const animatedRegions = Array.from(document.querySelectorAll('.hero, .nav, .runtime-intelligence'));
+    const runtimeSvg = document.querySelector('.runtime-pulse');
+
+    const syncRuntimeMotion = () => {
+      const runtime = document.querySelector('.runtime-intelligence');
+      const shouldPause = document.hidden || !runtime?.classList.contains('is-animation-active') || prefersReducedMotion;
+      if (shouldPause) {
+        runtimeSvg?.pauseAnimations?.();
+      } else {
+        runtimeSvg?.unpauseAnimations?.();
+      }
+    };
+
+    const syncDocumentMotion = () => {
+      document.body.classList.toggle('animations-paused', document.hidden);
+      syncRuntimeMotion();
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle('is-animation-active', entry.isIntersecting);
+        });
+        syncRuntimeMotion();
+      }, { threshold: 0.01 });
+      animatedRegions.forEach((region) => observer.observe(region));
+    } else {
+      animatedRegions.forEach((region) => region.classList.add('is-animation-active'));
+    }
+
+    document.addEventListener('visibilitychange', syncDocumentMotion);
+    syncDocumentMotion();
+  };
+
   const initReveal = () => {
     const sections = Array.from(document.querySelectorAll('main > section:not(.hero)'));
     if (!sections.length) {
@@ -88,9 +123,13 @@
   const boot = () => {
     initInviteForm();
     initReveal();
-    window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(addMotionReady);
-    });
+    initAnimationActivity();
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(addMotionReady, { timeout: 500 });
+    } else {
+      window.setTimeout(addMotionReady, 0);
+    }
   };
 
   if (document.readyState === 'loading') {

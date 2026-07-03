@@ -2,7 +2,7 @@
 :root{--bg:#05070d;--panel:#0b0f19cc;--line:#ffffff14;--text:#f5f4f1;--muted:#9ba0b4;--purple:#7b4dff;--blue:#21b8ff;--cyan:#7ee7ff}
 *{box-sizing:border-box} html{scroll-behavior:smooth}
 body{margin:0;background:radial-gradient(circle at 80% 5%,#17264f 0%,transparent 34%),radial-gradient(circle at 25% 20%,#1b1148 0%,transparent 34%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.01em;overflow-x:hidden}
-.grain{position:fixed;inset:0;pointer-events:none;opacity:.14;z-index:10;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");mix-blend-mode:screen}
+.grain{position:fixed;inset:0;pointer-events:none;opacity:.14;z-index:10;background-image:url("./grain.png");background-repeat:repeat;background-size:128px 128px;mix-blend-mode:screen}
 .nav{position:fixed;top:0;left:0;right:0;height:84px;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 44px;background:linear-gradient(#05070de8,#05070d00);backdrop-filter:blur(12px)}
 .brand{display:flex;align-items:center;gap:18px;text-decoration:none;color:white;font-size:25px;letter-spacing:.42em}
 .glyph{width:46px;height:46px;border:3px solid var(--purple);border-radius:50%;display:inline-block;position:relative;box-shadow:0 0 28px #6c4cff80}
@@ -135,8 +135,8 @@ h3{font-size:26px;margin:16px 0}
 .runtime-pulse{position:absolute;inset:0;display:none;pointer-events:none}
 .runtime-pulse svg{width:100%;height:100%;overflow:visible}
 .runtime-pulse circle{fill:var(--purple);opacity:.42;filter:drop-shadow(0 0 18px rgba(123,77,255,.35))}
-.motion-ready .runtime-intelligence.is-visible .runtime-pulse{display:block}
-.motion-ready .runtime-intelligence.is-visible .runtime-pulse circle{animation:pulse-glow 8s linear infinite}
+.motion-ready .runtime-intelligence.is-visible.is-animation-active .runtime-pulse{display:block}
+.motion-ready .runtime-intelligence.is-visible.is-animation-active .runtime-pulse circle{animation:pulse-glow 8s linear infinite}
 .runtime-mobile-head{margin-bottom:14px}
 .runtime-mobile-stack{display:grid;gap:12px}
 .runtime-mobile-node{padding:18px 18px 16px;border-radius:20px;display:grid;gap:8px}
@@ -171,7 +171,7 @@ footer{padding:0 8vw 48px;text-align:center;color:var(--muted);font-size:14px}
 @media(max-width:560px){.epilogue p{white-space:normal}}
 
 /* Material motion */
-.button{padding:16px 24px;border-radius:999px;text-decoration:none;color:white;border:1px solid var(--line);cursor:pointer;transition:transform 250ms ease,box-shadow 250ms ease,border-color 250ms ease,background 250ms ease}
+.button{padding:16px 24px;border-radius:999px;text-decoration:none;color:white;border:1px solid var(--line);cursor:pointer;transition:transform 250ms ease,border-color 250ms ease,background 250ms ease}
 .primary{background:linear-gradient(135deg,var(--purple),#4d9fff);box-shadow:0 0 44px #654cff66}
 .ghost{background:#ffffff08}
 .button:hover{transform:translateY(-3px)}
@@ -179,20 +179,21 @@ footer{padding:0 8vw 48px;text-align:center;color:var(--muted);font-size:14px}
 .button.ghost:hover{box-shadow:0 8px 34px #654cff26}
 
 .nav nav a:not(.button){position:relative;isolation:isolate;transition:color 250ms ease,text-shadow 250ms ease}
-.nav nav a:not(.button)::before{position:absolute;inset:-9px -12px;z-index:-1;border:1px solid transparent;border-radius:999px;background:#ffffff00;content:"";transition:background 250ms ease,border-color 250ms ease,box-shadow 250ms ease}
+.nav nav a:not(.button)::before{position:absolute;inset:-9px -12px;z-index:-1;border:1px solid transparent;border-radius:999px;background:#ffffff00;content:"";transition:background 250ms ease,border-color 250ms ease}
 .nav nav a:not(.button):hover::before{border-color:#ffffff0b;background:#ffffff0a;box-shadow:0 0 22px #7657ff1f}
 .nav nav a:not(.button):hover{color:#f5f4ff;text-shadow:0 0 16px #9a7cff4d}
 .nav nav .button{padding:10px 18px;font-size:13px}
 
-.terminal,.primitives article,.artifact,.narrative-surface{position:relative;will-change:transform;transition:transform 300ms ease,border-color 300ms ease,box-shadow 300ms ease}
+.terminal,.primitives article,.artifact,.narrative-surface{position:relative;will-change:transform;transition:transform 300ms ease,border-color 300ms ease}
 .primitives article,.artifact{overflow:hidden}
 .terminal:hover,.primitives article:hover,.artifact:hover{transform:translateY(-4px);border-color:#ffffff26;box-shadow:0 28px 80px #00000066,0 16px 46px #654cff1f}
 .narrative-surface:hover{transform:none}
 
 .statement,.definition,.flow,.primitives,.demo,.trust,.final,.capability-curve,.runtime-intelligence{content-visibility:auto;contain-intrinsic-size:800px}
 .hero-bg,.glyph b{animation:none}
-.motion-ready .hero-bg{animation:atmosphere-drift 16s ease-in-out infinite alternate}
-.motion-ready .glyph b{animation:logo-orbit 40s linear infinite}
+.motion-ready .hero.is-animation-active .hero-bg{animation:atmosphere-drift 16s ease-in-out infinite alternate}
+.motion-ready .nav.is-animation-active .glyph b{animation:logo-orbit 40s linear infinite}
+.animations-paused *{animation-play-state:paused!important}
 
 .reveal{opacity:0;transform:translateY(12px)}
 .motion-ready .reveal{transition:opacity 500ms ease,transform 500ms ease}
@@ -227,7 +228,7 @@ footer{padding:0 8vw 48px;text-align:center;color:var(--muted);font-size:14px}
   .button:hover,.primitives article:hover,.artifact:hover,.narrative-surface:hover{transform:none}
   .reveal,.reveal.is-visible{opacity:1;transform:none}
   .capability-curve .curve-reveal,.capability-curve .curve-nieme{animation:none;stroke-dashoffset:0}
-  .runtime-pulse,.motion-ready .runtime-intelligence.is-visible .runtime-pulse{display:none}
+  .runtime-pulse,.motion-ready .runtime-intelligence.is-visible.is-animation-active .runtime-pulse{display:none}
 }
 @media(max-width:900px){
   .hero{padding:160px 22px 70px}
