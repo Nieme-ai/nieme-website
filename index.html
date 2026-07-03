@@ -235,7 +235,11 @@
         <svg class="curve-chart" viewBox="0 0 1240 620" role="img" aria-labelledby="curve-title curve-desc">
           <title id="curve-title">The Compounding Difference</title>
           <desc id="curve-desc">A line chart comparing typical AI memory accumulation against Nieme approved work compounding over approved deliverables.</desc>
-          <defs></defs>
+          <defs>
+            <mask id="curve-typical-mask">
+              <path class="curve-reveal curve-reveal--typical" pathLength="100" d="M 120 468 L 240 408 L 280 456 L 400 396 L 440 444 L 560 384 L 600 432 L 720 372 L 760 420 L 880 360 L 920 408 L 1040 348 L 1080 396"></path>
+            </mask>
+          </defs>
           <g class="curve-grid" aria-hidden="true">
             <line x1="120" y1="120" x2="1080" y2="120"></line>
             <line x1="120" y1="240" x2="1080" y2="240"></line>
@@ -260,7 +264,7 @@
             <g transform="translate(1080 500)"><line y2="12"></line><text y="36" text-anchor="middle">60 approved</text></g>
           </g>
           <path class="curve-fill curve-nieme-fill" d="M 120 468 L 168 461.1 L 216 453.5 L 264 445.1 L 312 435.7 L 360 425.3 L 408 413.8 L 456 401 L 504 386.8 L 552 371.1 L 600 353.6 L 648 334.2 L 696 312.7 L 744 288.8 L 792 262.3 L 840 232.9 L 888 200.3 L 936 164.1 L 984 124 L 1032 79.4 L 1080 30 L 1080 500 L 120 500 Z"></path>
-          <path class="curve-line curve-typical" d="M 120 468 L 240 408 L 280 456 L 400 396 L 440 444 L 560 384 L 600 432 L 720 372 L 760 420 L 880 360 L 920 408 L 1040 348 L 1080 396" pathLength="100"></path>
+          <path class="curve-line curve-typical" mask="url(#curve-typical-mask)" d="M 120 468 L 240 408 L 280 456 L 400 396 L 440 444 L 560 384 L 600 432 L 720 372 L 760 420 L 880 360 L 920 408 L 1040 348 L 1080 396" pathLength="100"></path>
           <path class="curve-line curve-nieme" d="M 120 468 L 168 461.1 L 216 453.5 L 264 445.1 L 312 435.7 L 360 425.3 L 408 413.8 L 456 401 L 504 386.8 L 552 371.1 L 600 353.6 L 648 334.2 L 696 312.7 L 744 288.8 L 792 262.3 L 840 232.9 L 888 200.3 L 936 164.1 L 984 124 L 1032 79.4 L 1080 30" pathLength="100"></path>
         </svg>
         <div class="curve-legend">

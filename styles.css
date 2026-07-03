@@ -105,15 +105,16 @@ h3{font-size:26px;margin:16px 0}
 .curve-ticks text,.curve-axis-labels text{fill:#9ba0b4;font-size:12px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}
 .curve-fill{fill:rgba(123,77,255,.09)}
 .curve-line{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
-.curve-typical{stroke:rgba(255,255,255,.42);stroke-width:2;stroke-dasharray:5 4;stroke-dashoffset:100}
+.curve-typical{stroke:rgba(255,255,255,.42);stroke-width:2;stroke-dasharray:5 4}
 .curve-nieme{stroke:var(--purple);stroke-width:2;stroke-dasharray:100;stroke-dashoffset:100}
+.curve-reveal{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100;stroke-dashoffset:100}
 .curve-legend{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:18px;color:#9ba0b4;font-size:12px;line-height:1.4}
 .curve-legend > div{display:flex;align-items:center;gap:10px}
 .curve-swatch{width:10px;height:10px;display:inline-block;border-radius:2px}
 .curve-swatch--typical{background:rgba(255,255,255,.42)}
 .curve-swatch--nieme{background:var(--purple)}
 .curve-caption{max-width:1440px;margin:44px auto 0;text-align:center;font-size:clamp(34px,4vw,58px);line-height:1.06;letter-spacing:-.06em;color:#eef0f7;padding:0 64px}
-.motion-ready .capability-curve.is-visible .curve-typical{animation:curve-draw-typical 1.2s ease forwards}
+.motion-ready .capability-curve.is-visible .curve-reveal--typical{animation:curve-draw 1.2s ease forwards}
 .motion-ready .capability-curve.is-visible .curve-nieme{animation:curve-draw 1.2s ease forwards}
 .runtime-intelligence-shell{max-width:1440px;margin:0 auto;padding:34px 34px 30px;overflow:hidden}
 .runtime-diagram{position:relative}
@@ -211,10 +212,6 @@ footer{padding:0 8vw 48px;text-align:center;color:var(--muted);font-size:14px}
   to{stroke-dashoffset:0}
 }
 
-@keyframes curve-draw-typical{
-  to{stroke-dashoffset:0}
-}
-
 @keyframes pulse-glow{
   0%{opacity:0;transform:translate3d(0,0,0)}
   10%{opacity:.55}
@@ -230,7 +227,7 @@ footer{padding:0 8vw 48px;text-align:center;color:var(--muted);font-size:14px}
   .button,.nav nav a:not(.button),.nav nav a:not(.button)::before,.primitives article,.artifact,.narrative-surface,.reveal{transition:none}
   .button:hover,.primitives article:hover,.artifact:hover,.narrative-surface:hover{transform:none}
   .reveal,.reveal.is-visible{opacity:1;transform:none}
-  .capability-curve .curve-typical,.capability-curve .curve-nieme{animation:none;stroke-dashoffset:0}
+  .capability-curve .curve-reveal,.capability-curve .curve-nieme{animation:none;stroke-dashoffset:0}
   .runtime-pulse,.motion-ready .runtime-intelligence.is-visible.is-animation-active .runtime-pulse{display:none}
 }
 @media(max-width:900px){
