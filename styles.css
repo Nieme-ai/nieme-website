@@ -145,17 +145,21 @@ h3{font-size:26px;margin:16px 0}
 }
 @media(max-width:900px){
   .hero{padding:160px 22px 70px}
-  .hero-artifacts{min-height:0;margin-top:24px;grid-template-columns:1fr;gap:14px;width:100%}
-  .narrative-surface{position:relative;left:auto;top:auto;right:auto;transform:none;width:100%;min-height:0;max-height:none;height:auto;padding:22px}
-  .narrative-composer,.narrative-runtime,.narrative-review{width:100%;min-height:0;max-height:none;height:auto}
-  .narrative-surface{min-height:0;height:auto}
-  .narrative-composer,.narrative-runtime,.narrative-review{min-height:0;height:auto;max-height:none}
+  .hero-artifacts{grid-template-columns:1fr;gap:20px;padding:0}
+  .narrative-surface{min-height:0;height:auto;max-height:none;width:100%}
+  .narrative-composer,.narrative-runtime,.narrative-review{min-height:0;height:auto;max-height:none;width:100%}
   .operation-title{height:auto;display:block}
   .narrative-surface h3,.composer-headline{height:auto;display:block}
-  .composer-body{margin-bottom:12px}
-  .operation-rows{margin-bottom:12px}
-  .artifact-tray{margin-bottom:12px}
-  .artifact-file{grid-template-columns:14px 1fr auto;height:auto;min-height:48px;max-height:none;padding:10px 14px}
-  .artifact-file em{text-align:left}
+  .composer-body{margin-bottom:12px;overflow:visible}
+  .operation-rows{margin-bottom:12px;flex:none}
+  .artifact-tray{margin-bottom:12px;flex:none}
+  .composer-action{width:100%;white-space:normal}
+  .card-footer{width:100%;white-space:normal}
+  .artifact-expand{width:100%;white-space:normal}
+  .operation-row{grid-template-columns:80px 1fr;gap:8px}
+  .operation-row strong{white-space:normal;word-break:break-word}
+  .artifact-file{height:auto;min-height:44px;max-height:none;padding:10px 14px}
+  .artifact-file strong{white-space:normal;word-break:break-word}
+  .narrative-card,.narrative-card *{min-width:0;max-width:100%}
   .statement,.flow,.primitives,.demo,.final{content-visibility:visible}
 }
