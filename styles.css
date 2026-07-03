@@ -148,6 +148,13 @@ h3{font-size:26px;margin:16px 0}
   .hero-artifacts{min-height:0;margin-top:24px;grid-template-columns:1fr;gap:14px;width:100%}
   .narrative-surface{position:relative;left:auto;top:auto;right:auto;transform:none;width:100%;min-height:0;max-height:none;height:auto;padding:22px}
   .narrative-composer,.narrative-runtime,.narrative-review{width:100%;min-height:0;max-height:none;height:auto}
+  .narrative-surface{min-height:0;height:auto}
+  .narrative-composer,.narrative-runtime,.narrative-review{min-height:0;height:auto;max-height:none}
+  .operation-title{height:auto;display:block}
+  .narrative-surface h3,.composer-headline{height:auto;display:block}
+  .composer-body{margin-bottom:12px}
+  .operation-rows{margin-bottom:12px}
+  .artifact-tray{margin-bottom:12px}
   .artifact-file{grid-template-columns:14px 1fr auto;height:auto;min-height:48px;max-height:none;padding:10px 14px}
   .artifact-file em{text-align:left}
   .statement,.flow,.primitives,.demo,.final{content-visibility:visible}
