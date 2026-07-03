@@ -2,7 +2,7 @@
 :root{--bg:#05070d;--panel:#0b0f19cc;--line:#ffffff14;--text:#f5f4f1;--muted:#9ba0b4;--purple:#7b4dff;--blue:#21b8ff;--cyan:#7ee7ff}
 *{box-sizing:border-box} html{scroll-behavior:smooth}
 body{margin:0;background:radial-gradient(circle at 80% 5%,#17264f 0%,transparent 34%),radial-gradient(circle at 25% 20%,#1b1148 0%,transparent 34%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.01em;overflow-x:hidden}
-.grain{position:fixed;inset:0;pointer-events:none;opacity:.14;z-index:10;background-image:url("./grain.png");background-repeat:repeat;background-size:128px 128px;mix-blend-mode:screen}
+.grain{position:fixed;inset:0;pointer-events:none;opacity:.18;z-index:10;background-image:url("./grain.png");background-repeat:repeat;background-size:256px 256px;mix-blend-mode:screen}
 .nav{position:fixed;top:0;left:0;right:0;height:84px;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 44px;background:linear-gradient(#05070de8,#05070d00);backdrop-filter:blur(12px)}
 .brand{display:flex;align-items:center;gap:18px;text-decoration:none;color:white;font-size:25px;letter-spacing:.42em}
 .glyph{width:46px;height:46px;border:3px solid var(--purple);border-radius:50%;display:inline-block;position:relative;box-shadow:0 0 28px #6c4cff80}
