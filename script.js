@@ -56,21 +56,9 @@
 
   const initAnimationActivity = () => {
     const animatedRegions = Array.from(document.querySelectorAll('.hero, .nav, .runtime-intelligence'));
-    const runtimeSvg = document.querySelector('.runtime-pulse');
-
-    const syncRuntimeMotion = () => {
-      const runtime = document.querySelector('.runtime-intelligence');
-      const shouldPause = document.hidden || !runtime?.classList.contains('is-animation-active') || prefersReducedMotion;
-      if (shouldPause) {
-        runtimeSvg?.pauseAnimations?.();
-      } else {
-        runtimeSvg?.unpauseAnimations?.();
-      }
-    };
 
     const syncDocumentMotion = () => {
       document.body.classList.toggle('animations-paused', document.hidden);
-      syncRuntimeMotion();
     };
 
     if ('IntersectionObserver' in window) {
@@ -78,7 +66,6 @@
         entries.forEach((entry) => {
           entry.target.classList.toggle('is-animation-active', entry.isIntersecting);
         });
-        syncRuntimeMotion();
       }, { threshold: 0.01 });
       animatedRegions.forEach((region) => observer.observe(region));
     } else {

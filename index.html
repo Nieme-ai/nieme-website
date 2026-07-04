@@ -146,7 +146,7 @@
         <div class="runtime-diagram runtime-diagram--desktop" aria-label="Runtime intelligence loop">
           <svg class="runtime-ring" viewBox="0 0 1200 880" aria-hidden="true">
             <defs>
-              <marker id="ring-arrow" viewBox="0 0 10 10" refX="7.2" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+              <marker id="ring-arrow" viewBox="0 0 10 10" refX="7.2" refY="5" markerWidth="7" markerHeight="7" orient="auto">
                 <path d="M 0 0 L 10 5 L 0 10 z"></path>
               </marker>
             </defs>
@@ -157,19 +157,15 @@
               <path d="M 268 440 C 268 280, 340 220, 480 164" marker-end="url(#ring-arrow)"></path>
             </g>
             <g class="runtime-connector runtime-connector--spokes" aria-hidden="true">
-              <line x1="600" y1="440" x2="600" y2="164"></line>
-              <line x1="600" y1="440" x2="932" y2="440"></line>
-              <line x1="600" y1="440" x2="600" y2="716"></line>
-              <line x1="600" y1="440" x2="268" y2="440"></line>
+              <line x1="600" y1="339" x2="600" y2="164"></line>
+              <line x1="701" y1="440" x2="932" y2="440"></line>
+              <line x1="600" y1="541" x2="600" y2="716"></line>
+              <line x1="499" y1="440" x2="268" y2="440"></line>
             </g>
           </svg>
-          <svg class="runtime-pulse" viewBox="0 0 1200 880" aria-hidden="true">
-            <circle cx="600" cy="164" r="6">
-              <animateMotion path="M 600 164 C 760 164, 860 220, 932 340 C 932 440, 932 520, 932 640 C 860 760, 760 716, 600 716 C 440 716, 340 660, 268 560 C 268 440, 268 360, 268 280 C 340 220, 440 164, 600 164 Z" dur="8s" repeatCount="indefinite" rotate="0"></animateMotion>
-            </circle>
-          </svg>
-          <div class="runtime-hub runtime-node-glass">
-            <span>Nieme</span>
+          <div class="runtime-hub" aria-label="Nieme">
+            <span class="runtime-hub-wordmark">NIEME</span>
+            <b aria-hidden="true"></b>
           </div>
           <div class="runtime-node runtime-node--context runtime-node-glass">
             <span class="runtime-node-title">Context</span>
@@ -186,12 +182,15 @@
           <div class="runtime-node runtime-node--intelligence runtime-node-glass">
             <span class="runtime-node-title">Intelligence</span>
             <span class="runtime-node-caption">Recommendations · Patterns · Priorities · Memory</span>
-            <span class="runtime-node-flow">→ better context</span>
           </div>
+          <span class="runtime-node-flow">→ better context</span>
         </div>
 
         <div class="runtime-diagram runtime-diagram--mobile" aria-label="Runtime intelligence loop">
-          <div class="runtime-mobile-head hero-label">NIEME</div>
+          <div class="runtime-mobile-head" aria-label="Nieme">
+            <span class="runtime-hub-wordmark">NIEME</span>
+            <b aria-hidden="true"></b>
+          </div>
           <div class="runtime-mobile-stack">
             <div class="runtime-mobile-node runtime-node-glass">
               <span class="runtime-node-title">Context</span>
