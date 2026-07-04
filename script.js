@@ -1,6 +1,6 @@
 (() => {
   // Create a free Formspree or Basin endpoint and paste it here.
-  const FORM_ENDPOINT = 'REPLACE_WITH_FORM_ENDPOINT';
+  const FORM_ENDPOINT = "https://formspree.io/f/xkolkqqn";
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const initInviteForm = () => {
