@@ -531,3 +531,6 @@ footer{padding:0 8vw 48px;text-align:center;color:var(--muted);font-size:14px}
 
 /* #7 — Orbital: text-on-path style */
 .runtime-flow-text{font-size:11px;fill:color-mix(in srgb,var(--purple) 65%,transparent);letter-spacing:.06em;font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}
+
+/* Neon-glow signature — same style as .final em, usable anywhere */
+em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45),0 0 28px rgba(123,92,255,.38),0 0 70px rgba(123,92,255,.22),0 0 140px rgba(123,92,255,.10)}
