@@ -112,10 +112,101 @@
     if (section) section.classList.add('is-arguing');
   };
 
+  const initHeroComposer = () => {
+    const textEl = document.querySelector('.hero-composer-text');
+    const statusEls = Array.from(document.querySelectorAll('.hero-status-line'));
+    if (!textEl) return;
+
+    const prompts = [
+      'Archive all my completed operations.',
+      'Summarize today\'s discussion in #sales on Slack.',
+      'Move Operation 3 from Project X to Project Z.',
+      'Prepare the Q3 report using last year\'s template.',
+      'Start Sprint 3 and assign the operations.',
+      'Review what the team shipped while I was out.',
+    ];
+
+    if (prefersReducedMotion) {
+      textEl.textContent = prompts[0];
+      if (statusEls[0]) statusEls[0].classList.add('is-visible');
+      return;
+    }
+
+    let promptIdx = 0;
+    let charIdx = 0;
+    let phase = 'type';
+    let frameTimer = null;
+    let statusTimer = null;
+
+    const rand = (lo, hi) => lo + Math.floor(Math.random() * (hi - lo + 1));
+
+    const showStatuses = () => {
+      let i = 0;
+      const next = () => {
+        if (i < statusEls.length && phase === 'type') {
+          statusEls[i].classList.add('is-visible');
+          i++;
+          statusTimer = setTimeout(next, 560);
+        }
+      };
+      statusTimer = setTimeout(next, 300);
+    };
+
+    const hideStatuses = () => {
+      clearTimeout(statusTimer);
+      statusEls.forEach((el) => el.classList.remove('is-visible'));
+    };
+
+    const tick = () => {
+      const prompt = prompts[promptIdx];
+
+      if (phase === 'type') {
+        if (charIdx === 0) showStatuses();
+        if (charIdx < prompt.length) {
+          charIdx++;
+          textEl.textContent = prompt.slice(0, charIdx);
+          frameTimer = setTimeout(tick, rand(44, 70));
+        } else {
+          phase = 'pause';
+          frameTimer = setTimeout(tick, 2200);
+        }
+      } else if (phase === 'pause') {
+        hideStatuses();
+        phase = 'erase';
+        frameTimer = setTimeout(tick, 80);
+      } else if (phase === 'erase') {
+        if (charIdx > 0) {
+          charIdx--;
+          textEl.textContent = prompt.slice(0, charIdx);
+          frameTimer = setTimeout(tick, rand(22, 32));
+        } else {
+          phase = 'gap';
+          promptIdx = (promptIdx + 1) % prompts.length;
+          frameTimer = setTimeout(tick, 380);
+        }
+      } else {
+        phase = 'type';
+        tick();
+      }
+    };
+
+    frameTimer = setTimeout(tick, 900);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        clearTimeout(frameTimer);
+        clearTimeout(statusTimer);
+      } else {
+        frameTimer = setTimeout(tick, 200);
+      }
+    });
+  };
+
   const boot = () => {
     initInviteForm();
     initReveal();
     initBeforeAfter();
+    initHeroComposer();
     initAnimationActivity();
 
     if ('requestIdleCallback' in window) {

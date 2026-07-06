@@ -42,8 +42,8 @@
       <span>NIEME</span>
     </a>
     <nav>
-      <a href="./how-it-works.html">How It Works</a>
-      <a href="./why-nieme.html">Why Nieme</a>
+      <a href="/how-it-works">How It Works</a>
+      <a href="/why-nieme">Why Nieme</a>
       <button class="button ghost" type="button" data-invite-trigger>Request Invite</button>
     </nav>
   </header>
@@ -58,38 +58,27 @@
         <p class="lede">Nieme gives every employee an AI operational partner that prepares, executes, and documents work, while your team stays in control and your organization never loses what it learns.</p>
         <div class="actions">
           <button class="button primary" type="button" data-invite-trigger>Request Invite</button>
-          <a class="button ghost" href="./how-it-works.html">See how it works →</a>
+          <a class="button ghost" href="/how-it-works">See how it works →</a>
         </div>
       </div>
       <div class="hero-loop-col">
-        <svg class="loop-motif-svg" viewBox="0 0 480 360" aria-hidden="true">
-          <defs>
-            <filter id="tlg3" x="-60%" y="-60%" width="220%" height="220%">
-              <feGaussianBlur stdDeviation="4" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <path id="lp3" d="M 240 65 A 120 120 0 0 1 360 185 A 120 120 0 0 1 240 305 A 120 120 0 0 1 120 185 A 120 120 0 0 1 240 65"/>
-          </defs>
-          <use href="#lp3" class="loop-ring-glow"/>
-          <use href="#lp3" class="loop-ring"/>
-          <circle cx="240" cy="65" r="5" class="loop-dot"/>
-          <circle cx="344" cy="245" r="5" class="loop-dot"/>
-          <circle cx="136" cy="245" r="5" class="loop-dot"/>
-          <text x="240" y="36" text-anchor="middle" class="loop-lbl">People decide</text>
-          <text class="loop-lbl loop-lbl--hi">
-            <tspan x="358" y="238">AI prepares</tspan>
-            <tspan x="358" dy="17">&amp; executes</tspan>
-          </text>
-          <text class="loop-lbl">
-            <tspan x="122" y="262" text-anchor="end">Organizations</tspan>
-            <tspan x="122" dy="17" text-anchor="end">learn</tspan>
-          </text>
-          <circle r="5" class="loop-tracer" filter="url(#tlg3)">
-            <animateMotion dur="16s" repeatCount="indefinite">
-              <mpath href="#lp3"/>
-            </animateMotion>
-          </circle>
-        </svg>
+        <div class="hero-composer">
+          <div class="composer-label">YOUR REQUEST</div>
+          <div class="composer-field hero-composer-field">
+            <div class="hero-composer-inner">
+              <span class="hero-composer-text" aria-live="off"></span><span class="composer-cursor" aria-hidden="true"></span>
+            </div>
+            <div class="composer-send" aria-hidden="true">↑</div>
+          </div>
+          <div class="hero-status-lines" aria-hidden="true">
+            <div class="hero-status-line"><span class="hero-status-dot"></span>Connecting to Google Drive</div>
+            <div class="hero-status-line"><span class="hero-status-dot"></span>Fetching institutional memory</div>
+            <div class="hero-status-line"><span class="hero-status-dot"></span>Assigning to the research agent</div>
+            <div class="hero-status-line"><span class="hero-status-dot"></span>Preparing the operation</div>
+            <div class="hero-status-line"><span class="hero-status-dot"></span>Recording to the ledger</div>
+            <div class="hero-status-line"><span class="hero-status-dot"></span>Shipping the artifact</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -258,13 +247,13 @@
     <section class="arch-teaser">
       <div class="section-title">
         <div class="eyebrow">BUILT ON AN OPERATING SYSTEM, NOT A CHAT BOX</div>
-        <p>Models provide reasoning, and they're interchangeable. The Runtime provides context and executes. The Vault holds your knowledge. The Ledger keeps the record. Swap the model; keep everything that makes it yours. <a href="./how-it-works.html">See how it works →</a></p>
+        <p>Models provide reasoning, and they're interchangeable. The Runtime provides context and executes. The Vault holds your knowledge. The Ledger keeps the record. Swap the model; keep everything that makes it yours. <a href="/how-it-works">See how it works →</a></p>
       </div>
     </section>
 
     <!-- TRUST BAR -->
     <div class="trust-footer">
-      <p>Enterprise-grade by design.<span aria-hidden="true"> · </span>Complete data ownership.<span aria-hidden="true"> · </span>You stay in control.</p>
+      <p>Enterprise-grade by design · Complete data ownership · You stay in control</p>
     </div>
 
     <!-- FINAL CTA -->
@@ -279,12 +268,6 @@
       </form>
     </section>
 
-    <!-- FOUNDER'S NOTE: Pedro's voice only. Do not generate copy. -->
-    <section class="founders-section" aria-label="Founder's note">
-      <div class="founders-stub" role="presentation">
-        <span>Founder's note, Pedro's voice only</span>
-      </div>
-    </section>
 
   </main>
   <footer>Nieme. Your team decides. Nieme does the work.</footer>
