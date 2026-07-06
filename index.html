@@ -51,31 +51,45 @@
   <main>
 
     <!-- HERO -->
-    <section class="hero">
-      <div class="hero-bg">
-        <div class="arch arch-one"></div>
-        <div class="arch arch-two"></div>
-      </div>
-      <div class="kicker">FOR PEOPLE WHO RUN EVERYTHING</div>
-      <h1>Your team decides.<br>Nieme does the work.</h1>
-      <p class="lede">Nieme gives every employee an AI operational partner that prepares, executes, and documents work, while your team stays in control and your organization never loses what it learns.</p>
-      <div class="hero-constitution-visual">
-        <div class="hero-const-col">
-          <span class="hero-const-num">01</span>
-          <span class="hero-const-line">People decide.</span>
-        </div>
-        <div class="hero-const-col">
-          <span class="hero-const-num">02</span>
-          <span class="hero-const-line">AI prepares and executes.</span>
-        </div>
-        <div class="hero-const-col">
-          <span class="hero-const-num">03</span>
-          <span class="hero-const-line">Your organization learns.</span>
+    <section class="hero hero--loop">
+      <div class="hero-text-col">
+        <div class="kicker">FOR PEOPLE WHO RUN EVERYTHING</div>
+        <h1>Your team decides.<br>Nieme does the work.</h1>
+        <p class="lede">Nieme gives every employee an AI operational partner that prepares, executes, and documents work, while your team stays in control and your organization never loses what it learns.</p>
+        <div class="actions">
+          <button class="button primary" type="button" data-invite-trigger>Request Invite</button>
+          <a class="button ghost" href="./how-it-works.html">See how it works →</a>
         </div>
       </div>
-      <div class="actions">
-        <button class="button primary" type="button" data-invite-trigger>Request Invite</button>
-        <a class="button ghost" href="./how-it-works.html">See how it works →</a>
+      <div class="hero-loop-col">
+        <svg class="loop-motif-svg" viewBox="0 0 480 360" aria-hidden="true">
+          <defs>
+            <filter id="tlg3" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="4" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <path id="lp3" d="M 240 65 A 120 120 0 0 1 360 185 A 120 120 0 0 1 240 305 A 120 120 0 0 1 120 185 A 120 120 0 0 1 240 65"/>
+          </defs>
+          <use href="#lp3" class="loop-ring-glow"/>
+          <use href="#lp3" class="loop-ring"/>
+          <circle cx="240" cy="65" r="5" class="loop-dot"/>
+          <circle cx="344" cy="245" r="5" class="loop-dot"/>
+          <circle cx="136" cy="245" r="5" class="loop-dot"/>
+          <text x="240" y="36" text-anchor="middle" class="loop-lbl">People decide</text>
+          <text class="loop-lbl loop-lbl--hi">
+            <tspan x="358" y="238">AI prepares</tspan>
+            <tspan x="358" dy="17">&amp; executes</tspan>
+          </text>
+          <text class="loop-lbl">
+            <tspan x="122" y="262" text-anchor="end">Organizations</tspan>
+            <tspan x="122" dy="17" text-anchor="end">learn</tspan>
+          </text>
+          <circle r="5" class="loop-tracer" filter="url(#tlg3)">
+            <animateMotion dur="16s" repeatCount="indefinite">
+              <mpath href="#lp3"/>
+            </animateMotion>
+          </circle>
+        </svg>
       </div>
     </section>
 
@@ -138,7 +152,7 @@
             <div class="flow-arrow">↓</div>
             <div class="flow-node" data-glow="6">institutional memory</div>
             <div class="flow-arrow">↓</div>
-            <div class="flow-node flow-node--smart" data-glow="7">the next person starts smarter</div>
+            <div class="flow-node flow-node--smart" data-glow="7">the next operation starts smarter</div>
           </div>
         </div>
       </div>

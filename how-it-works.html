@@ -44,8 +44,16 @@
     <!-- SECTION 1: OPERATION LIFECYCLE -->
     <section class="lifecycle">
       <div class="section-title lifecycle-header">
-        <div class="lifecycle-example-label">Operation: <em>"Prepare the quarterly board report."</em></div>
+        <div class="eyebrow">ONE OPERATION, START TO FINISH</div>
       </div>
+      <div class="composer-wrap">
+        <div class="composer-label">Your request</div>
+        <div class="composer-field">
+          <span class="composer-text">Prepare the quarterly board report.<span class="composer-cursor" aria-hidden="true"></span></span>
+          <div class="composer-send" aria-hidden="true">↑</div>
+        </div>
+      </div>
+      <div class="composer-down"></div>
       <div class="lifecycle-flow card-surface">
         <div class="lifecycle-node">
           <span class="lifecycle-node-label">START</span>
@@ -98,47 +106,49 @@
           <div class="eyebrow">EVERY OPERATION, ON THE RECORD</div>
           <h2>Anyone can claim their AI remembers.<br><em class="glow">Nieme proves what happened.</em></h2>
           <p>Every operation is recorded: the evidence it used, the work it produced, who approved it, when. The record is permanent, it can't be quietly rewritten, and it belongs to you. It isn't an audit feature bolted on afterward. It's the spine of the system.</p>
+          <p class="ledger-invention-note">No other AI system gives your organization a permanent, owned record of every operation. This is what makes intelligence compound, not just execute.</p>
+        </div>
+        <div class="ledger-right">
+          <div class="ledger-visual card-surface">
+            <div class="timeline-label-top">OPERATIONAL TIMELINE</div>
+            <div class="timeline-track">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-info">
+                  <span class="timeline-step-label">Created</span>
+                  <span class="timeline-step-sub">Operation initiated by a person</span>
+                </div>
+              </div>
+              <div class="timeline-connector-line"></div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-info">
+                  <span class="timeline-step-label">Prepared</span>
+                  <span class="timeline-step-sub">Context assembled, evidence gathered</span>
+                </div>
+              </div>
+              <div class="timeline-connector-line"></div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-info">
+                  <span class="timeline-step-label">Executed</span>
+                  <span class="timeline-step-sub">AI models reason and produce artifacts</span>
+                </div>
+              </div>
+              <div class="timeline-connector-line"></div>
+              <div class="timeline-item">
+                <div class="timeline-dot timeline-dot--active"></div>
+                <div class="timeline-info">
+                  <span class="timeline-step-label">Approved</span>
+                  <span class="timeline-step-sub">Person reviews and signs off</span>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="ledger-points">
             <div class="ledger-point">Every operation has a permanent track record.</div>
             <div class="ledger-point">Every output traceable to its evidence.</div>
             <div class="ledger-point">Every decision auditable.</div>
-          </div>
-          <p class="ledger-invention-note">No other AI system gives your organization a permanent, owned record of every operation. This is what makes intelligence compound, not just execute.</p>
-        </div>
-        <div class="ledger-visual card-surface">
-          <div class="timeline-label-top">OPERATIONAL TIMELINE</div>
-          <div class="timeline-track">
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-info">
-                <span class="timeline-step-label">Created</span>
-                <span class="timeline-step-sub">Operation initiated by a person</span>
-              </div>
-            </div>
-            <div class="timeline-connector-line"></div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-info">
-                <span class="timeline-step-label">Prepared</span>
-                <span class="timeline-step-sub">Context assembled, evidence gathered</span>
-              </div>
-            </div>
-            <div class="timeline-connector-line"></div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-info">
-                <span class="timeline-step-label">Executed</span>
-                <span class="timeline-step-sub">AI models reason and produce artifacts</span>
-              </div>
-            </div>
-            <div class="timeline-connector-line"></div>
-            <div class="timeline-item">
-              <div class="timeline-dot timeline-dot--active"></div>
-              <div class="timeline-info">
-                <span class="timeline-step-label">Approved</span>
-                <span class="timeline-step-sub">Person reviews and signs off</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -192,19 +202,35 @@
         <li>The Vault preserves what was learned.</li>
         <li>The Runtime applies that learning to the next operation.</li>
       </ul>
-      <div class="experiment-loop-visual">
-        <div class="flywheel-node">Question</div>
-        <div class="flywheel-arrow">→</div>
-        <div class="flywheel-node">Hypothesis</div>
-        <div class="flywheel-arrow">→</div>
-        <div class="flywheel-node">Execution</div>
-        <div class="flywheel-arrow">→</div>
-        <div class="flywheel-node">Evidence</div>
-        <div class="flywheel-arrow">→</div>
-        <div class="flywheel-node">Learning</div>
-        <div class="flywheel-arrow">→</div>
-        <div class="flywheel-node">Next hypothesis</div>
-        <div class="flywheel-arrow">↩</div>
+      <div class="loop-motif-center">
+        <svg class="loop-motif-svg loop-motif-svg--6" viewBox="0 0 580 480" aria-hidden="true">
+          <defs>
+            <filter id="tlg6" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="4" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <path id="lp6" d="M 290 85 A 155 155 0 0 1 445 240 A 155 155 0 0 1 290 395 A 155 155 0 0 1 135 240 A 155 155 0 0 1 290 85"/>
+          </defs>
+          <use href="#lp6" class="loop-ring-glow"/>
+          <use href="#lp6" class="loop-ring"/>
+          <circle cx="290" cy="85"  r="5" class="loop-dot"/>
+          <circle cx="424" cy="162" r="5" class="loop-dot"/>
+          <circle cx="424" cy="318" r="5" class="loop-dot"/>
+          <circle cx="290" cy="395" r="5" class="loop-dot"/>
+          <circle cx="156" cy="318" r="5" class="loop-dot"/>
+          <circle cx="156" cy="162" r="5" class="loop-dot"/>
+          <text x="290" y="54"  text-anchor="middle" class="loop-lbl loop-lbl--hi">Question</text>
+          <text x="438" y="166" text-anchor="start"  class="loop-lbl">Hypothesis</text>
+          <text x="438" y="322" text-anchor="start"  class="loop-lbl">Execution</text>
+          <text x="290" y="428" text-anchor="middle" class="loop-lbl">Evidence</text>
+          <text x="142" y="322" text-anchor="end"    class="loop-lbl">Learning</text>
+          <text x="142" y="166" text-anchor="end"    class="loop-lbl loop-lbl--hi">Next</text>
+          <circle r="5" class="loop-tracer" filter="url(#tlg6)">
+            <animateMotion dur="18s" repeatCount="indefinite">
+              <mpath href="#lp6"/>
+            </animateMotion>
+          </circle>
+        </svg>
       </div>
       <p class="experiment-closing">Every operation becomes an experiment. Every result becomes evidence. Every piece of evidence strengthens institutional knowledge. Every future decision starts from a better foundation.</p>
       <p class="experiment-closing" style="margin-top:16px;font-style:italic">Decision quality emerges from evidence. Evidence emerges from experiments. Experiments emerge from operations.</p>
@@ -319,84 +345,6 @@
 
           </div>
           <p class="os-swap">Swap the model; keep everything that makes it yours.</p>
-        </div>
-      </div>
-      <div class="runtime-intelligence-shell card-surface">
-        <div class="runtime-diagram runtime-diagram--desktop" aria-label="Platform architecture diagram">
-          <svg class="runtime-ring" viewBox="0 0 1200 880" aria-hidden="true">
-            <defs>
-              <marker id="ring-arrow" viewBox="0 0 10 10" refX="7.2" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                <path d="M 0 0 L 10 5 L 0 10 z"></path>
-              </marker>
-              <path id="flow-text-arc" d="M 292 428 C 292 278, 356 216, 498 162"/>
-            </defs>
-            <g class="runtime-connector runtime-connector--ring">
-              <path d="M 600 164 C 760 164, 860 220, 932 340" marker-end="url(#ring-arrow)"></path>
-              <path d="M 932 440 C 932 600, 860 660, 720 716" marker-end="url(#ring-arrow)"></path>
-              <path d="M 600 716 C 440 716, 340 660, 268 560" marker-end="url(#ring-arrow)"></path>
-              <path d="M 268 440 C 268 280, 340 220, 480 164" marker-end="url(#ring-arrow)"></path>
-            </g>
-            <g class="runtime-connector runtime-connector--spokes" aria-hidden="true">
-              <line x1="600" y1="335" x2="600" y2="248"></line>
-              <line x1="705" y1="440" x2="952" y2="440"></line>
-              <line x1="600" y1="545" x2="600" y2="620"></line>
-              <line x1="495" y1="440" x2="248" y2="440"></line>
-            </g>
-            <text class="runtime-flow-text">
-              <textPath href="#flow-text-arc" startOffset="18%">→ better context</textPath>
-            </text>
-          </svg>
-          <div class="runtime-hub" aria-label="Nieme">
-            <span class="runtime-hub-wordmark">NIEME</span>
-            <b aria-hidden="true"></b>
-          </div>
-          <div class="runtime-node runtime-node--context runtime-node-glass">
-            <span class="runtime-node-title">Context</span>
-            <span class="runtime-node-caption">Conversations · Files · Slack · Email · Calendar · Goals</span>
-          </div>
-          <div class="runtime-node runtime-node--operations runtime-node-glass">
-            <span class="runtime-node-title">Operations</span>
-            <span class="runtime-node-caption">Planning · Research · Delegation · Automation · Scheduling</span>
-          </div>
-          <div class="runtime-node runtime-node--artifacts runtime-node-glass">
-            <span class="runtime-node-title">Artifacts</span>
-            <span class="runtime-node-caption">Documents · Replies · Presentations · Spreadsheets · Code</span>
-          </div>
-          <div class="runtime-node runtime-node--intelligence runtime-node-glass">
-            <span class="runtime-node-title">Intelligence</span>
-            <span class="runtime-node-caption">Recommendations · Patterns · Priorities · Memory</span>
-          </div>
-        </div>
-
-        <div class="runtime-diagram runtime-diagram--mobile" aria-label="Platform architecture diagram">
-          <div class="runtime-mobile-head" aria-label="Nieme">
-            <span class="runtime-hub-wordmark">NIEME</span>
-            <b aria-hidden="true"></b>
-          </div>
-          <div class="runtime-mobile-stack">
-            <div class="runtime-mobile-node runtime-node-glass">
-              <span class="runtime-node-title">Context</span>
-              <span class="runtime-node-caption">Conversations · Files · Slack · Email · Calendar · Goals</span>
-            </div>
-            <div class="runtime-mobile-connector"></div>
-            <div class="runtime-mobile-node runtime-node-glass">
-              <span class="runtime-node-title">Operations</span>
-              <span class="runtime-node-caption">Planning · Research · Delegation · Automation · Scheduling</span>
-            </div>
-            <div class="runtime-mobile-connector"></div>
-            <div class="runtime-mobile-node runtime-node-glass">
-              <span class="runtime-node-title">Artifacts</span>
-              <span class="runtime-node-caption">Documents · Replies · Presentations · Spreadsheets · Code</span>
-            </div>
-            <div class="runtime-mobile-connector"></div>
-            <div class="runtime-mobile-node runtime-node-glass">
-              <span class="runtime-node-title">Intelligence</span>
-              <span class="runtime-node-caption">Recommendations · Patterns · Priorities · Memory</span>
-            </div>
-            <div class="runtime-mobile-return">
-              <span>→ better context</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
