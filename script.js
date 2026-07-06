@@ -128,7 +128,7 @@
     ];
 
     const statusSequences = [
-      ['Scanning onboarding operations', 'Filtering by status: completed', 'Archiving 14 operations', 'Recording to the Ledger'],
+      ['Scanning completed operations', 'Filtering completed work', 'Archiving 14 operations', 'Recording to the Ledger'],
       ['Connecting to Slack', 'Reading #customer-success', 'Collecting evidence', 'Preparing executive summary'],
       ['Locating operation', 'Verifying destination project', 'Updating dependencies', 'Recording to the Ledger'],
       ['Retrieving previous board materials', 'Collecting Q3 metrics', 'Preparing operation', 'Recording to the Ledger'],
@@ -139,7 +139,11 @@
     if (prefersReducedMotion) {
       textEl.textContent = prompts[0];
       labelEls.forEach((el, i) => { el.textContent = statusSequences[0][i] || ''; });
-      if (statusEls[0]) statusEls[0].classList.add('is-visible');
+      if (statusEls[0]) {
+        statusEls[0].classList.add('is-visible');
+        const dotEl = statusEls[0].querySelector('.hero-status-dot');
+        if (dotEl) dotEl.classList.add('is-done');
+      }
       return;
     }
 
@@ -148,6 +152,7 @@
     let phase = 'type';
     let frameTimer = null;
     let statusTimer = null;
+    let dotTimer = null;
 
     const rand = (lo, hi) => lo + Math.floor(Math.random() * (hi - lo + 1));
 
@@ -158,19 +163,27 @@
 
     const showStatuses = () => {
       let i = 0;
-      const next = () => {
-        if (i < statusEls.length && phase === 'type') {
-          statusEls[i].classList.add('is-visible');
-          i++;
-          statusTimer = setTimeout(next, 560);
-        }
+      const step = () => {
+        if (i >= statusEls.length || phase !== 'type') return;
+        const dotEl = statusEls[i].querySelector('.hero-status-dot');
+        statusEls[i].classList.add('is-visible');
+        i++;
+        dotTimer = setTimeout(() => {
+          if (dotEl && phase === 'type') dotEl.classList.add('is-done');
+          statusTimer = setTimeout(step, 280);
+        }, 420);
       };
-      statusTimer = setTimeout(next, 300);
+      statusTimer = setTimeout(step, 300);
     };
 
     const hideStatuses = () => {
       clearTimeout(statusTimer);
-      statusEls.forEach((el) => el.classList.remove('is-visible'));
+      clearTimeout(dotTimer);
+      statusEls.forEach((el) => {
+        el.classList.remove('is-visible');
+        const dotEl = el.querySelector('.hero-status-dot');
+        if (dotEl) dotEl.classList.remove('is-done');
+      });
     };
 
     const tick = () => {
