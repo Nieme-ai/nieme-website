@@ -115,19 +115,30 @@
   const initHeroComposer = () => {
     const textEl = document.querySelector('.hero-composer-text');
     const statusEls = Array.from(document.querySelectorAll('.hero-status-line'));
+    const labelEls = Array.from(document.querySelectorAll('.hero-status-label'));
     if (!textEl) return;
 
     const prompts = [
-      'Archive all my completed operations.',
-      'Summarize today\'s discussion in #sales on Slack.',
-      'Move Operation 3 from Project X to Project Z.',
-      'Prepare the Q3 report using last year\'s template.',
-      'Start Sprint 3 and assign the operations.',
-      'Review what the team shipped while I was out.',
+      'Archive all completed onboarding operations.',
+      'Summarize today\'s discussion in #customer-success.',
+      'Move Vendor Security Review from Customer Portal to Platform Security.',
+      'Prepare the Q3 Board Report using last year\'s format.',
+      'Start Sprint 12 and organize this week\'s operations.',
+      'Review everything the team shipped while I was away.',
+    ];
+
+    const statusSequences = [
+      ['Scanning onboarding operations', 'Filtering by status: completed', 'Archiving 14 operations', 'Recording to the Ledger'],
+      ['Connecting to Slack', 'Reading #customer-success', 'Collecting evidence', 'Preparing executive summary'],
+      ['Locating operation', 'Verifying destination project', 'Updating dependencies', 'Recording to the Ledger'],
+      ['Retrieving previous board materials', 'Collecting Q3 metrics', 'Preparing operation', 'Recording to the Ledger'],
+      ['Creating Sprint 12', 'Composing operations', 'Balancing workload', 'Recording to the Ledger'],
+      ['Gathering completed operations', 'Collecting supporting evidence', 'Preparing executive briefing', 'Flagging decisions that need you'],
     ];
 
     if (prefersReducedMotion) {
       textEl.textContent = prompts[0];
+      labelEls.forEach((el, i) => { el.textContent = statusSequences[0][i] || ''; });
       if (statusEls[0]) statusEls[0].classList.add('is-visible');
       return;
     }
@@ -139,6 +150,11 @@
     let statusTimer = null;
 
     const rand = (lo, hi) => lo + Math.floor(Math.random() * (hi - lo + 1));
+
+    const loadSequence = (idx) => {
+      const seq = statusSequences[idx];
+      labelEls.forEach((el, i) => { el.textContent = seq[i] || ''; });
+    };
 
     const showStatuses = () => {
       let i = 0;
@@ -161,7 +177,10 @@
       const prompt = prompts[promptIdx];
 
       if (phase === 'type') {
-        if (charIdx === 0) showStatuses();
+        if (charIdx === 0) {
+          loadSequence(promptIdx);
+          showStatuses();
+        }
         if (charIdx < prompt.length) {
           charIdx++;
           textEl.textContent = prompt.slice(0, charIdx);

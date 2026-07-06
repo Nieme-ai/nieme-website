@@ -615,7 +615,7 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
   padding-bottom:80px;
   align-content:center;
   align-items:center;
-  grid-template-columns:1fr 440px;
+  grid-template-columns:1fr 1fr;
   column-gap:clamp(32px,4vw,56px)
 }
 .hero-text-col,.hero-loop-col{min-width:0}
