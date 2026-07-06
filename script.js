@@ -107,9 +107,30 @@
     sections.forEach((section) => observer.observe(section));
   };
 
+  const initBeforeAfter = () => {
+    const section = document.querySelector('.before-after');
+    if (!section) return;
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      section.classList.add('is-arguing');
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add('is-arguing');
+        observer.unobserve(entry.target);
+      }
+    }, { threshold: 0.2 });
+
+    observer.observe(section);
+  };
+
   const boot = () => {
     initInviteForm();
     initReveal();
+    initBeforeAfter();
     initAnimationActivity();
 
     if ('requestIdleCallback' in window) {
