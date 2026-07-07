@@ -665,3 +665,11 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
 
 /* Balanced headings */
 h1,h2,h3{text-wrap:balance}
+
+/* Compact glass chips (bullet group replacement) */
+.chip-row{display:flex;flex-wrap:wrap;gap:10px}
+.chip{flex:1 1 180px;padding:14px 18px;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));font-size:14px;line-height:1.5;color:#c4c6d4;display:flex;align-items:flex-start;gap:9px}
+.chip::before{content:'';width:5px;height:5px;border-radius:50%;background:rgba(123,77,255,.65);flex-shrink:0;margin-top:6px}
+
+/* Experiment section pull-quote */
+.experiment-pullquote{max-width:800px;margin:44px auto 0;font-size:clamp(20px,2vw,26px);font-style:italic;line-height:1.5;color:#d0d2e0;text-align:center;letter-spacing:-.02em}
