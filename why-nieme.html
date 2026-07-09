@@ -22,7 +22,10 @@
       <span class="glyph"><i></i><b></b></span>
       <span>NIEME</span>
     </a>
-    <nav>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="site-nav">
       <a href="/how-it-works">How It Works</a>
       <a href="/why-nieme" class="nav-active">Why Nieme</a>
       <button class="button primary" type="button" data-invite-trigger>Request Invite</button>
@@ -126,6 +129,34 @@
       </div>
     </section>
 
+    <!-- VS. AUTOMATION -->
+    <section class="vs-section flow">
+      <div class="section-copy section-title">
+        <div class="eyebrow">AUTOMATION THAT DECIDES</div>
+        <h2>Automation used to mean rules you wrote in advance.</h2>
+        <div class="vs-comparison">
+          <div class="vs-col vs-col--them">
+            <div class="vs-col-label">Without Nieme</div>
+            <div class="vs-col-items">
+              <span>Steps you scripted by hand</span>
+              <span>It runs, or it breaks</span>
+              <span>Nobody owns the outcome</span>
+            </div>
+          </div>
+          <div class="vs-divider" aria-hidden="true">→</div>
+          <div class="vs-col vs-col--us">
+            <div class="vs-col-label">With Nieme</div>
+            <div class="vs-col-items">
+              <span>Work that reasons about itself</span>
+              <span>It pauses when it needs judgment</span>
+              <span>Someone owns every operation</span>
+            </div>
+          </div>
+        </div>
+        <p>For twenty years automation meant if-this-then-that. Somebody wrote every rule ahead of time, and the system did exactly that and nothing else. Nieme's Operations queue plans the work, runs it, stops when it needs a decision, and records what happened. Automation that thinks is still automation. It's just the first kind worth trusting.</p>
+      </div>
+    </section>
+
     <!-- THE OWNERSHIP ARGUMENT -->
     <section class="statement statement-block">
       <h2>The intelligence is rented.<br>What Nieme builds is yours.</h2>
@@ -144,7 +175,7 @@
         </div>
         <div class="triad-col card-surface">
           <h3>Fast</h3>
-          <p>The heavy lifting, delegated and done. Your team stops doing the work a machine should do.</p>
+          <p>Work continues while you're away. Operations run, pause for judgment, and resume. Nothing waits for you to be at your desk.</p>
         </div>
         <div class="triad-col card-surface">
           <h3>Smarter over time</h3>
@@ -171,7 +202,7 @@
     </section>
 
   </main>
-  <footer>Nieme. The intelligence is rented. What Nieme builds is yours.</footer>
+  <footer>Nieme. The operating system for AI labor.</footer>
   <script src="./script.js" defer></script>
 </body>
 </html>

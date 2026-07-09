@@ -50,6 +50,31 @@
     });
   };
 
+  const initNavToggle = () => {
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav nav');
+    if (!toggle || !nav) {
+      return;
+    }
+
+    const close = () => {
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    nav.querySelectorAll('a, button').forEach((el) => el.addEventListener('click', close));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        close();
+      }
+    });
+  };
+
   const addMotionReady = () => {
     document.body.classList.add('motion-ready');
   };
@@ -236,6 +261,7 @@
 
   const boot = () => {
     initInviteForm();
+    initNavToggle();
     initReveal();
     initBeforeAfter();
     initHeroComposer();

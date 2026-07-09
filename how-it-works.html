@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How It Works | Nieme</title>
-  <meta name="description" content="Follow one piece of work through Nieme's system, from delegation to ledger. The operating system for delegated work." />
+  <meta name="description" content="Follow one operation through Nieme, from delegation to ledger. The operating system for AI labor." />
   <meta property="og:title" content="How It Works | Nieme" />
   <meta property="og:description" content="Every operation follows the same lifecycle. Learn how Nieme works." />
   <meta property="og:type" content="website" />
@@ -22,7 +22,10 @@
       <span class="glyph"><i></i><b></b></span>
       <span>NIEME</span>
     </a>
-    <nav>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="site-nav">
       <a href="/how-it-works" class="nav-active">How It Works</a>
       <a href="/why-nieme">Why Nieme</a>
       <button class="button primary" type="button" data-invite-trigger>Request Invite</button>
@@ -37,7 +40,7 @@
         <div class="arch arch-one"></div>
         <div class="arch arch-two"></div>
       </div>
-      <div class="kicker">HOW IT WORKS</div>
+      <div class="kicker">CONTINUOUS, GOVERNED EXECUTION</div>
       <h1>Every operation follows the same lifecycle.</h1>
     </section>
 
@@ -98,7 +101,22 @@
       <p class="lifecycle-caption">A person decides. AI prepares and executes. The organization learns. Every operation in Nieme follows this lifecycle, which is what makes the whole system an operating system for delegated work.</p>
     </section>
 
-    <!-- SECTION 2: THE LEDGER -->
+    <!-- SECTION 2: GOVERNANCE -->
+    <section class="flow">
+      <div class="section-copy section-title">
+        <div class="eyebrow">DELEGATE WITHOUT LOSING CONTROL</div>
+        <h2>Nothing meaningful ships without a person.</h2>
+        <p>You decide what Nieme can do on its own and what needs your sign-off. Reversible, internal work can run freely. Anything that leaves the building, sent, published, paid or deleted, waits for a human. Every action is scoped, recorded, and reversible-by-design where it can be.</p>
+        <div class="chip-row" style="margin-top:28px">
+          <div class="chip">Policies you set.</div>
+          <div class="chip">Approvals where they matter.</div>
+          <div class="chip">Delegation you control.</div>
+          <div class="chip">A record you own.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THE LEDGER -->
     <section class="ledger">
       <div class="ledger-content">
         <div class="ledger-text">
@@ -154,21 +172,6 @@
       </div>
     </section>
 
-    <!-- SECTION 3: TRUST -->
-    <section class="flow">
-      <div class="section-copy section-title">
-        <div class="eyebrow">DELEGATE WITHOUT LOSING CONTROL</div>
-        <h2>Nothing meaningful ships without a person.</h2>
-        <p>You decide what Nieme can do on its own and what needs your sign-off. Reversible, internal work can run freely. Anything that leaves the building, sent, published, paid or deleted, waits for a human. Every action is scoped, recorded, and reversible-by-design where it can be.</p>
-        <div class="chip-row" style="margin-top:28px">
-          <div class="chip">Policies you set.</div>
-          <div class="chip">Approvals where they matter.</div>
-          <div class="chip">Delegation you control.</div>
-          <div class="chip">A record you own.</div>
-        </div>
-      </div>
-    </section>
-
     <!-- SECTION 4: THE VAULT -->
     <section class="flow">
       <div class="section-copy section-title">
@@ -191,19 +194,17 @@
     <section class="experiment">
       <div class="section-title">
         <div class="eyebrow">HOW THE SYSTEM COMPOUNDS</div>
-        <h2>Every operation is an experiment.</h2>
-        <p class="experiment-lead">Organizations improve the same way science advances, not through intuition alone, but through a continuous cycle of hypothesis, execution, observation, evidence, and iteration.</p>
-        <p class="experiment-lead">Most organizations are terrible at remembering their experiments. Knowledge lives in people's heads and walks out the door when they leave. Decisions get made on folklore instead of evidence.</p>
-        <p class="experiment-lead">Nieme automates that cycle and keeps the record.</p>
+        <h2>Every operation leaves proof.</h2>
+        <p class="experiment-lead">Organizations improve the way science does, through evidence rather than intuition. Most organizations are terrible at keeping theirs. Knowledge lives in people's heads and walks out the door when they leave. Decisions get made on folklore. Nieme records every operation, keeps the evidence, and applies it to the next one.</p>
       </div>
       <div class="chip-row" style="max-width:1440px;margin:0 auto 36px">
-        <div class="chip">Operations run the experiments.</div>
+        <div class="chip">Operations do the work.</div>
         <div class="chip">The Ledger records them.</div>
         <div class="chip">The Vault preserves what was learned.</div>
         <div class="chip">The Runtime applies that learning to the next operation.</div>
       </div>
-      <p class="experiment-closing">Every operation becomes an experiment. Every result becomes evidence. Every piece of evidence strengthens institutional knowledge. Every future decision starts from a better foundation.</p>
-      <p class="experiment-pullquote">Decision quality emerges from evidence. Evidence emerges from experiments. Experiments emerge from operations.</p>
+      <p class="experiment-closing">Every operation leaves a result. Every result becomes evidence. Every piece of evidence strengthens institutional knowledge. Every future decision starts from a better foundation.</p>
+      <p class="experiment-pullquote">Decision quality emerges from evidence. Evidence emerges from operations. Nieme keeps every one.</p>
     </section>
 
     <!-- SECTION 7: PLATFORM ARCHITECTURE (orbital diagram lives here) -->
@@ -319,43 +320,15 @@
       </div>
     </section>
 
-    <!-- SECTION 8: OPERATIONAL HIERARCHY -->
+    <!-- SECTION 8: HOW WORK CONNECTS -->
     <section class="hierarchy">
-      <div class="section-title">
-        <div class="eyebrow">HOW WORK ORGANIZES</div>
+      <div class="section-copy section-title">
+        <div class="eyebrow">HOW WORK CONNECTS</div>
+        <h2>Nothing is filed. Everything is connected.</h2>
+        <p>Most tools file work into folders. An artifact lives in one project and dies there. Nieme keeps a living record instead: one artifact, used by ten operations, carrying the proof of every one of them.</p>
+        <p>A lead magnet that worked in ten campaigns is known to work. A decision that failed is remembered as guidance. Nothing is copied, so nothing loses its history.</p>
       </div>
-      <div class="hierarchy-flow">
-        <div class="hierarchy-node">
-          <span class="hierarchy-num">01</span>
-          Workspace
-        </div>
-        <div class="hierarchy-connector"></div>
-        <div class="hierarchy-node">
-          <span class="hierarchy-num">02</span>
-          Project
-        </div>
-        <div class="hierarchy-connector"></div>
-        <div class="hierarchy-node">
-          <span class="hierarchy-num">03</span>
-          Operation
-        </div>
-        <div class="hierarchy-connector"></div>
-        <div class="hierarchy-node">
-          <span class="hierarchy-num">04</span>
-          Task
-        </div>
-        <div class="hierarchy-connector"></div>
-        <div class="hierarchy-node">
-          <span class="hierarchy-num">05</span>
-          Artifact
-        </div>
-        <div class="hierarchy-connector"></div>
-        <div class="hierarchy-node hierarchy-node--bright">
-          <span class="hierarchy-num">06</span>
-          Evidence
-        </div>
-      </div>
-      <p class="hierarchy-caption">Work has structure. Nieme gives it one, from the workspace you operate in down to the evidence every result leaves behind. This is what makes Nieme a platform, not a wrapper.</p>
+      <p class="hierarchy-caption">This is what makes Nieme a platform, not a wrapper.</p>
     </section>
 
     <!-- CTA -->
@@ -371,7 +344,7 @@
     </section>
 
   </main>
-  <footer>Nieme. The operating system for delegated work.</footer>
+  <footer>Nieme. The operating system for AI labor.</footer>
   <script src="./script.js" defer></script>
 </body>
 </html>
