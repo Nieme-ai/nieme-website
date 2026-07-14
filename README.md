@@ -18,8 +18,10 @@ artifacts for review, and carry approved decisions forward.
 This is a static website. Clone the repository and serve the directory
 using any local HTTP server.
 
-```bash
-python3 -m http.server 3000Copyright © 2026 Nieme. All rights reserved.
+
+Copyright © 2026 Nieme.
+
+All rights reserved.
 
 The source is publicly visible for transparency and deployment purposes.
 No license is granted for reuse, redistribution, or derivative works unless
