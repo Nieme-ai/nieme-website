@@ -15,17 +15,20 @@ artifacts for review, and carry approved decisions forward.
 
 ## Local preview
 
+This is a static website. Clone the repository and serve the directory using any local HTTP server.
+
 ```bash
 python3 -m http.server 3000
+```
 
-This is a static website. Clone the repository and serve the directory
-using any local HTTP server.
+Then open:
 
+```text
+http://localhost:3000
+```
 
-Copyright © 2026 Nieme.
+## Rights
 
-All rights reserved.
+Copyright © 2026 Nieme. All rights reserved.
 
-The source is publicly visible for transparency and deployment purposes.
-No license is granted for reuse, redistribution, or derivative works unless
-expressly stated otherwise.
+The source is publicly visible for transparency and deployment purposes. No license is granted for reuse, redistribution, or derivative works unless expressly stated otherwise.
