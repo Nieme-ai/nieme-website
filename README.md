@@ -15,6 +15,9 @@ artifacts for review, and carry approved decisions forward.
 
 ## Local preview
 
+```bash
+python3 -m http.server 3000
+
 This is a static website. Clone the repository and serve the directory
 using any local HTTP server.
 
