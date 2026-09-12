@@ -75,22 +75,22 @@
         <div class="thc is-empty" data-scene="0">
           <div class="thc-mode"><span class="hero-mode-dot" aria-hidden="true"></span><span class="hero-composer-mode">Summarize a thread</span></div>
 
-          <div class="thc-thread" aria-hidden="true">
-            <div class="thc-turn thc-turn--you">
-              <span class="thc-turn-who">You</span>
-              <p class="thc-you-text"></p>
+          <div class="thc-stage" aria-hidden="true">
+            <div class="stg-head"><span class="stg-live"></span>RUNTIME</div>
+            <div class="stg-entry"><span class="stg-entry-kind"></span><span class="stg-entry-text"></span></div>
+            <div class="stg-rows">
+              <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
+              <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
+              <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
+              <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
             </div>
-            <div class="thc-turn thc-turn--theon">
-              <span class="thc-turn-who"><span class="thc-theon-dot" aria-hidden="true"></span>Theon</span>
-              <div class="thc-md"></div>
-              <div class="thc-artifact">
-                <div class="thc-artifact-top">
-                  <span class="thc-artifact-icon" aria-hidden="true"></span>
-                  <span class="thc-artifact-name"></span>
-                  <span class="thc-artifact-meta"></span>
-                </div>
-                <div class="thc-artifact-preview"></div>
+            <div class="thc-artifact">
+              <div class="thc-artifact-top">
+                <span class="thc-artifact-icon" aria-hidden="true"></span>
+                <span class="thc-artifact-name"></span>
+                <span class="thc-artifact-meta"></span>
               </div>
+              <div class="thc-artifact-preview"></div>
             </div>
           </div>
 
@@ -260,54 +260,43 @@
         <h2>AI can do more work.<br>People are still carrying the coordination.</h2>
         <p>The model is not the bottleneck any more. The work around it is.</p>
       </div>
-      <div class="whocarries">
-        <div class="ldg-head">
-          <div></div>
-          <div class="ldg-col ldg-col--before">WITHOUT NIEME</div>
-          <div class="ldg-col ldg-col--after">WITH NIEME</div>
+      <div class="handoff">
+
+        <div class="ho-lane">
+          <div class="ho-lane-head"><span class="ho-tag ho-tag--people">PEOPLE</span>carry the coordination</div>
+          <div class="ho-bar ho-bar--before">
+            <span class="ho-seg"><i>1</i>Notice something changed</span>
+            <span class="ho-seg"><i>2</i>Gather the context</span>
+            <span class="ho-seg"><i>3</i>Decide what should happen</span>
+            <span class="ho-seg"><i>4</i>Brief the AI</span>
+            <span class="ho-seg"><i>5</i>Move the result</span>
+            <span class="ho-seg"><i>6</i>Follow up</span>
+            <span class="ho-seg"><i>7</i>Reconstruct the context next time</span>
+          </div>
+          <p class="ho-note">Seven handoffs. Every one of them is a person&#39;s attention, and the next request starts the chain again.</p>
         </div>
-          <div class="ldg-row">
-            <div class="ldg-step"><span class="ldg-n">1</span>Notice something changed</div>
-            <div class="ldg-who ldg-who--before">a person</div>
-            <div class="ldg-who ldg-who--after">Nieme</div>
-          </div>
-          <div class="ldg-row">
-            <div class="ldg-step"><span class="ldg-n">2</span>Gather the context</div>
-            <div class="ldg-who ldg-who--before">a person</div>
-            <div class="ldg-who ldg-who--after">Nieme</div>
-          </div>
-          <div class="ldg-row is-human">
-            <div class="ldg-step"><span class="ldg-n">3</span>Decide what should happen</div>
-            <div class="ldg-who ldg-who--before">a person</div>
-            <div class="ldg-who ldg-who--after">a person</div>
-          </div>
-          <div class="ldg-row">
-            <div class="ldg-step"><span class="ldg-n">4</span>Brief the AI</div>
-            <div class="ldg-who ldg-who--before">a person</div>
-            <div class="ldg-who ldg-who--after">Nieme</div>
-          </div>
-          <div class="ldg-row">
-            <div class="ldg-step"><span class="ldg-n">5</span>Move the result</div>
-            <div class="ldg-who ldg-who--before">a person</div>
-            <div class="ldg-who ldg-who--after">Nieme</div>
-          </div>
-          <div class="ldg-row">
-            <div class="ldg-step"><span class="ldg-n">6</span>Follow up</div>
-            <div class="ldg-who ldg-who--before">a person</div>
-            <div class="ldg-who ldg-who--after">Nieme</div>
-          </div>
-          <div class="ldg-row is-carried">
-            <div class="ldg-step"><span class="ldg-n">7</span>Reconstruct the context next time</div>
-            <div class="ldg-who ldg-who--before">a person</div>
-            <div class="ldg-who ldg-who--after">already carried</div>
-          </div>
-        <div class="ldg-foot">
-          <div></div>
-          <div class="ldg-total ldg-total--before">Seven steps on a person</div>
-          <div class="ldg-total ldg-total--after">One decision on a person</div>
+
+        <div class="ho-shift" aria-hidden="true">
+          <span class="ho-shift-trace"></span>
+          <span class="ho-shift-dot"></span>
         </div>
+
+        <div class="ho-lane">
+          <div class="ho-lane-head"><span class="ho-tag ho-tag--runtime">THE RUNTIME</span>carries the coordination</div>
+          <div class="ho-bar ho-bar--after">
+            <span class="ho-run" style="--span:2">Notices, and assembles the context</span>
+            <span class="ho-judge">
+              <i>3</i>
+              <span class="ho-judge-step">Decide what should happen</span>
+              <em>judgment stays here</em>
+            </span>
+            <span class="ho-run" style="--span:3">Prepares the governed work, moves the result, follows up</span>
+            <span class="ho-carried"><i>7</i>Context already carried</span>
+          </div>
+          <p class="ho-note">The same chain, carried by the Runtime — and the next request starts from what was decided, not from nothing.</p>
+        </div>
+
       </div>
-      <p class="coord-burden">Nieme does not remove the judgment. It removes everything around it — and the next request no longer starts from nothing.</p>
       <div class="coord-close">
         <span class="coord-close-trace" aria-hidden="true"></span>
         <p class="jtbd-close">Nieme closes that loop.</p>

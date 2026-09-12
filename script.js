@@ -152,84 +152,69 @@
     const textEl = document.querySelector('.thc-text');
     if (!thcEl || !textEl) return;
 
-    const ctxEl      = thcEl.querySelector('.thc-context-val');
-    const modeEl     = thcEl.querySelector('.hero-composer-mode');
-    const youTurn    = thcEl.querySelector('.thc-turn--you');
-    const youTextEl  = thcEl.querySelector('.thc-you-text');
-    const theonTurn  = thcEl.querySelector('.thc-turn--theon');
-    const mdEl       = thcEl.querySelector('.thc-md');
-    const artName    = thcEl.querySelector('.thc-artifact-name');
-    const artMeta    = thcEl.querySelector('.thc-artifact-meta');
-    const artPrev    = thcEl.querySelector('.thc-artifact-preview');
-    const draftEl    = thcEl.querySelector('.composer-draft-unfold');
+    const ctxEl     = thcEl.querySelector('.thc-context-val');
+    const modeEl    = thcEl.querySelector('.hero-composer-mode');
+    const entryEl   = thcEl.querySelector('.stg-entry');
+    const entryKind = thcEl.querySelector('.stg-entry-kind');
+    const entryText = thcEl.querySelector('.stg-entry-text');
+    const rowEls    = Array.from(thcEl.querySelectorAll('.stg-row'));
+    const artEl     = thcEl.querySelector('.thc-artifact');
+    const artName   = thcEl.querySelector('.thc-artifact-name');
+    const artMeta   = thcEl.querySelector('.thc-artifact-meta');
+    const artPrev   = thcEl.querySelector('.thc-artifact-preview');
+    const draftEl   = thcEl.querySelector('.composer-draft-unfold');
 
     const isPortuguese = document.documentElement.lang === 'pt-BR';
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Three chat interactions, each showing a different Composer capability:
-    //   0  a thread summarised, answered in structured markdown
-    //   1  a request that produces an Artifact, previewed in the chat
-    //   2  the Composer armed as an Operation surface, producing a draft.on
+    // Both entry modes run the same arc: Context -> governed work -> authority -> execution.
+    // What differs is where authority comes from, and therefore whether anything runs.
     const scenes = isPortuguese
       ? [
           {
-            mode: 'Resumir uma conversa',
+            mode: 'Alguém pede', kind: 'Alguém pediu',
+            context: 'Northstar Revenue · 3 fontes',
+            prompt: 'Refaça a previsão de receita do T3 sobre os termos de renovação aprovados e prepare o brief da liderança.',
+            entry: 'Refazer a previsão de receita do T3 e preparar o brief da liderança',
+            rows: [['Contexto reunido','Northstar Revenue · 3 fontes','done'],
+                   ['Trabalho governado preparado','Operação draft.on · 2 entregáveis','done'],
+                   ['Autorizado','por uma pessoa · Financeiro','done'],
+                   ['Executando','previsão e brief em produção','running']],
+            artifact: {name:'previsao-receita-T3.xlsx', meta:'Planilha · 5 abas · 48 KB',
+              rows:['Trimestre','Contratado','Δ renovação','T1','1.240.000','—','T2','1.310.000','—','T3','1.546.000','+18%']},
+          },
+          {
+            mode: 'Algo muda', kind: 'Algo mudou', observed: true,
             context: 'Acme Payments · #receita',
-            prompt: 'Resuma a thread do #receita de hoje de manhã.',
-            md: '<strong>Três coisas se moveram.</strong><ul>'
-              + '<li>Os termos de renovação da Acme Payments fecharam com 18% de aumento</li>'
-              + '<li>O Financeiro quer a previsão do T3 refeita sobre os novos termos</li>'
-              + '<li>Ninguém assumiu o brief da liderança ainda</li></ul>'
-              + '<em>34 mensagens em #receita, 07:12–09:40.</em>',
-          },
-          {
-            mode: 'Produzir um entregável',
-            context: 'Northstar Revenue · 3 fontes',
-            prompt: 'Monte a previsão de receita do T3 sobre os termos aprovados.',
-            md: '<strong>Pronto.</strong> Cinco abas, com os termos de renovação aplicados em todos os trimestres.',
-            artifact: {
-              name: 'previsao-receita-T3.xlsx',
-              meta: 'Planilha · 5 abas · 48 KB',
-              rows: ['Trimestre','Contratado','Δ renovação','T1','1.240.000','—','T2','1.310.000','—','T3','1.546.000','+18%'],
-            },
-          },
-          {
-            mode: 'Lançar uma Operação',
-            context: 'Northstar Revenue · 3 fontes',
-            operation: true,
-            slash: '/operation',
-            prompt: 'Atualizar a previsão de receita do T3 e preparar o brief da liderança',
+            entry: 'Slack · #receita · termos de renovação acordados',
+            rows: [['Observado, não autorizado','a observação não implica promoção','done'],
+                   ['Contexto reunido','relacionado a Northstar Revenue','done'],
+                   ['Trabalho governado preparado','Operação draft.on · aguardando','done'],
+                   ['Aguardando uma pessoa','nada roda sem autoridade','held']],
             draft: true,
           },
         ]
       : [
           {
-            mode: 'Summarize a thread',
+            mode: 'Someone asks', kind: 'Someone asked',
+            context: 'Northstar Revenue · 3 sources',
+            prompt: 'Rework the Q3 revenue forecast on the approved renewal terms and brief leadership.',
+            entry: 'Rework the Q3 revenue forecast and brief leadership',
+            rows: [['Context assembled','Northstar Revenue · 3 sources','done'],
+                   ['Governed work prepared','Operation draft.on · 2 deliverables','done'],
+                   ['Authorized','by a person · Finance','done'],
+                   ['Executing','forecast and brief in production','running']],
+            artifact: {name:'q3-revenue-forecast.xlsx', meta:'Spreadsheet · 5 sheets · 48 KB',
+              rows:['Quarter','Contracted','Renewal Δ','Q1','1,240,000','—','Q2','1,310,000','—','Q3','1,546,000','+18%']},
+          },
+          {
+            mode: 'Something changes', kind: 'Something changed', observed: true,
             context: 'Acme Payments · #revenue',
-            prompt: 'Summarize the #revenue thread from this morning.',
-            md: '<strong>Three things moved.</strong><ul>'
-              + '<li>Renewal terms for Acme Payments closed at an 18% uplift</li>'
-              + '<li>Finance wants the Q3 forecast reworked on the new terms</li>'
-              + '<li>Nobody has owned the leadership brief yet</li></ul>'
-              + '<em>34 messages in #revenue, 07:12–09:40.</em>',
-          },
-          {
-            mode: 'Produce a deliverable',
-            context: 'Northstar Revenue · 3 sources',
-            prompt: 'Build the Q3 revenue forecast on the approved terms.',
-            md: '<strong>Done.</strong> Five sheets, with the renewal terms carried into every quarter.',
-            artifact: {
-              name: 'q3-revenue-forecast.xlsx',
-              meta: 'Spreadsheet · 5 sheets · 48 KB',
-              rows: ['Quarter','Contracted','Renewal Δ','Q1','1,240,000','—','Q2','1,310,000','—','Q3','1,546,000','+18%'],
-            },
-          },
-          {
-            mode: 'Launch an Operation',
-            context: 'Northstar Revenue · 3 sources',
-            operation: true,
-            slash: '/operation',
-            prompt: 'Update the Q3 revenue forecast and prepare a leadership brief',
+            entry: 'Slack · #revenue · renewal terms agreed',
+            rows: [['Observed, not authorized','observation does not imply promotion','done'],
+                   ['Context assembled','related to Northstar Revenue','done'],
+                   ['Governed work prepared','Operation draft.on · awaiting','done'],
+                   ['Waiting on a person','nothing runs without authority','held']],
             draft: true,
           },
         ];
@@ -244,30 +229,36 @@
       thcEl.dataset.scene = String(i);
       if (modeEl) modeEl.textContent = s.mode;
       if (ctxEl) ctxEl.textContent = s.context;
-      if (mdEl) mdEl.innerHTML = s.md || '';
+      if (entryKind) entryKind.textContent = s.kind;
+      if (entryText) entryText.textContent = s.entry;
+      rowEls.forEach((el, n) => {
+        const r = s.rows[n] || ['', '', ''];
+        el.querySelector('.stg-label').textContent = r[0];
+        el.querySelector('.stg-meta').textContent = r[1];
+        el.dataset.end = r[2];
+      });
       if (s.artifact) {
         if (artName) artName.textContent = s.artifact.name;
         if (artMeta) artMeta.textContent = s.artifact.meta;
-        if (artPrev) artPrev.innerHTML = s.artifact.rows.map((r) => '<span>' + r + '</span>').join('');
+        if (artPrev) artPrev.innerHTML = s.artifact.rows.map((x) => '<span>' + x + '</span>').join('');
       }
     };
 
-    const resetStage = () => {
-      textEl.textContent = '';
-      if (youTextEl) youTextEl.textContent = '';
-      youTurn && youTurn.classList.remove('is-visible');
-      theonTurn && theonTurn.classList.remove('is-visible');
+    const clearStage = () => {
+      entryEl && entryEl.classList.remove('is-visible');
+      rowEls.forEach((el) => el.classList.remove('is-visible', 'is-done', 'is-running', 'is-held'));
+      artEl && artEl.classList.remove('is-visible');
       draftEl && draftEl.classList.remove('is-visible');
+      textEl.textContent = '';
       thcEl.classList.add('is-empty');
       thcEl.classList.remove('is-armed');
     };
 
     if (prefersReducedMotion) {
-      dress(2);
-      if (youTextEl) youTextEl.textContent = scenes[2].prompt;
-      youTurn && youTurn.classList.add('is-visible');
-      draftEl && draftEl.classList.add('is-visible');
-      thcEl.classList.remove('is-empty');
+      dress(0);
+      entryEl && entryEl.classList.add('is-visible');
+      rowEls.forEach((el) => el.classList.add('is-visible', el.dataset.end === 'running' ? 'is-running' : 'is-done'));
+      artEl && artEl.classList.add('is-visible');
       return;
     }
 
@@ -275,69 +266,66 @@
 
     const runScene = () => {
       clearAll();
-      resetStage();
+      clearStage();
       dress(sceneIdx);
       const s = scenes[sceneIdx];
 
-      // 1. someone types. An Operation starts by arming the Composer with a
-      //    slash command, which the OPERATION strip then consumes — the field
-      //    is left carrying only the objective, exactly as the product does.
-      const runType = (str, done) => {
-        let ch = 0;
-        const step = () => {
-          if (ch < str.length) {
-            ch += 1;
-            textEl.textContent = str.slice(0, ch);
-            thcEl.classList.remove('is-empty');
-            thcEl.classList.add('is-armed');
-            timers.push(setTimeout(step, rand(38, 62)));
-          } else {
-            at(done.delay, done.fn);
-          }
-        };
-        step();
+      // the arc: one row at a time, each settling into its real end state
+      const runRows = () => {
+        rowEls.forEach((el, n) => {
+          at(300 + n * 780, () => {
+            el.classList.add('is-visible');
+            at(430, () => {
+              const end = el.dataset.end;
+              el.classList.add(end === 'running' ? 'is-running' : end === 'held' ? 'is-held' : 'is-done');
+            });
+          });
+        });
+        const after = 300 + rowEls.length * 780;
+        // execution produces something; an unauthorized observation produces a Draft and stops
+        if (s.artifact) at(after + 500, () => artEl && artEl.classList.add('is-visible'));
+        if (s.draft) at(after + 400, () => draftEl && draftEl.classList.add('is-visible'));
+        at(after + (s.artifact ? 4600 : 4400), next);
       };
 
-      const type = () => {
-        if (s.slash) {
-          thcEl.dataset.scene = '';               // un-armed while the command is typed
-          runType(s.slash, { delay: 520, fn: () => {
-            thcEl.dataset.scene = String(sceneIdx);  // the strip takes the command
-            textEl.textContent = '';
-            thcEl.classList.add('is-empty');
-            at(420, () => runType(s.prompt, { delay: 620, fn: send }));
-          } });
-        } else {
-          runType(s.prompt, { delay: 620, fn: send });
-        }
-      };
-
-      // 2. it is sent: the prompt leaves the field and enters the transcript
       const send = () => {
-        if (youTextEl) youTextEl.textContent = s.prompt;
-        youTurn && youTurn.classList.add('is-visible');
         textEl.textContent = '';
         thcEl.classList.add('is-empty');
         thcEl.classList.remove('is-armed');
-
-        if (s.operation) {
-          // the Composer is the Operation surface — the draft.on extends it
-          at(900, () => draftEl && draftEl.classList.add('is-visible'));
-          at(6200, next);
-        } else {
-          at(800, () => theonTurn && theonTurn.classList.add('is-visible'));
-          at(s.artifact ? 6400 : 5600, next);
-        }
+        entryEl && entryEl.classList.add('is-visible');
+        at(420, runRows);
       };
+
+      if (s.prompt) {
+        // someone asks: it is typed, then sent
+        let ch = 0;
+        const type = () => {
+          if (ch < s.prompt.length) {
+            ch += 1;
+            textEl.textContent = s.prompt.slice(0, ch);
+            thcEl.classList.remove('is-empty');
+            thcEl.classList.add('is-armed');
+            timers.push(setTimeout(type, rand(30, 48)));
+          } else {
+            at(620, send);
+          }
+        };
+        at(500, type);
+      } else {
+        // something changes: nobody typed anything — the observation simply arrives
+        at(600, () => {
+          entryEl && entryEl.classList.add('is-visible');
+          at(460, runRows);
+        });
+      }
 
       const next = () => {
-        youTurn && youTurn.classList.remove('is-visible');
-        theonTurn && theonTurn.classList.remove('is-visible');
+        entryEl && entryEl.classList.remove('is-visible');
+        rowEls.forEach((el) => el.classList.remove('is-visible'));
+        artEl && artEl.classList.remove('is-visible');
         draftEl && draftEl.classList.remove('is-visible');
-        at(560, () => { sceneIdx = (sceneIdx + 1) % scenes.length; runScene(); });
+        at(620, () => { sceneIdx = (sceneIdx + 1) % scenes.length; runScene(); });
       };
-
-      at(500, type);
     };
 
     at(700, runScene);

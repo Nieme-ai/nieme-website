@@ -637,15 +637,15 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
 
 /* Hero split layout */
 .hero--loop{
-  padding-top:160px;
-  padding-bottom:80px;
+  padding-top:132px;
+  padding-bottom:56px;
   align-content:center;
   align-items:center;
   grid-template-columns:1fr 1fr;
   column-gap:clamp(32px,4vw,56px)
 }
 .hero-text-col,.hero-loop-col{min-width:0}
-.hero-loop-col{display:flex;align-items:flex-end;align-self:center;min-height:768px}
+.hero-loop-col{display:flex;align-items:flex-end;align-self:center;min-height:862px}
 @media(max-width:1080px){
   .hero--loop{grid-template-columns:1fr}
   .hero-loop-col{margin-top:48px;min-height:0;display:block}
@@ -690,29 +690,50 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
   box-shadow:0 0 12px #7b4dff99;transition:background .4s,box-shadow .4s}
 .thc[data-scene="2"] .hero-mode-dot{background:var(--cyan);box-shadow:0 0 12px #7ee7ff99}
 
-/* ---- the transcript ---- */
-.thc-thread{display:flex;flex-direction:column;gap:15px;margin-bottom:16px;min-height:300px;
+/* ---- the live Runtime stage: the space above the Composer shows the work
+       moving through Context -> governed work -> authority -> execution ---- */
+.thc-stage{display:flex;flex-direction:column;gap:0;margin-bottom:16px;min-height:210px;
   justify-content:flex-end}
-.thc-turn{opacity:0;transform:translateY(6px);transition:opacity .4s ease,transform .4s ease}
-.thc-turn.is-visible{opacity:1;transform:none}
-.thc-turn-who{display:flex;align-items:center;gap:7px;font-size:10.5px;letter-spacing:.18em;
-  text-transform:uppercase;color:#787c92;margin-bottom:7px}
-.thc-theon-dot{width:11px;height:11px;border-radius:50%;
-  background:linear-gradient(135deg,var(--purple),var(--cyan))}
-.thc-you-text{margin:0;font-size:15px;line-height:1.45;color:#c8cbd9;
-  padding:10px 14px;border-radius:12px 12px 12px 4px;background:#ffffff0a;
-  border:1px solid #ffffff0f;display:inline-block}
-/* Theon answers in structured markdown, rendered natively */
-.thc-md{font-size:14.5px;line-height:1.55;color:#c8cbd9}
-.thc-md strong{color:#eef0f7;font-weight:560}
-.thc-md ul{list-style:none;margin:9px 0 0;padding:0;display:flex;flex-direction:column;gap:7px}
-.thc-md li{position:relative;padding-left:16px}
-.thc-md li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:1px;background:#7b4dffa6}
-.thc-md em{display:block;margin-top:11px;font-style:normal;font-size:12.5px;color:#787c92}
-/* an artifact preview, in the chat */
-.thc-artifact{margin-top:13px;border:1px solid var(--line);border-radius:13px;overflow:hidden;
-  background:#0c0e15cc;display:none}
-.thc[data-scene="1"] .thc-artifact{display:block}
+.thc[data-scene="0"] .thc-stage{min-height:572px}
+.thc[data-scene="0"] .thc-artifact{display:block}
+.stg-head{display:flex;align-items:center;gap:9px;font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:#787c92;margin-bottom:12px}
+.stg-live{width:7px;height:7px;border-radius:50%;background:var(--cyan);
+  box-shadow:0 0 10px var(--cyan);animation:stg-pulse 2.4s ease-in-out infinite}
+@keyframes stg-pulse{0%,100%{opacity:.45}50%{opacity:1}}
+.stg-entry{display:flex;align-items:baseline;gap:10px;padding:11px 14px;margin-bottom:12px;
+  border-radius:11px;border:1px solid #ffffff14;background:#ffffff08;
+  opacity:0;transform:translateY(5px);transition:opacity .4s ease,transform .4s ease}
+.stg-entry.is-visible{opacity:1;transform:none}
+.stg-entry-kind{flex:none;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#c4b5fd}
+.stg-entry-text{font-size:14.5px;line-height:1.4;color:#c8cbd9;letter-spacing:-.01em}
+.stg-rows{display:flex;flex-direction:column;gap:2px}
+.stg-row{display:grid;grid-template-columns:18px minmax(0,auto) minmax(0,1fr);align-items:center;
+  gap:11px;padding:9px 2px;
+  opacity:0;transform:translateY(4px);transition:opacity .38s ease,transform .38s ease}
+.stg-row.is-visible{opacity:1;transform:none}
+.stg-mark{width:14px;height:14px;position:relative}
+.stg-mark::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:6px;height:6px;border-radius:50%;border:1.5px solid #7b4dff8c;transition:opacity .2s}
+.stg-mark::after{content:"";position:absolute;top:50%;left:50%;width:4px;height:8px;
+  margin:-6px 0 0 -2px;border:1.6px solid var(--cyan);border-top:0;border-left:0;
+  transform:rotate(42deg);opacity:0;transition:opacity .2s}
+.stg-row.is-done .stg-mark::before{opacity:0}
+.stg-row.is-done .stg-mark::after{opacity:1}
+/* the step that is still running, and the step that is waiting on a person */
+.stg-row.is-running .stg-mark::before{border-color:var(--cyan);animation:stg-pulse 1.3s ease-in-out infinite}
+.stg-row.is-held .stg-mark::before{border-style:dashed;border-color:#c4b5fd}
+.stg-label{font-size:14.5px;line-height:1.4;color:#c8cbd9;letter-spacing:-.01em}
+.stg-row.is-done .stg-label{color:#eef0f7}
+.stg-row.is-held .stg-label{color:#fff;font-weight:520}
+.stg-meta{font-size:12.5px;color:#787c92;line-height:1.4;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stg-row.is-held .stg-meta{color:#c4b5fd}
+/* the deliverable execution produces, previewed on the stage */
+.thc-artifact{display:none;margin-top:13px;border:1px solid var(--line);border-radius:13px;overflow:hidden;
+  background:#0c0e15cc;opacity:0;transform:translateY(6px);
+  transition:opacity .45s ease,transform .45s ease}
+.thc-artifact.is-visible{opacity:1;transform:none}
 .thc-artifact-top{display:flex;align-items:center;gap:11px;padding:11px 14px;
   border-bottom:1px solid #ffffff0d}
 .thc-artifact-icon{width:23px;height:29px;flex:none;border-radius:3px;position:relative;
@@ -811,12 +832,13 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
   background:transparent;border:1px solid rgba(162,184,230,.22);color:#a9b4ca}
 /* the frame opens up while the draft is unfolded, as the product does */
 .thc[data-scene="2"] .thc-shell{border-radius:26px}
-.thc[data-scene="2"] .thc-thread{min-height:64px}
+
 
 @media (max-width:1080px){ .thc{max-width:none} }
 @media (prefers-reduced-motion:reduce){
   .composer-draft-unfold.is-visible{animation:none}
-  .thc-turn{opacity:1;transform:none;transition:none}
+  .stg-live{animation:none}
+  .stg-row,.stg-entry,.thc-artifact{opacity:1;transform:none;transition:none}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -983,50 +1005,78 @@ h1,h2,h3{text-wrap:balance}
 
 /* hero: an observation is not a request — the send action is not armed for it */
 
-/* ---- problem: the same seven steps, and who carries each one.
-       A ledger, not a chain — the claim is legible without reading a caption. ---- */
-.whocarries{max-width:1440px;margin:0 auto;border-top:1px solid var(--line)}
-.ldg-head,.ldg-row,.ldg-foot{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) minmax(0,1fr);
-  align-items:center;gap:24px}
-.ldg-head{padding:16px 0 14px}
-.ldg-col{font-size:11px;letter-spacing:.2em;text-transform:uppercase}
-.ldg-col--before{color:#8b8fa3}
-.ldg-col--after{color:#c4b5fd}
-.ldg-row{padding:15px 0;border-top:1px solid #ffffff0a;position:relative}
-.ldg-step{display:flex;align-items:baseline;gap:12px;font-size:16px;line-height:1.4;color:#c8cbd9;
-  letter-spacing:-.01em}
-.ldg-n{flex:none;width:16px;font-size:11.5px;color:#5f6478;font-variant-numeric:tabular-nums}
-.ldg-who{font-size:14.5px;line-height:1.4}
-/* left: every step lands on a person */
-.ldg-who--before{color:#9ba0b4}
-/* right: Nieme takes it — except the one that must stay human */
-.ldg-who--after{color:#a9b4ca}
-.ldg-row.is-human .ldg-who--after{color:#fff;font-weight:560}
-.ldg-row.is-human{background:linear-gradient(90deg,#7b4dff00,#7b4dff14 62%,#2fd4b80f)}
-.ldg-row.is-human .ldg-step{color:#eef0f7}
-.ldg-row.is-carried .ldg-who--after{color:#7ee7ffcc}
-.ldg-row.is-carried .ldg-step,.ldg-row.is-carried .ldg-who--before{opacity:.55}
-/* the count is the point */
-.ldg-foot{padding:20px 0 4px;border-top:1px solid var(--line);margin-top:6px}
-.ldg-total{font-size:17px;line-height:1.35;letter-spacing:-.015em}
-.ldg-total--before{color:#9ba0b4}
-.ldg-total--after{color:#fff;font-weight:520}
-.coord-burden{max-width:1440px;margin:22px auto 0;font-size:15px;line-height:1.6;color:#8f93a8}
-.coord-close{display:flex;align-items:center;gap:24px;max-width:1440px;margin:44px auto 0}
+/* ---- the problem, as a handoff: the same seven-step span twice. Above, it is
+       fragmented across seven people-cells. Below, the Runtime carries it as two
+       continuous spans, one judgment block stays human, and the tail is already
+       carried. The two bars share a 7-unit grid so the judgment block lands
+       exactly under step 3 — that alignment is what makes it read. ---- */
+.handoff{max-width:1440px;margin:0 auto}
+.ho-lane-head{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;
+  font-size:16px;color:#8b8fa3;letter-spacing:-.01em}
+.ho-tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:5px 10px;border-radius:7px}
+.ho-tag--people{color:#c8cbd9;background:#ffffff0f;border:1px solid #ffffff1c}
+.ho-tag--runtime{color:#fff;border:1px solid #7b4dff59;
+  background:linear-gradient(100deg,#7b4dff33,#2fd4b81f)}
+.ho-bar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;align-items:stretch}
+.ho-note{margin:16px 0 0;font-size:15px;line-height:1.6;color:#8f93a8;max-width:900px}
+
+/* --- above: seven separate people, seven separate handoffs --- */
+.ho-bar--before .ho-seg{position:relative;padding:16px 14px 18px;border-radius:11px;
+  border:1px solid #ffffff14;background:#ffffff07;
+  font-size:14px;line-height:1.35;color:#9ba0b4;letter-spacing:-.01em;
+  display:flex;flex-direction:column;gap:9px;min-height:104px}
+.ho-seg i{font-style:normal;font-size:10.5px;color:#5f6478;font-variant-numeric:tabular-nums}
+/* the repeated human marker is what makes the burden legible without repeating a word */
+.ho-seg::after{content:"";position:absolute;left:14px;bottom:11px;width:9px;height:9px;
+  border-radius:50%;border:1.5px solid #9ba0b4a6}
+
+/* --- below: the Runtime carries the span --- */
+.ho-bar--after > *{border-radius:11px;padding:16px 16px 18px;min-height:104px;
+  display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.35;letter-spacing:-.01em}
+.ho-run{grid-column:span var(--span);color:#c8cbd9;
+  border:1px solid #7b4dff40;
+  background:linear-gradient(100deg,#7b4dff26,#2fd4b814);
+  box-shadow:inset 0 1px 0 #ffffff0f;justify-content:center}
+/* the one block that stays human — lifted out of the Runtime span */
+.ho-judge{position:relative;color:#fff;border:1px solid #ffffff2e;
+  background:linear-gradient(180deg,#1b2032,#12151f);
+  box-shadow:0 18px 44px #00000073;transform:translateY(-8px);z-index:2}
+.ho-judge i{font-style:normal;font-size:10.5px;color:#8b8fa3;font-variant-numeric:tabular-nums}
+.ho-judge-step{font-weight:520}
+.ho-judge em{font-style:normal;margin-top:auto;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:#c4b5fd}
+.ho-carried{color:#a9b4ca;border:1px dashed #7ee7ff40;background:#7ee7ff0a;justify-content:center}
+.ho-carried i{font-style:normal;font-size:10.5px;color:#5f6478;font-variant-numeric:tabular-nums}
+
+/* --- the shift between the two lanes --- */
+.ho-shift{position:relative;height:58px;margin:26px 0 30px}
+.ho-shift-trace{position:absolute;left:0;right:0;top:50%;height:1px;
+  background:linear-gradient(90deg,#7b4dff00,#7b4dff8c 42%,#7ee7ffcc)}
+.ho-shift-dot{position:absolute;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;
+  background:var(--cyan);box-shadow:0 0 14px var(--cyan);
+  animation:ho-shift-run 5.5s ease-in-out infinite}
+@keyframes ho-shift-run{0%{left:0;opacity:0}10%{opacity:1}88%{opacity:1}100%{left:100%;opacity:0}}
+
+.coord-close{display:flex;align-items:center;gap:24px;max-width:1440px;margin:48px auto 0}
 /* BRAND LAW: the Nieme glyph is the logo mark and nothing else — never a bullet,
    node, completion mark, flow endpoint, diagram ornament or status icon. */
 .coord-close-trace{flex:none;width:72px;height:1px;
   background:linear-gradient(90deg,#7b4dff00,#7b4dff99 38%,var(--cyan))}
 .jtbd-close{margin:0;font-size:clamp(26px,3vw,40px);letter-spacing:-.04em;line-height:1.1;color:#fff;font-weight:420}
-@media (max-width:760px){
-  .ldg-head{display:none}
-  .ldg-row,.ldg-foot{grid-template-columns:minmax(0,1fr);gap:6px}
-  .ldg-who{font-size:13.5px;padding-left:34px;position:relative}
-  .ldg-who::before{position:absolute;left:0;font-size:10px;letter-spacing:.14em;
-    text-transform:uppercase;color:#5f6478}
-  .ldg-who--before::before{content:"w/o"}
-  .ldg-who--after::before{content:"with"}
-  .ldg-total{font-size:15px}
+
+@media (max-width:1080px){
+  .ho-bar{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ho-run{grid-column:span 2}
+  .ho-judge{transform:none}
+  .ho-bar--before .ho-seg,.ho-bar--after > *{min-height:0}
+}
+@media (max-width:620px){
+  .ho-bar{grid-template-columns:minmax(0,1fr)}
+  .ho-run{grid-column:span 1}
+  .ho-lane-head{flex-wrap:wrap;gap:9px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ho-shift-dot{animation:none;left:auto;right:0;opacity:.85}
 }
 
 /* ---- entry paths: bifurcation converging ---- */

@@ -75,22 +75,22 @@
         <div class="thc is-empty" data-scene="0">
           <div class="thc-mode"><span class="hero-mode-dot" aria-hidden="true"></span><span class="hero-composer-mode">Resumir uma conversa</span></div>
 
-          <div class="thc-thread" aria-hidden="true">
-            <div class="thc-turn thc-turn--you">
-              <span class="thc-turn-who">Você</span>
-              <p class="thc-you-text"></p>
+          <div class="thc-stage" aria-hidden="true">
+            <div class="stg-head"><span class="stg-live"></span>RUNTIME</div>
+            <div class="stg-entry"><span class="stg-entry-kind"></span><span class="stg-entry-text"></span></div>
+            <div class="stg-rows">
+              <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
+              <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
+              <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
+              <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
             </div>
-            <div class="thc-turn thc-turn--theon">
-              <span class="thc-turn-who"><span class="thc-theon-dot" aria-hidden="true"></span>Theon</span>
-              <div class="thc-md"></div>
-              <div class="thc-artifact">
-                <div class="thc-artifact-top">
-                  <span class="thc-artifact-icon" aria-hidden="true"></span>
-                  <span class="thc-artifact-name"></span>
-                  <span class="thc-artifact-meta"></span>
-                </div>
-                <div class="thc-artifact-preview"></div>
+            <div class="thc-artifact">
+              <div class="thc-artifact-top">
+                <span class="thc-artifact-icon" aria-hidden="true"></span>
+                <span class="thc-artifact-name"></span>
+                <span class="thc-artifact-meta"></span>
               </div>
+              <div class="thc-artifact-preview"></div>
             </div>
           </div>
 
@@ -240,54 +240,43 @@
         <h2>A IA já produz mais trabalho.<br>As pessoas ainda carregam a coordenação.</h2>
         <p>O modelo já não é o gargalo. O trabalho em volta dele é.</p>
       </div>
-      <div class="whocarries">
-        <div class="ldg-head">
-          <div></div>
-          <div class="ldg-col ldg-col--before">SEM A NIEME</div>
-          <div class="ldg-col ldg-col--after">COM A NIEME</div>
+      <div class="handoff">
+
+        <div class="ho-lane">
+          <div class="ho-lane-head"><span class="ho-tag ho-tag--people">PESSOAS</span>carregam a coordenação</div>
+          <div class="ho-bar ho-bar--before">
+            <span class="ho-seg"><i>1</i>Perceber que algo mudou</span>
+            <span class="ho-seg"><i>2</i>Reunir o contexto</span>
+            <span class="ho-seg"><i>3</i>Decidir o que deve acontecer</span>
+            <span class="ho-seg"><i>4</i>Explicar para a IA</span>
+            <span class="ho-seg"><i>5</i>Levar o resultado adiante</span>
+            <span class="ho-seg"><i>6</i>Acompanhar</span>
+            <span class="ho-seg"><i>7</i>Remontar o contexto da próxima vez</span>
+          </div>
+          <p class="ho-note">Sete passagens de bastão. Cada uma é a atenção de uma pessoa — e o próximo pedido recomeça a corrente.</p>
         </div>
-          <div class="ldg-row">
-            <div class="ldg-step"><span class="ldg-n">1</span>Perceber que algo mudou</div>
-            <div class="ldg-who ldg-who--before">uma pessoa</div>
-            <div class="ldg-who ldg-who--after">Nieme</div>
-          </div>
-          <div class="ldg-row">
-            <div class="ldg-step"><span class="ldg-n">2</span>Reunir o contexto</div>
-            <div class="ldg-who ldg-who--before">uma pessoa</div>
-            <div class="ldg-who ldg-who--after">Nieme</div>
-          </div>
-          <div class="ldg-row is-human">
-            <div class="ldg-step"><span class="ldg-n">3</span>Decidir o que deve acontecer</div>
-            <div class="ldg-who ldg-who--before">uma pessoa</div>
-            <div class="ldg-who ldg-who--after">uma pessoa</div>
-          </div>
-          <div class="ldg-row">
-            <div class="ldg-step"><span class="ldg-n">4</span>Explicar para a IA</div>
-            <div class="ldg-who ldg-who--before">uma pessoa</div>
-            <div class="ldg-who ldg-who--after">Nieme</div>
-          </div>
-          <div class="ldg-row">
-            <div class="ldg-step"><span class="ldg-n">5</span>Levar o resultado adiante</div>
-            <div class="ldg-who ldg-who--before">uma pessoa</div>
-            <div class="ldg-who ldg-who--after">Nieme</div>
-          </div>
-          <div class="ldg-row">
-            <div class="ldg-step"><span class="ldg-n">6</span>Acompanhar</div>
-            <div class="ldg-who ldg-who--before">uma pessoa</div>
-            <div class="ldg-who ldg-who--after">Nieme</div>
-          </div>
-          <div class="ldg-row is-carried">
-            <div class="ldg-step"><span class="ldg-n">7</span>Remontar o contexto da próxima vez</div>
-            <div class="ldg-who ldg-who--before">uma pessoa</div>
-            <div class="ldg-who ldg-who--after">já está carregado</div>
-          </div>
-        <div class="ldg-foot">
-          <div></div>
-          <div class="ldg-total ldg-total--before">Sete passos numa pessoa</div>
-          <div class="ldg-total ldg-total--after">Uma decisão numa pessoa</div>
+
+        <div class="ho-shift" aria-hidden="true">
+          <span class="ho-shift-trace"></span>
+          <span class="ho-shift-dot"></span>
         </div>
+
+        <div class="ho-lane">
+          <div class="ho-lane-head"><span class="ho-tag ho-tag--runtime">O RUNTIME</span>carrega a coordenação</div>
+          <div class="ho-bar ho-bar--after">
+            <span class="ho-run" style="--span:2">Percebe e reúne o contexto</span>
+            <span class="ho-judge">
+              <i>3</i>
+              <span class="ho-judge-step">Decidir o que deve acontecer</span>
+              <em>o julgamento fica aqui</em>
+            </span>
+            <span class="ho-run" style="--span:3">Prepara o trabalho governado, leva o resultado adiante, acompanha</span>
+            <span class="ho-carried"><i>7</i>Contexto já carregado</span>
+          </div>
+          <p class="ho-note">A mesma corrente, carregada pelo Runtime — e o próximo pedido começa do que foi decidido, não do zero.</p>
+        </div>
+
       </div>
-      <p class="coord-burden">A Nieme não tira o julgamento. Ela tira tudo o que existe em volta — e o próximo pedido deixa de começar do zero.</p>
       <div class="coord-close">
         <span class="coord-close-trace" aria-hidden="true"></span>
         <p class="jtbd-close">A Nieme fecha esse ciclo.</p>
