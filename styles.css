@@ -660,7 +660,6 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
   .thc-select{font-size:11px;padding:5px 9px}
   .thc-send{width:29px;height:29px;font-size:13px}
   .thc-draft-title{font-size:15px}
-  .hero-status-lines{margin-top:18px;gap:11px}
 }
 
 /* Composer input */
@@ -679,17 +678,57 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
 
 /* Hero composer */
 /* ==========================================================================
-   Hero composer — derived from the real Theon Composer, not a screenshot.
-   Colour law: neutrals carry meaning, the purple→teal gradient carries state.
+   Hero — a simulated Theon chat: transcript above, the real Composer below.
+   Chrome is derived from the product (Context chip, / command mode, the
+   OPERATION strip, model selectors, the memory line). Colour law: neutrals
+   carry meaning, the purple->teal gradient carries motion and state.
    ========================================================================== */
 .thc{width:100%;max-width:640px}
-.thc-field{transition:border-color .4s}
-.thc.is-armed .thc-field{border-color:#7b4dff40}
-.thc-mode{display:flex;align-items:center;gap:9px;margin-bottom:13px;
+.thc-mode{display:flex;align-items:center;gap:9px;margin-bottom:14px;
   font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9096ab}
 .hero-mode-dot{width:6px;height:6px;border-radius:50%;background:var(--purple);
   box-shadow:0 0 12px #7b4dff99;transition:background .4s,box-shadow .4s}
-.thc.is-observed .hero-mode-dot{background:var(--cyan);box-shadow:0 0 12px #7ee7ff99}
+.thc[data-scene="2"] .hero-mode-dot{background:var(--cyan);box-shadow:0 0 12px #7ee7ff99}
+
+/* ---- the transcript ---- */
+.thc-thread{display:flex;flex-direction:column;gap:15px;margin-bottom:16px;min-height:300px;
+  justify-content:flex-end}
+.thc-turn{opacity:0;transform:translateY(6px);transition:opacity .4s ease,transform .4s ease}
+.thc-turn.is-visible{opacity:1;transform:none}
+.thc-turn-who{display:flex;align-items:center;gap:7px;font-size:10.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:#787c92;margin-bottom:7px}
+.thc-theon-dot{width:11px;height:11px;border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--cyan))}
+.thc-you-text{margin:0;font-size:15px;line-height:1.45;color:#c8cbd9;
+  padding:10px 14px;border-radius:12px 12px 12px 4px;background:#ffffff0a;
+  border:1px solid #ffffff0f;display:inline-block}
+/* Theon answers in structured markdown, rendered natively */
+.thc-md{font-size:14.5px;line-height:1.55;color:#c8cbd9}
+.thc-md strong{color:#eef0f7;font-weight:560}
+.thc-md ul{list-style:none;margin:9px 0 0;padding:0;display:flex;flex-direction:column;gap:7px}
+.thc-md li{position:relative;padding-left:16px}
+.thc-md li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:1px;background:#7b4dffa6}
+.thc-md em{display:block;margin-top:11px;font-style:normal;font-size:12.5px;color:#787c92}
+/* an artifact preview, in the chat */
+.thc-artifact{margin-top:13px;border:1px solid var(--line);border-radius:13px;overflow:hidden;
+  background:#0c0e15cc;display:none}
+.thc[data-scene="1"] .thc-artifact{display:block}
+.thc-artifact-top{display:flex;align-items:center;gap:11px;padding:11px 14px;
+  border-bottom:1px solid #ffffff0d}
+.thc-artifact-icon{width:23px;height:29px;flex:none;border-radius:3px;position:relative;
+  background:linear-gradient(160deg,#2f8f6a,#1d6349);box-shadow:0 2px 8px #00000059}
+.thc-artifact-icon::after{content:"";position:absolute;right:0;top:0;border-width:0 8px 8px 0;
+  border-style:solid;border-color:transparent #0c0e15 transparent transparent}
+.thc-artifact-name{font-size:14px;color:#eef0f7;letter-spacing:-.01em}
+.thc-artifact-meta{margin-left:auto;font-size:11.5px;color:#787c92;white-space:nowrap}
+.thc-artifact-preview{display:grid;grid-template-columns:1.6fr 1fr 1fr;font-size:11.5px;
+  color:#9ba0b4;font-variant-numeric:tabular-nums}
+.thc-artifact-preview span{padding:7px 14px;border-bottom:1px solid #ffffff08}
+.thc-artifact-preview span:nth-child(-n+3){color:#c8cbd9;background:#ffffff06;
+  font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
+.thc-artifact-preview span:nth-child(3n){text-align:right}
+
+/* ---- the Composer ---- */
 .thc-shell{position:relative;border-radius:20px;padding:14px 14px 11px;
   border:1px solid #7b4dff4d;
   background:
@@ -697,6 +736,7 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
     radial-gradient(110% 130% at 104% 112%, #2fd4b826 0%, #2fd4b800 56%),
     linear-gradient(180deg,#121420,#0b0d14);
   box-shadow:0 26px 80px #00000080, inset 0 1px 0 #ffffff0d}
+.thc[data-scene="2"] .thc-shell{border-bottom-left-radius:0;border-bottom-right-radius:0}
 .thc-context{display:inline-flex;align-items:center;gap:9px;padding:6px 13px;border-radius:9px;
   background:#ffffff0f;border:1px solid #ffffff17;font-size:12.5px;max-width:100%}
 .thc-context-key{color:#9096ab;flex:none}
@@ -705,8 +745,19 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
   font-size:12.5px;color:#6f738a}
 .thc-cmd-key{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;flex:none;
   background:linear-gradient(135deg,#7b4dff,#6f63ff);color:#fff;font-size:12px;font-weight:600}
+/* the command strip, armed — the Composer becoming an Operation surface */
+.thc-opmode{display:none;align-items:center;gap:10px;margin:12px 0 0;padding-left:2px;font-size:12.5px}
+.thc[data-scene="2"] .thc-opmode{display:flex}
+.thc[data-scene="2"] .thc-cmd{display:none}
+.thc-opmode-badge{font-size:10px;letter-spacing:.16em;color:#fff;padding:4px 9px;border-radius:6px;
+  background:linear-gradient(120deg,#7b4dff,#6f63ff);white-space:nowrap}
+.thc-opmode-desc{color:#8b8fa3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.thc-opmode-close{margin-left:auto;color:#6f738a;font-size:15px;line-height:1;flex:none}
+.thc-opmode-back{color:#aeb2c4;flex:none;border-bottom:1px solid #ffffff1f;padding-bottom:1px}
 .thc-field{position:relative;display:flex;align-items:center;gap:12px;margin-top:11px;
-  padding:15px 16px;border-radius:15px;border:1px solid #ffffff14;background:#080a10b8;min-height:56px}
+  padding:15px 16px;border-radius:15px;border:1px solid #ffffff14;background:#080a10b8;min-height:56px;
+  transition:border-color .4s}
+.thc.is-armed .thc-field{border-color:#7b4dff40}
 .thc-attach{width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;
   border:1px solid #ffffff1c;background:#ffffff0a;color:#8b8fa3}
 .thc-attach svg{width:14px;height:14px;display:block}
@@ -714,7 +765,7 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
 .thc-placeholder{position:absolute;left:55px;right:16px;font-size:16px;color:#585c70;
   pointer-events:none;opacity:0;transition:opacity .25s}
 .thc.is-empty .thc-placeholder{opacity:1}
-.thc.is-empty .composer-cursor{opacity:0}
+.thc.is-empty .composer-cursor{opacity:0;animation:none}
 .thc-field .composer-cursor{height:19px;vertical-align:-3px;margin-left:1px}
 .thc-controls{display:flex;align-items:center;justify-content:flex-end;gap:9px;margin-top:12px}
 .thc-select{font-size:12px;color:#aeb2c4;border:1px solid #ffffff17;border-radius:9px;
@@ -725,34 +776,38 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
   box-shadow:0 0 24px #7b4dff5c;transition:box-shadow .4s}
 .thc.is-armed .thc-send{box-shadow:0 0 30px #7b4dff8c,0 0 44px #2fd4b833}
 .thc-foot{margin-top:10px;text-align:center;font-size:11.5px;color:#767a90}
-/* the draft.on the prompt actually becomes */
-.thc-draft{margin-top:18px;padding:14px 16px 15px;border-radius:14px;
-  border:1px solid var(--line);background:#0c0e15cc;
-  opacity:0;transform:translateY(6px);transition:opacity .45s ease,transform .45s ease}
+
+/* ---- the draft.on, attached to the Composer as an extension of it ---- */
+.thc-draft{position:relative;margin:0 10px;padding:19px 18px 16px;
+  border:1px solid #7b4dff3d;border-top:0;border-radius:0 0 17px 17px;
+  background:linear-gradient(180deg,#0f1120,#0b0d14);
+  opacity:0;transform:translateY(-10px);
+  transition:opacity .45s ease,transform .45s ease}
 .thc-draft.is-visible{opacity:1;transform:none}
-.thc-draft-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:9px}
-.thc-draft-kind{font-size:10px;letter-spacing:.2em;color:#8b8fa3}
-.thc-draft-state{font-size:11px;letter-spacing:.06em;color:#9096ab;
-  padding:4px 10px;border-radius:999px;border:1px solid #ffffff17;white-space:nowrap}
-.thc-draft.is-live .thc-draft-state{color:#fff;border-color:#7b4dff59;
+.thc-draft-seam{position:absolute;left:18px;right:18px;top:0;height:1px;
+  background:linear-gradient(90deg,#7b4dff00,#7b4dff8c 45%,#7ee7ffb3)}
+.thc-draft-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px}
+.thc-draft-kind{font-size:10px;letter-spacing:.18em;color:#8b8fa3}
+.thc-draft-state{font-size:11px;letter-spacing:.06em;color:#fff;white-space:nowrap;
+  padding:4px 11px;border-radius:999px;border:1px solid #7b4dff59;
   background:linear-gradient(90deg,#7b4dff2b,#2fd4b826)}
-.thc-draft-title{font-size:16px;line-height:1.35;color:#eef0f7;letter-spacing:-.015em;margin-bottom:7px}
-.thc-draft-meta{font-size:12.5px;color:#8b8fa3}
+.thc-draft-title{font-size:16.5px;line-height:1.35;color:#eef0f7;letter-spacing:-.015em;margin-bottom:14px}
+.thc-draft-rows{margin:0 0 15px;padding:0;display:flex;flex-direction:column;gap:8px}
+.thc-draft-rows > div{display:flex;gap:14px;font-size:13px;line-height:1.45}
+.thc-draft-rows dt{flex:none;width:86px;color:#787c92}
+.thc-draft-rows dd{margin:0;color:#c8cbd9}
+.thc-draft-actions{display:flex;justify-content:flex-end;gap:9px}
+.thc-draft-btn{font-size:12.5px;color:#aeb2c4;border:1px solid #ffffff1f;border-radius:9px;
+  padding:7px 13px;white-space:nowrap}
+.thc-draft-btn--primary{color:#fff;border-color:#7b4dff73;
+  background:linear-gradient(120deg,#7b4dff33,#2fd4b81f)}
+
 @media (max-width:1080px){ .thc{max-width:none} }
 @media (prefers-reduced-motion:reduce){
-  .thc-draft{opacity:1;transform:none;transition:none}
+  .thc-draft,.thc-turn{opacity:1;transform:none;transition:none}
 }
-.hero-status-lines{margin-top:22px;display:flex;flex-direction:column;gap:13px}
-.hero-status-line{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted);letter-spacing:.01em;opacity:0;transform:translateY(3px);transition:opacity 350ms ease,transform 350ms ease}
-.hero-status-line.is-visible{opacity:1;transform:none}
-.hero-status-dot{width:14px;height:14px;flex-shrink:0;position:relative}
-.hero-status-dot::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:5px;height:5px;border-radius:50%;background:rgba(123,77,255,.55);transition:opacity 180ms ease}
-.hero-status-dot::after{content:'✓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:10px;color:#9a7cff;opacity:0;transition:opacity 180ms ease}
-.hero-status-dot.is-done::before{opacity:0}
-.hero-status-dot.is-done::after{opacity:1}
+
 @media(prefers-reduced-motion:reduce){
-  .hero-status-line{transition:none}
-  .hero-status-dot::before,.hero-status-dot::after{transition:none}
 }
 
 /* Balanced headings */
@@ -915,8 +970,6 @@ h1,h2,h3{text-wrap:balance}
 .runtimeviz,.entrypaths,.loop{padding:var(--section-padding) var(--section-inline)}
 
 /* hero: an observation is not a request — the send action is not armed for it */
-.thc.is-observed .thc-send{opacity:.28;box-shadow:none}
-.thc.is-observed .thc-cmd{opacity:.4}
 
 /* ---- problem: a coordination chain that accumulates and frays ---- */
 .coord{max-width:1440px;margin:0 auto}

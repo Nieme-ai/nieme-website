@@ -72,14 +72,41 @@
         </div>
       </div>
       <div class="hero-loop-col">
-        <div class="thc is-empty">
-          <div class="thc-mode"><span class="hero-mode-dot" aria-hidden="true"></span><span class="hero-composer-mode">Alguém pede</span></div>
+        <div class="thc is-empty" data-scene="0">
+          <div class="thc-mode"><span class="hero-mode-dot" aria-hidden="true"></span><span class="hero-composer-mode">Resumir uma conversa</span></div>
+
+          <div class="thc-thread" aria-hidden="true">
+            <div class="thc-turn thc-turn--you">
+              <span class="thc-turn-who">Você</span>
+              <p class="thc-you-text"></p>
+            </div>
+            <div class="thc-turn thc-turn--theon">
+              <span class="thc-turn-who"><span class="thc-theon-dot" aria-hidden="true"></span>Theon</span>
+              <div class="thc-md"></div>
+              <div class="thc-artifact">
+                <div class="thc-artifact-top">
+                  <span class="thc-artifact-icon" aria-hidden="true"></span>
+                  <span class="thc-artifact-name"></span>
+                  <span class="thc-artifact-meta"></span>
+                </div>
+                <div class="thc-artifact-preview"></div>
+              </div>
+            </div>
+          </div>
+
           <div class="thc-shell">
             <div class="thc-context">
               <span class="thc-context-key">Contexto</span>
               <span class="thc-context-val"></span>
             </div>
             <div class="thc-cmd" aria-hidden="true"><span class="thc-cmd-key">/</span><span>Digite / para escolher um comando</span></div>
+            <div class="thc-opmode" aria-hidden="true">
+              <span class="thc-cmd-key">/</span>
+              <span class="thc-opmode-badge">OPERAÇÃO</span>
+              <span class="thc-opmode-desc">Abrir ou criar um workbench de Operação draft.on</span>
+              <span class="thc-opmode-close" aria-hidden="true">×</span>
+              <span class="thc-opmode-back">Voltar ao Chat</span>
+            </div>
             <div class="thc-field">
               <span class="thc-attach" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5l-8.2 8.2a4.6 4.6 0 0 1-6.5-6.5l8.7-8.7a3 3 0 0 1 4.3 4.3l-8.7 8.7a1.5 1.5 0 0 1-2.1-2.1l7.9-7.9"/></svg></span>
               <span class="thc-text" aria-live="off"></span><span class="composer-cursor" aria-hidden="true"></span>
@@ -87,24 +114,28 @@
             </div>
             <div class="thc-controls" aria-hidden="true">
               <span class="thc-select">Padrão</span>
-              <span class="thc-select">GPT-5.6 Sol · high</span>
+              <span class="thc-select">Claude Sonnet 4.6</span>
               <span class="thc-send">↑</span>
             </div>
             <div class="thc-foot" aria-hidden="true">Theon lembra dos seus projetos e decisões.</div>
           </div>
-          <div class="hero-status-lines" aria-hidden="true">
-            <div class="hero-status-line"><span class="hero-status-dot"></span><span class="hero-status-label"></span></div>
-            <div class="hero-status-line"><span class="hero-status-dot"></span><span class="hero-status-label"></span></div>
-            <div class="hero-status-line"><span class="hero-status-dot"></span><span class="hero-status-label"></span></div>
-            <div class="hero-status-line"><span class="hero-status-dot"></span><span class="hero-status-label"></span></div>
-          </div>
+
           <div class="thc-draft" aria-hidden="true">
+            <div class="thc-draft-seam" aria-hidden="true"></div>
             <div class="thc-draft-head">
-              <span class="thc-draft-kind">RASCUNHO DE OPERAÇÃO</span>
+              <span class="thc-draft-kind">OPERAÇÃO · draft.on</span>
               <span class="thc-draft-state"></span>
             </div>
             <div class="thc-draft-title"></div>
-            <div class="thc-draft-meta"></div>
+            <dl class="thc-draft-rows">
+              <div><dt>Projeto</dt><dd class="thc-d-project"></dd></div>
+              <div><dt>Entregáveis</dt><dd class="thc-d-deliver"></dd></div>
+              <div><dt>Autoridade</dt><dd class="thc-d-auth"></dd></div>
+            </dl>
+            <div class="thc-draft-actions">
+              <span class="thc-draft-btn">Abrir workbench</span>
+              <span class="thc-draft-btn thc-draft-btn--primary">Aprovar e Enfileirar</span>
+            </div>
           </div>
         </div>
       </div>
