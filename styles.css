@@ -983,30 +983,51 @@ h1,h2,h3{text-wrap:balance}
 
 /* hero: an observation is not a request — the send action is not armed for it */
 
-/* ---- problem: a coordination chain that accumulates and frays ---- */
-.coord{max-width:1440px;margin:0 auto}
-.coord-chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:0}
-.coord-step{position:relative;flex:1 1 150px;min-width:150px;padding:20px 18px 22px;
-  border:1px solid var(--line);border-right:0;background:linear-gradient(180deg,#ffffff09,#ffffff03);
-  font-size:15px;line-height:1.4;color:#cdd0de;transition:color .3s,background .3s,transform .3s}
-.coord-step:first-child{border-top-left-radius:14px;border-bottom-left-radius:14px}
-.coord-step:last-child{border-right:1px solid var(--line);border-top-right-radius:14px;border-bottom-right-radius:14px}
-.coord-step:hover{color:#fff;background:linear-gradient(180deg,#ffffff14,#ffffff06);transform:translateY(-3px)}
-.coord-i{display:block;font-size:11px;letter-spacing:.18em;color:var(--purple);margin-bottom:10px;opacity:.85}
-.coord-step[data-decay="2"]{opacity:.92}.coord-step[data-decay="3"]{opacity:.82}
-.coord-step[data-decay="4"]{opacity:.7}.coord-step[data-decay="5"]{opacity:.58}
-.coord-step[data-decay="6"]{opacity:.46}
-.coord-step--lost{opacity:.34;border-style:dashed}
-.coord-step--lost .coord-i{color:#8f93a8}
-.coord-seam{width:0;border-left:1px dashed #ffffff1a;align-self:stretch}
-.coord-burden{max-width:840px;margin:26px 0 0;font-size:16px;line-height:1.6;color:#8f93a8}
+/* ---- problem: the same seven steps, and who carries each one.
+       A ledger, not a chain — the claim is legible without reading a caption. ---- */
+.whocarries{max-width:1440px;margin:0 auto;border-top:1px solid var(--line)}
+.ldg-head,.ldg-row,.ldg-foot{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) minmax(0,1fr);
+  align-items:center;gap:24px}
+.ldg-head{padding:16px 0 14px}
+.ldg-col{font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.ldg-col--before{color:#8b8fa3}
+.ldg-col--after{color:#c4b5fd}
+.ldg-row{padding:15px 0;border-top:1px solid #ffffff0a;position:relative}
+.ldg-step{display:flex;align-items:baseline;gap:12px;font-size:16px;line-height:1.4;color:#c8cbd9;
+  letter-spacing:-.01em}
+.ldg-n{flex:none;width:16px;font-size:11.5px;color:#5f6478;font-variant-numeric:tabular-nums}
+.ldg-who{font-size:14.5px;line-height:1.4}
+/* left: every step lands on a person */
+.ldg-who--before{color:#9ba0b4}
+/* right: Nieme takes it — except the one that must stay human */
+.ldg-who--after{color:#a9b4ca}
+.ldg-row.is-human .ldg-who--after{color:#fff;font-weight:560}
+.ldg-row.is-human{background:linear-gradient(90deg,#7b4dff00,#7b4dff14 62%,#2fd4b80f)}
+.ldg-row.is-human .ldg-step{color:#eef0f7}
+.ldg-row.is-carried .ldg-who--after{color:#7ee7ffcc}
+.ldg-row.is-carried .ldg-step,.ldg-row.is-carried .ldg-who--before{opacity:.55}
+/* the count is the point */
+.ldg-foot{padding:20px 0 4px;border-top:1px solid var(--line);margin-top:6px}
+.ldg-total{font-size:17px;line-height:1.35;letter-spacing:-.015em}
+.ldg-total--before{color:#9ba0b4}
+.ldg-total--after{color:#fff;font-weight:520}
+.coord-burden{max-width:1440px;margin:22px auto 0;font-size:15px;line-height:1.6;color:#8f93a8}
 .coord-close{display:flex;align-items:center;gap:24px;max-width:1440px;margin:44px auto 0}
 /* BRAND LAW: the Nieme glyph is the logo mark and nothing else — never a bullet,
-   node, completion mark, flow endpoint, diagram ornament or status icon.
-   The chain resolves into a trace, not into the mark. */
+   node, completion mark, flow endpoint, diagram ornament or status icon. */
 .coord-close-trace{flex:none;width:72px;height:1px;
   background:linear-gradient(90deg,#7b4dff00,#7b4dff99 38%,var(--cyan))}
 .jtbd-close{margin:0;font-size:clamp(26px,3vw,40px);letter-spacing:-.04em;line-height:1.1;color:#fff;font-weight:420}
+@media (max-width:760px){
+  .ldg-head{display:none}
+  .ldg-row,.ldg-foot{grid-template-columns:minmax(0,1fr);gap:6px}
+  .ldg-who{font-size:13.5px;padding-left:34px;position:relative}
+  .ldg-who::before{position:absolute;left:0;font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:#5f6478}
+  .ldg-who--before::before{content:"w/o"}
+  .ldg-who--after::before{content:"with"}
+  .ldg-total{font-size:15px}
+}
 
 /* ---- entry paths: bifurcation converging ---- */
 .bifurcate{max-width:1440px;margin:8px auto 0;text-align:center}
@@ -1237,7 +1258,7 @@ h1,h2,h3{text-wrap:balance}
 .proof-num{font-size:11.5px;letter-spacing:.18em;color:var(--purple)}
 .proof-head h3{margin:0;font-size:clamp(20px,1.9vw,26px);letter-spacing:-.03em;font-weight:440}
 .proof-note{margin:0 0 18px;font-size:15px;line-height:1.5;color:var(--muted);min-height:70px}
-.proof-shot{position:relative;aspect-ratio:4/3;border:1px solid var(--rule2,#ffffff1f);border-radius:16px;
+.proof-shot{position:relative;aspect-ratio:16/10;border:1px solid var(--rule2,#ffffff1f);border-radius:16px;
   overflow:hidden;background:#0c0e16;box-shadow:0 30px 90px #00000073;transition:transform .3s,box-shadow .3s}
 .proof-shot:hover{transform:translateY(-4px);box-shadow:0 40px 110px #0000008c,0 0 40px #7b4dff1f}
 .proof-step--raised .proof-shot:hover{box-shadow:0 40px 110px #0000008c,0 0 0 1px #7b4dff40,0 0 56px #7b4dff2e}
@@ -1285,10 +1306,6 @@ h1,h2,h3{text-wrap:balance}
   .cst-orbit,.cst-spoke,.cst-pulse{display:none}
   .cst-core{position:static;transform:none;margin-bottom:6px}
   .cst-node{position:static;transform:none}
-  .coord-step{flex:1 1 100%;border-right:1px solid var(--line);border-bottom:0;border-radius:0}
-  .coord-step:first-child{border-radius:14px 14px 0 0}
-  .coord-step:last-child{border-bottom:1px solid var(--line);border-radius:0 0 14px 14px}
-  .coord-seam{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   .rvx-ring,.rvx-flow,.rvx-return,.proof-link-dot,.cst-pulse,
