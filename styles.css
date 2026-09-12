@@ -698,3 +698,133 @@ h1,h2,h3{text-wrap:balance}
 
 /* Experiment section pull-quote */
 .experiment-pullquote{max-width:800px;margin:44px auto 0;font-size:clamp(20px,2vw,26px);font-style:italic;line-height:1.5;color:#d0d2e0;text-align:center;letter-spacing:-.02em}
+
+/* ============================================================================
+   NIEME-WEBSITE-RUNTIME-REPOSITION-001
+   Runtime positioning: hero, product-screenshot slots, entry paths, runtime
+   loop, cross-system band, Operation anatomy, executors, judgment, learning,
+   and the conceptual Runtime diagram.
+   ========================================================================= */
+
+/* Hero — text-led, single column, so the product frame below gets the width */
+.hero--runtime{min-height:auto;padding-top:190px;padding-bottom:52px}
+.hero--runtime .hero-text-col{max-width:1000px}
+.hero--runtime h1{margin-bottom:26px}
+.hero--runtime .lede{max-width:760px}
+
+/* ---- Product screenshot slots -------------------------------------------
+   To swap a slot for a real asset, replace the .shot-placeholder element with
+   <img src="..." alt="..." />. The frame, ratio and spacing are unchanged. */
+.shotband{padding:0 var(--section-inline) var(--section-padding)}
+.shotband--hero{padding-top:0}
+.shot{margin:0 auto;width:100%}
+.shot--wide{max-width:1680px}
+.shot--mid{max-width:1280px;margin-top:56px}
+.shot-frame{position:relative;width:100%;border:1px solid var(--line);border-radius:22px;overflow:hidden;
+  background:linear-gradient(180deg,#ffffff0a,#ffffff03);
+  box-shadow:0 40px 140px #00000080,0 18px 52px #654cff18}
+.shot--wide .shot-frame{aspect-ratio:16/9}
+.shot--mid .shot-frame{aspect-ratio:16/10}
+.shot-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:top left}
+.shot-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:14px;text-align:center;padding:32px;
+  background:repeating-linear-gradient(135deg,#ffffff05 0 14px,#ffffff00 14px 28px)}
+.shot-slot-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--purple);font-weight:600}
+.shot-slot-title{margin:0;font-size:clamp(20px,2.2vw,30px);letter-spacing:-.03em;color:#eef0f7}
+.shot-slot-desc{margin:0;max-width:640px;font-size:15px;line-height:1.5;color:var(--muted)}
+.shot-placeholder code{font-size:12px;color:#8f93a8;background:#ffffff08;border:1px solid var(--line);border-radius:8px;padding:6px 12px}
+.shot-slot-spec{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6f738a}
+.shot figcaption{margin:20px auto 0;max-width:860px;text-align:center;font-size:15px;line-height:1.55;color:var(--muted)}
+
+/* ---- Section 1: two entry paths ---------------------------------------- */
+.entrypaths,.loop,.crosssystem,.governed,.executors,.judgment,.learning,.runtimeviz{padding:var(--section-padding) var(--section-inline)}
+.entrypaths-grid{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.entrypath{padding:34px 36px}
+.entrypath-num{font-size:11px;letter-spacing:.2em;color:var(--purple);font-weight:600;margin-bottom:16px}
+.entrypath h3{margin:0 0 12px;font-size:clamp(24px,2.4vw,32px);letter-spacing:-.035em;font-weight:440}
+.entrypath p{margin:0;color:var(--muted);font-size:16px;line-height:1.6}
+.entrypaths-converge{max-width:1440px;margin:34px auto 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px}
+.converge-node{border:1px solid var(--line);border-radius:999px;padding:11px 22px;font-size:14px;color:#d7d8e5;background:#ffffff07}
+.converge-node--end{border-color:#7b4dff66;color:#fff;background:#7b4dff1a}
+.converge-arrow{color:var(--purple);font-size:16px}
+
+/* ---- Section 2: the runtime loop --------------------------------------- */
+.loop-grid{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.loop-stage{padding:30px 30px 26px;display:flex;flex-direction:column;gap:12px}
+.loop-stage-head{display:flex;align-items:baseline;gap:12px}
+.loop-stage-num{font-size:11px;letter-spacing:.18em;color:var(--purple);font-weight:600}
+.loop-stage h3{margin:0;font-size:23px;letter-spacing:-.03em;font-weight:440}
+.loop-stage p{margin:0;color:var(--muted);font-size:15px;line-height:1.6;flex:1}
+.loop-stage-map{margin-top:6px;padding-top:14px;border-top:1px solid var(--line)}
+.loop-stage-map span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8f93a8}
+.loop-stage--last .loop-stage-map span{color:var(--cyan)}
+
+/* ---- Section 3: cross-system ------------------------------------------- */
+.crosssystem-band{max-width:1100px;margin:0 auto;text-align:center}
+.xs-row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.xs-sys{border:1px solid var(--line);border-radius:12px;padding:12px 20px;font-size:15px;color:#d7d8e5;background:#ffffff07}
+.xs-down{color:var(--purple);font-size:20px;margin:18px 0}
+.xs-runtime{display:inline-block;border:1px solid #7b4dff55;border-radius:16px;padding:18px 42px;font-size:15px;letter-spacing:.22em;
+  color:#fff;background:linear-gradient(180deg,#7b4dff22,#7b4dff0a);box-shadow:0 0 60px #7b4dff26}
+.xs-caption{margin-top:16px;font-size:14px;color:var(--muted)}
+.crosssystem-note{max-width:900px;margin:34px auto 0;text-align:center;font-size:15px;line-height:1.6;color:#8f93a8}
+
+/* ---- Section 4: Operation anatomy -------------------------------------- */
+.anatomy-grid{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.anatomy-item{padding:22px 24px;display:flex;flex-direction:column;gap:8px;border-radius:18px}
+.anatomy-key{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);font-weight:600}
+.anatomy-val{font-size:15px;line-height:1.5;color:#d7d8e5}
+.governed-note{max-width:900px;margin:32px auto 0;text-align:center;font-size:15px;line-height:1.6;color:#8f93a8}
+
+/* ---- Section 5: executors ---------------------------------------------- */
+.executors-row{max-width:1440px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.executor{padding:16px 26px;border-radius:14px;font-size:15px;color:#d7d8e5}
+.executors-note{max-width:800px;margin:28px auto 0;text-align:center;font-size:16px;color:var(--muted)}
+
+/* ---- Section 6: result / evidence / decision --------------------------- */
+.judgment-triple{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.judgment-card{padding:30px 32px}
+.judgment-label{font-size:11px;letter-spacing:.2em;color:#8f93a8;font-weight:600;margin-bottom:14px}
+.judgment-card--decision .judgment-label{color:var(--cyan)}
+.judgment-card--decision{border-color:#7ee7ff33;box-shadow:0 30px 120px #00000066,0 0 46px #7ee7ff14}
+.judgment-card p{margin:0;font-size:18px;line-height:1.5;color:#eef0f7;letter-spacing:-.02em}
+.judgment-note{max-width:900px;margin:32px auto 0;text-align:center;font-size:15px;line-height:1.6;color:#8f93a8}
+
+/* ---- Section 7: learning ----------------------------------------------- */
+.learning-chain{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px}
+.lc-node{border:1px solid var(--line);border-radius:999px;padding:12px 24px;font-size:15px;color:#d7d8e5;background:#ffffff07}
+.lc-node--end{border-color:#7ee7ff44;color:#fff;background:#7ee7ff12}
+.lc-arrow{color:var(--purple)}
+
+/* ---- Runtime conceptual visual ----------------------------------------- */
+.rv-diagram{max-width:900px;margin:0 auto;text-align:center}
+.rv-tier{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.rv-chip{border:1px solid var(--line);border-radius:12px;padding:12px 22px;font-size:15px;color:#d7d8e5;background:#ffffff07}
+.rv-chip--state{border-color:#7ee7ff33;color:#fff}
+.rv-chip code{font-size:14px;color:var(--cyan)}
+.rv-down{color:var(--purple);font-size:20px;margin:16px 0}
+.rv-core{border:1px solid #7b4dff55;border-radius:20px;padding:26px 32px;background:linear-gradient(180deg,#7b4dff1f,#7b4dff08);box-shadow:0 0 70px #7b4dff24}
+.rv-core-name{font-size:16px;letter-spacing:.24em;color:#fff;margin-bottom:10px}
+.rv-core-verbs{font-size:14px;color:#b9bcd0;letter-spacing:.04em}
+.rv-note{max-width:800px;margin:30px auto 0;text-align:center;font-size:15px;color:#8f93a8}
+.rv-note a{color:var(--cyan);text-decoration:none}
+
+/* ---- Responsive -------------------------------------------------------- */
+@media (max-width:1080px){
+  .loop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .anatomy-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .judgment-triple{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:760px){
+  .hero--runtime{padding-top:150px}
+  .entrypaths-grid{grid-template-columns:minmax(0,1fr)}
+  .loop-grid{grid-template-columns:minmax(0,1fr)}
+  .anatomy-grid{grid-template-columns:minmax(0,1fr)}
+  .shot--wide .shot-frame,.shot--mid .shot-frame{aspect-ratio:4/3}
+  .shot-slot-desc{font-size:14px}
+}
+/* How It Works — second entry path in the lifecycle opener */
+.hiw-or{text-align:center;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#6f738a;margin:18px 0 14px}
+.composer-field--observed{border-style:dashed}
+.composer-observed{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);border:1px solid #7ee7ff40;border-radius:999px;padding:4px 12px;white-space:nowrap}
+.vs-lede{max-width:1000px;margin:0 0 30px;font-size:clamp(17px,1.55vw,20px);line-height:1.6;color:var(--muted)}
