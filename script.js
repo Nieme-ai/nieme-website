@@ -153,44 +153,50 @@
     const labelEls = Array.from(document.querySelectorAll('.hero-status-label'));
     if (!textEl) return;
 
+    const entryModes = isPortuguese
+      ? ['Alguém pede', 'Algo muda', 'Alguém pede', 'Algo muda', 'Alguém pede', 'Algo muda']
+      : ['Someone asks', 'Something changes', 'Someone asks', 'Something changes', 'Someone asks', 'Something changes'];
+
     const prompts = isPortuguese
       ? [
-          'Arquive todas as operações de integração concluídas.',
-          'Resuma a discussão de hoje no #customer-success.',
-          'Mova a Revisão de Segurança do Fornecedor do Portal do Cliente para Segurança da Plataforma.',
-          'Prepare o relatório do terceiro trimestre para o conselho usando os materiais do ano passado e as métricas atuais.',
-          'Inicie o Sprint 12 e organize as operações desta semana.',
-          'Revise tudo o que a equipe entregou enquanto eu estava fora.',
+          'Prepare o relatório de receita do terceiro trimestre para a liderança.',
+          'Um documento mudou numa pasta conectada do Drive.',
+          'Revise tudo o que o time entregou enquanto eu estava fora.',
+          'Uma mensagem foi observada num canal selecionado do Slack.',
+          'Organize o handoff de implantação da conta nova.',
+          'Um pagamento foi confirmado no ERP.',
         ]
       : [
-          'Archive all completed onboarding operations.',
-          'Summarize today\'s discussion in #customer-success.',
-          'Move Vendor Security Review from Customer Portal to Platform Security.',
-          'Prepare the Q3 board report using last year\'s materials and current metrics.',
-          'Start Sprint 12 and organize this week\'s operations.',
+          'Prepare the Q3 revenue brief for leadership.',
+          'A document changed in a connected Drive folder.',
           'Review everything the team shipped while I was away.',
+          'A message was observed in a selected Slack channel.',
+          'Organize the implementation handoff for the new account.',
+          'A payment was confirmed in the ERP.',
         ];
 
     const statusSequences = isPortuguese
       ? [
-          ['Verificando operações concluídas', 'Filtrando o trabalho concluído', 'Arquivando 14 operações', 'Registrando no Ledger'],
-          ['Conectando ao Slack', 'Lendo #customer-success', 'Coletando evidências', 'Preparando resumo executivo'],
-          ['Localizando a operação', 'Verificando o projeto de destino', 'Atualizando dependências', 'Registrando no Ledger'],
-          ['Recuperando materiais anteriores do conselho', 'Coletando métricas do terceiro trimestre', 'Preparando a operação', 'Registrando no Ledger'],
-          ['Criando o Sprint 12', 'Compondo operações', 'Equilibrando a carga de trabalho', 'Registrando no Ledger'],
-          ['Reunindo operações concluídas', 'Coletando evidências de apoio', 'Preparando briefing executivo', 'Sinalizando decisões que precisam de você'],
+          ['Contexto reunido', 'Trabalho governado preparado', 'Autorizado', 'Executando'],
+          ['Observado, não autorizado', 'Contexto reunido', 'Trabalho governado preparado', 'Aguardando uma pessoa'],
+          ['Contexto reunido', 'Trabalho governado preparado', 'Autorizado', 'Executando'],
+          ['Observado, não autorizado', 'Relacionado ao Projeto', 'Trabalho governado preparado', 'Aguardando uma pessoa'],
+          ['Contexto reunido', 'Trabalho governado preparado', 'Autorizado', 'Executando'],
+          ['Observado, não autorizado', 'Contexto reunido', 'Trabalho governado preparado', 'Aguardando uma pessoa'],
         ]
       : [
-          ['Scanning completed operations', 'Filtering completed work', 'Archiving 14 operations', 'Recording to the Ledger'],
-          ['Connecting to Slack', 'Reading #customer-success', 'Collecting evidence', 'Preparing executive summary'],
-          ['Locating operation', 'Verifying destination project', 'Updating dependencies', 'Recording to the Ledger'],
-          ['Retrieving previous board materials', 'Collecting Q3 metrics', 'Preparing operation', 'Recording to the Ledger'],
-          ['Creating Sprint 12', 'Composing operations', 'Balancing workload', 'Recording to the Ledger'],
-          ['Gathering completed operations', 'Collecting supporting evidence', 'Preparing executive briefing', 'Flagging decisions that need you'],
+          ['Context assembled', 'Governed work prepared', 'Authorized', 'Executing'],
+          ['Observed, not authorized', 'Context assembled', 'Governed work prepared', 'Waiting on a person'],
+          ['Context assembled', 'Governed work prepared', 'Authorized', 'Executing'],
+          ['Observed, not authorized', 'Related to Project', 'Governed work prepared', 'Waiting on a person'],
+          ['Context assembled', 'Governed work prepared', 'Authorized', 'Executing'],
+          ['Observed, not authorized', 'Context assembled', 'Governed work prepared', 'Waiting on a person'],
         ];
 
     if (prefersReducedMotion) {
       textEl.textContent = prompts[0];
+      const m0 = document.querySelector('.hero-composer-mode');
+      if (m0) m0.textContent = entryModes[0];
       labelEls.forEach((el, i) => { el.textContent = statusSequences[0][i] || ''; });
       if (statusEls[0]) {
         statusEls[0].classList.add('is-visible');
@@ -209,9 +215,14 @@
 
     const rand = (lo, hi) => lo + Math.floor(Math.random() * (hi - lo + 1));
 
+    const modeEl = document.querySelector('.hero-composer-mode');
+    const composerEl = document.querySelector('.hero-composer');
     const loadSequence = (idx) => {
       const seq = statusSequences[idx];
       labelEls.forEach((el, i) => { el.textContent = seq[i] || ''; });
+      if (modeEl) modeEl.textContent = entryModes[idx] || '';
+      // the two entry modes read differently: a request is typed, an observation arrives
+      if (composerEl) composerEl.classList.toggle('is-observed', idx % 2 === 1);
     };
 
     const showStatuses = () => {

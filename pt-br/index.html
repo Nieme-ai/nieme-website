@@ -60,8 +60,8 @@
 
   <main>
 
-    <!-- HERO -->
-    <section class="hero hero--runtime">
+    <!-- HERO — outcome headline + the Runtime moving work forward (bespoke motion) -->
+    <section class="hero hero--loop">
       <div class="hero-text-col">
         <div class="kicker">O RUNTIME PARA O TRABALHO COM IA</div>
         <h1>Automatize mais trabalho.<br>Mantenha sua empresa no controle.</h1>
@@ -71,50 +71,83 @@
           <a class="button ghost" href="/pt-br/how-it-works">Veja como funciona →</a>
         </div>
       </div>
+      <div class="hero-loop-col">
+        <div class="hero-composer">
+          <div class="composer-label"><span class="hero-mode-dot" aria-hidden="true"></span><span class="hero-composer-mode">Alguém pede</span></div>
+          <div class="composer-field hero-composer-field">
+            <div class="hero-composer-inner">
+              <span class="hero-composer-text" aria-live="off"></span><span class="composer-cursor" aria-hidden="true"></span>
+            </div>
+            <div class="composer-send" aria-hidden="true">↑</div>
+          </div>
+          <div class="hero-status-lines" aria-hidden="true">
+            <div class="hero-status-line"><span class="hero-status-dot"></span><span class="hero-status-label"></span></div>
+            <div class="hero-status-line"><span class="hero-status-dot"></span><span class="hero-status-label"></span></div>
+            <div class="hero-status-line"><span class="hero-status-dot"></span><span class="hero-status-label"></span></div>
+            <div class="hero-status-line"><span class="hero-status-dot"></span><span class="hero-status-label"></span></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!--
-      ================= PRODUCT SCREENSHOT SLOT 1 (TWO FRAMES) =================
-      Assets:  assets/shots/signals-observed.png
-               assets/shots/signals-context-related.png
-      Frame:   16 / 9 each, stacked, full-bleed up to 1680px. >= 2560px wide.
-      Why two: Signals correctly separates Overview / Context / Related into tabs.
-               The product design is preserved; the WEBSITE uses two truthful
-               captures to carry the chain. Do not build a combined product view
-               for marketing.
-      Chain:   frame 1 Observed -> frame 2 Related + Context changed -> suggested
-               work -> a person governs it.
-      Source:  recapture from the marketing Runtime after Track B merges, using
-               SYNTHETIC company / project / customer names AT CAPTURE TIME.
-               The pixel-patched reference is never published.
-      TO SWAP: replace each .shot-placeholder with its <img>. Nothing else moves.
-      ==========================================================================
+      ================= PRODUCT PROOF COMPOSITION =================
+      Three truthful crops from the marketing Runtime, art-directed by the site:
+      external labels, overlap, connecting path. Never altering product facts.
+        A assets/shots/proof-observed.png    provider, observed event, relationship,
+                                             "Why it matters", Watching only / Raised
+        B assets/shots/proof-governed.png    Context change, suggested work, Project
+                                             binding, objective, the governance point
+        C assets/shots/proof-executed.png    authorized Operation, execution state,
+                                             result/artifact, Evidence, Review decision
+      Capture brief: one coherent synthetic company story across all three, at high
+      resolution for cropping. No real customer names, ever. No pixel patching.
+      TO SWAP: replace each .proof-shot .shot-placeholder with its <img>.
+      ============================================================
     -->
-    <section class="shotband shotband--hero">
-      <figure class="shot shot--wide" data-asset-slot="signals-chain">
-        <div class="shot-pair">
-          <div class="shot-frame" data-asset-slot="signals-observed">
+    <section class="proof">
+      <div class="section-title">
+        <div class="eyebrow">COMO ISSO APARECE NO PRODUTO</div>
+        <h2>Observado. Governado. Executado.</h2>
+      </div>
+      <div class="proof-rail">
+        <figure class="proof-step">
+          <div class="proof-head"><span class="proof-num">01</span><h3>Observado</h3></div>
+          <p class="proof-note">A Nieme percebe o que mudou sem tratar observação como autoridade.</p>
+          <div class="proof-shot">
             <div class="shot-placeholder">
-              <span class="shot-slot-label">ESPAÇO PARA CAPTURA · 1 DE 2</span>
-              <p class="shot-slot-title">Observado</p>
-              <p class="shot-slot-desc">Um sistema conectado mudou. O que a Nieme viu, e por que importa — registrado, não autorizado.</p>
-              <code>assets/shots/signals-observed.png</code>
-              <span class="shot-slot-spec">16:9 · ≥2560px · dados sintéticos na captura</span>
+              <span class="shot-slot-label">QUADRO A</span>
+              <p class="shot-slot-desc">Sistema · evento observado · relação · por que importa · Só observando</p>
+              <code>proof-observed.png</code>
             </div>
           </div>
-          <div class="shot-pair-link" aria-hidden="true">então</div>
-          <div class="shot-frame" data-asset-slot="signals-context-related">
+        </figure>
+        <div class="proof-link" aria-hidden="true"><span class="proof-link-dot"></span></div>
+        <figure class="proof-step proof-step--raised">
+          <div class="proof-head"><span class="proof-num">02</span><h3>Governado</h3></div>
+          <p class="proof-note">O contexto vira trabalho proposto. Uma pessoa ou política decide se pode rodar.</p>
+          <div class="proof-shot">
             <div class="shot-placeholder">
-              <span class="shot-slot-label">ESPAÇO PARA CAPTURA · 2 DE 2</span>
-              <p class="shot-slot-title">Relacionado · Contexto mudou · Trabalho sugerido</p>
-              <p class="shot-slot-desc">A que se relaciona, o que mudou no contexto e o trabalho que a Nieme propõe — que uma pessoa ainda precisa governar.</p>
-              <code>assets/shots/signals-context-related.png</code>
-              <span class="shot-slot-spec">16:9 · ≥2560px · dados sintéticos na captura</span>
+              <span class="shot-slot-label">QUADRO B</span>
+              <p class="shot-slot-desc">Mudança de contexto · trabalho sugerido · Projeto · objetivo · o ponto de governança</p>
+              <code>proof-governed.png</code>
             </div>
           </div>
-        </div>
-        <figcaption>A Nieme observa uma mudança em um sistema conectado, resolve a que ela se relaciona e propõe trabalho governado. Observar não é autorizar — quem decide continua sendo uma pessoa.</figcaption>
-      </figure>
+        </figure>
+        <div class="proof-link" aria-hidden="true"><span class="proof-link-dot"></span></div>
+        <figure class="proof-step">
+          <div class="proof-head"><span class="proof-num">03</span><h3>Executado e aprendido</h3></div>
+          <p class="proof-note">O trabalho autorizado roda. Evidência e julgamento levam o resultado para o que a Nieme sabe depois.</p>
+          <div class="proof-shot">
+            <div class="shot-placeholder">
+              <span class="shot-slot-label">QUADRO C</span>
+              <p class="shot-slot-desc">Estado da execução · resultado · Evidência · decisão da Revisão</p>
+              <code>proof-executed.png</code>
+            </div>
+          </div>
+        </figure>
+      </div>
+      <figcaption class="proof-caption">Produto real, recortado. O site emoldura a história; nunca edita o que o produto diz.</figcaption>
     </section>
 
     <!-- SECTION 0 — THE JOB TO BE DONE -->
@@ -124,16 +157,28 @@
         <h2>A IA já produz mais trabalho.<br>As pessoas ainda carregam a coordenação.</h2>
         <p>O modelo já não é o gargalo. O trabalho em volta dele é.</p>
       </div>
-      <ul class="jtbd-list">
-        <li>Perceber que algo mudou</li>
-        <li>Reunir o contexto que importa</li>
-        <li>Decidir o que deve acontecer</li>
-        <li>Orientar a IA</li>
-        <li>Mover resultados entre sistemas</li>
-        <li>Acompanhar o que foi decidido</li>
-        <li>Reconstruir o mesmo contexto da próxima vez</li>
-      </ul>
-      <p class="jtbd-close">A Nieme fecha esse ciclo.</p>
+      <div class="coord">
+        <div class="coord-chain">
+          <div class="coord-step" data-decay="1"><span class="coord-i">1</span>Perceber que algo mudou</div>
+          <div class="coord-seam" aria-hidden="true"></div>
+          <div class="coord-step" data-decay="2"><span class="coord-i">2</span>Reunir o contexto</div>
+          <div class="coord-seam" aria-hidden="true"></div>
+          <div class="coord-step" data-decay="3"><span class="coord-i">3</span>Decidir o que deve acontecer</div>
+          <div class="coord-seam" aria-hidden="true"></div>
+          <div class="coord-step" data-decay="4"><span class="coord-i">4</span>Orientar a IA</div>
+          <div class="coord-seam" aria-hidden="true"></div>
+          <div class="coord-step" data-decay="5"><span class="coord-i">5</span>Mover o resultado</div>
+          <div class="coord-seam" aria-hidden="true"></div>
+          <div class="coord-step" data-decay="6"><span class="coord-i">6</span>Acompanhar</div>
+          <div class="coord-seam" aria-hidden="true"></div>
+          <div class="coord-step coord-step--lost" data-decay="7"><span class="coord-i">7</span>Reconstruir o contexto da próxima vez</div>
+        </div>
+        <p class="coord-burden">Cada etapa é a atenção de uma pessoa. A corrente se desfaz no fim — e o próximo pedido recomeça tudo.</p>
+      </div>
+      <div class="coord-close">
+        <span class="coord-close-ring" aria-hidden="true"></span>
+        <p class="jtbd-close">A Nieme fecha esse ciclo.</p>
+      </div>
     </section>
 
     <!-- SECTION 1 — TWO WAYS WORK STARTS -->
@@ -155,12 +200,16 @@
           <p>Slack, Drive, GitHub, e-mail, um ERP ou outro sistema conectado produz uma observação relevante. A Nieme percebe sem precisar ser avisada.</p>
         </div>
       </div>
-      <div class="entrypaths-converge" aria-label="Os dois caminhos entram no mesmo runtime">
-        <span class="converge-node">Runtime</span>
-        <span class="converge-arrow">→</span>
-        <span class="converge-node">Contexto</span>
-        <span class="converge-arrow">→</span>
-        <span class="converge-node converge-node--end">Trabalho governado</span>
+      <div class="bifurcate" aria-label="Os dois caminhos entram no mesmo runtime">
+        <svg class="bifurcate-svg" viewBox="0 0 720 90" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M120 4 C120 52, 360 38, 360 86" fill="none" stroke="url(#bg1)" stroke-width="1.5"/>
+          <path d="M600 4 C600 52, 360 38, 360 86" fill="none" stroke="url(#bg1)" stroke-width="1.5"/>
+          <defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#7b4dff" stop-opacity=".15"/>
+            <stop offset="100%" stop-color="#7ee7ff" stop-opacity=".85"/>
+          </linearGradient></defs>
+        </svg>
+        <div class="bifurcate-out">Os dois viram trabalho governado</div>
       </div>
     </section>
 
@@ -194,19 +243,29 @@
         <h2>Não mova o trabalho. Conecte-o.</h2>
         <p>Seus desenvolvedores podem continuar no GitHub. Documentos podem continuar no Drive ou no OneDrive. Times podem continuar no Slack. Agentes podem continuar nos seus próprios runtimes. A Nieme preserva o contexto, a autoridade, as evidências e os resultados entre todos eles.</p>
       </div>
-      <div class="crosssystem-band">
-        <div class="xs-row">
-          <span class="xs-sys">Slack</span>
-          <span class="xs-sys">Google Drive</span>
-          <span class="xs-sys">OneDrive</span>
-          <span class="xs-sys">GitHub</span>
-          <span class="xs-sys">Agentes externos</span>
-          <span class="xs-sys">Pessoas</span>
-        </div>
-        <div class="xs-down" aria-hidden="true">↓</div>
-        <div class="xs-runtime">NIEME RUNTIME</div>
-        <div class="xs-caption">contexto · autoridade · evidências · resultados, preservados entre sistemas</div>
+      <div class="constellation">
+        <span class="cst-orbit" aria-hidden="true"></span>
+        <span class="cst-spoke" style="--a:-90deg" aria-hidden="true"></span>
+        <span class="cst-spoke" style="--a:-30deg" aria-hidden="true"></span>
+        <span class="cst-spoke" style="--a:30deg" aria-hidden="true"></span>
+        <span class="cst-spoke" style="--a:90deg" aria-hidden="true"></span>
+        <span class="cst-spoke" style="--a:150deg" aria-hidden="true"></span>
+        <span class="cst-spoke" style="--a:210deg" aria-hidden="true"></span>
+        <span class="cst-pulse" style="--a:-90deg;--d:0.00s" aria-hidden="true"></span>
+        <span class="cst-pulse" style="--a:-30deg;--d:0.55s" aria-hidden="true"></span>
+        <span class="cst-pulse" style="--a:30deg;--d:1.10s" aria-hidden="true"></span>
+        <span class="cst-pulse" style="--a:90deg;--d:1.65s" aria-hidden="true"></span>
+        <span class="cst-pulse" style="--a:150deg;--d:2.20s" aria-hidden="true"></span>
+        <span class="cst-pulse" style="--a:210deg;--d:2.75s" aria-hidden="true"></span>
+        <div class="cst-core"><span>NIEME<br>RUNTIME</span></div>
+        <span class="cst-node" style="--a:-90deg">Pessoas</span>
+        <span class="cst-node" style="--a:-30deg">GitHub</span>
+        <span class="cst-node" style="--a:30deg">Agentes externos</span>
+        <span class="cst-node" style="--a:90deg">Slack</span>
+        <span class="cst-node" style="--a:150deg">OneDrive</span>
+        <span class="cst-node" style="--a:210deg">Google Drive</span>
       </div>
+      <div class="cst-caption">contexto · autoridade · evidências · resultados, preservados entre sistemas</div>
       <p class="crosssystem-note">As capacidades nativas da Nieme estão disponíveis quando você quiser. Ferramentas externas são participantes de primeira classe, não alvos de migração. A disponibilidade de cada conector varia — conecte o que você usa, quando estiver pronto.</p>
     </section>
 
@@ -217,37 +276,30 @@
         <h2>Trabalho que você consegue passar adiante.</h2>
         <p>O trabalho consequente ganha uma identidade durável, para que seu time gerencie um resultado em vez de uma sequência de prompts — e ninguém precise remontar a história depois.</p>
       </div>
-      <div class="governed-points">
-        <div class="governed-point"><strong>Dá para ver para que serve.</strong> O objetivo, os limites e quem aprova são declarados antes de o trabalho rodar — não remontados de um chat depois.</div>
-        <div class="governed-point"><strong>Dá para ver o que de fato aconteceu.</strong> O que rodou, o que produziu e o registro por trás disso continuam presos ao próprio trabalho.</div>
-        <div class="governed-point"><strong>Dá para passar para outra pessoa.</strong> Um mês depois, o trabalho ainda se explica — para um colega, um auditor, ou para você.</div>
-      </div>
-
-      <!--
-        ================= PRODUCT SCREENSHOT SLOT 2 =================
-        Asset:   assets/shots/conversation-to-governed-operation.png
-        Frame:   16 / 10, up to 1280px. Deliver at >= 2400px wide.
-        Content: ordinary language in a conversation becoming a governed
-                 Operation Draft — objective, capability, deliverable,
-                 owner, approval path, and the action that governs it.
-        Blocked on: (1) DRAFT-PROJECT-BINDING-001 fixed, so the Draft is
-                 Project-bound in the frame; (2) canonical typography work
-                 landed. Do NOT ship the investor-pack A1 capture here.
-        TO SWAP: replace .shot-placeholder with <img>.
-        =============================================================
-      -->
-      <figure class="shot shot--mid" data-asset-slot="conversation-to-governed-operation">
-        <div class="shot-frame">
-          <div class="shot-placeholder">
-            <span class="shot-slot-label">PRODUCT SCREENSHOT SLOT</span>
-            <p class="shot-slot-title">Conversa → Operação governada</p>
-            <p class="shot-slot-desc">Linguagem comum vira um Rascunho com objetivo, responsável e caminho de aprovação</p>
-            <code>assets/shots/conversation-to-governed-operation.png</code>
-            <span class="shot-slot-spec">16:10 · ≥2400px · aguardando recaptura</span>
+      <div class="governed-split">
+        <div class="governed-points">
+          <div class="governed-point"><strong>Dá para ver para que serve.</strong> O objetivo, os limites e quem aprova são declarados antes de o trabalho rodar — não remontados de um chat depois.</div>
+          <div class="governed-point"><strong>Dá para ver o que de fato aconteceu.</strong> O que rodou, o que produziu e o registro por trás disso continuam presos ao próprio trabalho.</div>
+          <div class="governed-point"><strong>Dá para passar para outra pessoa.</strong> Um mês depois, o trabalho ainda se explica — para um colega, um auditor, ou para você.</div>
+        </div>
+        <div class="ledger-visual card-surface">
+          <div class="timeline-label-top">UMA PEÇA DE TRABALHO GOVERNADO</div>
+          <div class="timeline-track">
+            <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-info">
+              <span class="timeline-step-label">Proposto</span><span class="timeline-step-sub">Um objetivo, com limites</span></div></div>
+            <div class="timeline-connector-line"></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-info">
+              <span class="timeline-step-label">Autorizado</span><span class="timeline-step-sub">Uma pessoa ou uma política permite</span></div></div>
+            <div class="timeline-connector-line"></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-info">
+              <span class="timeline-step-label">Executado</span><span class="timeline-step-sub">Por qualquer executor que sirva</span></div></div>
+            <div class="timeline-connector-line"></div>
+            <div class="timeline-item"><div class="timeline-dot timeline-dot--active"></div><div class="timeline-info">
+              <span class="timeline-step-label">Decidido</span><span class="timeline-step-sub">Aceito, devolvido ou rejeitado</span></div></div>
           </div>
         </div>
-        <figcaption>Um pedido em linguagem simples vira trabalho com objetivo declarado, responsável nomeado e caminho de aprovação explícito.</figcaption>
-      </figure>
+      </div>
+
     </section>
 
     <!-- SECTION 5 — EXECUTE NATIVE OR EXTERNAL -->
@@ -257,12 +309,19 @@
         <h2>Um Runtime. Qualquer executor.</h2>
         <p>A Nieme pode encaminhar o trabalho pelas suas próprias capacidades, por modelos de IA, agentes especializados, pessoas ou sistemas externos de execução. O executor pode mudar sem mudar a identidade institucional do trabalho.</p>
       </div>
-      <div class="executors-row">
-        <div class="executor card-surface">Capacidades da própria Nieme</div>
-        <div class="executor card-surface">Modelos de IA</div>
-        <div class="executor card-surface">Agentes especializados</div>
-        <div class="executor card-surface">Sistemas externos</div>
-        <div class="executor card-surface">Pessoas</div>
+      <div class="swap">
+        <div class="swap-socket">
+          <div class="swap-socket-label">O TRABALHO</div>
+          <div class="swap-socket-body">objetivo · autoridade · registro</div>
+        </div>
+        <div class="swap-bus" aria-hidden="true"><span class="swap-bus-line"></span><span class="swap-bus-plug"></span></div>
+        <div class="swap-slot" aria-label="interchangeable executors">
+          <div class="swap-unit is-active">Capacidades da própria Nieme</div>
+          <div class="swap-unit">Modelos de IA</div>
+          <div class="swap-unit">Agentes especializados</div>
+          <div class="swap-unit">Sistemas externos</div>
+          <div class="swap-unit">Pessoas</div>
+        </div>
       </div>
       <p class="executors-note">O trabalho mantém seu objetivo, sua autoridade e seu registro, seja qual for quem o executa.</p>
     </section>
@@ -273,32 +332,28 @@
         <div class="eyebrow">NADA SAI POR CONTA DA NIEME</div>
         <h2>A execução não é o fim do trabalho.</h2>
       </div>
-      <p class="judgment-lead">A IA terminar não é a empresa aceitar. A Nieme mantém o que foi produzido, o registro por trás disso e a decisão da pessoa como três coisas separadas — para que "nós aprovamos isto" seja algo que você ainda consiga sustentar meses depois.</p>
-
-      <!--
-        ================= PRODUCT SCREENSHOT SLOT 3 =================
-        Asset:   assets/shots/evidence-and-review.png
-        Frame:   16 / 10, up to 1280px. Deliver at >= 2400px wide.
-        Content: the settled result, its Evidence, and the Review decision.
-                 The decision must be the most legible thing in the frame.
-        Blocked on: canonical typography work landed, then recapture.
-        TO SWAP: replace .shot-placeholder with <img>.
-        =============================================================
-      -->
-      <figure class="shot shot--mid" data-asset-slot="evidence-and-review">
-        <div class="shot-frame">
-          <div class="shot-placeholder">
-            <span class="shot-slot-label">PRODUCT SCREENSHOT SLOT</span>
-            <p class="shot-slot-title">Evidência + Revisão</p>
-            <p class="shot-slot-desc">O resultado, o registro por trás dele e a decisão que uma pessoa toma</p>
-            <code>assets/shots/evidence-and-review.png</code>
-            <span class="shot-slot-spec">16:10 · ≥2400px · aguardando recaptura</span>
+      <div class="judgment-body">
+        <p class="judgment-lead">A IA terminar não é a empresa aceitar. A Nieme mantém o que foi produzido, o registro por trás disso e a decisão da pessoa como três coisas separadas — para que "nós aprovamos isto" seja algo que você ainda consiga sustentar meses depois.</p>
+        <div class="triptych">
+          <div class="tri">
+            <div class="tri-label">RESULTADO</div>
+            <p class="tri-is">O que a execução produziu.</p>
+            <p class="tri-not">Ainda não é a resposta da empresa.</p>
+          </div>
+          <div class="tri">
+            <div class="tri-label">EVIDÊNCIA</div>
+            <p class="tri-is">O registro que explica esse resultado.</p>
+            <p class="tri-not">Não é um julgamento sobre ele.</p>
+          </div>
+          <div class="tri tri--decide">
+            <div class="tri-label">DECISÃO</div>
+            <p class="tri-is">Uma pessoa aceita, devolve ou rejeita.</p>
+            <p class="tri-not">É aqui que o trabalho passa a ser da empresa.</p>
           </div>
         </div>
-        <figcaption>Aceitar, pedir alterações ou rejeitar — registrado contra a execução exata que a decisão julga.</figcaption>
-      </figure>
+      </div>
     </section>
-
+  
     <!-- SECTION 7 — LEARNING -->
     <section class="learning">
       <div class="section-title">
@@ -306,14 +361,21 @@
         <h2>O que aconteceu muda o que a Nieme sabe da próxima vez.</h2>
         <p>Resultados aceitos, Evidências de apoio, Decisões e observações duráveis podem fortalecer o estado institucional usado no trabalho futuro. Nem tudo vira conhecimento — o que uma pessoa aceita é o que segue adiante.</p>
       </div>
-      <div class="learning-chain">
-        <span class="lc-node">Resultado aceito</span>
-        <span class="lc-arrow">→</span>
-        <span class="lc-node">Estado durável</span>
-        <span class="lc-arrow">→</span>
-        <span class="lc-node lc-node--end">Contexto mais forte na próxima</span>
-      </div>
-    </section>
+      <div class="cycle">
+        <svg class="cycle-ring" viewBox="0 0 480 440" aria-hidden="true">
+          <circle cx="240" cy="220" r="160" fill="none" stroke="#ffffff24" stroke-width="1.5"/>
+          <circle class="cycle-arc" cx="240" cy="220" r="160" fill="none" stroke="#7ee7ff" stroke-width="2"
+                  stroke-linecap="round" stroke-dasharray="250 755"/>
+        </svg>
+        <span class="cycle-tick" style="--a:-30deg" aria-hidden="true"></span>
+        <span class="cycle-tick" style="--a:90deg" aria-hidden="true"></span>
+        <span class="cycle-tick" style="--a:210deg" aria-hidden="true"></span>
+        <div class="cycle-mid">a próxima peça de trabalho<br>começa mais adiante</div>
+        <span class="cycle-label" style="--a:-90deg">Resultado aceito</span>
+        <span class="cycle-label" style="--a:30deg">Estado durável</span>
+        <span class="cycle-label cycle-label--gain" style="--a:150deg">Contexto mais forte</span>
+    </div>
+  </section>
 
     <!-- SOUL LINE -->
     <div class="soul-band">
@@ -328,20 +390,27 @@
           <h2>O Workspace é a superfície.<br>O Runtime é a camada por trás dela.</h2>
           <p>Sua equipe trabalha no Workspace. O Runtime persiste por baixo — e alcança os sistemas onde o trabalho já vive. <a href="/pt-br/how-it-works">Veja a arquitetura →</a></p>
         </div>
-        <div class="rv-diagram">
-          <div class="rv-tier rv-tier--top">
-            <span class="rv-chip">Sistemas conectados</span>
-            <span class="rv-chip">Pessoas</span>
-            <span class="rv-chip">Modelos e agentes</span>
+        <div class="rvx">
+          <div class="rvx-row">
+            <div class="rvx-side rvx-side--in">
+              <span>Sistemas conectados</span><span>Pessoas</span><span>Modelos e agentes</span>
+            </div>
+            <div class="rvx-core">
+              <span class="rvx-ring" aria-hidden="true"></span>
+              <span class="rvx-ring rvx-ring--2" aria-hidden="true"></span>
+              <div class="rvx-core-name">NIEME<br>RUNTIME</div>
+              <div class="rvx-verbs">observar · contexto · governar<br>orquestrar · reconciliar</div>
+            </div>
+            <div class="rvx-side rvx-side--out">
+              <span>Trabalho governado</span><span>Execução</span><span>Decisões</span>
+            </div>
+            <div class="rvx-flow rvx-flow--l" aria-hidden="true"></div>
+            <div class="rvx-flow rvx-flow--r" aria-hidden="true"></div>
           </div>
-          <div class="rv-down" aria-hidden="true">↓</div>
-          <div class="rv-core">
-            <div class="rv-core-name">NIEME RUNTIME</div>
-            <div class="rv-core-verbs">observar · contexto · governar · orquestrar · reconciliar</div>
-          </div>
-          <div class="rv-down" aria-hidden="true">↓</div>
-          <div class="rv-tier rv-tier--bottom">
-            <span class="rv-chip rv-chip--state">Estado durável da Nieme</span>
+          <div class="rvx-substrate">
+            <span class="rvx-return" aria-hidden="true"></span>
+            <span class="rvx-substrate-label">ESTADO DURÁVEL DA NIEME</span>
+            <span class="rvx-substrate-note">alimenta o próximo ciclo</span>
           </div>
         </div>
       </div>
