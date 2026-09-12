@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nieme | The Runtime for AI Work</title>
-  <meta name="description" content="Nieme is the runtime for AI work. It watches the systems your company already uses, turns meaningful changes and requests into governed work, and carries evidence, decisions and outcomes forward across people, models and agents." />
+  <meta name="description" content="Get more work done with AI without adding more coordination overhead. Nieme watches the systems your company already uses, turns meaningful changes and requests into governed work, and carries context, decisions and outcomes forward." />
   <meta property="og:title" content="Nieme | The Runtime for AI Work" />
   <meta property="og:description" content="Nieme watches the systems your company already uses, turns meaningful changes and requests into governed work, and carries evidence, decisions and outcomes forward — across people, models and agents." />
   <meta property="og:type" content="website" />
@@ -65,7 +65,7 @@
       <div class="hero-text-col">
         <div class="kicker">THE RUNTIME FOR AI WORK</div>
         <h1>Automate more work.<br>Keep your company in control.</h1>
-        <p class="lede">Nieme watches the systems your company already uses, turns meaningful changes and requests into governed work, and carries evidence, decisions and outcomes forward — across people, models and agents.</p>
+        <p class="lede">Get more work done with AI without adding more coordination overhead. Nieme watches the systems your company already uses, turns meaningful changes and requests into governed work, and carries context, decisions and outcomes forward.</p>
         <div class="actions">
           <button class="button primary" type="button" data-invite-trigger>Request Invite</button>
           <a class="button ghost" href="/how-it-works">See how it works →</a>
@@ -74,29 +74,66 @@
     </section>
 
     <!--
-      ================= PRODUCT SCREENSHOT SLOT 1 =================
-      Asset:   assets/shots/signals-context-suggested-work.png
-      Frame:   16 / 9, full-bleed width up to 1680px. Deliver at >= 2560px wide.
-      Content: Signals — the chain Observed -> Related -> Context changed ->
-               Suggested work -> human governs must be readable at desktop width.
-      Source:  recapture from the marketing Runtime AFTER Track B's Signals
-               experience merges to canonical main.
-      CURRENT: a PROVISIONAL capture of Track B's in-progress Signals UI is in
-               the frame so the composition can be judged. It is NOT a production
-               asset: Track B is still being certified, and the client name in the
-               original was replaced ("Acme Payments"). MUST be swapped before merge.
-      TO SWAP: replace the <img> src with the recaptured asset and delete the
-               .shot-provisional span. Nothing else on the page changes.
-      =============================================================
+      ================= PRODUCT SCREENSHOT SLOT 1 (TWO FRAMES) =================
+      Assets:  assets/shots/signals-observed.png
+               assets/shots/signals-context-related.png
+      Frame:   16 / 9 each, stacked, full-bleed up to 1680px. >= 2560px wide.
+      Why two: Signals correctly separates Overview / Context / Related into tabs.
+               The product design is preserved; the WEBSITE uses two truthful
+               captures to carry the chain. Do not build a combined product view
+               for marketing.
+      Chain:   frame 1 Observed -> frame 2 Related + Context changed -> suggested
+               work -> a person governs it.
+      Source:  recapture from the marketing Runtime after Track B merges, using
+               SYNTHETIC company / project / customer names AT CAPTURE TIME.
+               The pixel-patched reference is never published.
+      TO SWAP: replace each .shot-placeholder with its <img>. Nothing else moves.
+      ==========================================================================
     -->
     <section class="shotband shotband--hero">
-      <figure class="shot shot--wide" data-asset-slot="signals-context-suggested-work">
-        <div class="shot-frame">
-          <img src="/assets/shots/PROVISIONAL-signals-context-suggested-work.jpg" alt="Nieme Signals: a Slack message and two document changes observed in connected systems, with the selected observation showing what happened, why it matters, and that it is recorded but not raised as a Signal">
-          <span class="shot-provisional">PROVISIONAL · Track B in progress · replace on merge</span>
+      <figure class="shot shot--wide" data-asset-slot="signals-chain">
+        <div class="shot-pair">
+          <div class="shot-frame" data-asset-slot="signals-observed">
+            <div class="shot-placeholder">
+              <span class="shot-slot-label">PRODUCT SCREENSHOT SLOT · 1 OF 2</span>
+              <p class="shot-slot-title">Observed</p>
+              <p class="shot-slot-desc">A connected system changed. What Nieme saw, and why it matters — recorded, not authorized.</p>
+              <code>assets/shots/signals-observed.png</code>
+              <span class="shot-slot-spec">16:9 · ≥2560px · synthetic data at capture</span>
+            </div>
+          </div>
+          <div class="shot-pair-link" aria-hidden="true">then</div>
+          <div class="shot-frame" data-asset-slot="signals-context-related">
+            <div class="shot-placeholder">
+              <span class="shot-slot-label">PRODUCT SCREENSHOT SLOT · 2 OF 2</span>
+              <p class="shot-slot-title">Related · Context changed · Suggested work</p>
+              <p class="shot-slot-desc">What it relates to, what changed in context, and the work Nieme proposes — which a person still has to govern.</p>
+              <code>assets/shots/signals-context-related.png</code>
+              <span class="shot-slot-spec">16:9 · ≥2560px · synthetic data at capture</span>
+            </div>
+          </div>
         </div>
         <figcaption>Nieme observes a change in a connected system, resolves what it relates to, and proposes governed work. Observing is not authorizing — a person still decides.</figcaption>
       </figure>
+    </section>
+
+    <!-- SECTION 0 — THE JOB TO BE DONE -->
+    <section class="jtbd">
+      <div class="section-title">
+        <div class="eyebrow">THE PROBLEM UNDERNEATH</div>
+        <h2>AI can do more work.<br>People are still carrying the coordination.</h2>
+        <p>The model is not the bottleneck any more. The work around it is.</p>
+      </div>
+      <ul class="jtbd-list">
+        <li>Notice that something changed</li>
+        <li>Gather the context that matters</li>
+        <li>Decide what should happen</li>
+        <li>Brief the AI</li>
+        <li>Move results between systems</li>
+        <li>Follow up on what was decided</li>
+        <li>Reconstruct the same context next time</li>
+      </ul>
+      <p class="jtbd-close">Nieme closes that loop.</p>
     </section>
 
     <!-- SECTION 1 — TWO WAYS WORK STARTS -->
@@ -127,45 +164,27 @@
       </div>
     </section>
 
-    <!-- SECTION 2 — THE RUNTIME LOOP -->
+    <!-- SECTION 2 — THE LOOP, AS OUTCOMES -->
     <section class="loop">
       <div class="section-title">
-        <div class="eyebrow">THE RUNTIME LOOP</div>
-        <h2>Observe. Understand. Govern.<br>Execute. Judge. Learn.</h2>
-        <p>Six stages, kept distinct on purpose. Collapsing them is how organizations lose track of what their AI actually did.</p>
+        <div class="eyebrow">WHAT THAT LOOKS LIKE</div>
+        <h2>What you get back.</h2>
       </div>
-      <div class="loop-grid">
-        <div class="loop-stage card-surface">
-          <div class="loop-stage-head"><span class="loop-stage-num">01</span><h3>Observe</h3></div>
-          <p>A connected system produces an observation. A Signal is what was observed — not an interpretation of it, and not an instruction.</p>
-          <div class="loop-stage-map"><span>Signal</span></div>
+      <div class="outcomes">
+        <div class="outcome card-surface">
+          <h3>Something changes.</h3>
+          <p class="outcome-lead">Nieme notices what matters.</p>
         </div>
-        <div class="loop-stage card-surface">
-          <div class="loop-stage-head"><span class="loop-stage-num">02</span><h3>Understand</h3></div>
-          <p>Nieme resolves what the observation relates to and what institutional context applies. Observation is not authority.</p>
-          <div class="loop-stage-map"><span>Context / State</span></div>
+        <div class="outcome card-surface">
+          <h3>The right work gets done.</h3>
+          <p class="outcome-lead">Context, authority and execution stay connected.</p>
         </div>
-        <div class="loop-stage card-surface">
-          <div class="loop-stage-head"><span class="loop-stage-num">03</span><h3>Govern</h3></div>
-          <p>Authority and policy decide what may happen. Suggested work is not authorized execution — proposing and permitting are separate acts.</p>
-          <div class="loop-stage-map"><span>Operation</span></div>
-        </div>
-        <div class="loop-stage card-surface">
-          <div class="loop-stage-head"><span class="loop-stage-num">04</span><h3>Execute</h3></div>
-          <p>Authorized work runs — through Nieme's own capabilities, a model, an agent, an external system, or a person.</p>
-          <div class="loop-stage-map"><span>Execution / Evidence</span></div>
-        </div>
-        <div class="loop-stage card-surface">
-          <div class="loop-stage-head"><span class="loop-stage-num">05</span><h3>Judge</h3></div>
-          <p>A person evaluates what was produced against the record supporting it. Review and Decision are governed acts, not generic feedback.</p>
-          <div class="loop-stage-map"><span>Review / Decision</span></div>
-        </div>
-        <div class="loop-stage card-surface loop-stage--last">
-          <div class="loop-stage-head"><span class="loop-stage-num">06</span><h3>Learn</h3></div>
-          <p>An accepted outcome can change the context future work starts from — only by becoming durable state, never by implication.</p>
-          <div class="loop-stage-map"><span>Updated state</span></div>
+        <div class="outcome card-surface">
+          <h3>The company gets smarter.</h3>
+          <p class="outcome-lead">Decisions and outcomes improve what happens next.</p>
         </div>
       </div>
+      <p class="loop-more"><a href="/how-it-works">See the Runtime →</a></p>
     </section>
 
     <!-- SECTION 3 — KEEP THE WORK WHERE IT ALREADY LIVES -->
@@ -194,20 +213,15 @@
     <!-- SECTION 4 — GOVERNED WORK -->
     <section class="governed">
       <div class="section-copy section-title">
-        <div class="eyebrow">THE DURABLE IDENTITY OF CONSEQUENTIAL WORK</div>
-        <h2>An Operation is more than a prompt.</h2>
-        <p>When work is consequential, it gets a durable identity that holds its parts together — so people manage an outcome instead of a chain of prompts.</p>
+        <div class="eyebrow">WHEN THE WORK MATTERS</div>
+        <h2>Work you can hand to someone else.</h2>
+        <p>Consequential work gets a durable identity, so your team manages an outcome instead of a chain of prompts — and nobody has to rebuild the story later.</p>
       </div>
-      <div class="anatomy-grid">
-        <div class="anatomy-item card-surface"><span class="anatomy-key">Objective</span><span class="anatomy-val">What this work is for.</span></div>
-        <div class="anatomy-item card-surface"><span class="anatomy-key">Context</span><span class="anatomy-val">The institutional material it may draw on.</span></div>
-        <div class="anatomy-item card-surface"><span class="anatomy-key">Authority</span><span class="anatomy-val">What is permitted, and who decides.</span></div>
-        <div class="anatomy-item card-surface"><span class="anatomy-key">Execution state</span><span class="anatomy-val">What has actually happened so far.</span></div>
-        <div class="anatomy-item card-surface"><span class="anatomy-key">Evidence</span><span class="anatomy-val">The record supporting what was produced.</span></div>
-        <div class="anatomy-item card-surface"><span class="anatomy-key">Review</span><span class="anatomy-val">The human judgment applied to it.</span></div>
-        <div class="anatomy-item card-surface"><span class="anatomy-key">Outcome</span><span class="anatomy-val">What was accepted, and what follows from it.</span></div>
+      <div class="governed-points">
+        <div class="governed-point"><strong>You can see what it is for.</strong> The objective, the boundaries and who approves are stated before the work runs — not reconstructed from a chat afterwards.</div>
+        <div class="governed-point"><strong>You can see what actually happened.</strong> What ran, what it produced and the record behind it stay attached to the work itself.</div>
+        <div class="governed-point"><strong>You can hand it to someone else.</strong> A month later, the work still explains itself — to a colleague, an auditor, or you.</div>
       </div>
-      <p class="governed-note">An Operation is not the whole system. Signals, Sources, Decisions, Policies, Evidence and durable institutional state exist in their own right — an Operation is how consequential work gets an identity.</p>
 
       <!--
         ================= PRODUCT SCREENSHOT SLOT 2 =================
@@ -256,24 +270,10 @@
     <!-- SECTION 6 — RESULT / EVIDENCE / JUDGMENT -->
     <section class="judgment">
       <div class="section-copy section-title">
-        <div class="eyebrow">RESULT, EVIDENCE, DECISION</div>
+        <div class="eyebrow">NOTHING SHIPS ON NIEME'S SAY-SO</div>
         <h2>Execution is not the end of the work.</h2>
       </div>
-      <div class="judgment-triple">
-        <div class="judgment-card card-surface">
-          <div class="judgment-label">RESULT</div>
-          <p>What execution produced.</p>
-        </div>
-        <div class="judgment-card card-surface">
-          <div class="judgment-label">EVIDENCE</div>
-          <p>The supporting record used to evaluate what happened.</p>
-        </div>
-        <div class="judgment-card card-surface judgment-card--decision">
-          <div class="judgment-label">DECISION</div>
-          <p>What a person accepts, sends back, or rejects.</p>
-        </div>
-      </div>
-      <p class="judgment-note">A result is not evidence, and neither one is a decision. Keeping them apart is what lets someone say, later, why this was accepted.</p>
+      <p class="judgment-lead">AI finishing is not the same as the company accepting. Nieme keeps what was produced, the record behind it, and the person's decision as three separate things — so "we approved this" is something you can still stand behind months later.</p>
 
       <!--
         ================= PRODUCT SCREENSHOT SLOT 3 =================
@@ -320,30 +320,31 @@
       <p>Organizations don't become smarter because they have better AI. They become smarter because what they decided is still there the next time it matters.</p>
     </div>
 
-    <!-- RUNTIME VISUAL -->
-    <section class="runtimeviz">
-      <div class="section-title">
-        <div class="eyebrow">WHERE NIEME SITS</div>
-        <h2>The Workspace is the surface.<br>The Runtime is the layer behind it.</h2>
-        <p>Your team works in the Workspace. The Runtime is what persists underneath it — and what reaches the systems the work already lives in.</p>
+    <!-- RUNTIME VISUAL — compact architecture teaser -->
+    <section class="runtimeviz runtimeviz--teaser">
+      <div class="rv-teaser">
+        <div class="rv-teaser-copy">
+          <div class="eyebrow">UNDER IT ALL</div>
+          <h2>The Workspace is the surface.<br>The Runtime is the layer behind it.</h2>
+          <p>Your team works in the Workspace. The Runtime persists underneath — and reaches the systems the work already lives in. <a href="/how-it-works">See the architecture →</a></p>
+        </div>
+        <div class="rv-diagram">
+          <div class="rv-tier rv-tier--top">
+            <span class="rv-chip">Connected systems</span>
+            <span class="rv-chip">People</span>
+            <span class="rv-chip">Models &amp; agents</span>
+          </div>
+          <div class="rv-down" aria-hidden="true">↓</div>
+          <div class="rv-core">
+            <div class="rv-core-name">NIEME RUNTIME</div>
+            <div class="rv-core-verbs">observe · context · govern · orchestrate · reconcile</div>
+          </div>
+          <div class="rv-down" aria-hidden="true">↓</div>
+          <div class="rv-tier rv-tier--bottom">
+            <span class="rv-chip rv-chip--state">Durable Nieme state</span>
+          </div>
+        </div>
       </div>
-      <div class="rv-diagram">
-        <div class="rv-tier rv-tier--top">
-          <span class="rv-chip">Connected systems</span>
-          <span class="rv-chip">People</span>
-          <span class="rv-chip">Models &amp; agents</span>
-        </div>
-        <div class="rv-down" aria-hidden="true">↓</div>
-        <div class="rv-core">
-          <div class="rv-core-name">NIEME RUNTIME</div>
-          <div class="rv-core-verbs">observe · context · govern · orchestrate · reconcile</div>
-        </div>
-        <div class="rv-down" aria-hidden="true">↓</div>
-        <div class="rv-tier rv-tier--bottom">
-          <span class="rv-chip rv-chip--state">Durable Nieme state · <code>.on</code></span>
-        </div>
-      </div>
-      <p class="rv-note">Nieme runs as a cloud Runtime today. <a href="/how-it-works">See the architecture →</a></p>
     </section>
 
     <!-- TRUST BAR -->

@@ -828,8 +828,52 @@ h1,h2,h3{text-wrap:balance}
 .composer-field--observed{border-style:dashed}
 .composer-observed{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);border:1px solid #7ee7ff40;border-radius:999px;padding:4px 12px;white-space:nowrap}
 .vs-lede{max-width:1000px;margin:0 0 30px;font-size:clamp(17px,1.55vw,20px);line-height:1.6;color:var(--muted)}
-/* Provisional asset marker — removed when the real recapture lands */
-.shot-frame{position:relative}
-.shot-provisional{position:absolute;right:0;bottom:0;z-index:2;font-size:11px;letter-spacing:.16em;
-  text-transform:uppercase;color:#0b0b10;background:#ffd166;padding:7px 14px;font-weight:700;
-  border-top-left-radius:10px}
+
+/* --- REPOSITION-001 R2: outcome-first homepage ------------------------------ */
+/* job to be done */
+.jtbd,.outcomes,.governed-points{padding:0}
+.jtbd{padding:var(--section-padding) var(--section-inline)}
+.jtbd-list{max-width:1440px;margin:0 auto;padding:0;list-style:none;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 34px}
+.jtbd-list li{position:relative;padding:13px 0 13px 30px;border-bottom:1px solid var(--line);
+  font-size:16.5px;color:#c3c6d6}
+.jtbd-list li::before{content:"";position:absolute;left:6px;top:22px;width:7px;height:7px;
+  border-radius:50%;border:1px solid #ffffff3d}
+.jtbd-close{max-width:1440px;margin:38px auto 0;font-size:clamp(26px,3vw,40px);letter-spacing:-.04em;
+  line-height:1.1;color:#fff;font-weight:420}
+
+/* three customer-visible outcomes */
+.outcomes{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.outcome{padding:34px 34px 30px}
+.outcome h3{margin:0 0 10px;font-size:clamp(23px,2.2vw,29px);letter-spacing:-.035em;font-weight:440;line-height:1.15}
+.outcome-lead{margin:0;font-size:17px;line-height:1.5;color:var(--muted)}
+.loop-more{max-width:1440px;margin:32px auto 0}
+.loop-more a{color:var(--cyan);text-decoration:none;font-size:16px}
+
+/* governed work — consequences, not the data model */
+.governed-points{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+.governed-point{padding:22px 0;border-top:1px solid var(--line);font-size:17px;line-height:1.55;color:var(--muted)}
+.governed-point:last-child{border-bottom:1px solid var(--line)}
+.governed-point strong{color:#eef0f7;font-weight:560}
+
+.judgment-lead{max-width:900px;margin:0 auto;font-size:clamp(18px,1.7vw,22px);line-height:1.55;
+  color:#c3c6d6;text-align:center}
+
+/* two-frame screenshot chain */
+.shot-pair{display:flex;flex-direction:column;gap:0}
+.shot-pair .shot-frame{aspect-ratio:16/9}
+.shot-pair-link{text-align:center;font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--purple);padding:14px 0}
+
+/* compact runtime teaser */
+.runtimeviz--teaser .rv-teaser{max-width:1440px;margin:0 auto;display:grid;
+  grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.runtimeviz--teaser .rv-teaser-copy h2{font-size:clamp(30px,3.2vw,46px);line-height:1.05;
+  letter-spacing:-.045em;font-weight:420;margin:0 0 18px}
+.runtimeviz--teaser .rv-teaser-copy p{margin:0;color:var(--muted);font-size:17px;line-height:1.6}
+.runtimeviz--teaser .rv-teaser-copy a{color:var(--cyan);text-decoration:none}
+.runtimeviz--teaser .rv-diagram{margin:0}
+.runtimeviz--teaser .rv-core{padding:20px 26px}
+
+@media (max-width:1080px){ .outcomes{grid-template-columns:minmax(0,1fr)}
+  .runtimeviz--teaser .rv-teaser{grid-template-columns:minmax(0,1fr);gap:38px} }
