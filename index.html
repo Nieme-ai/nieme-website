@@ -107,6 +107,27 @@
               <span class="thc-opmode-close" aria-hidden="true">×</span>
               <span class="thc-opmode-back">Return to Chat</span>
             </div>
+            <div class="composer-draft-unfold" aria-hidden="true">
+              <div class="cdu-head">
+                <div>
+                  <div class="cdu-kicker">/operation · draft.on</div>
+                  <div class="cdu-title">Update the Q3 revenue forecast and prepare a leadership brief</div>
+                  <div class="cdu-status">Operation workbench draft. No governed object has been created.</div>
+                </div>
+                <span class="cdu-close">Close</span>
+              </div>
+              <div class="cdu-body">
+                <div class="cdu-cell wide"><div class="cdu-label">Objective</div><div class="cdu-value">Rework the Q3 forecast on the approved renewal terms and produce a leadership brief that cites them.</div></div>
+                <div class="cdu-cell"><div class="cdu-label">Source signal</div><div class="cdu-value">Slack · #revenue · renewal terms agreed</div></div>
+                <div class="cdu-cell"><div class="cdu-label">Project</div><div class="cdu-value">Northstar Revenue</div></div>
+                <div class="cdu-cell"><div class="cdu-label">Outputs</div><div class="cdu-value">Q3 revenue forecast (spreadsheet)<br>Leadership brief (document)</div></div>
+                <div class="cdu-cell"><div class="cdu-label">Missing requirements</div><div class="cdu-value">None listed.</div></div>
+              </div>
+              <div class="cdu-actions">
+                <span class="cdu-action">Refine in Composer</span>
+                <span class="cdu-action">Open full workbench</span>
+              </div>
+            </div>
             <div class="thc-field">
               <span class="thc-attach" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5l-8.2 8.2a4.6 4.6 0 0 1-6.5-6.5l8.7-8.7a3 3 0 0 1 4.3 4.3l-8.7 8.7a1.5 1.5 0 0 1-2.1-2.1l7.9-7.9"/></svg></span>
               <span class="thc-text" aria-live="off"></span><span class="composer-cursor" aria-hidden="true"></span>
@@ -120,23 +141,6 @@
             <div class="thc-foot" aria-hidden="true">Theon remembers your projects and decisions.</div>
           </div>
 
-          <div class="thc-draft" aria-hidden="true">
-            <div class="thc-draft-seam" aria-hidden="true"></div>
-            <div class="thc-draft-head">
-              <span class="thc-draft-kind">OPERATION · draft.on</span>
-              <span class="thc-draft-state"></span>
-            </div>
-            <div class="thc-draft-title"></div>
-            <dl class="thc-draft-rows">
-              <div><dt>Project</dt><dd class="thc-d-project"></dd></div>
-              <div><dt>Deliverables</dt><dd class="thc-d-deliver"></dd></div>
-              <div><dt>Authority</dt><dd class="thc-d-auth"></dd></div>
-            </dl>
-            <div class="thc-draft-actions">
-              <span class="thc-draft-btn">Open workbench</span>
-              <span class="thc-draft-btn thc-draft-btn--primary">Approve &amp; Queue</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -196,11 +200,19 @@
           <div class="proof-head"><span class="proof-num">01</span><h3>Observed</h3></div>
           <p class="proof-note">Something changed. Nieme knows where it belongs before anyone has to brief it.</p>
           <div class="proof-shot">
-            <div class="shot-placeholder">
-              <span class="shot-slot-label">PROOF FRAME A · OBSERVED</span>
-              <p class="shot-slot-desc">Source and provider · the observed fact · provider event time and Nieme observed time · the Northstar Revenue relationship · why it matters · Raised as a Signal · no execution authority</p>
-              <code>proof-observed.png</code>
-            </div>
+            <!-- POC ONLY — NOT SHIPPABLE.
+                 This capture comes from the founder's live Runtime. The pilot customer
+                 name was pixel-patched in two places (the Signals list row and the
+                 Related panel). The R4 art direction forbids exactly this, and the
+                 visible caption under the rail says the site never edits what the
+                 product says. Both hold only because this is a preview for Product
+                 Authority. BEFORE MERGE this must be replaced by a recapture made with
+                 synthetic names from the start, in the marketing Runtime.
+                 Also unresolved: this Signal reads "Recorded, not raised as a Signal",
+                 while the frame-01 spec calls for "Raised as a Signal". This crop proves
+                 observation-without-authority rather than promotion — decide which claim
+                 frame 01 should make. A real channel identifier remains in the crop. -->
+            <img src="/assets/shots/proof-observed.png" alt="Nieme Signals: a Slack message observed in a selected channel, with its source, both timestamps, why it matters, and the status — recorded, not raised as a Signal." loading="lazy" width="1664" height="1248">
           </div>
         </figure>
         <div class="proof-link" aria-hidden="true"><span class="proof-link-dot"></span></div>

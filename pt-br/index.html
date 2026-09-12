@@ -107,6 +107,27 @@
               <span class="thc-opmode-close" aria-hidden="true">×</span>
               <span class="thc-opmode-back">Voltar ao Chat</span>
             </div>
+            <div class="composer-draft-unfold" aria-hidden="true">
+              <div class="cdu-head">
+                <div>
+                  <div class="cdu-kicker">/operation · draft.on</div>
+                  <div class="cdu-title">Atualizar a previsão de receita do T3 e preparar o brief da liderança</div>
+                  <div class="cdu-status">Rascunho do workbench de Operação. Nenhum objeto governado foi criado.</div>
+                </div>
+                <span class="cdu-close">Fechar</span>
+              </div>
+              <div class="cdu-body">
+                <div class="cdu-cell wide"><div class="cdu-label">Objetivo</div><div class="cdu-value">Refazer a previsão do T3 sobre os termos de renovação aprovados e produzir um brief da liderança que os cite.</div></div>
+                <div class="cdu-cell"><div class="cdu-label">Sinal de origem</div><div class="cdu-value">Slack · #receita · termos de renovação acordados</div></div>
+                <div class="cdu-cell"><div class="cdu-label">Projeto</div><div class="cdu-value">Northstar Revenue</div></div>
+                <div class="cdu-cell"><div class="cdu-label">Saídas</div><div class="cdu-value">Previsão de receita do T3 (planilha)<br>Brief da liderança (documento)</div></div>
+                <div class="cdu-cell"><div class="cdu-label">Requisitos ausentes</div><div class="cdu-value">Nenhum listado.</div></div>
+              </div>
+              <div class="cdu-actions">
+                <span class="cdu-action">Refinar no Composer</span>
+                <span class="cdu-action">Abrir workbench completo</span>
+              </div>
+            </div>
             <div class="thc-field">
               <span class="thc-attach" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5l-8.2 8.2a4.6 4.6 0 0 1-6.5-6.5l8.7-8.7a3 3 0 0 1 4.3 4.3l-8.7 8.7a1.5 1.5 0 0 1-2.1-2.1l7.9-7.9"/></svg></span>
               <span class="thc-text" aria-live="off"></span><span class="composer-cursor" aria-hidden="true"></span>
@@ -120,23 +141,6 @@
             <div class="thc-foot" aria-hidden="true">Theon lembra dos seus projetos e decisões.</div>
           </div>
 
-          <div class="thc-draft" aria-hidden="true">
-            <div class="thc-draft-seam" aria-hidden="true"></div>
-            <div class="thc-draft-head">
-              <span class="thc-draft-kind">OPERAÇÃO · draft.on</span>
-              <span class="thc-draft-state"></span>
-            </div>
-            <div class="thc-draft-title"></div>
-            <dl class="thc-draft-rows">
-              <div><dt>Projeto</dt><dd class="thc-d-project"></dd></div>
-              <div><dt>Entregáveis</dt><dd class="thc-d-deliver"></dd></div>
-              <div><dt>Autoridade</dt><dd class="thc-d-auth"></dd></div>
-            </dl>
-            <div class="thc-draft-actions">
-              <span class="thc-draft-btn">Abrir workbench</span>
-              <span class="thc-draft-btn thc-draft-btn--primary">Aprovar e Enfileirar</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -196,11 +200,10 @@
           <div class="proof-head"><span class="proof-num">01</span><h3>Observado</h3></div>
           <p class="proof-note">Algo mudou. A Nieme sabe onde aquilo pertence antes de alguém precisar explicar.</p>
           <div class="proof-shot">
-            <div class="shot-placeholder">
-              <span class="shot-slot-label">PROOF FRAME A · OBSERVED</span>
-              <p class="shot-slot-desc">Fonte e provedor · o fato observado · hora do evento no provedor e hora observada pela Nieme · a relação com Northstar Revenue · por que importa · Registrado como Sinal · sem autoridade de execução</p>
-              <code>proof-observed.png</code>
-            </div>
+            <!-- POC ONLY — NOT SHIPPABLE. See the note on the English page.
+                 Pilot customer name pixel-patched; must be replaced by a recapture made
+                 with synthetic names from the start before merge. -->
+            <img src="/assets/shots/proof-observed.png" alt="Sinais da Nieme: uma mensagem do Slack observada num canal selecionado, com a fonte, os dois horários, por que importa e o status — registrado, não elevado a Sinal." loading="lazy" width="1664" height="1248">
           </div>
         </figure>
         <div class="proof-link" aria-hidden="true"><span class="proof-link-dot"></span></div>

@@ -161,12 +161,7 @@
     const artName    = thcEl.querySelector('.thc-artifact-name');
     const artMeta    = thcEl.querySelector('.thc-artifact-meta');
     const artPrev    = thcEl.querySelector('.thc-artifact-preview');
-    const draftEl    = thcEl.querySelector('.thc-draft');
-    const dTitle     = thcEl.querySelector('.thc-draft-title');
-    const dState     = thcEl.querySelector('.thc-draft-state');
-    const dProject   = thcEl.querySelector('.thc-d-project');
-    const dDeliver   = thcEl.querySelector('.thc-d-deliver');
-    const dAuth      = thcEl.querySelector('.thc-d-auth');
+    const draftEl    = thcEl.querySelector('.composer-draft-unfold');
 
     const isPortuguese = document.documentElement.lang === 'pt-BR';
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -204,13 +199,7 @@
             operation: true,
             slash: '/operation',
             prompt: 'Atualizar a previsão de receita do T3 e preparar o brief da liderança',
-            draft: {
-              title: 'Atualizar a previsão de receita do T3 e preparar o brief da liderança',
-              state: 'Rascunho',
-              project: 'Northstar Revenue',
-              deliver: 'Previsão de receita (planilha) · Brief da liderança (documento)',
-              auth: 'Precisa de uma pessoa antes de rodar',
-            },
+            draft: true,
           },
         ]
       : [
@@ -241,13 +230,7 @@
             operation: true,
             slash: '/operation',
             prompt: 'Update the Q3 revenue forecast and prepare a leadership brief',
-            draft: {
-              title: 'Update the Q3 revenue forecast and prepare a leadership brief',
-              state: 'Draft',
-              project: 'Northstar Revenue',
-              deliver: 'Revenue forecast (spreadsheet) · Leadership brief (document)',
-              auth: 'Needs a person before it runs',
-            },
+            draft: true,
           },
         ];
 
@@ -266,13 +249,6 @@
         if (artName) artName.textContent = s.artifact.name;
         if (artMeta) artMeta.textContent = s.artifact.meta;
         if (artPrev) artPrev.innerHTML = s.artifact.rows.map((r) => '<span>' + r + '</span>').join('');
-      }
-      if (s.draft) {
-        if (dTitle) dTitle.textContent = s.draft.title;
-        if (dState) dState.textContent = s.draft.state;
-        if (dProject) dProject.textContent = s.draft.project;
-        if (dDeliver) dDeliver.textContent = s.draft.deliver;
-        if (dAuth) dAuth.textContent = s.draft.auth;
       }
     };
 
@@ -293,17 +269,6 @@
       draftEl && draftEl.classList.add('is-visible');
       thcEl.classList.remove('is-empty');
       return;
-    }
-
-    // the draft panel always reserves its space, so the Composer never moves
-    // between scenes — populate it once up front or the first loop is 43px short
-    const opScene = scenes.find((s) => s.draft);
-    if (opScene) {
-      if (dTitle) dTitle.textContent = opScene.draft.title;
-      if (dState) dState.textContent = opScene.draft.state;
-      if (dProject) dProject.textContent = opScene.draft.project;
-      if (dDeliver) dDeliver.textContent = opScene.draft.deliver;
-      if (dAuth) dAuth.textContent = opScene.draft.auth;
     }
 
     let sceneIdx = 0;
