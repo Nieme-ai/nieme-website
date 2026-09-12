@@ -148,7 +148,7 @@
   };
 
   const initHeroComposer = () => {
-    const thcEl = document.querySelector('.thc');
+    const thcEl = document.querySelector('.rtc');
     const textEl = document.querySelector('.thc-text');
     if (!thcEl || !textEl) return;
 
@@ -170,7 +170,17 @@
     // Both entry modes run the same arc: Context -> governed work -> authority -> execution.
     // What differs is where authority comes from, and therefore whether anything runs.
     const scenes = isPortuguese
-      ? [
+      ? [          {
+            mode: 'Algo muda', kind: 'Algo mudou', observed: true,
+            context: 'Acme Payments · #receita',
+            entry: 'Slack · #receita · termos de renovação acordados',
+            rows: [['Observado, não autorizado','a observação não implica promoção','done'],
+                   ['Contexto reunido','relacionado a Northstar Revenue','done'],
+                   ['Trabalho governado preparado','Operação draft.on · aguardando','done'],
+                   ['Aguardando uma pessoa','nada roda sem autoridade','held']],
+            draft: true,
+          },
+
           {
             mode: 'Alguém pede', kind: 'Alguém pediu',
             context: 'Northstar Revenue · 3 fontes',
@@ -183,18 +193,18 @@
             artifact: {name:'previsao-receita-T3.xlsx', meta:'Planilha · 5 abas · 48 KB',
               rows:['Trimestre','Contratado','Δ renovação','T1','1.240.000','—','T2','1.310.000','—','T3','1.546.000','+18%']},
           },
-          {
-            mode: 'Algo muda', kind: 'Algo mudou', observed: true,
-            context: 'Acme Payments · #receita',
-            entry: 'Slack · #receita · termos de renovação acordados',
-            rows: [['Observado, não autorizado','a observação não implica promoção','done'],
-                   ['Contexto reunido','relacionado a Northstar Revenue','done'],
-                   ['Trabalho governado preparado','Operação draft.on · aguardando','done'],
-                   ['Aguardando uma pessoa','nada roda sem autoridade','held']],
+        ]
+      : [          {
+            mode: 'Something changes', kind: 'Something changed', observed: true,
+            context: 'Acme Payments · #revenue',
+            entry: 'Slack · #revenue · renewal terms agreed',
+            rows: [['Observed, not authorized','observation does not imply promotion','done'],
+                   ['Context assembled','related to Northstar Revenue','done'],
+                   ['Governed work prepared','Operation draft.on · awaiting','done'],
+                   ['Waiting on a person','nothing runs without authority','held']],
             draft: true,
           },
-        ]
-      : [
+
           {
             mode: 'Someone asks', kind: 'Someone asked',
             context: 'Northstar Revenue · 3 sources',
@@ -206,16 +216,6 @@
                    ['Executing','forecast and brief in production','running']],
             artifact: {name:'q3-revenue-forecast.xlsx', meta:'Spreadsheet · 5 sheets · 48 KB',
               rows:['Quarter','Contracted','Renewal Δ','Q1','1,240,000','—','Q2','1,310,000','—','Q3','1,546,000','+18%']},
-          },
-          {
-            mode: 'Something changes', kind: 'Something changed', observed: true,
-            context: 'Acme Payments · #revenue',
-            entry: 'Slack · #revenue · renewal terms agreed',
-            rows: [['Observed, not authorized','observation does not imply promotion','done'],
-                   ['Context assembled','related to Northstar Revenue','done'],
-                   ['Governed work prepared','Operation draft.on · awaiting','done'],
-                   ['Waiting on a person','nothing runs without authority','held']],
-            draft: true,
           },
         ];
 
@@ -283,9 +283,12 @@
         });
         const after = 300 + rowEls.length * 780;
         // execution produces something; an unauthorized observation produces a Draft and stops
-        if (s.artifact) at(after + 500, () => artEl && artEl.classList.add('is-visible'));
+        if (s.artifact) {
+          at(after + 500, () => artEl && artEl.classList.add('is-visible'));
+          at(after + 3900, () => artEl && artEl.classList.remove('is-visible'));
+        }
         if (s.draft) at(after + 400, () => draftEl && draftEl.classList.add('is-visible'));
-        at(after + (s.artifact ? 4600 : 4400), next);
+        at(after + (s.artifact ? 4800 : 4600), next);
       };
 
       const send = () => {

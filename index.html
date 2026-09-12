@@ -72,17 +72,20 @@
         </div>
       </div>
       <div class="hero-loop-col">
-        <div class="thc is-empty" data-scene="0">
-          <div class="thc-mode"><span class="hero-mode-dot" aria-hidden="true"></span><span class="hero-composer-mode">Summarize a thread</span></div>
+        <div class="rtc is-empty" data-scene="0">
 
-          <div class="thc-stage" aria-hidden="true">
-            <div class="stg-head"><span class="stg-live"></span>RUNTIME</div>
+          <div class="rtc-top">
+            <span class="rtc-mode"><span class="hero-mode-dot" aria-hidden="true"></span><span class="hero-composer-mode"></span></span>
+            <span class="rtc-live"><span class="stg-live" aria-hidden="true"></span>RUNTIME</span>
+          </div>
+
+          <div class="rtc-stage" aria-hidden="true">
             <div class="stg-entry"><span class="stg-entry-kind"></span><span class="stg-entry-text"></span></div>
             <div class="stg-rows">
-              <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
-              <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
-              <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
-              <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
+            <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
+            <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
+            <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
+            <div class="stg-row"><span class="stg-mark" aria-hidden="true"></span><span class="stg-label"></span><span class="stg-meta"></span></div>
             </div>
             <div class="thc-artifact">
               <div class="thc-artifact-top">
@@ -257,49 +260,38 @@
     <section class="jtbd">
       <div class="section-title">
         <div class="eyebrow">THE PROBLEM UNDERNEATH</div>
-        <h2>AI can do more work.<br>People are still carrying the coordination.</h2>
-        <p>The model is not the bottleneck any more. The work around it is.</p>
+        <h2>The task got automated.<br>The coordination didn&#39;t.</h2>
+        <p>AI can produce the answer. People still have to notice what changed, gather context, decide what should happen, brief the AI, move the result, follow up, and reconstruct the context next time.</p>
       </div>
-      <div class="handoff">
 
-        <div class="ho-lane">
-          <div class="ho-lane-head"><span class="ho-tag ho-tag--people">PEOPLE</span>carry the coordination</div>
-          <div class="ho-bar ho-bar--before">
-            <span class="ho-seg"><i>1</i>Notice something changed</span>
-            <span class="ho-seg"><i>2</i>Gather the context</span>
-            <span class="ho-seg"><i>3</i>Decide what should happen</span>
-            <span class="ho-seg"><i>4</i>Brief the AI</span>
-            <span class="ho-seg"><i>5</i>Move the result</span>
-            <span class="ho-seg"><i>6</i>Follow up</span>
-            <span class="ho-seg"><i>7</i>Reconstruct the context next time</span>
-          </div>
-          <p class="ho-note">Seven handoffs. Every one of them is a person&#39;s attention, and the next request starts the chain again.</p>
+      <div class="hx">
+        <div class="hx-lane">
+          <div class="hx-cap">TODAY</div>
+          <div class="hx-flow"><span class="hx-node hx-node--trigger">Something changes</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Notice</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Gather context</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Decide</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Brief AI</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Move result</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Follow up</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Reconstruct context</span></div>
+          <p class="hx-note"><span class="hx-note-mark" aria-hidden="true"></span>Every transition is carried by a person.</p>
         </div>
 
-        <div class="ho-shift" aria-hidden="true">
-          <span class="ho-shift-trace"></span>
-          <span class="ho-shift-dot"></span>
-        </div>
-
-        <div class="ho-lane">
-          <div class="ho-lane-head"><span class="ho-tag ho-tag--runtime">THE RUNTIME</span>carries the coordination</div>
-          <div class="ho-bar ho-bar--after">
-            <span class="ho-run" style="--span:2">Notices, and assembles the context</span>
-            <span class="ho-judge">
-              <i>3</i>
-              <span class="ho-judge-step">Decide what should happen</span>
-              <em>judgment stays here</em>
+        <div class="hx-lane hx-lane--after">
+          <div class="hx-cap hx-cap--runtime">WITH NIEME</div>
+          <div class="hx-flow">
+            <span class="hx-node hx-node--trigger">Something changes</span>
+            <span class="hx-hop hx-hop--clean" aria-hidden="true"></span>
+            <span class="hx-band">
+              <span class="hx-judge"><span class="hx-judge-stem" aria-hidden="true"></span>a person decides where it matters</span>
+              <span class="hx-band-label">NIEME RUNTIME</span>
+              <span class="hx-band-sub">notices · assembles context · prepares governed work · executes · reconciles</span>
             </span>
-            <span class="ho-run" style="--span:3">Prepares the governed work, moves the result, follows up</span>
-            <span class="ho-carried"><i>7</i>Context already carried</span>
+            <span class="hx-hop hx-hop--clean" aria-hidden="true"></span>
+            <span class="hx-node hx-node--out">Outcome</span>
+            <span class="hx-hop hx-hop--clean" aria-hidden="true"></span>
+            <span class="hx-node hx-node--carry">Context carries forward</span>
           </div>
-          <p class="ho-note">The same chain, carried by the Runtime — and the next request starts from what was decided, not from nothing.</p>
         </div>
-
       </div>
+
       <div class="coord-close">
         <span class="coord-close-trace" aria-hidden="true"></span>
-        <p class="jtbd-close">Nieme closes that loop.</p>
+        <p class="jtbd-close">Nieme carries the coordination. Your people keep the judgment.</p>
       </div>
     </section>
 
