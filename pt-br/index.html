@@ -72,13 +72,25 @@
         </div>
       </div>
       <div class="hero-loop-col">
-        <div class="hero-composer">
-          <div class="composer-label"><span class="hero-mode-dot" aria-hidden="true"></span><span class="hero-composer-mode">Alguém pede</span></div>
-          <div class="composer-field hero-composer-field">
-            <div class="hero-composer-inner">
-              <span class="hero-composer-text" aria-live="off"></span><span class="composer-cursor" aria-hidden="true"></span>
+        <div class="thc is-empty">
+          <div class="thc-mode"><span class="hero-mode-dot" aria-hidden="true"></span><span class="hero-composer-mode">Alguém pede</span></div>
+          <div class="thc-shell">
+            <div class="thc-context">
+              <span class="thc-context-key">Contexto</span>
+              <span class="thc-context-val"></span>
             </div>
-            <div class="composer-send" aria-hidden="true">↑</div>
+            <div class="thc-cmd" aria-hidden="true"><span class="thc-cmd-key">/</span><span>Digite / para escolher um comando</span></div>
+            <div class="thc-field">
+              <span class="thc-attach" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5l-8.2 8.2a4.6 4.6 0 0 1-6.5-6.5l8.7-8.7a3 3 0 0 1 4.3 4.3l-8.7 8.7a1.5 1.5 0 0 1-2.1-2.1l7.9-7.9"/></svg></span>
+              <span class="thc-text" aria-live="off"></span><span class="composer-cursor" aria-hidden="true"></span>
+              <span class="thc-placeholder">Comece algo. Digite / para comandos.</span>
+            </div>
+            <div class="thc-controls" aria-hidden="true">
+              <span class="thc-select">Padrão</span>
+              <span class="thc-select">GPT-5.6 Sol · high</span>
+              <span class="thc-send">↑</span>
+            </div>
+            <div class="thc-foot" aria-hidden="true">Theon lembra dos seus projetos e decisões.</div>
           </div>
           <div class="hero-status-lines" aria-hidden="true">
             <div class="hero-status-line"><span class="hero-status-dot"></span><span class="hero-status-label"></span></div>
@@ -86,24 +98,62 @@
             <div class="hero-status-line"><span class="hero-status-dot"></span><span class="hero-status-label"></span></div>
             <div class="hero-status-line"><span class="hero-status-dot"></span><span class="hero-status-label"></span></div>
           </div>
+          <div class="thc-draft" aria-hidden="true">
+            <div class="thc-draft-head">
+              <span class="thc-draft-kind">RASCUNHO DE OPERAÇÃO</span>
+              <span class="thc-draft-state"></span>
+            </div>
+            <div class="thc-draft-title"></div>
+            <div class="thc-draft-meta"></div>
+          </div>
         </div>
       </div>
     </section>
 
     <!--
-      ================= PRODUCT PROOF COMPOSITION =================
-      Three truthful crops from the marketing Runtime, art-directed by the site:
-      external labels, overlap, connecting path. Never altering product facts.
-        A assets/shots/proof-observed.png    provider, observed event, relationship,
-                                             "Why it matters", Watching only / Raised
-        B assets/shots/proof-governed.png    Context change, suggested work, Project
-                                             binding, objective, the governance point
-        C assets/shots/proof-executed.png    authorized Operation, execution state,
-                                             result/artifact, Evidence, Review decision
-      Capture brief: one coherent synthetic company story across all three, at high
-      resolution for cropping. No real customer names, ever. No pixel patching.
+      ================= PRODUCT-PROOF CAPTURE SPEC — R4 =================
+      ONE synthetic story across all three frames. Never a real customer.
+        Company : Acme Payments
+        Project : Northstar Revenue
+        Source  : a synthetic Slack revenue channel
+
+      Narrative: a material renewal update is observed -> Nieme relates it to
+      Northstar Revenue and existing institutional context -> Nieme proposes
+      governed work ("Update the Q3 revenue forecast and prepare a leadership
+      brief using the approved renewal terms") -> a person authorizes it ->
+      the Operation executes -> a real Artifact is produced -> Evidence stays
+      attached -> Review accepts -> the accepted outcome becomes eligible to
+      strengthen future Context.
+
+        A assets/shots/proof-observed.png   source/provider, the observed fact,
+                                            provider event time + Nieme observed
+                                            time, the Northstar Revenue relationship,
+                                            "Why it matters", Raised as a Signal, and
+                                            the explicit absence of execution authority.
+                                            A "Watching only" item may sit elsewhere in
+                                            the feed as contrast, but the FOCAL Signal
+                                            must be the one that continues the story.
+        B assets/shots/proof-governed.png   truthful crops from Context / Suggested Work
+                                            + Operation Draft: the Context change, the
+                                            suggested work, the correct Project binding,
+                                            the objective, boundaries/authority, and the
+                                            real governance decision point. This frame is
+                                            the visual centre of the sequence.
+        C assets/shots/proof-executed.png   truthful crops from a real execution +
+                                            Artifact + Evidence/Review: authorized and
+                                            executed state, the actual useful result,
+                                            supporting Evidence, the Review decision, the
+                                            accepted outcome, and future-context carry-
+                                            forward IF the product can truthfully show it
+                                            by capture time.
+
+      Capture at >= 2560px, device_scale_factor=1, then crop truthfully.
+      ALLOWED around a capture: crop, mask, frame, subtle shadow/glow, partial
+      overlap, external labels/callouts, zoomed inset, animated connector trace.
+      NEVER: rewrite text inside a capture, invent controls, fake state, conceal
+      contradictory state, or pixel-patch a real customer's data.
       TO SWAP: replace each .proof-shot .shot-placeholder with its <img>.
-      ============================================================
+      ===================================================================
     -->
     <section class="proof">
       <div class="section-title">
@@ -113,11 +163,11 @@
       <div class="proof-rail">
         <figure class="proof-step">
           <div class="proof-head"><span class="proof-num">01</span><h3>Observado</h3></div>
-          <p class="proof-note">A Nieme percebe o que mudou sem tratar observação como autoridade.</p>
+          <p class="proof-note">Algo mudou. A Nieme sabe onde aquilo pertence antes de alguém precisar explicar.</p>
           <div class="proof-shot">
             <div class="shot-placeholder">
-              <span class="shot-slot-label">QUADRO A</span>
-              <p class="shot-slot-desc">Sistema · evento observado · relação · por que importa · Só observando</p>
+              <span class="shot-slot-label">PROOF FRAME A · OBSERVED</span>
+              <p class="shot-slot-desc">Fonte e provedor · o fato observado · hora do evento no provedor e hora observada pela Nieme · a relação com Northstar Revenue · por que importa · Registrado como Sinal · sem autoridade de execução</p>
               <code>proof-observed.png</code>
             </div>
           </div>
@@ -125,11 +175,11 @@
         <div class="proof-link" aria-hidden="true"><span class="proof-link-dot"></span></div>
         <figure class="proof-step proof-step--raised">
           <div class="proof-head"><span class="proof-num">02</span><h3>Governado</h3></div>
-          <p class="proof-note">O contexto vira trabalho proposto. Uma pessoa ou política decide se pode rodar.</p>
+          <p class="proof-note">O contexto vira trabalho proposto. A autoridade decide se ele pode rodar.</p>
           <div class="proof-shot">
             <div class="shot-placeholder">
-              <span class="shot-slot-label">QUADRO B</span>
-              <p class="shot-slot-desc">Mudança de contexto · trabalho sugerido · Projeto · objetivo · o ponto de governança</p>
+              <span class="shot-slot-label">PROOF FRAME B · GOVERNED</span>
+              <p class="shot-slot-desc">A mudança de Contexto · o trabalho sugerido · o vínculo com Northstar Revenue · o objetivo · limites e autoridade · o ponto real de decisão de governança</p>
               <code>proof-governed.png</code>
             </div>
           </div>
@@ -137,11 +187,11 @@
         <div class="proof-link" aria-hidden="true"><span class="proof-link-dot"></span></div>
         <figure class="proof-step">
           <div class="proof-head"><span class="proof-num">03</span><h3>Executado e aprendido</h3></div>
-          <p class="proof-note">O trabalho autorizado roda. Evidência e julgamento levam o resultado para o que a Nieme sabe depois.</p>
+          <p class="proof-note">O trabalho roda. A evidência continua anexada. O que a empresa aceita melhora o que acontece depois.</p>
           <div class="proof-shot">
             <div class="shot-placeholder">
-              <span class="shot-slot-label">QUADRO C</span>
-              <p class="shot-slot-desc">Estado da execução · resultado · Evidência · decisão da Revisão</p>
+              <span class="shot-slot-label">PROOF FRAME C · EXECUTED &amp; LEARNED</span>
+              <p class="shot-slot-desc">Estado autorizado e executado · o Artefato real · a Evidência de apoio · a decisão de Review · o resultado aceito seguindo para o Contexto futuro</p>
               <code>proof-executed.png</code>
             </div>
           </div>
@@ -176,7 +226,7 @@
         <p class="coord-burden">Cada etapa é a atenção de uma pessoa. A corrente se desfaz no fim — e o próximo pedido recomeça tudo.</p>
       </div>
       <div class="coord-close">
-        <span class="coord-close-ring" aria-hidden="true"></span>
+        <span class="coord-close-trace" aria-hidden="true"></span>
         <p class="jtbd-close">A Nieme fecha esse ciclo.</p>
       </div>
     </section>
@@ -345,7 +395,7 @@
             <p class="tri-is">O registro que explica esse resultado.</p>
             <p class="tri-not">Não é um julgamento sobre ele.</p>
           </div>
-          <div class="tri tri--decide">
+          <div class="tri">
             <div class="tri-label">DECISÃO</div>
             <p class="tri-is">Uma pessoa aceita, devolve ou rejeita.</p>
             <p class="tri-not">É aqui que o trabalho passa a ser da empresa.</p>
@@ -353,7 +403,7 @@
         </div>
       </div>
     </section>
-  
+
     <!-- SECTION 7 — LEARNING -->
     <section class="learning">
       <div class="section-title">
@@ -361,21 +411,45 @@
         <h2>O que aconteceu muda o que a Nieme sabe da próxima vez.</h2>
         <p>Resultados aceitos, Evidências de apoio, Decisões e observações duráveis podem fortalecer o estado institucional usado no trabalho futuro. Nem tudo vira conhecimento — o que uma pessoa aceita é o que segue adiante.</p>
       </div>
-      <div class="cycle">
-        <svg class="cycle-ring" viewBox="0 0 480 440" aria-hidden="true">
-          <circle cx="240" cy="220" r="160" fill="none" stroke="#ffffff24" stroke-width="1.5"/>
-          <circle class="cycle-arc" cx="240" cy="220" r="160" fill="none" stroke="#7ee7ff" stroke-width="2"
-                  stroke-linecap="round" stroke-dasharray="250 755"/>
-        </svg>
-        <span class="cycle-tick" style="--a:-30deg" aria-hidden="true"></span>
-        <span class="cycle-tick" style="--a:90deg" aria-hidden="true"></span>
-        <span class="cycle-tick" style="--a:210deg" aria-hidden="true"></span>
-        <div class="cycle-mid">a próxima peça de trabalho<br>começa mais adiante</div>
-        <span class="cycle-label" style="--a:-90deg">Resultado aceito</span>
-        <span class="cycle-label" style="--a:30deg">Estado durável</span>
-        <span class="cycle-label cycle-label--gain" style="--a:150deg">Contexto mais forte</span>
-    </div>
-  </section>
+      <div class="carry">
+        <div class="carry-col">
+          <div class="carry-head">O QUE A NIEME SABIA</div>
+          <div class="carry-panel">
+            <div class="carry-panel-title">Northstar Revenue</div>
+            <ul class="carry-lines">
+            <li>Termos de renovação, v2</li>
+            <li>Método de previsão do T2</li>
+            <li>Financeiro é dono do número</li>
+            </ul>
+          </div>
+        </div>
+        <div class="carry-link" aria-hidden="true"><span class="carry-trace"></span><span class="carry-dot"></span></div>
+        <div class="carry-col">
+          <div class="carry-head">O QUE A EMPRESA ACEITOU</div>
+          <div class="carry-panel carry-panel--accept">
+            <div class="carry-accepted"><span class="carry-tick" aria-hidden="true"></span>Previsão de receita do T3 + brief da liderança</div>
+            <ul class="carry-proof">
+              <li><span class="carry-proof-k">Evidência</span>os termos de renovação em que foi construída</li>
+              <li><span class="carry-proof-k">Decisão</span>aceita por uma pessoa, 12 set</li>
+            </ul>
+          </div>
+        </div>
+        <div class="carry-link" aria-hidden="true"><span class="carry-trace"></span><span class="carry-dot carry-dot--2"></span></div>
+        <div class="carry-col">
+          <div class="carry-head">O QUE A NIEME SABE DA PRÓXIMA VEZ</div>
+          <div class="carry-panel">
+            <div class="carry-panel-title">Northstar Revenue</div>
+            <ul class="carry-lines">
+            <li>Termos de renovação, v2</li>
+            <li>Método de previsão do T2</li>
+            <li>Financeiro é dono do número</li>
+              <li class="carry-new"><span class="carry-new-rail" aria-hidden="true"></span>Método de previsão do T3, aprovado em 12 set</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="carry-note">O próximo pedido começa da quarta linha. Ninguém precisou lembrar, e ninguém precisou anotar.</p>
+    </section>
 
     <!-- SOUL LINE -->
     <div class="soul-band">

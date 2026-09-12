@@ -651,7 +651,16 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
   .hero-loop-col{margin-top:48px}
 }
 @media(max-width:768px){
-  .hero--loop .hero-loop-col{display:none}
+  /* the composer IS the product-family signal — it stays on mobile, compacted */
+  .thc-shell{padding:12px 12px 10px;border-radius:17px}
+  .thc-field{padding:13px 13px;min-height:50px;gap:10px;border-radius:13px}
+  .thc-text,.thc-placeholder{font-size:15px}
+  .thc-placeholder{left:48px;right:13px}
+  .thc-attach{width:25px;height:25px}
+  .thc-select{font-size:11px;padding:5px 9px}
+  .thc-send{width:29px;height:29px;font-size:13px}
+  .thc-draft-title{font-size:15px}
+  .hero-status-lines{margin-top:18px;gap:11px}
 }
 
 /* Composer input */
@@ -669,12 +678,70 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
 .ledger-right{display:flex;flex-direction:column;gap:28px}
 
 /* Hero composer */
-.hero-composer{width:100%}
-.hero-composer .composer-label{margin-bottom:14px}
-.hero-composer-field{padding:18px 18px 18px 22px;min-height:64px;align-items:flex-start;cursor:default}
-.hero-composer-inner{flex:1;display:flex;align-items:flex-start;min-height:24px;gap:0}
-.hero-composer-text{font-size:17px;color:#eef0f7;line-height:1.5;letter-spacing:-.01em;word-break:break-word}
-.hero-composer-field .composer-cursor{height:20px;vertical-align:-4px;margin-left:0}
+/* ==========================================================================
+   Hero composer — derived from the real Theon Composer, not a screenshot.
+   Colour law: neutrals carry meaning, the purple→teal gradient carries state.
+   ========================================================================== */
+.thc{width:100%;max-width:640px}
+.thc-field{transition:border-color .4s}
+.thc.is-armed .thc-field{border-color:#7b4dff40}
+.thc-mode{display:flex;align-items:center;gap:9px;margin-bottom:13px;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9096ab}
+.hero-mode-dot{width:6px;height:6px;border-radius:50%;background:var(--purple);
+  box-shadow:0 0 12px #7b4dff99;transition:background .4s,box-shadow .4s}
+.thc.is-observed .hero-mode-dot{background:var(--cyan);box-shadow:0 0 12px #7ee7ff99}
+.thc-shell{position:relative;border-radius:20px;padding:14px 14px 11px;
+  border:1px solid #7b4dff4d;
+  background:
+    radial-gradient(125% 135% at 6% -10%, #7b4dff30 0%, #7b4dff00 54%),
+    radial-gradient(110% 130% at 104% 112%, #2fd4b826 0%, #2fd4b800 56%),
+    linear-gradient(180deg,#121420,#0b0d14);
+  box-shadow:0 26px 80px #00000080, inset 0 1px 0 #ffffff0d}
+.thc-context{display:inline-flex;align-items:center;gap:9px;padding:6px 13px;border-radius:9px;
+  background:#ffffff0f;border:1px solid #ffffff17;font-size:12.5px;max-width:100%}
+.thc-context-key{color:#9096ab;flex:none}
+.thc-context-val{color:#eef0f7;font-weight:560;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.thc-cmd{display:flex;align-items:center;gap:10px;margin:12px 0 0;padding-left:2px;
+  font-size:12.5px;color:#6f738a}
+.thc-cmd-key{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;flex:none;
+  background:linear-gradient(135deg,#7b4dff,#6f63ff);color:#fff;font-size:12px;font-weight:600}
+.thc-field{position:relative;display:flex;align-items:center;gap:12px;margin-top:11px;
+  padding:15px 16px;border-radius:15px;border:1px solid #ffffff14;background:#080a10b8;min-height:56px}
+.thc-attach{width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;
+  border:1px solid #ffffff1c;background:#ffffff0a;color:#8b8fa3}
+.thc-attach svg{width:14px;height:14px;display:block}
+.thc-text{font-size:16px;color:#eef0f7;line-height:1.45;letter-spacing:-.01em;word-break:break-word}
+.thc-placeholder{position:absolute;left:55px;right:16px;font-size:16px;color:#585c70;
+  pointer-events:none;opacity:0;transition:opacity .25s}
+.thc.is-empty .thc-placeholder{opacity:1}
+.thc.is-empty .composer-cursor{opacity:0}
+.thc-field .composer-cursor{height:19px;vertical-align:-3px;margin-left:1px}
+.thc-controls{display:flex;align-items:center;justify-content:flex-end;gap:9px;margin-top:12px}
+.thc-select{font-size:12px;color:#aeb2c4;border:1px solid #ffffff17;border-radius:9px;
+  padding:6px 10px;background:#ffffff0a;white-space:nowrap}
+.thc-select::after{content:"⌄";margin-left:7px;color:#6f738a;font-size:11px;vertical-align:1px}
+.thc-send{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:linear-gradient(135deg,#7b4dff,#5f6cff);color:#fff;font-size:14px;
+  box-shadow:0 0 24px #7b4dff5c;transition:box-shadow .4s}
+.thc.is-armed .thc-send{box-shadow:0 0 30px #7b4dff8c,0 0 44px #2fd4b833}
+.thc-foot{margin-top:10px;text-align:center;font-size:11.5px;color:#767a90}
+/* the draft.on the prompt actually becomes */
+.thc-draft{margin-top:18px;padding:14px 16px 15px;border-radius:14px;
+  border:1px solid var(--line);background:#0c0e15cc;
+  opacity:0;transform:translateY(6px);transition:opacity .45s ease,transform .45s ease}
+.thc-draft.is-visible{opacity:1;transform:none}
+.thc-draft-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:9px}
+.thc-draft-kind{font-size:10px;letter-spacing:.2em;color:#8b8fa3}
+.thc-draft-state{font-size:11px;letter-spacing:.06em;color:#9096ab;
+  padding:4px 10px;border-radius:999px;border:1px solid #ffffff17;white-space:nowrap}
+.thc-draft.is-live .thc-draft-state{color:#fff;border-color:#7b4dff59;
+  background:linear-gradient(90deg,#7b4dff2b,#2fd4b826)}
+.thc-draft-title{font-size:16px;line-height:1.35;color:#eef0f7;letter-spacing:-.015em;margin-bottom:7px}
+.thc-draft-meta{font-size:12.5px;color:#8b8fa3}
+@media (max-width:1080px){ .thc{max-width:none} }
+@media (prefers-reduced-motion:reduce){
+  .thc-draft{opacity:1;transform:none;transition:none}
+}
 .hero-status-lines{margin-top:22px;display:flex;flex-direction:column;gap:13px}
 .hero-status-line{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted);letter-spacing:.01em;opacity:0;transform:translateY(3px);transition:opacity 350ms ease,transform 350ms ease}
 .hero-status-line.is-visible{opacity:1;transform:none}
@@ -757,7 +824,7 @@ h1,h2,h3{text-wrap:balance}
 .loop-stage p{margin:0;color:var(--muted);font-size:15px;line-height:1.6;flex:1}
 .loop-stage-map{margin-top:6px;padding-top:14px;border-top:1px solid var(--line)}
 .loop-stage-map span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8f93a8}
-.loop-stage--last .loop-stage-map span{color:var(--cyan)}
+
 
 /* ---- Section 3: cross-system ------------------------------------------- */
 .crosssystem-band{max-width:1100px;margin:0 auto;text-align:center}
@@ -785,7 +852,7 @@ h1,h2,h3{text-wrap:balance}
 .judgment-triple{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
 .judgment-card{padding:30px 32px}
 .judgment-label{font-size:11px;letter-spacing:.2em;color:#8f93a8;font-weight:600;margin-bottom:14px}
-.judgment-card--decision .judgment-label{color:var(--cyan)}
+
 .judgment-card--decision{border-color:#7ee7ff33;box-shadow:0 30px 120px #00000066,0 0 46px #7ee7ff14}
 .judgment-card p{margin:0;font-size:18px;line-height:1.5;color:#eef0f7;letter-spacing:-.02em}
 .judgment-note{max-width:900px;margin:32px auto 0;text-align:center;font-size:15px;line-height:1.6;color:#8f93a8}
@@ -807,7 +874,7 @@ h1,h2,h3{text-wrap:balance}
 .rv-core-name{font-size:16px;letter-spacing:.24em;color:#fff;margin-bottom:10px}
 .rv-core-verbs{font-size:14px;color:#b9bcd0;letter-spacing:.04em}
 .rv-note{max-width:800px;margin:30px auto 0;text-align:center;font-size:15px;color:#8f93a8}
-.rv-note a{color:var(--cyan);text-decoration:none}
+
 
 /* ---- Responsive -------------------------------------------------------- */
 @media (max-width:1080px){
@@ -847,13 +914,9 @@ h1,h2,h3{text-wrap:balance}
 .jtbd,.proof,.crosssystem,.governed,.executors,.judgment,.learning,
 .runtimeviz,.entrypaths,.loop{padding:var(--section-padding) var(--section-inline)}
 
-/* hero: the two entry modes read differently */
-.hero--loop .composer-label{display:flex;align-items:center;gap:9px}
-.hero-mode-dot{width:7px;height:7px;border-radius:50%;background:var(--purple);
-  box-shadow:0 0 12px var(--purple);transition:background .5s,box-shadow .5s}
-.hero-composer.is-observed .hero-mode-dot{background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
-.hero-composer.is-observed .composer-send{opacity:.25}
-.hero-composer{transition:border-color .5s}
+/* hero: an observation is not a request — the send action is not armed for it */
+.thc.is-observed .thc-send{opacity:.28;box-shadow:none}
+.thc.is-observed .thc-cmd{opacity:.4}
 
 /* ---- problem: a coordination chain that accumulates and frays ---- */
 .coord{max-width:1440px;margin:0 auto}
@@ -872,17 +935,19 @@ h1,h2,h3{text-wrap:balance}
 .coord-step--lost .coord-i{color:#8f93a8}
 .coord-seam{width:0;border-left:1px dashed #ffffff1a;align-self:stretch}
 .coord-burden{max-width:840px;margin:26px 0 0;font-size:16px;line-height:1.6;color:#8f93a8}
-.coord-close{display:flex;align-items:center;gap:18px;max-width:1440px;margin:44px auto 0}
-.coord-close-ring{width:30px;height:30px;border-radius:50%;border:2px solid var(--cyan);
-  box-shadow:0 0 26px #7ee7ff4d;flex:none;position:relative}
-.coord-close-ring::after{content:"";position:absolute;inset:7px;border-radius:50%;background:var(--cyan)}
+.coord-close{display:flex;align-items:center;gap:24px;max-width:1440px;margin:44px auto 0}
+/* BRAND LAW: the Nieme glyph is the logo mark and nothing else — never a bullet,
+   node, completion mark, flow endpoint, diagram ornament or status icon.
+   The chain resolves into a trace, not into the mark. */
+.coord-close-trace{flex:none;width:72px;height:1px;
+  background:linear-gradient(90deg,#7b4dff00,#7b4dff99 38%,var(--cyan))}
 .jtbd-close{margin:0;font-size:clamp(26px,3vw,40px);letter-spacing:-.04em;line-height:1.1;color:#fff;font-weight:420}
 
 /* ---- entry paths: bifurcation converging ---- */
 .bifurcate{max-width:1440px;margin:8px auto 0;text-align:center}
 .bifurcate-svg{width:100%;max-width:720px;height:90px;display:block;margin:0 auto}
 .bifurcate-out{display:inline-block;margin-top:2px;padding:12px 26px;border-radius:14px;
-  border:1px solid #7ee7ff40;background:#7ee7ff12;color:#fff;font-size:16px}
+  border:1px solid #7b4dff4d;background:linear-gradient(100deg,#7b4dff1c,#2fd4b80a);color:#fff;font-size:16px}
 
 /* ---- cross-system: a constellation around the core ---- */
 .constellation{position:relative;width:720px;max-width:100%;height:560px;margin:0 auto}
@@ -896,7 +961,7 @@ h1,h2,h3{text-wrap:balance}
 /* spokes: the work stays out there; what travels inward is context */
 .cst-spoke{position:absolute;left:50%;top:50%;width:90px;height:1px;transform-origin:0 50%;
   transform:rotate(var(--a)) translateX(98px);
-  background:linear-gradient(90deg,#7b4dff8c,#7b4dff14)}
+  background:linear-gradient(90deg,#7b4dff99,#7ee7ff5c)}
 .cst-pulse{position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;
   background:var(--cyan);box-shadow:0 0 10px var(--cyan);
   transform:translate(-50%,-50%) rotate(var(--a)) translateX(186px);opacity:0;
@@ -924,15 +989,27 @@ h1,h2,h3{text-wrap:balance}
 .judgment-body{max-width:1440px;margin:0 auto}
 .judgment-lead{max-width:1000px;margin:0;font-size:clamp(18px,1.7vw,22px);line-height:1.55;color:#c3c6d6}
 /* three separate things, shown as three separate things */
-.triptych{margin:52px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+.triptych{position:relative;margin:52px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
   border-top:1px solid var(--line)}
+/* sequence is carried by reveal timing on the hairline, never by semantic colour:
+   all three labels, all three primaries and all three secondaries are identical */
+.triptych::after{content:"";position:absolute;left:0;top:-1px;height:1px;width:33.3333%;
+  background:linear-gradient(90deg,#7b4dff00,#7b4dff99 55%,var(--cyan));
+  animation:tri-sweep 8s ease-in-out infinite}
+@keyframes tri-sweep{
+  0%{transform:translateX(0);opacity:0}
+  7%{opacity:1}
+  30%{transform:translateX(0)}
+  40%{transform:translateX(100%)}
+  63%{transform:translateX(100%)}
+  73%{transform:translateX(200%)}
+  93%{opacity:1}
+  100%{transform:translateX(200%);opacity:0}}
 .tri{padding:26px 34px 6px 0}
 .tri + .tri{padding-left:34px;border-left:1px solid var(--line)}
 .tri-label{font-size:11px;letter-spacing:.2em;color:var(--purple);margin-bottom:14px}
 .tri-is{margin:0 0 10px;font-size:18px;line-height:1.4;color:#eef0f7;letter-spacing:-.01em}
 .tri-not{margin:0;font-size:15px;line-height:1.5;color:#83879c}
-.tri--decide .tri-label{color:var(--cyan)}
-.tri--decide .tri-not{color:#cfd2de}
 @media (max-width:860px){
   .triptych{grid-template-columns:minmax(0,1fr)}
   .tri{padding:22px 0 18px;border-top:1px solid var(--line)}
@@ -964,24 +1041,88 @@ h1,h2,h3{text-wrap:balance}
 .swap-unit.is-active{background:#ffffff12;color:#fff}
 .executors-note{max-width:800px;margin:28px auto 0;text-align:center;font-size:16px;color:var(--muted)}
 
-/* ---- learning: a closed cycle ---- */
-.cycle{position:relative;width:480px;max-width:100%;height:440px;margin:0 auto}
-.cycle-ring{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
-.cycle-arc{animation:cycle-turn 9s linear infinite;filter:drop-shadow(0 0 7px #7ee7ff73)}
-/* clockwise chevrons: the loop has a direction */
-.cycle-tick{position:absolute;left:50%;top:50%;width:7px;height:7px;
-  border-top:1.5px solid #ffffff45;border-right:1.5px solid #ffffff45;
-  transform:translate(-50%,-50%) rotate(var(--a)) translateX(160px) rotate(135deg)}
-@keyframes cycle-turn{to{stroke-dashoffset:-1005}}
-/* the three labels are stations ON the ring, not pills beside it */
-.cycle-label{position:absolute;left:50%;top:50%;font-size:13.5px;color:#d7d8e5;white-space:nowrap;
-  padding:9px 16px;border-radius:11px;border:1px solid var(--line);background:#0b0d13;
-  transform:translate(-50%,-50%) rotate(var(--a)) translateX(160px) rotate(calc(-1 * var(--a)));
-  transition:color .25s,border-color .25s,box-shadow .25s}
-.cycle-label:hover{border-color:#7ee7ff4d;color:#fff;box-shadow:0 0 26px #7ee7ff1f}
-.cycle-label--gain{border-color:#7ee7ff40;color:#fff}
-.cycle-mid{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:210px;
-  text-align:center;font-size:13px;line-height:1.5;color:var(--muted)}
+/* ---- learning: context carry-forward. Not a circle — the site already uses
+       circular language for the constellation, the Runtime core and the logo.
+       This shows a specific delta arriving in future Context. ---- */
+.carry{max-width:1440px;margin:0 auto;display:grid;
+  grid-template-columns:minmax(0,1fr) 82px minmax(0,1fr) 82px minmax(0,1fr);
+  gap:0;align-items:stretch}
+.carry-col{display:flex;flex-direction:column;min-width:0}
+.carry-head{font-size:10.5px;letter-spacing:.2em;color:#8b8fa3;margin-bottom:14px;line-height:1.5}
+.carry-panel{flex:1;padding:22px 24px 24px;border-radius:16px;border:1px solid var(--line);
+  background:linear-gradient(180deg,#ffffff08,#ffffff03)}
+.carry-panel-title{font-size:15px;color:#eef0f7;letter-spacing:-.01em;margin-bottom:14px;font-weight:520}
+.carry-lines{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.carry-lines li{position:relative;padding-left:15px;font-size:14.5px;line-height:1.45;color:#9ba0b4}
+.carry-lines li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:1px;background:#ffffff33}
+/* the one line that was not there before — present at rest, and visibly arriving */
+.carry-new{color:#eef0f7;margin-top:4px;padding:8px 12px 8px 15px;border-radius:0 9px 9px 0;
+  background:linear-gradient(90deg,#7b4dff1f,#2fd4b80a 62%,#7b4dff00)}
+.carry-new::before{display:none}
+.carry-new-rail{position:absolute;left:0;top:0;bottom:0;width:2px;border-radius:2px;
+  background:linear-gradient(180deg,var(--purple),var(--cyan));
+  animation:carry-arrive 9s ease-in-out infinite}
+@keyframes carry-arrive{
+  0%,50%{opacity:.4}
+  62%,88%{opacity:1;box-shadow:0 0 13px #7ee7ff73}
+  100%{opacity:.4}}
+/* centre: what a person accepted, and the two things that make it defensible */
+.carry-panel--accept{border-color:#7b4dff3d;
+  background:linear-gradient(180deg,#7b4dff14,#2fd4b80a)}
+.carry-accepted{display:flex;align-items:flex-start;gap:11px;font-size:15.5px;line-height:1.35;
+  color:#eef0f7;letter-spacing:-.01em;margin-bottom:16px}
+.carry-tick{flex:none;width:17px;height:17px;margin-top:1px;border-radius:50%;position:relative;
+  background:linear-gradient(135deg,var(--purple),var(--cyan))}
+.carry-tick::after{content:"";position:absolute;left:5px;top:4.5px;width:4px;height:7px;
+  border:1.6px solid #0b0d14;border-top:0;border-left:0;transform:rotate(42deg)}
+.carry-proof{list-style:none;margin:0;padding:14px 0 0;border-top:1px solid #ffffff14;
+  display:flex;flex-direction:column;gap:9px}
+.carry-proof li{font-size:13.5px;line-height:1.45;color:#9ba0b4}
+.carry-proof-k{display:inline-block;min-width:70px;color:#c8cbd9}
+/* the two crossings */
+.carry-link{position:relative;align-self:center;height:1px;margin:0 10px}
+.carry-trace{position:absolute;inset:0;
+  background:linear-gradient(90deg,#7b4dff00,#7b4dff8c 45%,#7ee7ffb3)}
+.carry-dot{position:absolute;top:-2px;left:0;width:5px;height:5px;border-radius:50%;
+  background:var(--cyan);box-shadow:0 0 11px var(--cyan);opacity:0;
+  animation:carry-run 9s ease-in-out infinite}
+.carry-dot--2{animation-delay:2.6s}
+@keyframes carry-run{0%{left:0;opacity:0}8%{opacity:1}22%{opacity:1}30%{left:100%;opacity:0}100%{left:100%;opacity:0}}
+.carry-note{max-width:1440px;margin:30px auto 0;font-size:15px;line-height:1.55;color:#8f93a8}
+@media (max-width:1000px){
+  .carry{grid-template-columns:minmax(0,1fr);gap:0}
+  .carry-col{margin-bottom:0}
+  .carry-link{align-self:stretch;width:1px;height:40px;margin:0 auto;justify-self:center}
+  .carry-trace{background:linear-gradient(180deg,#7b4dff00,#7b4dff8c 45%,#7ee7ffb3)}
+  .carry-dot{top:0;left:-2px;animation-name:carry-run-v}
+  @keyframes carry-run-v{0%{top:0;opacity:0}8%{opacity:1}22%{opacity:1}30%{top:100%;opacity:0}100%{top:100%;opacity:0}}
+  .carry-head{margin-top:0}
+}
+
+/* ---- executors: one socket, a bus, interchangeable units ---- */
+.swap{max-width:1100px;margin:0 auto;display:grid;
+  grid-template-columns:minmax(0,260px) 74px minmax(0,1fr);gap:0;align-items:center}
+.swap-socket{border:1px solid #7b4dff4d;border-radius:18px;padding:26px;text-align:center;
+  background:linear-gradient(180deg,#7b4dff1c,#7b4dff06)}
+.swap-socket-label{font-size:11px;letter-spacing:.2em;color:#fff;margin-bottom:8px}
+.swap-socket-body{font-size:13px;color:#b9bcd0;letter-spacing:.04em}
+/* the bus: the work plugs in here; whichever unit is seated does the work */
+.swap-bus{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+.swap-bus-line{position:absolute;left:0;right:0;top:50%;height:1px;
+  background:linear-gradient(90deg,#7b4dff8c,#7b4dff26)}
+.swap-bus-plug{position:relative;width:9px;height:9px;border-radius:50%;
+  background:#7b4dff;box-shadow:0 0 16px #7b4dffa6}
+.swap-slot{display:flex;flex-direction:column;gap:0;border:1px dashed #ffffff26;border-radius:18px;padding:8px}
+.swap-unit{position:relative;padding:15px 20px 15px 34px;border-radius:12px;font-size:15.5px;color:#9ba0b4;
+  transition:background .22s,color .22s,transform .22s}
+.swap-unit::before{content:"";position:absolute;left:16px;top:50%;width:5px;height:5px;margin-top:-2.5px;
+  border-radius:50%;border:1px solid #ffffff33;transition:background .22s,border-color .22s}
+.swap-unit:hover::before{border-color:#7b4dff8c}
+.swap-unit:hover{background:#ffffff0d;color:#fff;transform:translateX(5px)}
+.swap-unit.is-active::before{background:#7b4dff;border-color:#7b4dff;box-shadow:0 0 12px #7b4dff8c}
+.swap-unit.is-active{background:#ffffff12;color:#fff}
+.executors-note{max-width:800px;margin:28px auto 0;text-align:center;font-size:16px;color:var(--muted)}
+
 
 /* ---- runtime: bidirectional core over a persistent substrate ---- */
 .rvx{max-width:1000px;margin:0 auto}
@@ -1003,7 +1144,7 @@ h1,h2,h3{text-wrap:balance}
 .rvx-verbs{margin-top:9px;font-size:11.5px;line-height:1.6;color:#b9bcd0;letter-spacing:.05em}
 /* the two gutters ARE the flow; they sit exactly in the grid gaps */
 .rvx-flow{position:absolute;top:50%;height:1px;width:70px;
-  background:linear-gradient(90deg,#7ee7ff00,#7ee7ffa6,#7ee7ff00);background-size:200% 100%;
+  background:linear-gradient(90deg,#7b4dff00,#7b4dff99 40%,#7ee7ffcc 72%,#7ee7ff00);background-size:200% 100%;
   animation:rvx-travel 3.4s linear infinite}
 .rvx-flow--l{left:calc(50% - 105px - 70px)}
 .rvx-flow--r{left:calc(50% + 105px);animation-delay:1.7s}
@@ -1011,7 +1152,7 @@ h1,h2,h3{text-wrap:balance}
 /* the return leg: durable state travels back to where the next request starts */
 .rvx-substrate{position:relative;margin-top:38px;display:flex;align-items:center;
   justify-content:center;gap:14px;padding:15px;border-radius:14px;overflow:hidden;
-  border:1px solid #7ee7ff2e;background:linear-gradient(180deg,#7ee7ff0f,#7ee7ff05)}
+  border:1px solid #7b4dff3d;background:linear-gradient(100deg,#7b4dff1c,#2fd4b80f)}
 .rvx-substrate-label{font-size:11.5px;letter-spacing:.2em;color:#fff}
 .rvx-substrate-note{font-size:13px;color:var(--muted)}
 .rvx-return{position:absolute;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;
@@ -1021,10 +1162,11 @@ h1,h2,h3{text-wrap:balance}
 
 /* ---- product proof: three real states, art-directed ---- */
 .proof-rail{max-width:1440px;margin:0 auto;display:grid;
-  grid-template-columns:1fr 34px 1fr 34px 1fr;gap:0;align-items:start}
+  grid-template-columns:1fr 58px 1fr 58px 1fr;gap:0;align-items:start}
 .proof-step{margin:0}
 /* 02 is the governance point — marked, not nudged out of the row */
-.proof-step--raised .proof-shot{border-color:#7b4dff4d;box-shadow:0 30px 90px #00000073,0 0 0 1px #7b4dff26,0 0 44px #7b4dff1a}
+.proof-step--raised .proof-shot{border-color:#7b4dff73;
+  box-shadow:0 34px 100px #00000080,0 0 0 1px #7b4dff3d,0 0 62px #7b4dff26,0 0 90px #2fd4b814}
 .proof-step--raised .proof-num{color:#a98bff}
 .proof-head{display:flex;align-items:baseline;gap:11px;margin-bottom:8px}
 .proof-num{font-size:11.5px;letter-spacing:.18em;color:var(--purple)}
@@ -1035,8 +1177,8 @@ h1,h2,h3{text-wrap:balance}
 .proof-shot:hover{transform:translateY(-4px);box-shadow:0 40px 110px #0000008c,0 0 40px #7b4dff1f}
 .proof-step--raised .proof-shot:hover{box-shadow:0 40px 110px #0000008c,0 0 0 1px #7b4dff40,0 0 56px #7b4dff2e}
 .proof-shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:top left}
-.proof-link{align-self:center;height:1px;margin-top:150px;
-  background:linear-gradient(90deg,#7b4dff00,#7b4dff8c,#7ee7ff00);position:relative}
+.proof-link{align-self:center;height:1px;margin:150px 9px 0;
+  background:linear-gradient(90deg,#7b4dff00,#7b4dffb3 42%,#7ee7ffe6);position:relative}
 .proof-link-dot{position:absolute;top:-2px;left:0;width:5px;height:5px;border-radius:50%;
   background:var(--cyan);box-shadow:0 0 10px var(--cyan);animation:proof-travel 3.2s ease-in-out infinite}
 @keyframes proof-travel{0%{left:0;opacity:0}20%{opacity:1}80%{opacity:1}100%{left:100%;opacity:0}}
@@ -1049,8 +1191,8 @@ h1,h2,h3{text-wrap:balance}
 .outcome h3{margin:0 0 10px;font-size:clamp(23px,2.2vw,29px);letter-spacing:-.035em;font-weight:440;line-height:1.15}
 .outcome-lead{margin:0;font-size:17px;line-height:1.5;color:var(--muted)}
 .loop-more{max-width:1440px;margin:32px auto 0}
-.loop-more a{color:var(--cyan);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
-.loop-more a:hover{border-color:var(--cyan)}
+.loop-more a{color:#a98bff;text-decoration:none;border-bottom:1px solid #a98bff47;padding-bottom:1px;transition:color .2s,border-color .2s}
+.loop-more a:hover{color:#c9b6ff;border-color:#c9b6ff8c}
 .entrypath{transition:transform .25s,border-color .25s}
 .entrypath:hover{transform:translateY(-4px);border-color:#ffffff2b}
 
@@ -1060,8 +1202,13 @@ h1,h2,h3{text-wrap:balance}
   .swap-bus{height:34px}
   .swap-bus-line{left:50%;right:auto;top:0;bottom:0;width:1px;height:auto;
     background:linear-gradient(180deg,#7b4dff8c,#7b4dff26)}
-  .proof-rail{grid-template-columns:minmax(0,1fr);gap:40px}
-  .proof-link{display:none}
+  /* mobile: the proof rail becomes a vertical narrative, not three loose cards */
+  .proof-rail{grid-template-columns:minmax(0,1fr);grid-auto-rows:auto;gap:0}
+  .proof-step{padding-bottom:0}
+  .proof-link{height:46px;width:1px;margin:18px auto;align-self:center;justify-self:center;
+    background:linear-gradient(180deg,#7b4dff00,#7b4dff99 42%,#7ee7ffcc)}
+  .proof-link-dot{top:0;left:-2px;animation-name:proof-travel-v}
+  @keyframes proof-travel-v{0%{top:0;opacity:0}20%{opacity:1}80%{opacity:1}100%{top:100%;opacity:0}}
   .proof-note{min-height:0}
   .rvx-row{grid-template-columns:minmax(0,1fr);justify-items:center;gap:24px}
   .rvx-side{width:100%;max-width:420px}
@@ -1073,21 +1220,22 @@ h1,h2,h3{text-wrap:balance}
   .cst-orbit,.cst-spoke,.cst-pulse{display:none}
   .cst-core{position:static;transform:none;margin-bottom:6px}
   .cst-node{position:static;transform:none}
-  .cycle{width:100%;height:auto;display:flex;flex-direction:column;align-items:center;gap:12px}
-  .cycle-ring,.cycle-tick{display:none}
-  .cycle-mid{position:static;transform:none;width:auto;order:-1;margin-bottom:4px}
-  .cycle-label{position:static;transform:none}
   .coord-step{flex:1 1 100%;border-right:1px solid var(--line);border-bottom:0;border-radius:0}
   .coord-step:first-child{border-radius:14px 14px 0 0}
   .coord-step:last-child{border-bottom:1px solid var(--line);border-radius:0 0 14px 14px}
   .coord-seam{display:none}
 }
 @media (prefers-reduced-motion:reduce){
-  .cycle-arc,.rvx-ring,.rvx-flow,.rvx-return,.proof-link-dot,.cst-pulse{animation:none!important}
+  .rvx-ring,.rvx-flow,.rvx-return,.proof-link-dot,.cst-pulse,
+  .triptych::after,.carry-dot,.carry-new-rail{animation:none!important}
+  .carry-new-rail{opacity:1}
+  .carry-dot{opacity:.85;left:auto;right:0}
+  .triptych::after{opacity:1;transform:translateX(200%)}
   .rvx-return{left:16px;opacity:.8}
   .cst-pulse{opacity:.7;transform:translate(-50%,-50%) rotate(var(--a)) translateX(143px)}
-  .rvx-flow{background:linear-gradient(90deg,#7ee7ff00,#7ee7ff73,#7ee7ff00)}
+  .rvx-flow{background:linear-gradient(90deg,#7b4dff00,#7b4dff8c 45%,#7ee7ffb3)}
   .proof-link-dot{left:50%}
+  .carry-new-rail{animation:none!important;opacity:1}
 }
 
 /* --- R3.1 hero balance: the loop hero is two columns, so the display scale

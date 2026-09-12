@@ -148,7 +148,7 @@
   };
 
   const initHeroComposer = () => {
-    const textEl = document.querySelector('.hero-composer-text');
+    const textEl = document.querySelector('.thc-text');
     const statusEls = Array.from(document.querySelectorAll('.hero-status-line'));
     const labelEls = Array.from(document.querySelectorAll('.hero-status-label'));
     if (!textEl) return;
@@ -175,6 +175,43 @@
           'A payment was confirmed in the ERP.',
         ];
 
+    // every prompt carries its own Context and becomes its own draft.on
+    const contexts = isPortuguese
+      ? [
+          'Northstar Revenue · 3 fontes',
+          'Acme Payments · Drive',
+          'Northstar Revenue · 12 decisões',
+          'Acme Payments · #receita',
+          'Meridian Rollout · 5 fontes',
+          'Acme Payments · Faturamento',
+        ]
+      : [
+          'Northstar Revenue · 3 sources',
+          'Acme Payments · Drive',
+          'Northstar Revenue · 12 decisions',
+          'Acme Payments · #revenue',
+          'Meridian Rollout · 5 sources',
+          'Acme Payments · Billing',
+        ];
+
+    const drafts = isPortuguese
+      ? [
+          ['Atualizar a previsão de receita do T3 e preparar o brief da liderança', 'Northstar Revenue · Acme Payments', 'Autorizado'],
+          ['Reconciliar o anexo de preços alterado', 'Acme Payments · Drive', 'Aguardando uma pessoa'],
+          ['Resumo semanal de entregas a partir dos resultados aceitos', 'Northstar Revenue · Acme Payments', 'Autorizado'],
+          ['Relacionar a atualização de renovação ao Northstar Revenue', 'Acme Payments · #receita', 'Aguardando uma pessoa'],
+          ['Plano de handoff de implantação', 'Meridian Rollout · Acme Payments', 'Autorizado'],
+          ['Registrar a confirmação de pagamento no registro de receita', 'Acme Payments · Faturamento', 'Aguardando uma pessoa'],
+        ]
+      : [
+          ['Update the Q3 revenue forecast and prepare a leadership brief', 'Northstar Revenue · Acme Payments', 'Authorized'],
+          ['Reconcile the changed pricing appendix', 'Acme Payments · Drive', 'Waiting on a person'],
+          ['Weekly delivery summary from accepted outcomes', 'Northstar Revenue · Acme Payments', 'Authorized'],
+          ['Relate the renewal update to Northstar Revenue', 'Acme Payments · #revenue', 'Waiting on a person'],
+          ['Implementation handoff plan', 'Meridian Rollout · Acme Payments', 'Authorized'],
+          ['Post the payment confirmation to the revenue record', 'Acme Payments · Billing', 'Waiting on a person'],
+        ];
+
     const statusSequences = isPortuguese
       ? [
           ['Contexto reunido', 'Trabalho governado preparado', 'Autorizado', 'Executando'],
@@ -193,8 +230,28 @@
           ['Observed, not authorized', 'Context assembled', 'Governed work prepared', 'Waiting on a person'],
         ];
 
+    const thcEl = document.querySelector('.thc');
+    const ctxEl = document.querySelector('.thc-context-val');
+    const draftEl = document.querySelector('.thc-draft');
+    const draftTitleEl = document.querySelector('.thc-draft-title');
+    const draftMetaEl = document.querySelector('.thc-draft-meta');
+    const draftStateEl = document.querySelector('.thc-draft-state');
+
+    const paintDraft = (idx) => {
+      const d = drafts[idx];
+      if (!d) return;
+      if (draftTitleEl) draftTitleEl.textContent = d[0];
+      if (draftMetaEl) draftMetaEl.textContent = d[1];
+      if (draftStateEl) draftStateEl.textContent = d[2];
+      if (draftEl) draftEl.classList.toggle('is-live', idx % 2 === 0);
+    };
+
     if (prefersReducedMotion) {
       textEl.textContent = prompts[0];
+      if (ctxEl) ctxEl.textContent = contexts[0];
+      paintDraft(0);
+      if (draftEl) draftEl.classList.add('is-visible');
+      if (thcEl) thcEl.classList.add('is-armed');
       const m0 = document.querySelector('.hero-composer-mode');
       if (m0) m0.textContent = entryModes[0];
       labelEls.forEach((el, i) => { el.textContent = statusSequences[0][i] || ''; });
@@ -212,28 +269,30 @@
     let frameTimer = null;
     let statusTimer = null;
     let dotTimer = null;
+    let draftTimer = null;
 
     const rand = (lo, hi) => lo + Math.floor(Math.random() * (hi - lo + 1));
 
     const modeEl = document.querySelector('.hero-composer-mode');
-    const composerEl = document.querySelector('.hero-composer');
     const loadSequence = (idx) => {
       const seq = statusSequences[idx];
       labelEls.forEach((el, i) => { el.textContent = seq[i] || ''; });
       if (modeEl) modeEl.textContent = entryModes[idx] || '';
+      if (ctxEl) ctxEl.textContent = contexts[idx] || '';
+      paintDraft(idx);
       // the two entry modes read differently: a request is typed, an observation arrives
-      if (composerEl) composerEl.classList.toggle('is-observed', idx % 2 === 1);
+      if (thcEl) thcEl.classList.toggle('is-observed', idx % 2 === 1);
     };
 
     const showStatuses = () => {
       let i = 0;
       const step = () => {
-        if (i >= statusEls.length || phase !== 'type') return;
+        if (i >= statusEls.length || phase === 'erase' || phase === 'gap') return;
         const dotEl = statusEls[i].querySelector('.hero-status-dot');
         statusEls[i].classList.add('is-visible');
         i++;
         dotTimer = setTimeout(() => {
-          if (dotEl && phase === 'type') dotEl.classList.add('is-done');
+          if (dotEl && i < statusEls.length && phase !== 'erase' && phase !== 'gap') dotEl.classList.add('is-done');
           statusTimer = setTimeout(step, 280);
         }, 420);
       };
@@ -243,6 +302,8 @@
     const hideStatuses = () => {
       clearTimeout(statusTimer);
       clearTimeout(dotTimer);
+      clearTimeout(draftTimer);
+      if (draftEl) draftEl.classList.remove('is-visible');
       statusEls.forEach((el) => {
         el.classList.remove('is-visible');
         const dotEl = el.querySelector('.hero-status-dot');
@@ -261,10 +322,15 @@
         if (charIdx < prompt.length) {
           charIdx++;
           textEl.textContent = prompt.slice(0, charIdx);
+          if (thcEl) { thcEl.classList.remove('is-empty'); thcEl.classList.add('is-armed'); }
           frameTimer = setTimeout(tick, rand(44, 70));
         } else {
           phase = 'pause';
-          frameTimer = setTimeout(tick, 2200);
+          // the prompt has become a draft.on — show what it turned into
+          draftTimer = setTimeout(() => {
+            if (phase === 'pause' && draftEl) draftEl.classList.add('is-visible');
+          }, 900);
+          frameTimer = setTimeout(tick, 3600);
         }
       } else if (phase === 'pause') {
         hideStatuses();
@@ -276,9 +342,10 @@
           textEl.textContent = prompt.slice(0, charIdx);
           frameTimer = setTimeout(tick, rand(22, 32));
         } else {
+          if (thcEl) { thcEl.classList.add('is-empty'); thcEl.classList.remove('is-armed'); }
           phase = 'gap';
           promptIdx = (promptIdx + 1) % prompts.length;
-          frameTimer = setTimeout(tick, 380);
+          frameTimer = setTimeout(tick, 520);
         }
       } else {
         phase = 'type';
