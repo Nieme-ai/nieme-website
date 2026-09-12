@@ -828,3 +828,8 @@ h1,h2,h3{text-wrap:balance}
 .composer-field--observed{border-style:dashed}
 .composer-observed{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);border:1px solid #7ee7ff40;border-radius:999px;padding:4px 12px;white-space:nowrap}
 .vs-lede{max-width:1000px;margin:0 0 30px;font-size:clamp(17px,1.55vw,20px);line-height:1.6;color:var(--muted)}
+/* Provisional asset marker — removed when the real recapture lands */
+.shot-frame{position:relative}
+.shot-provisional{position:absolute;right:0;bottom:0;z-index:2;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:#0b0b10;background:#ffd166;padding:7px 14px;font-weight:700;
+  border-top-left-radius:10px}
