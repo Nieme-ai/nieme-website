@@ -716,27 +716,47 @@
           <h2>The Workspace is the surface.<br>The Runtime is the layer behind it.</h2>
           <p>Your team works in the Workspace. The Runtime persists underneath — and reaches the systems the work already lives in. <a href="/how-it-works">See the architecture →</a></p>
         </div>
-        <div class="rvx">
-          <div class="rvx-row">
-            <div class="rvx-side rvx-side--in">
-              <span>Connected systems</span><span>People</span><span>Models &amp; agents</span>
+        <div class="uiw ui-runtime">
+          <div class="uiw-head rt-head">
+            <div>
+              <div class="uiw-title">Runtime</div>
+              <p class="uiw-sub">The layer the Workspace sits on. It is running whether or not anyone has it open.</p>
             </div>
-            <div class="rvx-core">
-              <span class="rvx-ring" aria-hidden="true"></span>
-              <span class="rvx-ring rvx-ring--2" aria-hidden="true"></span>
-              <div class="rvx-core-name">NIEME<br>RUNTIME</div>
-              <div class="rvx-verbs">observe · context · govern<br>orchestrate · reconcile</div>
+            <div class="uiw-filters" aria-hidden="true">
+              <span class="uiw-chip is-on">Live Runtime</span><span class="uiw-chip">Context</span>
             </div>
-            <div class="rvx-side rvx-side--out">
-              <span>Governed work</span><span>Execution</span><span>Decisions</span>
-            </div>
-            <div class="rvx-flow rvx-flow--l" aria-hidden="true"></div>
-            <div class="rvx-flow rvx-flow--r" aria-hidden="true"></div>
           </div>
-          <div class="rvx-substrate">
-            <span class="rvx-return" aria-hidden="true"></span>
-            <span class="rvx-substrate-label">DURABLE NIEME STATE</span>
-            <span class="rvx-substrate-note">feeds the next cycle</span>
+          <div class="rt-grid">
+            <div class="rt-card rt-card--state">
+              <div class="rt-lbl">LIVE RUNTIME</div>
+              <div class="rt-big">Idle</div>
+              <div class="rt-sub">0 of 2 execution slots active &middot; 3 queued</div>
+              <div class="rt-health"><span class="rt-lbl">SYSTEM HEALTH</span><span class="rt-ok"><i aria-hidden="true"></i>Healthy</span></div>
+              <div class="rt-hsub">Runtime healthy &middot; Guardian healthy &middot; database ok</div>
+            </div>
+            <div class="rt-card">
+              <div class="rt-lbl">NEEDS A PERSON</div>
+              <div class="rt-nums">
+                <div><b>3</b><span>QUEUED</span></div><div><b>2</b><span>REVIEW</span></div><div><b>1</b><span>BLOCKED</span></div>
+              </div>
+              <p class="rt-foot">Nothing moves past these on Nieme&#39;s say-so.</p>
+            </div>
+            <div class="rt-card">
+              <div class="rt-lbl">CONNECTORS</div>
+              <ul class="rt-conn">
+                <li><svg class="sg-ico" aria-hidden="true" focusable="false"><use href="#i-slack"/></svg>Slack<span class="rt-dot" aria-hidden="true"></span></li>
+                <li><svg class="sg-ico" aria-hidden="true" focusable="false"><use href="#i-drive"/></svg>Google Drive<span class="rt-dot" aria-hidden="true"></span></li>
+                <li><svg class="sg-ico" aria-hidden="true" focusable="false"><use href="#i-onedrive"/></svg>OneDrive<span class="rt-dot" aria-hidden="true"></span></li>
+              </ul>
+            </div>
+            <div class="rt-card">
+              <div class="rt-lbl">RUNTIME ACTIVITY</div>
+              <ul class="rt-act">
+                <li><span class="rt-dot" aria-hidden="true"></span><div><b>Execution succeeded</b><span>Northstar Revenue &middot; 14:22</span></div></li>
+                <li><span class="rt-dot rt-dot--cy" aria-hidden="true"></span><div><b>Signal raised</b><span>Acme Payments &middot; 11:04</span></div></li>
+                <li><span class="rt-dot rt-dot--pu" aria-hidden="true"></span><div><b>Decision recorded</b><span>Northstar Revenue &middot; 09:31</span></div></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

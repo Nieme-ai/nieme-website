@@ -716,27 +716,47 @@
           <h2>O Workspace é a superfície.<br>O Runtime é a camada por trás dela.</h2>
           <p>Sua equipe trabalha no Workspace. O Runtime persiste por baixo — e alcança os sistemas onde o trabalho já vive. <a href="/pt-br/how-it-works">Veja a arquitetura →</a></p>
         </div>
-        <div class="rvx">
-          <div class="rvx-row">
-            <div class="rvx-side rvx-side--in">
-              <span>Sistemas conectados</span><span>Pessoas</span><span>Modelos e agentes</span>
+        <div class="uiw ui-runtime">
+          <div class="uiw-head rt-head">
+            <div>
+              <div class="uiw-title">Runtime</div>
+              <p class="uiw-sub">A camada sobre a qual o Workspace roda. Ela est&aacute; rodando mesmo quando ningu&eacute;m est&aacute; com ela aberta.</p>
             </div>
-            <div class="rvx-core">
-              <span class="rvx-ring" aria-hidden="true"></span>
-              <span class="rvx-ring rvx-ring--2" aria-hidden="true"></span>
-              <div class="rvx-core-name">NIEME<br>RUNTIME</div>
-              <div class="rvx-verbs">observar · contexto · governar<br>orquestrar · reconciliar</div>
+            <div class="uiw-filters" aria-hidden="true">
+              <span class="uiw-chip is-on">Runtime ao vivo</span><span class="uiw-chip">Contexto</span>
             </div>
-            <div class="rvx-side rvx-side--out">
-              <span>Trabalho governado</span><span>Execução</span><span>Decisões</span>
-            </div>
-            <div class="rvx-flow rvx-flow--l" aria-hidden="true"></div>
-            <div class="rvx-flow rvx-flow--r" aria-hidden="true"></div>
           </div>
-          <div class="rvx-substrate">
-            <span class="rvx-return" aria-hidden="true"></span>
-            <span class="rvx-substrate-label">ESTADO DURÁVEL DA NIEME</span>
-            <span class="rvx-substrate-note">alimenta o próximo ciclo</span>
+          <div class="rt-grid">
+            <div class="rt-card rt-card--state">
+              <div class="rt-lbl">RUNTIME AO VIVO</div>
+              <div class="rt-big">Ocioso</div>
+              <div class="rt-sub">0 de 2 slots de execu&ccedil;&atilde;o ativos &middot; 3 na fila</div>
+              <div class="rt-health"><span class="rt-lbl">SA&Uacute;DE DO SISTEMA</span><span class="rt-ok"><i aria-hidden="true"></i>Saud&aacute;vel</span></div>
+              <div class="rt-hsub">Runtime saud&aacute;vel &middot; Guardian saud&aacute;vel &middot; banco ok</div>
+            </div>
+            <div class="rt-card">
+              <div class="rt-lbl">PRECISA DE UMA PESSOA</div>
+              <div class="rt-nums">
+                <div><b>3</b><span>NA FILA</span></div><div><b>2</b><span>REVIEW</span></div><div><b>1</b><span>BLOQUEADO</span></div>
+              </div>
+              <p class="rt-foot">Nada passa daqui por conta pr&oacute;pria da Nieme.</p>
+            </div>
+            <div class="rt-card">
+              <div class="rt-lbl">CONECTORES</div>
+              <ul class="rt-conn">
+                <li><svg class="sg-ico" aria-hidden="true" focusable="false"><use href="#i-slack"/></svg>Slack<span class="rt-dot" aria-hidden="true"></span></li>
+                <li><svg class="sg-ico" aria-hidden="true" focusable="false"><use href="#i-drive"/></svg>Google Drive<span class="rt-dot" aria-hidden="true"></span></li>
+                <li><svg class="sg-ico" aria-hidden="true" focusable="false"><use href="#i-onedrive"/></svg>OneDrive<span class="rt-dot" aria-hidden="true"></span></li>
+              </ul>
+            </div>
+            <div class="rt-card">
+              <div class="rt-lbl">ATIVIDADE DO RUNTIME</div>
+              <ul class="rt-act">
+                <li><span class="rt-dot" aria-hidden="true"></span><div><b>Execu&ccedil;&atilde;o conclu&iacute;da</b><span>Northstar Revenue &middot; 14:22</span></div></li>
+                <li><span class="rt-dot rt-dot--cy" aria-hidden="true"></span><div><b>Signal levantado</b><span>Acme Payments &middot; 11:04</span></div></li>
+                <li><span class="rt-dot rt-dot--pu" aria-hidden="true"></span><div><b>Decis&atilde;o registrada</b><span>Northstar Revenue &middot; 09:31</span></div></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
