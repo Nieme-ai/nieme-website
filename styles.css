@@ -6,13 +6,13 @@ body{margin:0;background:radial-gradient(circle at 80% 5%,#17264f 0%,transparent
 /* --breath is the single period every pulsing thing on this page uses.
    script.js draws the ambient canvas on the same number (BREATH=3900). */
 :root{--breath:3900ms}
-/* The nav is a blurred translucent bar. Anything moving behind it is resampled
-   by backdrop-filter every frame, which is what was left making the header
-   shimmer while the page sat still. The field simply does not paint under the
-   chrome — it has nothing to say up there anyway. */
-.pulse{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block;
-  -webkit-mask-image:linear-gradient(180deg,transparent 0,transparent 86px,#000 156px);
-  mask-image:linear-gradient(180deg,transparent 0,transparent 86px,#000 156px)}
+/* The nav is a blurred translucent bar, so anything moving behind it is
+   resampled by backdrop-filter every frame — that is why the field must not
+   paint under the chrome. It is faded out INSIDE the canvas instead of with a
+   CSS mask: a fixed, full-viewport, masked layer sitting under .grain's
+   mix-blend-mode is a compositing stack Chrome is known to leave stale tiles
+   in, and this page reportedly renders with smeared trails until a reload. */
+.pulse{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
 main,footer,.nav{position:relative;z-index:1}
 .nav{z-index:20}
 @keyframes nieme-breath{0%,100%{opacity:.62;transform:scale(1)}50%{opacity:1;transform:scale(1.035)}}
@@ -22,7 +22,7 @@ main,footer,.nav{position:relative;z-index:1}
    thousands, which is what reads on a phone as the header moving by itself. */
 @keyframes nieme-glow{0%,100%{opacity:.35}50%{opacity:1}}
 .glyph::after{content:"";position:absolute;inset:-6px;border-radius:50%;pointer-events:none;
-  box-shadow:0 0 26px 2px #6c4cff8c;opacity:.6;will-change:opacity;
+  box-shadow:0 0 26px 2px #6c4cff8c;opacity:.6;
   animation:nieme-glow var(--breath) ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){
   .glyph::after{animation:none;opacity:.6}
@@ -2038,7 +2038,12 @@ h1,h2,h3{text-wrap:balance}
 .au-cap{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#787c92}
 .au-band--stop .au-cap{color:#c4b5fd}
 .au-title{font-size:clamp(16px,1.6vw,20px);line-height:1.25;letter-spacing:-.025em;color:#eef0f7}
-.au-note{font-size:14.5px;line-height:1.5;color:#8f93a8}
+/* Tuning the three strings to the same length fixes one viewport width and
+   breaks another — the wrap point moves with the container, not with the copy.
+   So the guarantee is structural: every band reserves two lines, and the rows
+   are the same height whether a note takes one line or two. */
+.au-note{font-size:14.5px;line-height:1.5;color:#8f93a8;text-wrap:pretty;
+  min-height:calc(14.5px * 1.5 * 2)}
 .au-foot{margin:16px 0 0;font-size:14.5px;line-height:1.6;color:#787c92}
 @media (max-width:900px){
   .au-band{grid-template-columns:minmax(0,1fr);gap:6px}

@@ -279,13 +279,27 @@
       }
       ctx.globalAlpha = 1;
 
+      // the chrome's backdrop-filter resamples whatever moves behind it, so the
+      // field stops at the header — done here rather than with a CSS mask on a
+      // fixed layer, which is a compositing stack that strands stale tiles
+      ctx.globalCompositeOperation = 'destination-out';
+      const cut = ctx.createLinearGradient(0, 0, 0, 156);
+      cut.addColorStop(0, 'rgba(0,0,0,1)');
+      cut.addColorStop(86 / 156, 'rgba(0,0,0,1)');
+      cut.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = cut;
+      ctx.fillRect(0, 0, W, 156);
+      ctx.globalCompositeOperation = 'source-over';
+
       raf = requestAnimationFrame(draw);
     };
 
     const start = () => { if (!raf) raf = requestAnimationFrame(draw); };
     const stop = () => { cancelAnimationFrame(raf); raf = 0; t0 = 0; };
-
     const readScroll = () => { sy = window.scrollY || window.pageYOffset || 0; };
+    // coming back to a tab that was left open: re-measure and repaint from
+    // scratch rather than resuming on top of whatever the compositor still holds
+    const revive = () => { readScroll(); fit(); if (reduce || document.hidden) { draw(0); stop(); } else { t0 = 0; start(); } };
     readScroll();
     fit();
 
@@ -298,8 +312,9 @@
       rt = setTimeout(() => { fit(); if (reduce) { stop(); draw(0); stop(); } }, 160);
     });
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) stop(); else if (!reduce) start();
+      if (document.hidden) stop(); else revive();
     });
+    window.addEventListener('pageshow', (e) => { if (e.persisted) revive(); });
   };
 
   const initReveal = () => {
@@ -731,9 +746,11 @@
         if (!reduce) { visible ? start() : stop(); }
       }, { threshold: 0.05 }).observe(host);
     }
+    const orbRevive = () => { fit(); measure(); t0 = 0; if (reduce) { stop(); draw(0); stop(); } else if (visible) start(); };
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden) stop(); else if (!reduce) start();
+      if (document.hidden) stop(); else orbRevive();
     });
+    window.addEventListener('pageshow', (e) => { if (e.persisted) orbRevive(); });
   };
 
   const boot = () => {
