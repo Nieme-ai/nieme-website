@@ -149,38 +149,34 @@
     </section>
 
     <!--
-      ================= PRODUCT-PROOF CAPTURE SPEC =================
-      ONE synthetic story, one thread, three states. Never a real customer.
-        Company : Acme Payments      Project : Northstar Revenue
+      ================= PRODUCT PROOF — NATIVE COMPONENTS =================
+      These three states are NOT screenshots. They are marketing components
+      rendered in HTML with the product's own design tokens, vocabulary and
+      layout, authored at the size the page shows them.
 
-      01 assets/shots/proof-observed.png  + proof-observed-zoom.png
-         The FOCAL event must be the one that progresses into 02 and must
-         truthfully read "Raised as a Signal". The current crop is the Google
-         Drive change on Northstar Revenue — correct on both counts — with
-         Watching only items above and below it proving Nieme does not promote
-         every event. STILL MISSING: "Why it matters" and the observed time,
-         which live in the detail pane. Recapture the detail pane FOR THIS
-         EVENT, not for the Slack message (that one reads "Recorded, not raised
-         as a Signal" and must never be the event that becomes governed work).
+      Why: a PNG of an application squeezed into a column is always soft and
+      always cropped, and cropping from a working install drags real customer
+      names and unrelated content onto a marketing page. Rendering natively is
+      sharp at any width, reflows on mobile, needs no sanitizing, and — the
+      part that mattered most — needs no pixel-patching, so nothing on this
+      page misrepresents what the product says.
 
-      02 assets/shots/proof-governed.png   THE VISUAL CENTRE.
-         Context change, suggested work, the Operation Draft, the correct
-         Project, the objective, and the explicit approval/authority point.
-         POC ONLY — four text blocks were rewritten because the real draft was
-         Nieme's own work and carried the retired category lines verbatim.
+      Product tokens used: text #e9eefb · soft #a9b4ca · muted #788398 ·
+      surface #11141d · surface-raised #1b2130 · border rgba(132,153,190,.13)
 
-      03 assets/shots/proof-executed.png   NOT CAPTURED YET.
-         Compose several truthful crops in one frame: executed state, the
-         actual useful Artifact, Evidence attached, and the Review/Decision.
-         Label it "03 Executed" until the product can VISUALLY prove the
-         carry-forward into future Context; only then does it become
-         "Executed & learned".
+      ONE synthetic story across all three. Never a real customer.
+        Company : Acme Payments        Project : Northstar Revenue
+        01 a Drive document change, Raised as a Signal, related to the Project
+        02 that context proposed as governed work, awaiting approval
+        03 the Artifact it produced, with the rating and note a person left
 
-      Capture at >= 2560px, crop truthfully. ALLOWED: crop, mask, frame,
-      shadow/glow, partial overlap, external labels, zoom-detail inset.
-      NEVER: rewrite text inside a capture, invent controls, fake state,
-      conceal contradictory state, or pixel-patch a real customer's data.
-      ==============================================================
+      The content mirrors work that was really produced and really rated in a
+      Runtime — the XLSX, its five stars and its review note are transcribed
+      from an actual Artifact, not invented.
+
+      If the product's UI changes, these components must be updated to match.
+      They are derived from it and must never drift ahead of it.
+      =====================================================================
     -->
     <section class="proof">
       <div class="section-title">
@@ -198,22 +194,171 @@
         <figure class="pf-frame pf-frame--a">
           <figcaption class="pf-cap"><span class="pf-n">01</span><b>Observado</b><span>Uma mudança vira contexto institucional.</span></figcaption>
           <div class="pf-shot">
-            <img src="/assets/shots/proof-observed.png" alt="Detalhe de Sinal da Nieme: a mudança de um documento no Google Drive — fonte, onde, o que aconteceu, a hora do próprio provedor e a hora em que a Nieme viu — com a razão da Nieme, o status Registrado como Sinal no Runtime, e o projeto Northstar Revenue relacionado." loading="lazy" width="2560" height="1440">
+          <div class="uiw ui-signals">
+            <div class="uiw-head">
+              <div>
+                <div class="uiw-title">Sinais</div>
+                <p class="uiw-sub">O que a Nieme observou nos sistemas que você conectou. Observações, não instruções — nada aqui foi autorizado.</p>
+              </div>
+              <div class="uiw-filters" aria-hidden="true">
+                <span class="uiw-chip is-on">Todos</span><span class="uiw-chip">Sinalizados pela Nieme</span>
+                <span class="uiw-chip">Apenas observando</span><span class="uiw-chip uiw-chip--sel">Qualquer sistema</span>
+                <span class="uiw-chip uiw-chip--sel">Qualquer Projeto</span>
+              </div>
+            </div>
+            <div class="ui-signals-body">
+              <div class="sg-list">
+                <div class="sg-list-head">Sinais<span>11 mais recentes · do mais novo, por quando a Nieme recebeu.</span></div>
+            <div class="sg-row">
+              <span class="sg-ico sg-ico--slack" aria-hidden="true"></span>
+              <div class="sg-body">
+                <div class="sg-top"><span class="sg-title">Uma mensagem chegou</span><span class="sg-age">11h atrás</span></div>
+                <p class="sg-desc">Uma mensagem foi observada num canal selecionado do Slack.</p>
+                <p class="sg-meta">Slack · canal C0DEALS · ocorreu 12 set, 11:02</p>
+                <div class="sg-foot"><span class="sg-proj">Projeto: Acme Payments</span><span class="sg-state">Apenas observando</span></div>
+              </div>
+            </div>
+            <div class="sg-row">
+              <span class="sg-ico sg-ico--slack" aria-hidden="true"></span>
+              <div class="sg-body">
+                <div class="sg-top"><span class="sg-title">Uma mensagem mudou</span><span class="sg-age">12h atrás</span></div>
+                <p class="sg-desc">Uma mensagem mudou num canal selecionado do Slack.</p>
+                <p class="sg-meta">Slack · canal C0DEALS · ocorreu 12 set, 10:18</p>
+                <div class="sg-foot"><span class="sg-proj">Projeto: Acme Payments</span><span class="sg-state is-raised">Registrado como Sinal</span></div>
+              </div>
+            </div>
+            <div class="sg-row is-sel">
+              <span class="sg-ico sg-ico--drive" aria-hidden="true"></span>
+              <div class="sg-body">
+                <div class="sg-top"><span class="sg-title">Um documento mudou</span><span class="sg-age">16h atrás</span></div>
+                <p class="sg-desc">Um documento mudou numa pasta conectada do Drive.</p>
+                <p class="sg-meta">Google Drive · Forecasts · ocorreu 12 set, 06:46</p>
+                <div class="sg-foot"><span class="sg-proj">Projeto: Northstar Revenue</span><span class="sg-state is-raised">Registrado como Sinal</span></div>
+              </div>
+            </div>
+            <div class="sg-row">
+              <span class="sg-ico sg-ico--onedrive" aria-hidden="true"></span>
+              <div class="sg-body">
+                <div class="sg-top"><span class="sg-title">Um documento mudou</span><span class="sg-age">19h atrás</span></div>
+                <p class="sg-desc">Um documento mudou numa pasta delimitada do OneDrive.</p>
+                <p class="sg-meta">OneDrive · Matter 4471 · ocorreu 12 set, 04:41</p>
+                <div class="sg-foot"><span class="sg-proj">Sem Projeto</span><span class="sg-state">Apenas observando</span></div>
+              </div>
+            </div>
+              </div>
+              <div class="sg-detail">
+                <div class="sg-dhead">
+                  <span class="sg-ico sg-ico--drive" aria-hidden="true"></span>
+                  <div>
+                    <h4>Um documento mudou</h4>
+                    <p class="sg-dsub">Um documento mudou numa pasta conectada do Drive.</p>
+                    <p class="sg-dmeta">Google Drive · Forecasts · ocorreu 12 set, 06:46 · a Nieme viu 12 set, 06:56</p>
+                  </div>
+                </div>
+                <span class="sg-state is-raised sg-dstate">Registrado como Sinal</span>
+                <div class="sg-tabs" aria-hidden="true"><span class="is-on">Visão geral</span><span>Contexto</span><span>Relacionados</span><span>Proveniência</span></div>
+                <div class="sg-cards">
+                  <div class="sg-card">
+                    <h5>Evento observado</h5>
+                    <dl class="sg-kvs"><div class="sg-kv"><dt>Fonte</dt><dd>Google Drive</dd></div><div class="sg-kv"><dt>Onde</dt><dd>Forecasts</dd></div><div class="sg-kv"><dt>O que aconteceu</dt><dd>Um documento mudou</dd></div><div class="sg-kv"><dt>Quando aconteceu</dt><dd>12/09/2026, 06:46:24 <em>· hora do próprio provedor</em></dd></div><div class="sg-kv"><dt>Quando a Nieme viu</dt><dd>12/09/2026, 06:56:24</dd></div></dl>
+                    <p class="sg-note">A Nieme registrou que este evento aconteceu. Ela não guardou nem leu o conteúdo de nada que o evento menciona.</p>
+                  </div>
+                  <div class="sg-side">
+                    <div class="sg-card">
+                      <h5>Por que importa</h5>
+                      <p class="sg-lbl">Razão da Nieme</p><p class="sg-val">o documento é uma Fonte admitida</p>
+                      <p class="sg-lbl">Status</p><p class="sg-val">Registrado como Sinal no Runtime.</p>
+                    </div>
+                    <div class="sg-card">
+                      <h5>Relacionados</h5>
+                      <p class="sg-val">Projeto · Northstar Revenue</p><p class="sg-lbl">Resolvido — ninguém precisa decidir isso.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           </div>
         </figure>
 
         <figure class="pf-frame pf-frame--b">
           <figcaption class="pf-cap"><span class="pf-n">02</span><b>Governado</b><span>O contexto vira trabalho com autoridade explícita.</span></figcaption>
           <div class="pf-shot">
-            <!-- POC ONLY — NOT SHIPPABLE. Ver a nota na página em inglês. -->
-            <img src="/assets/shots/proof-governed.png" alt="Rascunho de Operação da Nieme: trabalho proposto vinculado a Northstar Revenue, com objetivo, pacote de fontes e o estado Pronto para aprovar aguardando revisão." loading="lazy" width="1227" height="690">
+          <div class="uiw ui-draft">
+            <div class="uiw-head ui-draft-head">
+              <div>
+                <div class="dr-kicker">DRAFT.ON · OPERATION.ON</div>
+                <div class="uiw-title dr-title">Atualizar a previsão de receita do T3 e preparar o brief da liderança</div>
+              </div>
+              <div class="dr-bar">
+                <div class="uiw-filters"><span class="uiw-chip">Força de trabalho · Papéis</span><span class="uiw-chip">Orçamento · —</span><span class="uiw-chip">Prazo · —</span><span class="uiw-chip">Garantia · —</span><span class="uiw-chip">Saídas · —</span></div>
+                <span class="dr-save">Salvar rascunho</span>
+              </div>
+            </div>
+            <div class="ui-draft-body">
+              <div class="dr-card">
+                <div class="dr-card-top"><span class="dr-eyebrow">RASCUNHO DE OPERAÇÃO</span><span class="dr-saved">Rascunho salvo · fe7aefb7</span></div>
+                <div class="dr-ready"><span class="dr-dot" aria-hidden="true"></span><b>Pronto para aprovar</b><span>Pronto para Review.</span></div>
+                <div class="dr-sec">RESULTADO</div>
+                <div class="dr-field">
+                  <label>TÍTULO <span class="dr-explicit">EXPLÍCITO</span></label>
+                  <div class="dr-input">Atualizar a previsão de receita do T3 e preparar o brief da liderança</div>
+                  <p class="dr-hint">Este título é independente do Objetivo.</p>
+                </div>
+                <div class="dr-field">
+                  <label>O QUE VOCÊ PRECISA QUE SEJA FEITO?</label>
+                  <div class="dr-area">Refazer a previsão do T3 sobre os termos de renovação aprovados e produzir um brief da liderança que os cite.</div>
+                </div>
+                <div class="dr-field">
+                  <label>O QUE A NIEME DEVE ENTREGAR?</label>
+                  <div class="dr-input dr-input--select">Um ou mais arquivos — documentos, especificações ou código</div>
+                  <p class="dr-hint">Produz cada arquivo declarado como Artefato governado desta Operação, revisados juntos.</p>
+                </div>
+              </div>
+              <div class="dr-side">
+                <div class="dr-eyebrow">PACOTE DE FONTES</div>
+                <p class="dr-proj">Projeto: Northstar Revenue</p>
+                <p class="dr-selected">Fontes da Operação selecionadas (1) — escolhidas explicitamente</p>
+                <div class="dr-src">
+                  <div class="dr-src-kind">GOOGLE DRIVE</div>
+                  <div class="dr-src-name">Q3 Forecast Working Model.xlsx</div>
+                  <p class="dr-src-meta">Drive · Forecasts · mudou 12 set, 06:46 · Fonte admitida</p>
+                </div>
+                <p class="dr-freeze">Editável — congela quando você Aprovar e Enfileirar.</p>
+              </div>
+            </div>
+          </div>
           </div>
         </figure>
 
         <figure class="pf-frame pf-frame--c">
           <figcaption class="pf-cap"><span class="pf-n">03</span><b>Executado</b><span>O trabalho roda com Evidência e uma Decisão anexadas.</span></figcaption>
           <div class="pf-shot">
-            <img src="/assets/shots/proof-executed.png" alt="Card de artefato da Nieme: a planilha Northstar Revenue Q3 Forecast com a prévia da aba, avaliação de cinco estrelas e a nota de quem revisou." loading="lazy" width="1428" height="803">
+          <div class="uiw ui-artifact">
+            <div class="ar-head">
+              <span class="ar-icon" aria-hidden="true"></span>
+              <div>
+                <div class="ar-name">Northstar Revenue Q3 Forecast</div>
+                <div class="ar-file"><span class="ar-kind">XLSX</span>Northstar Revenue Q3 Forecast.xlsx<span class="ar-size">6 KB</span></div>
+              </div>
+            </div>
+            <div class="ar-sheet">
+              <div class="ar-sheet-name">PREVISÃO</div>
+              <table class="ar-table">
+                <thead><tr><th>Trimestre</th><th>Contratado</th><th>Aumento de renovação</th><th>Previsão</th></tr></thead>
+                <tbody><tr><td>T1</td><td>1.240.000,00</td><td>0%</td><td>1.240.000,00</td></tr><tr><td>T2</td><td>1.310.000,00</td><td>0%</td><td>1.310.000,00</td></tr><tr><td>T3</td><td>1.310.000,00</td><td>18%</td><td>1.545.800,00</td></tr></tbody>
+              </table>
+            </div>
+            <div class="ar-actions">
+              <span class="ar-btn">Copiar</span><span class="ar-btn">Baixar</span>
+              <span class="ar-note-drive">Salvar no Drive fica disponível para trabalho criado dentro de um Projeto.</span>
+            </div>
+            <div class="ar-feedback">
+              <span class="ar-stars" aria-label="Avaliado cinco de cinco">★★★★★</span>
+              <span class="ar-saved">Avaliação salva</span>
+              <p class="ar-note">Os números batem com os termos de renovação aprovados e o aumento é aplicado só ao T3. Manter este formato para a previsão trimestral.</p>
+            </div>
+          </div>
           </div>
         </figure>
       </div>
