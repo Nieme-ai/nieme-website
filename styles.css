@@ -906,7 +906,16 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
 /* hero fold: Objective and Project carry the story; the rest stays in the product */
 .rtc .cdu-cell:not(.wide){display:none}
 
-@media (max-width:1080px){ .rtc{max-width:none;height:auto;min-height:640px} }
+/* Below 1080px this used to drop to height:auto with a 640px floor, so the box
+   GREW when the draft unfolded inside the Composer — measured at 640 -> 848px,
+   which pushed everything under the hero down 208px and back up again on every
+   loop. The desktop rule was always a fixed height for exactly this reason: the
+   stage is flex:1 and absorbs the change. 800px is the smallest height at which
+   nothing clips at any scene (measured across the full cycle). */
+@media (max-width:1080px){ .rtc{max-width:none;height:800px;min-height:0} }
+/* narrower screens wrap the Composer and the draft onto more lines, so the
+   locked height has to grow with them — still locked, just taller */
+@media (max-width:480px){ .rtc{height:900px} }
 @media (prefers-reduced-motion:reduce){
   .composer-draft-unfold.is-visible{animation:none}
   .stg-live{animation:none}
@@ -1811,15 +1820,31 @@ h1,h2,h3{text-wrap:balance}
    It is now one argument in three moves, and each move gets a form of its
    own: systems that stay put, a record that travels, and a seam that a model
    change cannot cross. */
-.theses{padding:0 var(--section-inline) clamp(40px,6vw,86px)}
-.th-index{list-style:none;max-width:1440px;margin:0 auto;padding:0;
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,48px)}
-/* no rule per item: the section border below is already the divider, and two
-   near-parallel rules is what made this read as a stray line */
-.th-index li{display:flex;align-items:center;gap:14px;min-width:0;
-  font-size:clamp(17px,1.7vw,22px);line-height:1.3;letter-spacing:-.025em;color:#eef0f7}
-.th-n{flex:none;font-size:11px;letter-spacing:.16em;color:#fff;padding:4px 9px;border-radius:6px;
-  background:linear-gradient(120deg,#7b4dff,#2fd4b8)}
+/* The three theses all end the same way, and that repetition IS the argument:
+   every one of them is something Nieme does not take from you. So the shared
+   verb is set once per row in the same column, the variable halves carry the
+   weight, and each line states the default it is refusing. */
+.theses{padding:0 var(--section-inline) clamp(48px,7vw,96px)}
+.th-lead{max-width:1440px;margin:0 auto clamp(28px,3.4vw,46px);
+  font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#a9a3ff}
+.th-list{list-style:none;max-width:1440px;margin:0 auto;padding:0;
+  border-top:1px solid var(--line)}
+.th-list li{display:grid;grid-template-columns:auto minmax(0,1fr);
+  column-gap:clamp(16px,2.2vw,34px);row-gap:8px;align-items:baseline;
+  padding:clamp(22px,2.6vw,34px) 0;border-bottom:1px solid var(--line)}
+.th-n{grid-row:1;font-size:11px;letter-spacing:.16em;color:#fff;padding:5px 9px;border-radius:6px;
+  background:linear-gradient(120deg,#7b4dff,#2fd4b8);align-self:center}
+.th-say{grid-column:2;font-size:clamp(26px,4vw,54px);line-height:1.08;letter-spacing:-.045em;
+  color:#8b90a6;font-weight:420}
+.th-say b{font-weight:420;color:#fff}
+.th-say em{font-style:normal;color:#8b90a6}
+.th-not{grid-column:2;font-size:clamp(13px,1.25vw,16px);line-height:1.5;color:#6d7186;
+  text-decoration:line-through;text-decoration-color:#6d718659}
+@media (max-width:700px){
+  .th-list li{grid-template-columns:minmax(0,1fr);row-gap:10px}
+  .th-n{grid-column:1;justify-self:start}
+  .th-say,.th-not{grid-column:1}
+}
 
 .wn{padding:var(--section-padding) var(--section-inline);border-top:1px solid var(--line)}
 .wn-copy{max-width:1440px;margin:0 auto}
