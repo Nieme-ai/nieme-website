@@ -2,6 +2,20 @@
 :root{--bg:#05070d;--panel:#0b0f19cc;--line:#ffffff14;--text:#f5f4f1;--muted:#9ba0b4;--purple:#7b4dff;--blue:#21b8ff;--cyan:#7ee7ff}
 *{box-sizing:border-box} html{scroll-behavior:smooth}
 body{margin:0;background:radial-gradient(circle at 80% 5%,#17264f 0%,transparent 34%),radial-gradient(circle at 25% 20%,#1b1148 0%,transparent 34%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.01em;overflow-x:hidden}
+/* --- the page is alive: one clock, one ambient field ------------------ */
+/* --breath is the single period every pulsing thing on this page uses.
+   script.js draws the ambient canvas on the same number (BREATH=3900). */
+:root{--breath:3900ms}
+.pulse{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
+main,footer,.nav{position:relative;z-index:1}
+.nav{z-index:20}
+@keyframes nieme-breath{0%,100%{opacity:.62;transform:scale(1)}50%{opacity:1;transform:scale(1.035)}}
+@keyframes nieme-glow{0%,100%{box-shadow:0 0 22px #6c4cff5c}50%{box-shadow:0 0 40px #6c4cffb3,0 0 76px #2fd4b826}}
+/* the brand mark is the one thing that never stops: it orbits AND it breathes */
+.glyph{animation:nieme-glow var(--breath) ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){
+  .glyph{animation:none}
+}
 .grain{position:fixed;inset:0;pointer-events:none;opacity:.18;z-index:10;background-image:url("./grain.png");background-repeat:repeat;background-size:256px 256px;mix-blend-mode:screen}
 .nav{position:fixed;top:0;left:0;right:0;height:84px;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 44px;background:linear-gradient(#05070de8,#05070d00);backdrop-filter:blur(12px)}
 .brand{display:flex;align-items:center;gap:18px;text-decoration:none;color:white;font-size:25px;letter-spacing:.42em}
@@ -1031,43 +1045,68 @@ h1,h2,h3{text-wrap:balance}
 .cmp-note{margin:22px 0 0;font-size:15px;line-height:1.6;color:#8f93a8;max-width:520px}
 
 /* the pile: real messages, slightly askew, stacking up */
-.cm-pile{display:flex;flex-direction:column;gap:11px;padding:4px 0}
+/* the noisy side: one real thread, two days long, going nowhere */
+.cm-thread{display:flex;flex-direction:column;gap:10px;padding:4px 0}
+.cm-thread-head{align-self:flex-start;display:flex;align-items:baseline;gap:10px;margin-bottom:4px;
+  padding:7px 13px;border-radius:9px;border:1px solid #ffffff14;background:#ffffff08}
+.cm-ch{font-size:13px;font-weight:600;color:#d5d8e6;letter-spacing:-.01em}
+.cm-ch-sub{font-size:11.5px;color:#787c92}
 .cm-msg{align-self:flex-start;max-width:min(100%,430px);margin-left:var(--x,0);
   transform:rotate(var(--r,0));
-  padding:12px 15px;border-radius:13px 13px 13px 5px;
+  padding:11px 15px;border-radius:13px 13px 13px 5px;
   border:1px solid #ffffff14;background:#ffffff08;
   box-shadow:0 10px 26px #00000059}
 .cm-msg:nth-child(odd){background:#ffffff0a}
 .cm-who{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#787c92}
 .cm-msg p{margin:5px 0 0;font-size:15px;line-height:1.4;color:#c8cbd9;letter-spacing:-.01em}
 .cm-time{display:block;margin-top:6px;font-size:11px;color:#5f6478}
+/* the divider is the whole argument: a day passed and nothing moved */
+.cm-day{display:flex;align-items:center;gap:14px;margin:6px 0 2px;
+  font-size:10px;letter-spacing:.22em;color:#6d7186}
+.cm-day::before,.cm-day::after{content:"";flex:1;height:1px;background:#ffffff14}
 
-/* the calm side: one object, and the only thing left for a person */
-.cm-obj{padding:26px 28px 24px;border-radius:16px;
+/* the calm side: the real governed object, and the one decision left */
+.cm-obj{border-radius:16px;overflow:hidden;
   border:1px solid #7b4dff59;
   background:
-    radial-gradient(120% 150% at 0% 0%, #7b4dff2b 0%, #7b4dff00 60%),
-    radial-gradient(120% 150% at 100% 100%, #2fd4b826 0%, #2fd4b800 60%),
+    radial-gradient(120% 150% at 0% 0%, #7b4dff26 0%, #7b4dff00 58%),
+    radial-gradient(120% 150% at 100% 100%, #2fd4b81f 0%, #2fd4b800 58%),
     linear-gradient(180deg,#171a2b,#0f1119);
   box-shadow:0 26px 70px #00000080, inset 0 1px 0 #ffffff14;
   display:flex;flex-direction:column}
+.cm-obj-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  padding:13px 24px;border-bottom:1px solid #ffffff12;background:#ffffff06}
 .cm-obj-kicker{font-size:10.5px;letter-spacing:.2em;color:#c4b5fd;font-weight:700}
-.cm-obj-title{margin-top:10px;font-size:clamp(20px,2vw,26px);line-height:1.2;letter-spacing:-.03em;
-  color:#fff;font-weight:440}
-.cm-obj-facts{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:13px}
-.cm-obj-facts li{display:flex;align-items:flex-start;gap:11px;font-size:15px;line-height:1.45;color:#c8cbd9}
-.cm-tick{flex:none;width:16px;height:16px;margin-top:2px;border-radius:50%;position:relative;
-  background:linear-gradient(135deg,#7b4dff,#2fd4b8)}
-.cm-tick::after{content:"";position:absolute;left:5px;top:4.5px;width:3.5px;height:6.5px;
-  border:1.6px solid #0f1119;border-top:0;border-left:0;transform:rotate(42deg)}
-.cm-obj-ask{display:flex;align-items:center;gap:11px;margin-top:24px;padding-top:20px;
-  border-top:1px solid #ffffff14;
-  font-size:16px;color:#fff;letter-spacing:-.015em}
-.cm-person{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid #c4b5fd;position:relative}
-.cm-person::before{content:"";position:absolute;left:50%;top:4px;width:6px;height:6px;margin-left:-3px;
-  border-radius:50%;border:1.5px solid #c4b5fd}
-.cm-person::after{content:"";position:absolute;left:50%;top:12px;width:12px;height:7px;margin-left:-6px;
-  border:1.5px solid #c4b5fd;border-bottom:0;border-radius:6px 6px 0 0}
+.cm-obj-state{font-size:11.5px;line-height:1;padding:6px 11px;border-radius:999px;
+  border:1px solid #7ee7ff4d;color:#a9f0ff;background:#7ee7ff12;white-space:nowrap}
+.cm-obj-title{margin:0;padding:22px 24px 0;font-size:clamp(19px,1.85vw,25px);line-height:1.22;
+  letter-spacing:-.03em;color:#fff;font-weight:440}
+.cm-obj-rows{margin:20px 0 0;padding:0 24px}
+.cm-obj-row{display:grid;grid-template-columns:88px minmax(0,1fr);gap:16px;align-items:baseline;
+  padding:13px 0;border-top:1px solid #ffffff0f}
+.cm-obj-row:first-child{border-top:0}
+.cm-obj-row dt{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7f8499}
+.cm-obj-row dd{margin:0;min-width:0;font-size:14.5px;line-height:1.35;color:#e7e9f3;letter-spacing:-.01em}
+.cm-obj-row dd em{display:block;margin-top:4px;font-style:normal;font-size:12.5px;
+  line-height:1.4;color:#868b9f;letter-spacing:0}
+.cm-obj-act{display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  margin-top:6px;padding:16px 24px 18px;border-top:1px solid #ffffff12;background:#ffffff05}
+.cm-obj-btn{font-size:13px;line-height:1;padding:11px 16px;border-radius:9px;
+  border:1px solid var(--line);color:#c3c7d6;background:#ffffff08}
+/* the payoff, said plainly: this is what the contrast is worth */
+.cm-gain{margin-top:30px;padding-top:26px;border-top:1px solid #ffffff14}
+.cm-gain-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.cm-gain-was{font-size:clamp(17px,1.6vw,21px);color:#7c8096;letter-spacing:-.02em;
+  text-decoration:line-through;text-decoration-color:#7c809666}
+.cm-gain-arrow{flex:none;width:38px;height:1px;position:relative;
+  background:linear-gradient(90deg,#7b4dff66,#2fd4b8)}
+.cm-gain-arrow::after{content:"";position:absolute;right:0;top:-3px;
+  width:6px;height:6px;border:1px solid #2fd4b8;border-left:0;border-bottom:0;
+  transform:rotate(45deg)}
+.cm-gain-now{font-size:clamp(17px,1.6vw,21px);color:#fff;letter-spacing:-.02em}
+.cm-gain p{margin:14px 0 0;font-size:14.5px;line-height:1.6;color:#8f93a8;max-width:520px}
+.cm-obj-btn--go{color:#fff;border-color:#7b4dff80;
+  background:linear-gradient(120deg,#7b4dff,#5b6dff);box-shadow:0 0 24px #6c4cff4d}
 
 .coord-close{display:flex;align-items:center;gap:24px;max-width:1440px;margin:58px auto 0}
 /* BRAND LAW: the Nieme glyph is the logo mark and nothing else — never a bullet,
@@ -1091,7 +1130,7 @@ h1,h2,h3{text-wrap:balance}
 /* ---- the Runtime orb: a 3D sphere on canvas. Work streams in from the
        systems it already lives in, the core processes it, and governed work
        leaves again. Labels ride the same rotation and dim behind the sphere. ---- */
-.orb{position:relative;width:100%;max-width:920px;height:620px;margin:0 auto;
+.orb{position:relative;width:100%;max-width:1040px;height:680px;margin:0 auto;
   isolation:isolate}
 .orb-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .orb::before{content:"";position:absolute;left:50%;top:50%;width:72%;height:72%;
@@ -1192,55 +1231,74 @@ h1,h2,h3{text-wrap:balance}
        things stop being re-litigated: which terms are authoritative, who may
        decide, what was agreed. The list of things a person must answer gets
        shorter — that is the compounding, and it is legible at a glance. ---- */
-.qa{max-width:1440px;margin:0 auto;display:grid;
-  grid-template-columns:minmax(0,1fr) 74px minmax(0,1fr);align-items:start}
-.qa-cap{display:inline-block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-  padding:5px 11px;border-radius:7px;color:#c8cbd9;background:#ffffff0d;border:1px solid #ffffff1c}
-.qa-cap--settled{color:#fff;border-color:#7b4dff59;
-  background:linear-gradient(100deg,#7b4dff33,#2fd4b81f)}
-.qa-sub{margin:14px 0 18px;font-size:14.5px;line-height:1.5;color:#8f93a8}
-.qa-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
-.qa-list li{display:flex;align-items:flex-start;gap:13px;padding:15px 17px;border-radius:12px;
-  border:1px solid var(--line);background:#ffffff06;font-size:15.5px;line-height:1.45;color:#c8cbd9;
-  letter-spacing:-.01em}
-/* an open question — the thing somebody has to settle before anything runs */
-.qa-q{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
-  border:1px solid #ffffff2b;color:#8f93a8;font-size:12.5px;font-weight:600;margin-top:1px}
-/* a settled one — decided once, and it stayed */
-.qa-list--settled li{border-color:#7b4dff33;background:linear-gradient(100deg,#7b4dff12,#2fd4b808)}
-.qa-tick{flex:none;width:22px;height:22px;border-radius:50%;position:relative;margin-top:1px;
-  background:linear-gradient(135deg,#7b4dff,#2fd4b8)}
-.qa-tick::after{content:"";position:absolute;left:8px;top:6.5px;width:4.5px;height:8px;
-  border:1.8px solid #0b0d14;border-top:0;border-left:0;transform:rotate(42deg)}
-.qa-fact{display:block;color:#eef0f7}
-.qa-by{display:block;margin-top:5px;font-size:13px;color:#8b8fa3;line-height:1.45}
-/* what is genuinely new, and therefore still a person's call */
-.qa-open{display:flex;align-items:flex-start;gap:13px;margin-top:16px;padding:15px 17px;
-  border-radius:12px;border:1px dashed #7ee7ff40;background:#7ee7ff08;
-  font-size:15.5px;line-height:1.45;color:#c8cbd9;letter-spacing:-.01em}
-.qa-open .qa-q{border-color:#7ee7ff59;color:#7ee7ff}
-.qa-open .qa-by{color:#7ee7ffb3}
-/* the crossing */
-.qa-shift{position:relative;align-self:center;height:1px;margin:0 12px}
-.qa-shift-line{position:absolute;inset:0;
-  background:linear-gradient(90deg,#7b4dff00,#7b4dff8c 45%,#7ee7ffb3)}
-.qa-shift-dot{position:absolute;top:-2px;left:0;width:5px;height:5px;border-radius:50%;
-  background:var(--cyan);box-shadow:0 0 11px var(--cyan);opacity:0;
-  animation:qa-run 7s ease-in-out infinite}
-@keyframes qa-run{0%{left:0;opacity:0}10%{opacity:1}26%{opacity:1}34%{left:100%;opacity:0}100%{left:100%;opacity:0}}
-.qa-note{max-width:1440px;margin:34px auto 0;font-size:15px;line-height:1.6;color:#8f93a8}
-
-@media (max-width:1000px){
-  .qa{grid-template-columns:minmax(0,1fr);gap:8px}
-  .qa-col--after{margin-top:34px}
-  .qa-shift{align-self:stretch;width:1px;height:38px;margin:0 auto;justify-self:center}
-  .qa-shift-line{background:linear-gradient(180deg,#7b4dff00,#7b4dff8c 45%,#7ee7ffb3)}
-  .qa-shift-dot{top:0;left:-2px;animation-name:qa-run-v}
-  @keyframes qa-run-v{0%{top:0;opacity:0}10%{opacity:1}26%{opacity:1}34%{top:100%;opacity:0}100%{top:100%;opacity:0}}
-}
+/* the compounding chart — the shape of the value, not a benchmark */
+.cx{max-width:1180px;margin:0 auto;padding:0;border-radius:20px;
+  border:1px solid var(--line);overflow:hidden;
+  background:linear-gradient(180deg,#ffffff0a,#ffffff03);
+  box-shadow:0 30px 110px #00000059}
+.cx-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  padding:24px 30px 0}
+.cx-title{font-size:20px;line-height:1.2;letter-spacing:-.025em;color:#eef0f7}
+.cx-sub{margin-top:6px;font-size:13.5px;color:#8f93a8}
+.cx-tag{flex:none;font-size:10px;letter-spacing:.2em;padding:6px 11px;border-radius:999px;
+  border:1px solid var(--line);color:#8f93a8;background:#ffffff08}
+.cx-legend{display:flex;gap:22px;flex-wrap:wrap;padding:18px 30px 4px}
+.cx-key{display:inline-flex;align-items:center;gap:9px;font-size:13px;color:#a9aec2}
+.cx-key i{width:20px;height:3px;border-radius:2px;flex:none}
+.cx-key--flat i{background:#6b7080}
+.cx-key--nie i{background:linear-gradient(90deg,#8b6bff,#2fd4b8)}
+.cx-plot{padding:4px 18px 6px;overflow-x:auto}
+.cx-plot svg{display:block;width:100%;min-width:620px;height:auto}
+.cx-grid line{stroke:#ffffff12;stroke-width:1}
+.cx-axis{stroke:#ffffff1f;stroke-width:1}
+.cx-yt{fill:#8f93a8;font-size:12.5px;text-anchor:end;font-family:inherit}
+.cx-xt{fill:#787c92;font-size:12px;text-anchor:middle;font-family:inherit}
+.cx-atitle{fill:#6d7186;font-size:11.5px;letter-spacing:.16em;text-anchor:middle;
+  text-transform:uppercase;font-family:inherit}
+.cx-gap{fill:#b9a6ff;font-size:13px;text-anchor:middle;letter-spacing:.02em;font-family:inherit;opacity:.9}
+.cx-flat{fill:none;stroke:#6b7080;stroke-width:1.8;stroke-linejoin:round}
+.cx-line{fill:none;stroke:url(#cxline);stroke-width:2.8;stroke-linejoin:round;stroke-linecap:round}
+.cx-dot--flat{fill:#6b7080}
+.cx-dot--nie{fill:#9b86ff}
+.cx-badge circle{fill:#0c1018;stroke:#8b6bff;stroke-width:1.6}
+.cx-badge text{fill:#fff;font-size:11px;text-anchor:middle;font-weight:600;font-family:inherit}
+/* the lines draw themselves in when the section arrives */
+.learning.is-visible .cx-area{animation:cx-fade 900ms ease 700ms both}
+.learning.is-visible .cx-flat,.learning.is-visible .cx-line{
+  stroke-dasharray:1000;stroke-dashoffset:1000;animation:cx-draw 1500ms ease-out both}
+.learning.is-visible .cx-line{animation-delay:180ms}
+.learning.is-visible .cx-dot,.learning.is-visible .cx-badge,.learning.is-visible .cx-gap{
+  animation:cx-fade 600ms ease 1200ms both}
+@keyframes cx-draw{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
+@keyframes cx-fade{from{opacity:0}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){
-  .qa-shift-dot{animation:none;left:auto;right:0;opacity:.85}
+  .learning.is-visible .cx-area,.learning.is-visible .cx-flat,.learning.is-visible .cx-line,
+  .learning.is-visible .cx-dot,.learning.is-visible .cx-badge,.learning.is-visible .cx-gap{animation:none}
+  .learning.is-visible .cx-flat,.learning.is-visible .cx-line{stroke-dasharray:none;stroke-dashoffset:0}
 }
+.cx-notes{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;
+  margin:0;padding:20px 30px 26px;border-top:1px solid var(--line);background:#ffffff05}
+.cx-notes li{display:flex;align-items:flex-start;gap:12px;min-width:0}
+.cx-num{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+  font-size:11px;font-weight:600;color:#fff;border:1.5px solid #8b6bff;background:#0c1018}
+.cx-notes strong{display:block;font-size:14.5px;font-weight:500;color:#e7e9f3;letter-spacing:-.01em}
+.cx-notes span{display:block;margin-top:5px;font-size:13px;line-height:1.45;color:#868b9f}
+.cx-note{max-width:1180px;margin:30px auto 0;font-size:15px;line-height:1.6;color:#8f93a8}
+@media (max-width:900px){
+  .cx-notes{grid-template-columns:1fr;gap:16px}
+  .cx-head,.cx-legend,.cx-notes{padding-left:20px;padding-right:20px}
+  .cx-plot{padding-left:10px;padding-right:10px}
+}
+@media (max-width:760px){
+  /* the chart keeps its own horizontal scroll; the labels have to survive it,
+     and the faded edge is what says there is more of it to the right */
+  .cx-plot svg{min-width:560px}
+  .cx-yt,.cx-xt,.cx-gap{font-size:16px}
+  .cx-atitle{font-size:15px}
+  .cx-plot{-webkit-mask-image:linear-gradient(90deg,#000 0,#000 86%,transparent 100%);
+    mask-image:linear-gradient(90deg,#000 0,#000 86%,transparent 100%)}
+}
+
 /* ---- executors: one socket, a bus, interchangeable units ---- */
 .swap{max-width:1100px;margin:0 auto;display:grid;
   grid-template-columns:minmax(0,260px) 74px minmax(0,1fr);gap:0;align-items:center}
@@ -1370,11 +1428,8 @@ h1,h2,h3{text-wrap:balance}
 .sg-row{display:flex;gap:10px;padding:11px 12px;border-radius:11px;border:1px solid var(--ui-line);
   background:#ffffff05}
 .sg-row.is-sel{border-color:#7ee7ff5c;background:#7ee7ff0a;box-shadow:0 0 0 1px #7ee7ff1f}
-.sg-ico{flex:none;width:17px;height:17px;margin-top:1px;border-radius:4px;
-  background:linear-gradient(135deg,#8e8e93,#5c5c61)}
-.sg-ico--slack{background:conic-gradient(from .25turn,#36c5f0 0 25%,#2eb67d 0 50%,#ecb22e 0 75%,#e01e5a 0)}
-.sg-ico--drive{background:conic-gradient(from .08turn,#0f9d58 0 33%,#f4b400 0 66%,#4285f4 0)}
-.sg-ico--onedrive{background:linear-gradient(135deg,#28a8ea,#0078d4)}
+.brand-sprite{position:absolute;width:0;height:0;overflow:hidden}
+.sg-ico{flex:none;width:18px;height:18px;margin-top:1px;display:block;overflow:visible}
 .sg-body{min-width:0;flex:1}
 .sg-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
 .sg-title{font-size:13.5px;font-weight:600;color:var(--ui-text);letter-spacing:-.01em}
@@ -1392,7 +1447,7 @@ h1,h2,h3{text-wrap:balance}
 
 .sg-detail{padding:20px 24px 22px;min-width:0}
 .sg-dhead{display:flex;gap:12px;align-items:flex-start}
-.sg-dhead .sg-ico{width:22px;height:22px;margin-top:3px}
+.sg-dhead .sg-ico{width:24px;height:24px;margin-top:3px}
 .sg-dhead h4{margin:0;font-size:19px;font-weight:600;color:var(--ui-text);letter-spacing:-.02em}
 .sg-dsub{margin:5px 0 0;font-size:13px;color:var(--ui-soft)}
 .sg-dmeta{margin:4px 0 0;font-size:12px;color:var(--ui-muted)}

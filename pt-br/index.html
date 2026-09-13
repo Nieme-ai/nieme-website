@@ -38,6 +38,7 @@
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
+  <canvas class="pulse" data-pulse aria-hidden="true"></canvas>
   <div class="grain"></div>
   <header class="nav">
     <a class="brand" href="/pt-br">
@@ -193,6 +194,31 @@
         <figure class="pf-frame pf-frame--a">
           <figcaption class="pf-cap"><span class="pf-n">01</span><b>Observado</b><span>Uma mudança vira contexto institucional.</span></figcaption>
           <div class="pf-shot">
+      <!-- Real marks for the systems Nieme observed. Third-party brand logos,
+           shown only to identify the connected system each Signal came from. -->
+      <svg class="brand-sprite" aria-hidden="true" focusable="false"><defs>
+        <symbol id="i-slack" viewBox="0 0 122.8 122.8">
+          <path fill="#E01E5A" d="M25.8 77.6a12.9 12.9 0 1 1-12.9-12.9h12.9v12.9zm6.5 0a12.9 12.9 0 0 1 25.8 0v32.3a12.9 12.9 0 0 1-25.8 0V77.6z"/>
+          <path fill="#36C5F0" d="M45.2 25.8a12.9 12.9 0 1 1 12.9-12.9v12.9H45.2zm0 6.5a12.9 12.9 0 0 1 0 25.8H12.9a12.9 12.9 0 0 1 0-25.8h32.3z"/>
+          <path fill="#2EB67D" d="M97 45.2a12.9 12.9 0 1 1 12.9 12.9H97V45.2zm-6.5 0a12.9 12.9 0 0 1-25.8 0V12.9a12.9 12.9 0 0 1 25.8 0v32.3z"/>
+          <path fill="#ECB22E" d="M77.6 97a12.9 12.9 0 1 1-12.9 12.9V97h12.9zm0-6.5a12.9 12.9 0 0 1 0-25.8h32.3a12.9 12.9 0 0 1 0 25.8H77.6z"/>
+        </symbol>
+        <symbol id="i-drive" viewBox="0 0 87.3 78">
+          <path fill="#0066DA" d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8H0c0 1.55.4 3.1 1.2 4.5z"/>
+          <path fill="#00AC47" d="M43.65 25 29.9 1.2c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44A9.06 9.06 0 0 0 0 53h27.5z"/>
+          <path fill="#EA4335" d="M73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75L86.1 57.4c.8-1.4 1.2-2.95 1.2-4.5H59.79l5.85 11.5z"/>
+          <path fill="#00832D" d="M43.65 25 57.4 1.2C56.05.4 54.5 0 52.9 0H34.4c-1.6 0-3.15.45-4.5 1.2z"/>
+          <path fill="#2684FC" d="M59.8 53H27.5L13.75 76.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z"/>
+          <path fill="#FFBA00" d="M73.4 26.5 60.7 4.5c-.8-1.4-1.95-2.5-3.3-3.3L43.65 25l16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z"/>
+        </symbol>
+        <symbol id="i-onedrive" viewBox="0 0 48 32">
+          <g fill="#0364B8"><circle cx="21.5" cy="12.5" r="9"/><circle cx="33" cy="17" r="7.5"/></g>
+          <g fill="#28A8EA">
+            <circle cx="12" cy="19.5" r="7.5"/><circle cx="24" cy="20" r="8.5"/>
+            <rect x="12" y="19.5" width="26" height="9" rx="4.5"/><circle cx="36" cy="23" r="5.5"/>
+          </g>
+        </symbol>
+      </defs></svg>
           <div class="uiw ui-signals">
             <div class="uiw-head">
               <div>
@@ -209,7 +235,7 @@
               <div class="sg-list">
                 <div class="sg-list-head">Sinais<span>11 mais recentes · do mais novo, por quando a Nieme recebeu.</span></div>
             <div class="sg-row">
-              <span class="sg-ico sg-ico--slack" aria-hidden="true"></span>
+              <svg class="sg-ico" aria-hidden="true" focusable="false"><use href="#i-slack"/></svg>
               <div class="sg-body">
                 <div class="sg-top"><span class="sg-title">Uma mensagem chegou</span><span class="sg-age">11h atrás</span></div>
                 <p class="sg-desc">Uma mensagem foi observada num canal selecionado do Slack.</p>
@@ -218,7 +244,7 @@
               </div>
             </div>
             <div class="sg-row">
-              <span class="sg-ico sg-ico--slack" aria-hidden="true"></span>
+              <svg class="sg-ico" aria-hidden="true" focusable="false"><use href="#i-slack"/></svg>
               <div class="sg-body">
                 <div class="sg-top"><span class="sg-title">Uma mensagem mudou</span><span class="sg-age">12h atrás</span></div>
                 <p class="sg-desc">Uma mensagem mudou num canal selecionado do Slack.</p>
@@ -227,7 +253,7 @@
               </div>
             </div>
             <div class="sg-row is-sel">
-              <span class="sg-ico sg-ico--drive" aria-hidden="true"></span>
+              <svg class="sg-ico" aria-hidden="true" focusable="false"><use href="#i-drive"/></svg>
               <div class="sg-body">
                 <div class="sg-top"><span class="sg-title">Um documento mudou</span><span class="sg-age">16h atrás</span></div>
                 <p class="sg-desc">Um documento mudou numa pasta conectada do Drive.</p>
@@ -236,7 +262,7 @@
               </div>
             </div>
             <div class="sg-row">
-              <span class="sg-ico sg-ico--onedrive" aria-hidden="true"></span>
+              <svg class="sg-ico" aria-hidden="true" focusable="false"><use href="#i-onedrive"/></svg>
               <div class="sg-body">
                 <div class="sg-top"><span class="sg-title">Um documento mudou</span><span class="sg-age">19h atrás</span></div>
                 <p class="sg-desc">Um documento mudou numa pasta delimitada do OneDrive.</p>
@@ -247,7 +273,7 @@
               </div>
               <div class="sg-detail">
                 <div class="sg-dhead">
-                  <span class="sg-ico sg-ico--drive" aria-hidden="true"></span>
+                  <svg class="sg-ico" aria-hidden="true" focusable="false"><use href="#i-drive"/></svg>
                   <div>
                     <h4>Um documento mudou</h4>
                     <p class="sg-dsub">Um documento mudou numa pasta conectada do Drive.</p>
@@ -379,54 +405,89 @@
       <div class="cmp">
         <div class="cmp-side cmp-side--noise">
           <div class="cmp-cap">HOJE</div>
-          <div class="cm-pile">
-            <div class="cm-msg" style="--r:-1.4deg;--x:0px">
-              <span class="cm-who">Financeiro</span>
-              <p>os termos de renovação mudaram?</p>
-              <span class="cm-time">09:12</span>
+          <div class="cm-thread">
+            <div class="cm-thread-head"><span class="cm-ch">#negocios</span><span class="cm-ch-sub">Renova&ccedil;&atilde;o Acme Payments</span></div>
+            <div class="cm-msg" style="--r:-1.1deg;--x:0px">
+              <span class="cm-who">Voc&ecirc;</span>
+              <p>a Acme vai renovar mesmo? a call do board &eacute; quinta</p>
+              <span class="cm-time">Ter 09:12</span>
             </div>
-            <div class="cm-msg" style="--r:0.9deg;--x:26px">
-              <span class="cm-who">Você</span>
-              <p>me manda a última previsão?</p>
-              <span class="cm-time">09:40</span>
-            </div>
-            <div class="cm-msg" style="--r:-0.7deg;--x:10px">
+            <div class="cm-msg" style="--r:0.7deg;--x:22px">
               <span class="cm-who">Vendas</span>
-              <p>quem aprova essa aqui?</p>
-              <span class="cm-time">10:05</span>
+              <p>acho que sim &mdash; mas os termos mudaram m&ecirc;s passado</p>
+              <span class="cm-time">Ter 09:26</span>
             </div>
-            <div class="cm-msg" style="--r:1.3deg;--x:38px">
+            <div class="cm-msg" style="--r:-0.5deg;--x:8px">
+              <span class="cm-who">Voc&ecirc;</span>
+              <p>mudaram como?</p>
+              <span class="cm-time">Ter 09:31</span>
+            </div>
+            <div class="cm-msg" style="--r:1deg;--x:32px">
+              <span class="cm-who">Vendas</span>
+              <p>o Jur&iacute;dico tem o redline. t&aacute; no Drive em algum lugar</p>
+              <span class="cm-time">Ter 11:04</span>
+            </div>
+            <div class="cm-msg" style="--r:-0.8deg;--x:14px">
               <span class="cm-who">Financeiro</span>
-              <p>essa é a versão final?</p>
-              <span class="cm-time">11:18</span>
+              <p>qual vers&atilde;o a gente t&aacute; usando pra precificar?</p>
+              <span class="cm-time">Ter 16:40</span>
             </div>
-            <div class="cm-msg" style="--r:-1.1deg;--x:16px">
-              <span class="cm-who">Você</span>
-              <p>seguindo no que mandei acima</p>
-              <span class="cm-time">14:02</span>
+            <div class="cm-day"><span>QUARTA</span></div>
+            <div class="cm-msg" style="--r:0.6deg;--x:26px">
+              <span class="cm-who">Vendas</span>
+              <p>cobrando o Jur&iacute;dico</p>
+              <span class="cm-time">Qua 08:15</span>
             </div>
-            <div class="cm-msg" style="--r:0.6deg;--x:44px">
-              <span class="cm-who">Operações</span>
-              <p>o que a gente decidiu no trimestre passado?</p>
-              <span class="cm-time">16:47</span>
+            <div class="cm-msg" style="--r:-1.2deg;--x:6px">
+              <span class="cm-who">Voc&ecirc;</span>
+              <p>ainda preciso disso. a call do board &eacute; amanh&atilde;</p>
+              <span class="cm-time">Qua 10:52</span>
+            </div>
+            <div class="cm-msg" style="--r:0.9deg;--x:36px">
+              <span class="cm-who">Financeiro</span>
+              <p>e quem assina o n&uacute;mero final?</p>
+              <span class="cm-time">Qua 14:20</span>
             </div>
           </div>
-          <p class="cmp-note">Seis mensagens para mover um único trabalho — e nenhuma delas é o trabalho.</p>
+          <p class="cmp-note">Dois dias. Oito mensagens. A pergunta continua aberta &mdash; e a call do board &eacute; amanh&atilde;.</p>
         </div>
 
         <div class="cmp-side cmp-side--calm">
           <div class="cmp-cap cmp-cap--runtime">COM A NIEME</div>
           <div class="cm-obj">
-            <div class="cm-obj-kicker">UM TRABALHO GOVERNADO</div>
-            <div class="cm-obj-title">Previsão de receita do T3 + brief da liderança</div>
-            <ul class="cm-obj-facts">
-              <li><span class="cm-tick" aria-hidden="true"></span>Contexto reunido a partir dos termos de renovação aprovados</li>
-              <li><span class="cm-tick" aria-hidden="true"></span>Evidência anexada ao resultado</li>
-              <li><span class="cm-tick" aria-hidden="true"></span>Levado adiante assim que for aceito</li>
-            </ul>
-            <div class="cm-obj-ask"><span class="cm-person" aria-hidden="true"></span>O que sobra para você: dizer sim.</div>
+            <div class="cm-obj-bar">
+              <span class="cm-obj-kicker">OPERATION.ON</span>
+              <span class="cm-obj-state">Pronto para a sua decis&atilde;o</span>
+            </div>
+            <div class="cm-obj-title">A Acme vai renovar, e em que termos?</div>
+            <dl class="cm-obj-rows">
+              <div class="cm-obj-row">
+                <dt>Contexto</dt>
+                <dd>MSA Acme &middot; Redline de renova&ccedil;&atilde;o v4<em>3 documentos do Drive, nas vers&otilde;es que ela leu</em></dd>
+              </div>
+              <div class="cm-obj-row">
+                <dt>Resultado</dt>
+                <dd>Brief de posi&ccedil;&atilde;o para a renova&ccedil;&atilde;o<em>cada n&uacute;mero rastre&aacute;vel at&eacute; a cl&aacute;usula de onde veio</em></dd>
+              </div>
+              <div class="cm-obj-row">
+                <dt>Autoridade</dt>
+                <dd>O Financeiro assina<em>decidido uma vez &mdash; o trabalho chegou aqui sozinho</em></dd>
+              </div>
+            </dl>
+            <div class="cm-obj-act">
+              <span class="cm-obj-btn cm-obj-btn--go">Aceitar</span>
+              <span class="cm-obj-btn">Devolver com uma mudan&ccedil;a</span>
+            </div>
           </div>
-          <p class="cmp-note">O mesmo trabalho, carregado. Nada para caçar, nada para remontar.</p>
+          <p class="cmp-note">A mesma pergunta, feita uma vez. Tudo o que ela precisava chegou junto.</p>
+          <div class="cm-gain">
+            <div class="cm-gain-row">
+              <span class="cm-gain-was">Dois dias de cobran&ccedil;a</span>
+              <span class="cm-gain-arrow" aria-hidden="true"></span>
+              <span class="cm-gain-now">Uma decis&atilde;o</span>
+            </div>
+            <p>Ningu&eacute;m remontou nada. Ningu&eacute;m ca&ccedil;ou a vers&atilde;o certa. A &uacute;nica coisa que precisou de uma pessoa foi a parte que realmente precisava de uma pessoa.</p>
+          </div>
         </div>
       </div>
 
@@ -612,37 +673,34 @@
     <!-- SECTION 7 — LEARNING -->
     <section class="learning">
       <div class="section-title">
-        <div class="eyebrow">ORGANIZAÇÕES ACUMULAM</div>
-        <h2>Na segunda vez, a maior parte das perguntas já está respondida.</h2>
-        <p>O que uma pessoa aceita não vira uma anotação que alguém precisa achar depois. Vira a resposta que a Nieme já tem na próxima vez que o mesmo trabalho aparecer.</p>
+        <div class="eyebrow">ORGANIZA&Ccedil;&Otilde;ES COMPOUND</div>
+        <h2>A primeira vez custa o que sempre custou.<br>A d&eacute;cima n&atilde;o custa quase nada.</h2>
+        <p>Toda outra ferramenta de IA come&ccedil;a o mesmo trabalho do zero, sempre. A Nieme n&atilde;o. O que uma pessoa aceitou vira estado dur&aacute;vel &mdash; ent&atilde;o j&aacute; est&aacute; l&aacute; na pr&oacute;xima vez que o trabalho aparece, e nunca mais precisa ser resolvido.</p>
       </div>
 
-      <div class="qa">
-        <div class="qa-col qa-col--before">
-          <div class="qa-cap">NA PRIMEIRA VEZ</div>
-          <p class="qa-sub">Antes de qualquer coisa rodar, alguém precisa resolver:</p>
-          <ul class="qa-list">
-            <li><span class="qa-q" aria-hidden="true">?</span><span>Sobre quais termos de renovação podemos projetar?</span></li>
-            <li><span class="qa-q" aria-hidden="true">?</span><span>Quem tem autoridade para aprovar isso?</span></li>
-            <li><span class="qa-q" aria-hidden="true">?</span><span>Qual método a gente combinou no trimestre passado?</span></li>
-          </ul>
+      <figure class="cx">
+        <figcaption class="cx-head">
+          <div>
+            <div class="cx-title">O mesmo trabalho, dez vezes</div>
+            <div class="cx-sub">Cada execu&ccedil;&atilde;o &mdash; e quanto dela ainda era pergunta em aberto</div>
+          </div>
+          <span class="cx-tag">ILUSTRATIVO</span>
+        </figcaption>
+        <div class="cx-legend">
+          <span class="cx-key cx-key--flat"><i aria-hidden="true"></i>IA sem estado dur&aacute;vel</span>
+          <span class="cx-key cx-key--nie"><i aria-hidden="true"></i>Nieme</span>
         </div>
-
-        <div class="qa-shift" aria-hidden="true"><span class="qa-shift-line"></span><span class="qa-shift-dot"></span></div>
-
-        <div class="qa-col qa-col--after">
-          <div class="qa-cap qa-cap--settled">EM TODAS AS SEGUINTES</div>
-          <p class="qa-sub">Já resolvido, porque alguém decidiu uma vez:</p>
-          <ul class="qa-list qa-list--settled">
-            <li><span class="qa-tick" aria-hidden="true"></span><div><span class="qa-fact">Termos de renovação, v2</span><span class="qa-by">aceitos em 12 set · a previsão fica presa ao documento de onde veio</span></div></li>
-            <li><span class="qa-tick" aria-hidden="true"></span><div><span class="qa-fact">O Financeiro aprova o número</span><span class="qa-by">decidido, não adivinhado — e o trabalho vai para lá sozinho</span></div></li>
-            <li><span class="qa-tick" aria-hidden="true"></span><div><span class="qa-fact">O método do T3 é o método aceito</span><span class="qa-by">a discussão não acontece de novo</span></div></li>
-          </ul>
-          <div class="qa-open"><span class="qa-q" aria-hidden="true">?</span><div><span class="qa-fact">Os termos do T4 mudam alguma coisa disso?</span><span class="qa-by">a única pergunta que sobra para uma pessoa</span></div></div>
+        <div class="cx-plot">
+          <svg viewBox="0 0 960 430" role="img" aria-label="O mesmo trabalho, aparecendo de novo"><defs><linearGradient id="cxline" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8b6bff"/><stop offset=".55" stop-color="#5f8dff"/><stop offset="1" stop-color="#2fd4b8"/></linearGradient><linearGradient id="cxarea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7b4dff" stop-opacity=".22"/><stop offset="1" stop-color="#2fd4b8" stop-opacity=".04"/></linearGradient></defs><g class="cx-grid"><line x1="150" y1="48" x2="920" y2="48"/><line x1="150" y1="186" x2="920" y2="186"/><line x1="150" y1="324" x2="920" y2="324"/></g><line class="cx-axis" x1="150" y1="40" x2="150" y2="336"/><text class="cx-yt" x="138" y="52">Tudo</text><text class="cx-yt" x="138" y="190">Metade</text><text class="cx-yt" x="138" y="328">Quase nada</text><text class="cx-atitle" transform="translate(24 186) rotate(-90)">O que ainda sobra para uma pessoa</text><path class="cx-area" d="M150.0,48 L235.6,176 L321.1,236 L406.7,268 L492.2,288 L577.8,300 L663.3,309 L748.9,315 L834.4,320 L920.0,324 L920.0,46 L834.4,49 L748.9,47 L663.3,51 L577.8,45 L492.2,50 L406.7,46 L321.1,52 L235.6,44 L150.0,48 Z" fill="url(#cxarea)"/><text class="cx-gap" x="600" y="146">tudo aqui dentro deixou de ser perguntado</text><polyline class="cx-flat" points="150.0,48 235.6,44 321.1,52 406.7,46 492.2,50 577.8,45 663.3,51 748.9,47 834.4,49 920.0,46"/><circle class="cx-dot cx-dot--flat" cx="150.0" cy="48" r="3.6"/><circle class="cx-dot cx-dot--flat" cx="235.6" cy="44" r="3.6"/><circle class="cx-dot cx-dot--flat" cx="321.1" cy="52" r="3.6"/><circle class="cx-dot cx-dot--flat" cx="406.7" cy="46" r="3.6"/><circle class="cx-dot cx-dot--flat" cx="492.2" cy="50" r="3.6"/><circle class="cx-dot cx-dot--flat" cx="577.8" cy="45" r="3.6"/><circle class="cx-dot cx-dot--flat" cx="663.3" cy="51" r="3.6"/><circle class="cx-dot cx-dot--flat" cx="748.9" cy="47" r="3.6"/><circle class="cx-dot cx-dot--flat" cx="834.4" cy="49" r="3.6"/><circle class="cx-dot cx-dot--flat" cx="920.0" cy="46" r="3.6"/><polyline class="cx-line" points="150.0,48 235.6,176 321.1,236 406.7,268 492.2,288 577.8,300 663.3,309 748.9,315 834.4,320 920.0,324"/><circle class="cx-dot cx-dot--nie" cx="150.0" cy="48" r="3.6"/><circle class="cx-dot cx-dot--nie" cx="406.7" cy="268" r="3.6"/><circle class="cx-dot cx-dot--nie" cx="577.8" cy="300" r="3.6"/><circle class="cx-dot cx-dot--nie" cx="663.3" cy="309" r="3.6"/><circle class="cx-dot cx-dot--nie" cx="748.9" cy="315" r="3.6"/><circle class="cx-dot cx-dot--nie" cx="834.4" cy="320" r="3.6"/><circle class="cx-dot cx-dot--nie" cx="920.0" cy="324" r="3.6"/><g class="cx-badge"><circle cx="235.6" cy="176" r="11"/><text x="235.6" y="179.8">1</text></g><g class="cx-badge"><circle cx="321.1" cy="236" r="11"/><text x="321.1" y="239.8">2</text></g><g class="cx-badge"><circle cx="492.2" cy="288" r="11"/><text x="492.2" y="291.8">3</text></g><text class="cx-xt" x="150.0" y="364">1ª</text><text class="cx-xt" x="235.6" y="364">2ª</text><text class="cx-xt" x="321.1" y="364">3ª</text><text class="cx-xt" x="406.7" y="364">4ª</text><text class="cx-xt" x="492.2" y="364">5ª</text><text class="cx-xt" x="577.8" y="364">6ª</text><text class="cx-xt" x="663.3" y="364">7ª</text><text class="cx-xt" x="748.9" y="364">8ª</text><text class="cx-xt" x="834.4" y="364">9ª</text><text class="cx-xt" x="920.0" y="364">10ª</text></svg>
         </div>
-      </div>
+        <ol class="cx-notes">
+          <li><span class="cx-num">1</span><div><strong>Termos de renova&ccedil;&atilde;o da Acme v4, aceitos</strong><span>a execu&ccedil;&atilde;o fica presa ao documento &mdash; n&atilde;o a quem lembrou qual era a vers&atilde;o</span></div></li>
+          <li><span class="cx-num">2</span><div><strong>O Financeiro &eacute; quem assina</strong><span>decidido uma vez; daqui em diante o trabalho chega l&aacute; sozinho</span></div></li>
+          <li><span class="cx-num">3</span><div><strong>O m&eacute;todo est&aacute; resolvido</strong><span>a discuss&atilde;o n&atilde;o acontece de novo</span></div></li>
+        </ol>
+      </figure>
 
-      <p class="qa-note">Ninguém anotou nada disso. Foi decidido, e a decisão ficou — então o próximo trimestre começa três perguntas à frente.</p>
+      <p class="cx-note">N&atilde;o &eacute; benchmark &mdash; &eacute; o formato da diferen&ccedil;a. A linha cai porque uma decis&atilde;o aceita vira estado dur&aacute;vel, e n&atilde;o um bilhete que algu&eacute;m precisa achar. E ela nunca chega a zero: o julgamento fica com uma pessoa, de prop&oacute;sito.</p>
     </section>
 
     <!-- SOUL LINE -->

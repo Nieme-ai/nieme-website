@@ -111,6 +111,149 @@
     syncDocumentMotion();
   };
 
+  // ---------------------------------------------------------------
+  // The page itself is alive. One ambient field behind everything,
+  // breathing on the same clock every other pulsing thing uses, and
+  // carrying its light down the page as the reader travels.
+  // ---------------------------------------------------------------
+  const BREATH = 3900;                        // must match --breath in styles.css
+
+  const initPulse = () => {
+    const canvas = document.querySelector('[data-pulse]');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let W = 0, H = 0, DPR = 1, docH = 1, sy = 0, lastSy = 0, raf = 0;
+
+    // The field is nothing but soft light, so it is drawn tiny and scaled up.
+    // Two full-viewport gradient fills a frame is millions of pixels for no
+    // visible gain; at this size it is a few thousand.
+    const field = document.createElement('canvas');
+    const fctx = field.getContext('2d');
+    let FW = 0, FH = 0;
+
+    const fit = () => {
+      DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+      W = window.innerWidth;
+      H = window.innerHeight;
+      canvas.width = Math.round(W * DPR);
+      canvas.height = Math.round(H * DPR);
+      canvas.style.width = W + 'px';
+      canvas.style.height = H + 'px';
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      ctx.imageSmoothingEnabled = true;
+      FW = 180;
+      FH = Math.max(1, Math.round(180 * (H / Math.max(1, W))));
+      field.width = FW; field.height = FH;
+      docH = Math.max(1, document.documentElement.scrollHeight - H);
+    };
+
+    // Signals in the air. They drift, they occasionally flare, they never stop.
+    const MOTES = 38;
+    const motes = [];
+    const seed = (m, first) => {
+      m.x = Math.random();
+      m.y = first ? Math.random() : 1.06 + Math.random() * 0.1;
+      m.r = 0.5 + Math.random() * 1.5;
+      m.v = 0.000016 + Math.random() * 0.000040;    // viewport fraction per ms
+      m.drift = (Math.random() - 0.5) * 0.000022;
+      m.depth = 0.3 + Math.random() * 0.9;          // parallax weight against scroll
+      m.cyan = Math.random() < 0.42;
+      m.phase = Math.random() * 6.283;
+      m.flareAt = 1400 + Math.random() * 11000;
+      m.age = first ? Math.random() * 11000 : 0;
+      return m;
+    };
+    for (let i = 0; i < MOTES; i++) motes.push(seed({}, true));
+
+    let t0 = 0;
+
+    const draw = (ms) => {
+      const dt = t0 ? Math.min(64, ms - t0) : 16;
+      t0 = ms;
+      const beat = 0.5 + 0.5 * Math.sin((ms / BREATH) * 6.283);
+      const p = Math.min(1, Math.max(0, sy / docH));       // how far down the page
+      const dScroll = sy - lastSy;
+      lastSy = sy;
+
+      ctx.clearRect(0, 0, W, H);
+
+      fctx.clearRect(0, 0, FW, FH);
+
+      // the purple field — the Runtime's own light, travelling with the reader
+      const fx = FW * (0.22 + p * 0.54);
+      const fy = FH * (0.94 - p * 0.66);
+      const fr = Math.max(FW, FH) * (0.66 + beat * 0.09);
+      const g = fctx.createRadialGradient(fx, fy, 0, fx, fy, fr);
+      g.addColorStop(0, 'rgba(123,77,255,' + (0.085 + beat * 0.038).toFixed(4) + ')');
+      g.addColorStop(0.42, 'rgba(98,80,224,' + (0.030 + beat * 0.015).toFixed(4) + ')');
+      g.addColorStop(1, 'rgba(96,74,214,0)');
+      fctx.fillStyle = g;
+      fctx.fillRect(0, 0, FW, FH);
+
+      // and the teal counter-light, crossing it the other way
+      const tx = FW * (0.88 - p * 0.68);
+      const ty = FH * (0.06 + p * 0.78);
+      const tr = Math.max(FW, FH) * (0.48 + beat * 0.07);
+      const g2 = fctx.createRadialGradient(tx, ty, 0, tx, ty, tr);
+      g2.addColorStop(0, 'rgba(47,212,184,' + (0.052 + beat * 0.024).toFixed(4) + ')');
+      g2.addColorStop(0.5, 'rgba(47,180,200,0.018)');
+      g2.addColorStop(1, 'rgba(47,212,184,0)');
+      fctx.fillStyle = g2;
+      fctx.fillRect(0, 0, FW, FH);
+
+      ctx.drawImage(field, 0, 0, W, H);
+
+      for (const m of motes) {
+        if (!reduce) {
+          m.age += dt;
+          m.y -= m.v * dt;
+          m.x += m.drift * dt;
+          m.y -= (dScroll * m.depth * 0.16) / H;          // the field reacts to travel
+          if (m.y < -0.1 || m.y > 1.24) seed(m, false);
+          if (m.x < -0.04) m.x = 1.02; else if (m.x > 1.04) m.x = -0.02;
+        }
+        const flare = m.age > m.flareAt && m.age < m.flareAt + 950
+          ? Math.sin(((m.age - m.flareAt) / 950) * Math.PI)
+          : 0;
+        const sway = Math.sin(ms * 0.0004 + m.phase) * 0.4;
+        const a = 0.09 + beat * 0.06 + flare * 0.52;
+        ctx.globalAlpha = Math.min(0.8, a);
+        ctx.fillStyle = m.cyan ? '#7ee7ff' : '#b9a6ff';
+        if (flare > 0.06) { ctx.shadowBlur = 10 * flare; ctx.shadowColor = m.cyan ? '#7ee7ff' : '#b9a6ff'; }
+        ctx.beginPath();
+        ctx.arc(m.x * W + sway, m.y * H, m.r + flare * 0.9, 0, 6.283);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+      ctx.globalAlpha = 1;
+
+      raf = requestAnimationFrame(draw);
+    };
+
+    const start = () => { if (!raf) raf = requestAnimationFrame(draw); };
+    const stop = () => { cancelAnimationFrame(raf); raf = 0; t0 = 0; };
+
+    const readScroll = () => { sy = window.scrollY || window.pageYOffset || 0; };
+    readScroll();
+    lastSy = sy;
+    fit();
+
+    if (reduce || document.hidden) { draw(0); stop(); } else { start(); }
+
+    window.addEventListener('scroll', readScroll, { passive: true });
+    let rt = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(rt);
+      rt = setTimeout(() => { fit(); if (reduce) { stop(); draw(0); stop(); } }, 160);
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop(); else if (!reduce) start();
+    });
+  };
+
   const initReveal = () => {
     const sections = Array.from(document.querySelectorAll('main > section:not(.hero)'));
     if (!sections.length) {
@@ -357,7 +500,7 @@
     if (!ctx) return;
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let W = 0, H = 0, DPR = 1, cx = 0, cy = 0, R = 0, LR = 1.95;
+    let W = 0, H = 0, DPR = 1, cx = 0, cy = 0, R = 0, LR = 1.95, roomL = 0, roomR = 0;
 
     const fit = () => {
       const r = host.getBoundingClientRect();
@@ -367,10 +510,16 @@
       canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
       ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
       cx = W / 2; cy = H / 2;
-      R = Math.min(W, H) * 0.305;            // the sphere
+      R = Math.min(W, H) * 0.335;            // the sphere
       // labels orbit further out than the shell — pull them in on narrow screens
       // or they swing past the edge and widen the page
       LR = W < 560 ? 1.42 : W < 820 ? 1.68 : 1.95;
+      // Labels are allowed to swing outside the orb box — that is the look —
+      // but never outside the page. Measure the room either side once, here,
+      // instead of reading layout on every frame.
+      const vw = document.documentElement.clientWidth;
+      roomL = Math.max(0, r.left);
+      roomR = Math.max(0, vw - r.right);
       return true;
     };
 
@@ -389,8 +538,8 @@
       const a = (i / n) * Math.PI * 2;
       return [Math.cos(a), lift, Math.sin(a)];
     };
-    const nodes = nodeEls.map((el, i) => ({ el, p: ringPoint(i, nodeEls.length, i % 2 ? 0.34 : -0.34) }));
-    const outs = outEls.map((el, i) => ({ el, p: ringPoint(i + 0.5, outEls.length, i % 2 ? 0.72 : -0.72) }));
+    const nodes = nodeEls.map((el, i) => ({ el, p: ringPoint(i, nodeEls.length, i % 2 ? 0.30 : -0.30) }));
+    const outs = outEls.map((el, i) => ({ el, p: ringPoint(i + 0.5, outEls.length, i % 2 ? 0.54 : -0.54) }));
 
     const rot = (p, a, b) => {                 // yaw then pitch
       const [x, y, z] = p;
@@ -424,12 +573,19 @@
     };
     for (let i = 0; i < TRAFFIC; i++) traffic.push(spawn(true));
 
+    // measured once per layout: reading offsetWidth inside the draw loop, next
+    // to the transform writes, would thrash layout on every frame
+    const measure = () => {
+      for (const n of nodes.concat(outs)) n.half = (n.el.offsetWidth || 90) / 2;
+    };
+
     let yaw = 0.6, pitch = -0.22, t0 = 0, raf = 0, visible = true;
 
     const draw = (ms) => {
       const dt = t0 ? Math.min(48, ms - t0) : 16; t0 = ms;
       if (!reduce) yaw += dt * 0.00011;
-      const beat = 0.5 + 0.5 * Math.sin(ms * 0.0016);   // the core's pulse
+      // the core breathes on the page's one clock — everything pulses together
+      const beat = 0.5 + 0.5 * Math.sin((ms / BREATH) * 6.283);
 
       ctx.clearRect(0, 0, W, H);
 
@@ -485,9 +641,19 @@
       for (const n of nodes.concat(outs)) {
         const q = project(rot(n.p, yaw, pitch), R * LR);
         const near = (q.z + 1) / 2;
-        n.el.style.transform = 'translate(-50%,-50%) translate(' + q.x.toFixed(1) + 'px,' + q.y.toFixed(1) + 'px)';
-        n.el.style.opacity = (0.1 + near * 0.9).toFixed(2);
-        // a label on the far side belongs BEHIND the core, not across its name
+        // the label ring is a flattened ellipse — a wide orbit still reads as an
+        // orbit, and nothing swings up into the nav or out of the section
+        const qy = cy + (q.y - cy) * 0.62;
+        // a label may swing outside the orb box; it may never leave the page
+        const half = n.half || 45;
+        const qx = Math.min(Math.max(q.x, half - roomL + 8), W + roomR - half - 8);
+        n.el.style.transform = 'translate(-50%,-50%) translate(' + qx.toFixed(1) + 'px,' + qy.toFixed(1) + 'px)';
+        // a far label is genuinely far: it falls away fast, and if the orbit
+        // would carry it across the core's own name it drops out entirely
+        const dx = qx - cx, dy = qy - cy;
+        const overCore = Math.abs(dx) < 150 && Math.abs(dy) < 62;
+        const a = near < 0.5 && overCore ? 0 : 0.06 + Math.pow(near, 2.1) * 0.94;
+        n.el.style.opacity = a.toFixed(3);
         n.el.style.zIndex = String(near > 0.52 ? 12 + Math.round(near * 8) : 4);
       }
 
@@ -498,11 +664,13 @@
     const stop = () => { cancelAnimationFrame(raf); raf = 0; t0 = 0; };
 
     fit();
-    if (reduce) { draw(0); stop(); } else { start(); }
+    measure();
+    if (reduce || document.hidden) { draw(0); stop(); } else { start(); }
 
     let rt = null;
     window.addEventListener('resize', () => {
-      clearTimeout(rt); rt = setTimeout(() => { fit(); if (reduce) { stop(); draw(0); stop(); } }, 160);
+      clearTimeout(rt);
+      rt = setTimeout(() => { fit(); measure(); if (reduce) { stop(); draw(0); stop(); } }, 160);
     });
     // never burn a frame off-screen
     if ('IntersectionObserver' in window) {
@@ -517,6 +685,7 @@
   };
 
   const boot = () => {
+    initPulse();
     initInviteForm();
     initNavToggle();
     initReveal();
