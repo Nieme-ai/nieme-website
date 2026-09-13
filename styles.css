@@ -183,12 +183,10 @@ h3{font-size:26px;margin:16px 0}
 .final{padding:140px 8vw 180px;text-align:center}.final em{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45),0 0 28px rgba(123,92,255,.38),0 0 70px rgba(123,92,255,.22),0 0 140px rgba(123,92,255,.10)}
 /* The page ends in black. Everything above has been light and motion; this is
    where it stops, and the last thing on screen is what Nieme is for. */
-.page-foot{position:relative;z-index:1;margin:0;padding:clamp(72px,10vw,132px) 8vw clamp(72px,9vw,116px);
-  text-align:center;background:#000}
+footer{padding:0 8vw 48px;text-align:center;color:var(--muted);font-size:14px;
+  position:relative;z-index:1;background:#000}
 /* the run into black happens BEHIND the last section's copy, never over it */
 .final.statement-block{background:linear-gradient(180deg,#00000000 0%,#000000a6 62%,#000 100%)}
-.foot-line{margin:0;font-size:clamp(34px,6.4vw,88px);line-height:1.04;letter-spacing:-.055em;
-  font-weight:440;color:#fff;text-wrap:balance}
 .epilogue{max-width:520px;margin:70px auto 110px;padding:0 22px;text-align:center;color:var(--muted)}
 .epilogue div{font-size:11px;line-height:1;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px}
 .epilogue p{margin:0;font-size:15px;line-height:1.5;font-weight:400;white-space:nowrap}

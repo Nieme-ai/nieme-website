@@ -581,13 +581,17 @@
       shell.push([Math.cos(theta) * Math.sin(phi), Math.sin(theta) * Math.sin(phi), Math.cos(phi)]);
     }
 
-    // ---- the systems sit on a wider sphere and orbit with it ----
-    const ringPoint = (i, n, lift) => {
-      const a = (i / n) * Math.PI * 2;
-      return [Math.cos(a), lift, Math.sin(a)];
+    // ---- the flow has a direction ----
+    // What the company already uses fans in on the LEFT; what the Runtime hands
+    // back leaves on the RIGHT. A full orbit read as cosmos; two hemispheres
+    // read as inbound -> Runtime -> governed output.
+    const place = (i, n, centre, lift) => {
+      const t = n === 1 ? 0.5 : i / (n - 1);
+      const a = centre + (t - 0.5) * 0.62;         // fan in depth
+      return [Math.cos(a), (t - 0.5) * 2 * lift, Math.sin(a)];
     };
-    const nodes = nodeEls.map((el, i) => ({ el, p: ringPoint(i, nodeEls.length, i % 2 ? 0.30 : -0.30) }));
-    const outs = outEls.map((el, i) => ({ el, p: ringPoint(i + 0.5, outEls.length, i % 2 ? 0.54 : -0.54) }));
+    const nodes = nodeEls.map((el, i) => ({ el, p: place(i, nodeEls.length, Math.PI, 0.62) }));
+    const outs = outEls.map((el, i) => ({ el, p: place(i, outEls.length, 0, 0.5) }));
 
     const rot = (p, a, b) => {                 // yaw then pitch
       const [x, y, z] = p;
@@ -632,6 +636,9 @@
     const draw = (ms) => {
       const dt = t0 ? Math.min(48, ms - t0) : 16; t0 = ms;
       if (!reduce) yaw += dt * 0.00011;
+      // the shell keeps turning; the labelled flow only sways, so "in" stays
+      // on the left and "out" stays on the right
+      const lyaw = reduce ? 0 : Math.sin(ms * 0.00019) * 0.42;
       // the core breathes on the page's one clock — everything pulses together
       const beat = 0.5 + 0.5 * Math.sin((ms / BREATH) * 6.283);
 
@@ -674,7 +681,7 @@
           m.a[1] + (m.b[1] - m.a[1]) * e + Math.sin(m.wob) * w,
           m.a[2] + (m.b[2] - m.a[2]) * e,
         ];
-        const q = project(rot(p, yaw, pitch), R * LR);
+        const q = project(rot(p, lyaw, pitch), R * LR);
         const near = (q.z + 1) / 2;
         const fade = Math.sin(m.t * Math.PI);
         ctx.globalAlpha = (0.25 + near * 0.75) * fade;
@@ -687,7 +694,7 @@
 
       // labels ride the same rotation, and dim when they go behind
       for (const n of nodes.concat(outs)) {
-        const q = project(rot(n.p, yaw, pitch), R * LR);
+        const q = project(rot(n.p, lyaw, pitch), R * LR);
         const near = (q.z + 1) / 2;
         // the label ring is a flattened ellipse — a wide orbit still reads as an
         // orbit, and nothing swings up into the nav or out of the section
@@ -696,12 +703,9 @@
         const half = n.half || 45;
         const qx = Math.min(Math.max(q.x, half - roomL + 8), W + roomR - half - 8);
         n.el.style.transform = 'translate(-50%,-50%) translate(' + qx.toFixed(1) + 'px,' + qy.toFixed(1) + 'px)';
-        // a far label is genuinely far: it falls away fast, and if the orbit
-        // would carry it across the core's own name it drops out entirely
-        const dx = qx - cx, dy = qy - cy;
-        const overCore = Math.abs(dx) < 150 && Math.abs(dy) < 62;
-        const a = near < 0.5 && overCore ? 0 : 0.06 + Math.pow(near, 2.1) * 0.94;
-        n.el.style.opacity = a.toFixed(3);
+        // These no longer orbit past the front, so a hard depth fade would leave
+        // the back half permanently unreadable. Depth is a hint here, not a veil.
+        n.el.style.opacity = (0.58 + near * 0.42).toFixed(3);
         n.el.style.zIndex = String(near > 0.52 ? 12 + Math.round(near * 8) : 4);
       }
 
