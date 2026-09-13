@@ -1346,17 +1346,19 @@ h1,h2,h3{text-wrap:balance}
 .pf-shot img{display:block;width:100%;height:auto}
 .pf-shot:hover{transform:translateY(-4px);box-shadow:0 40px 110px #0000008c,0 0 40px #7b4dff1f}
 .pf-frame--b{margin:-40px -14px 0;z-index:2}
+.pf-frame--b .pf-shot{overflow:visible}
+.pf-frame--b .pf-shot > img{border-radius:15px}
 .pf-frame--b .pf-cap b{font-size:clamp(22px,2.1vw,30px)}
 .pf-frame--b .pf-shot{border-color:#7b4dff73;
   box-shadow:0 40px 120px #000000a6,0 0 0 1px #7b4dff3d,0 0 70px #7b4dff30,0 0 110px #2fd4b81a}
 .pf-frame--b .pf-shot:hover{box-shadow:0 46px 130px #000000b3,0 0 0 1px #7b4dff59,0 0 88px #7b4dff3d}
-.pf-zoom{position:absolute;left:10px;right:10px;bottom:10px;border-radius:9px;overflow:hidden;
-  border:1px solid #7ee7ff45;box-shadow:0 14px 36px #000000a6;background:#0c0e16}
-.pf-zoom img{display:block;width:100%;height:auto}
-.pf-frame--c .pf-shot{aspect-ratio:4/3;display:flex}
-.pf-frame--c .shot-placeholder{flex:1}
+/* a complete inset — its own whole panel, never overlapping content */
+.pf-inset{position:absolute;right:-6px;bottom:-48px;width:39%;border-radius:11px;overflow:hidden;
+  border:1px solid #7b4dff59;box-shadow:0 24px 58px #000000bf;background:#0c0e16;z-index:3;line-height:0}
+.pf-inset img{display:block;width:100%;height:auto}
 .proof-caption{display:block;max-width:820px;margin:44px auto 0;text-align:center;font-size:15px;color:#8f93a8}
 @media (max-width:1080px){
+  .pf-inset{position:static;width:100%;margin-top:12px}
   .pf{grid-template-columns:minmax(0,1fr);row-gap:34px;padding-left:34px;margin-top:34px}
   .pf-frame{grid-row:auto}
   .pf-frame--b{margin:0}
