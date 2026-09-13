@@ -339,12 +339,190 @@
     });
   };
 
+
+  // ==========================================================================
+  // The Runtime orb. A real 3D projection on a 2D canvas — no library.
+  // Work streams IN from the systems it already lives in, is processed inside
+  // the core, and leaves again as governed work. The loop is the point: Nieme
+  // is not a sink, it is an incubator.
+  // ==========================================================================
+  const initOrb = () => {
+    const host = document.querySelector('[data-orb]');
+    if (!host) return;
+    const canvas = host.querySelector('.orb-canvas');
+    const nodeEls = Array.from(host.querySelectorAll('[data-orb-node]'));
+    const outEls = Array.from(host.querySelectorAll('[data-orb-out]'));
+    if (!canvas || !nodeEls.length) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let W = 0, H = 0, DPR = 1, cx = 0, cy = 0, R = 0, LR = 1.95;
+
+    const fit = () => {
+      const r = host.getBoundingClientRect();
+      DPR = Math.min(window.devicePixelRatio || 1, 2);
+      W = Math.max(320, r.width); H = Math.max(320, r.height);
+      canvas.width = Math.round(W * DPR); canvas.height = Math.round(H * DPR);
+      canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      cx = W / 2; cy = H / 2;
+      R = Math.min(W, H) * 0.305;            // the sphere
+      // labels orbit further out than the shell — pull them in on narrow screens
+      // or they swing past the edge and widen the page
+      LR = W < 560 ? 1.42 : W < 820 ? 1.68 : 1.95;
+      return true;
+    };
+
+    // ---- a fibonacci sphere: the Runtime's own surface ----
+    const SHELL = 460;
+    const shell = [];
+    for (let i = 0; i < SHELL; i++) {
+      const k = i + 0.5;
+      const phi = Math.acos(1 - 2 * k / SHELL);
+      const theta = Math.PI * (1 + Math.sqrt(5)) * k;
+      shell.push([Math.cos(theta) * Math.sin(phi), Math.sin(theta) * Math.sin(phi), Math.cos(phi)]);
+    }
+
+    // ---- the systems sit on a wider sphere and orbit with it ----
+    const ringPoint = (i, n, lift) => {
+      const a = (i / n) * Math.PI * 2;
+      return [Math.cos(a), lift, Math.sin(a)];
+    };
+    const nodes = nodeEls.map((el, i) => ({ el, p: ringPoint(i, nodeEls.length, i % 2 ? 0.34 : -0.34) }));
+    const outs = outEls.map((el, i) => ({ el, p: ringPoint(i + 0.5, outEls.length, i % 2 ? 0.72 : -0.72) }));
+
+    const rot = (p, a, b) => {                 // yaw then pitch
+      const [x, y, z] = p;
+      const x1 = x * Math.cos(a) - z * Math.sin(a);
+      const z1 = x * Math.sin(a) + z * Math.cos(a);
+      const y1 = y * Math.cos(b) - z1 * Math.sin(b);
+      const z2 = y * Math.sin(b) + z1 * Math.cos(b);
+      return [x1, y1, z2];
+    };
+    const project = (p, radius) => {
+      const d = 3.1;                            // perspective
+      const s = d / (d - p[2]);
+      return { x: cx + p[0] * radius * s, y: cy + p[1] * radius * s, s, z: p[2] };
+    };
+
+    // ---- traffic: in from a system, processed, out as governed work ----
+    const TRAFFIC = 46;
+    const traffic = [];
+    const spawn = (seed) => {
+      const inbound = Math.random() < 0.58;
+      const from = nodes[(Math.random() * nodes.length) | 0];
+      const to = outs[(Math.random() * outs.length) | 0];
+      return {
+        t: seed ? Math.random() : 0,
+        speed: 0.0022 + Math.random() * 0.0026,
+        inbound,
+        a: inbound ? from.p : [0, 0, 0],
+        b: inbound ? [0, 0, 0] : to.p,
+        wob: Math.random() * Math.PI * 2,
+      };
+    };
+    for (let i = 0; i < TRAFFIC; i++) traffic.push(spawn(true));
+
+    let yaw = 0.6, pitch = -0.22, t0 = 0, raf = 0, visible = true;
+
+    const draw = (ms) => {
+      const dt = t0 ? Math.min(48, ms - t0) : 16; t0 = ms;
+      if (!reduce) yaw += dt * 0.00011;
+      const beat = 0.5 + 0.5 * Math.sin(ms * 0.0016);   // the core's pulse
+
+      ctx.clearRect(0, 0, W, H);
+
+      // sphere shell, depth-sorted so the far side reads as far
+      const pts = shell.map((p) => project(rot(p, yaw, pitch), R)).sort((a, b) => a.z - b.z);
+      for (const p of pts) {
+        const near = (p.z + 1) / 2;
+        ctx.globalAlpha = 0.09 + near * 0.52;
+        ctx.fillStyle = near > 0.55 ? '#b9a6ff' : '#5f4dbd';
+        ctx.beginPath(); ctx.arc(p.x, p.y, 0.6 + near * 1.7, 0, 6.283); ctx.fill();
+      }
+
+      // the core, breathing
+      ctx.globalAlpha = 1;
+      const coreR = R * (0.42 + beat * 0.06);
+      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, coreR * 2.6);
+      g.addColorStop(0, 'rgba(168,140,255,' + (0.55 + beat * 0.26) + ')');
+      g.addColorStop(0.34, 'rgba(120,92,240,0.24)');
+      g.addColorStop(0.66, 'rgba(70,190,190,0.09)');
+      g.addColorStop(1, 'rgba(96,74,214,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(cx, cy, coreR * 2.6, 0, 6.283); ctx.fill();
+
+      // the sphere's own horizon
+      ctx.globalAlpha = 1;
+      ctx.strokeStyle = 'rgba(150,120,255,' + (0.16 + beat * 0.1) + ')';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(cx, cy, R * 1.02, 0, 6.283); ctx.stroke();
+
+      // traffic in and out
+      for (const m of traffic) {
+        m.t += reduce ? 0 : m.speed * (dt / 16);
+        if (m.t >= 1) { Object.assign(m, spawn(false)); continue; }
+        const e = m.inbound ? m.t * m.t : 1 - (1 - m.t) * (1 - m.t);   // accelerate in, ease out
+        const w = Math.sin(m.t * Math.PI) * 0.12;
+        const p = [
+          m.a[0] + (m.b[0] - m.a[0]) * e + Math.cos(m.wob) * w,
+          m.a[1] + (m.b[1] - m.a[1]) * e + Math.sin(m.wob) * w,
+          m.a[2] + (m.b[2] - m.a[2]) * e,
+        ];
+        const q = project(rot(p, yaw, pitch), R * LR);
+        const near = (q.z + 1) / 2;
+        const fade = Math.sin(m.t * Math.PI);
+        ctx.globalAlpha = (0.25 + near * 0.75) * fade;
+        ctx.fillStyle = m.inbound ? '#7ee7ff' : '#c4b5fd';
+        ctx.shadowBlur = 8 + near * 8; ctx.shadowColor = m.inbound ? '#7ee7ff' : '#c4b5fd';
+        ctx.beginPath(); ctx.arc(q.x, q.y, 1.5 + near * 1.9, 0, 6.283); ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+      ctx.globalAlpha = 1;
+
+      // labels ride the same rotation, and dim when they go behind
+      for (const n of nodes.concat(outs)) {
+        const q = project(rot(n.p, yaw, pitch), R * LR);
+        const near = (q.z + 1) / 2;
+        n.el.style.transform = 'translate(-50%,-50%) translate(' + q.x.toFixed(1) + 'px,' + q.y.toFixed(1) + 'px)';
+        n.el.style.opacity = (0.1 + near * 0.9).toFixed(2);
+        // a label on the far side belongs BEHIND the core, not across its name
+        n.el.style.zIndex = String(near > 0.52 ? 12 + Math.round(near * 8) : 4);
+      }
+
+      raf = requestAnimationFrame(draw);
+    };
+
+    const start = () => { if (!raf && visible) raf = requestAnimationFrame(draw); };
+    const stop = () => { cancelAnimationFrame(raf); raf = 0; t0 = 0; };
+
+    fit();
+    if (reduce) { draw(0); stop(); } else { start(); }
+
+    let rt = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(rt); rt = setTimeout(() => { fit(); if (reduce) { stop(); draw(0); stop(); } }, 160);
+    });
+    // never burn a frame off-screen
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((es) => {
+        visible = es[0].isIntersecting;
+        if (!reduce) { visible ? start() : stop(); }
+      }, { threshold: 0.05 }).observe(host);
+    }
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop(); else if (!reduce) start();
+    });
+  };
+
   const boot = () => {
     initInviteForm();
     initNavToggle();
     initReveal();
     initBeforeAfter();
     initHeroComposer();
+    initOrb();
     initAnimationActivity();
 
     if ('requestIdleCallback' in window) {

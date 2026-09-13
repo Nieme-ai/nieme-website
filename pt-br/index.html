@@ -498,29 +498,29 @@
         <h2>Não mova o trabalho. Conecte-o.</h2>
         <p>Seus desenvolvedores podem continuar no GitHub. Documentos podem continuar no Drive ou no OneDrive. Times podem continuar no Slack. Agentes podem continuar nos seus próprios runtimes. A Nieme preserva o contexto, a autoridade, as evidências e os resultados entre todos eles.</p>
       </div>
-      <div class="constellation">
-        <span class="cst-orbit" aria-hidden="true"></span>
-        <span class="cst-spoke" style="--a:-90deg" aria-hidden="true"></span>
-        <span class="cst-spoke" style="--a:-30deg" aria-hidden="true"></span>
-        <span class="cst-spoke" style="--a:30deg" aria-hidden="true"></span>
-        <span class="cst-spoke" style="--a:90deg" aria-hidden="true"></span>
-        <span class="cst-spoke" style="--a:150deg" aria-hidden="true"></span>
-        <span class="cst-spoke" style="--a:210deg" aria-hidden="true"></span>
-        <span class="cst-pulse" style="--a:-90deg;--d:0.00s" aria-hidden="true"></span>
-        <span class="cst-pulse" style="--a:-30deg;--d:0.55s" aria-hidden="true"></span>
-        <span class="cst-pulse" style="--a:30deg;--d:1.10s" aria-hidden="true"></span>
-        <span class="cst-pulse" style="--a:90deg;--d:1.65s" aria-hidden="true"></span>
-        <span class="cst-pulse" style="--a:150deg;--d:2.20s" aria-hidden="true"></span>
-        <span class="cst-pulse" style="--a:210deg;--d:2.75s" aria-hidden="true"></span>
-        <div class="cst-core"><span>NIEME<br>RUNTIME</span></div>
-        <span class="cst-node" style="--a:-90deg">Pessoas</span>
-        <span class="cst-node" style="--a:-30deg">GitHub</span>
-        <span class="cst-node" style="--a:30deg">Agentes externos</span>
-        <span class="cst-node" style="--a:90deg">Slack</span>
-        <span class="cst-node" style="--a:150deg">OneDrive</span>
-        <span class="cst-node" style="--a:210deg">Google Drive</span>
+      <div class="orb" data-orb>
+        <canvas class="orb-canvas" aria-hidden="true"></canvas>
+        <div class="orb-core" aria-hidden="true">
+          <span class="orb-core-name">NIEME<br>RUNTIME</span>
+          <span class="orb-core-verbs">observar · governar · executar · reconciliar</span>
+        </div>
+        <div class="orb-labels" aria-hidden="true">
+          <span class="orb-node" data-orb-node="0">Slack</span>
+          <span class="orb-node" data-orb-node="1">Google Drive</span>
+          <span class="orb-node" data-orb-node="2">GitHub</span>
+          <span class="orb-node" data-orb-node="3">OneDrive</span>
+          <span class="orb-node" data-orb-node="4">WhatsApp</span>
+          <span class="orb-node" data-orb-node="5">Servidores MCP</span>
+          <span class="orb-node" data-orb-node="6">Pessoas</span>
+          <span class="orb-node" data-orb-node="7">Agentes externos</span>
+          <span class="orb-out" data-orb-out="0">Trabalho governado</span>
+          <span class="orb-out" data-orb-out="1">Evidência</span>
+          <span class="orb-out" data-orb-out="2">Decisões</span>
+          <span class="orb-out" data-orb-out="3">Resultados</span>
+        </div>
+        <p class="orb-a11y">Um diagrama: oito sistemas conectados — Slack, Google Drive, GitHub, OneDrive, WhatsApp, servidores MCP, pessoas e agentes externos — fluem para o Nieme Runtime, que devolve trabalho governado, evidência, decisões e resultados.</p>
       </div>
-      <div class="cst-caption">contexto · autoridade · evidências · resultados, preservados entre sistemas</div>
+      <div class="cst-caption">Tudo entra de onde já está. O que volta é governado, evidenciado e decidido.</div>
       <p class="crosssystem-note">As capacidades nativas da Nieme estão disponíveis quando você quiser. Ferramentas externas são participantes de primeira classe, não alvos de migração. A disponibilidade de cada conector varia — conecte o que você usa, quando estiver pronto.</p>
     </section>
 
