@@ -682,7 +682,7 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
    Composer all live inside a single surface, and the Composer is docked to
    its bottom edge rather than floated below it as a second card.
    ========================================================================== */
-.rtc{width:100%;max-width:660px;height:700px;display:flex;flex-direction:column;
+.rtc{width:100%;max-width:660px;height:696px;display:flex;flex-direction:column;
   border-radius:24px;overflow:hidden;
   border:1px solid #7b4dff4d;
   background:
@@ -709,8 +709,8 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
 /* the stage: it gives up its height to the Composer when the draft unfolds,
    exactly as the conversation area does in the product */
 .rtc-stage{position:relative;flex:1;min-height:0;overflow:hidden;
-  display:flex;flex-direction:column;justify-content:flex-end;padding:18px 18px 4px}
-.stg-entry{display:flex;align-items:baseline;gap:10px;padding:10px 13px;margin-bottom:10px;
+  display:flex;flex-direction:column;justify-content:flex-start;padding:16px 18px 4px}
+.stg-entry{display:flex;align-items:baseline;gap:10px;padding:10px 13px;margin-bottom:8px;
   border-radius:11px;border:1px solid #ffffff14;background:#ffffff0a;flex:none;
   opacity:0;transform:translateY(5px);transition:opacity .4s ease,transform .4s ease}
 .stg-entry.is-visible{opacity:1;transform:none}
@@ -718,7 +718,7 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
 .stg-entry-text{font-size:14.5px;line-height:1.4;color:#c8cbd9;letter-spacing:-.01em}
 .stg-rows{display:flex;flex-direction:column;gap:2px;flex:none}
 .stg-row{display:grid;grid-template-columns:16px minmax(0,auto) minmax(0,1fr);align-items:center;
-  gap:11px;padding:7px 2px;
+  gap:11px;padding:6px 2px;
   opacity:0;transform:translateY(4px);transition:opacity .38s ease,transform .38s ease}
 .stg-row.is-visible{opacity:1;transform:none}
 .stg-mark{width:13px;height:13px;position:relative}
