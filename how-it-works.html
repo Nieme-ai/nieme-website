@@ -57,17 +57,21 @@
       <div class="section-title lifecycle-header">
         <div class="eyebrow">TWO ENTRY PATHS, ONE LOOP</div>
       </div>
-      <div class="composer-wrap">
-        <div class="composer-label">Someone asks</div>
-        <div class="composer-field">
-          <span class="composer-text">Prepare the quarterly board report.<span class="composer-cursor" aria-hidden="true"></span></span>
-          <div class="composer-send" aria-hidden="true">↑</div>
+      <div class="hiw-entries">
+        <div class="hiw-entry">
+            <div class="composer-label">Someone asks</div>
+            <div class="composer-field">
+              <span class="composer-text">Prepare the quarterly board report.<span class="composer-cursor" aria-hidden="true"></span></span>
+              <div class="composer-send" aria-hidden="true">↑</div>
+            </div>
         </div>
-        <div class="hiw-or">or</div>
-        <div class="composer-label">Something changes</div>
-        <div class="composer-field composer-field--observed">
-          <span class="composer-text">A document changed in a connected Drive folder.</span>
-          <div class="composer-observed" aria-hidden="true">observed</div>
+        <div class="hiw-or" aria-hidden="true">or</div>
+        <div class="hiw-entry">
+            <div class="composer-label">Something changes</div>
+            <div class="composer-field composer-field--observed">
+              <span class="composer-text">A document changed in a connected Drive folder.</span>
+              <div class="composer-observed" aria-hidden="true">observed</div>
+            </div>
         </div>
       </div>
       <div class="composer-down"></div>
@@ -76,41 +80,35 @@
           <span class="lifecycle-node-label">START</span>
           A person delegates an outcome — or a connected system is observed to change
         </div>
-        <div class="lifecycle-connector"></div>
         <div class="lifecycle-node">
           <span class="lifecycle-node-label">RUNTIME</span>
           Runtime assembles the right context
         </div>
-        <div class="lifecycle-connector"></div>
         <div class="lifecycle-node">
           <span class="lifecycle-node-label">VAULT</span>
           Vault supplies governed sources, with provenance intact
         </div>
-        <div class="lifecycle-connector"></div>
         <div class="lifecycle-node">
           <span class="lifecycle-node-label">EXECUTOR</span>
           A model, an agent, an external system or a person does the work
         </div>
-        <div class="lifecycle-connector"></div>
         <div class="lifecycle-node">
           <span class="lifecycle-node-label">RESULT</span>
           A result is produced, with the Evidence supporting it
         </div>
-        <div class="lifecycle-connector"></div>
         <div class="lifecycle-node lifecycle-node--review">
           <span class="lifecycle-node-label">REVIEW</span>
           A person accepts, requests changes, or rejects
         </div>
-        <div class="lifecycle-connector"></div>
         <div class="lifecycle-node">
           <span class="lifecycle-node-label">RECORD</span>
           The decision is preserved with the work it judged
         </div>
-        <div class="lifecycle-connector"></div>
         <div class="lifecycle-node lifecycle-node--bright">
           <span class="lifecycle-node-label">STATE</span>
           Accepted outcomes can strengthen future context
         </div>
+        <div class="lifecycle-return" aria-hidden="true"><span>Accepted outcomes feed the next run</span></div>
       </div>
       <p class="lifecycle-caption">Observe → Understand → Govern → Execute → Judge → Learn. Whether the work began with a request or an observation, it runs the same loop — which is what makes Nieme the runtime for AI work.</p>
     </section>
