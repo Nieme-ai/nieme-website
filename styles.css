@@ -1014,81 +1014,60 @@ h1,h2,h3{text-wrap:balance}
 
 /* hero: an observation is not a request — the send action is not armed for it */
 
-/* ---- the coordination handoff, told by MOTION rather than by reading.
-       Above: a baton that stutters across seven human handoffs — seven discrete
-       jumps, one per person. Below: the same journey as a single smooth glide
-       that pauses once, at the decision point. Same duration for both, so the
-       contrast lands in the first second without a word being read. ---- */
-.hx{max-width:1440px;margin:0 auto}
-.hx-lane + .hx-lane{margin-top:58px}
-.hx-cap{display:inline-block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-  padding:5px 11px;border-radius:7px;margin-bottom:18px;
+/* ---- the problem, shown as the ARTEFACT of coordination rather than as a
+       diagram of it. Nobody recognises a process chart; everybody recognises
+       "can you send me the latest version?". Left: the pile of messages it
+       takes to move one piece of work, none of which are the work. Right: the
+       same work as one governed object. Clutter against calm — no reading,
+       no chart, no chain. ---- */
+.cmp{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:56px;align-items:start}
+.cmp-side{min-width:0;display:flex;flex-direction:column}
+.cmp-cap{align-self:flex-start;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  padding:5px 11px;border-radius:7px;margin-bottom:22px;
   color:#c8cbd9;background:#ffffff0d;border:1px solid #ffffff1c}
-.hx-cap--runtime{color:#fff;border-color:#7b4dff59;
+.cmp-cap--runtime{color:#fff;border-color:#7b4dff59;
   background:linear-gradient(100deg,#7b4dff33,#2fd4b81f)}
-.hx-flow{position:relative;display:flex;align-items:center;flex-wrap:wrap;row-gap:14px}
+.cmp-note{margin:22px 0 0;font-size:15px;line-height:1.6;color:#8f93a8;max-width:520px}
 
-.hx-node{flex:none;padding:13px 15px;border-radius:11px;font-size:14px;line-height:1.3;
-  letter-spacing:-.01em;color:#9ba0b4;border:1px solid #ffffff14;background:#ffffff07}
-.hx-node--trigger{color:#eef0f7;border-color:#ffffff2b;background:#ffffff12}
-.hx-node--out{color:#fff;border-color:#7b4dff59;background:linear-gradient(100deg,#7b4dff2b,#2fd4b814)}
-.hx-node--accept{display:flex;align-items:center;gap:9px;color:#fff;border-color:#5ad6a04d;
-  background:#5ad6a012}
-.hx-tick{flex:none;width:15px;height:15px;border-radius:50%;position:relative;
-  background:linear-gradient(135deg,#5ad6a0,#2fd4b8)}
-.hx-tick::after{content:"";position:absolute;left:4.5px;top:4px;width:3.5px;height:6px;
-  border:1.5px solid #0b0d14;border-top:0;border-left:0;transform:rotate(42deg)}
-.hx-node--carry{color:#a9b4ca;border-style:dashed;border-color:#7ee7ff45;background:#7ee7ff0a}
+/* the pile: real messages, slightly askew, stacking up */
+.cm-pile{display:flex;flex-direction:column;gap:11px;padding:4px 0}
+.cm-msg{align-self:flex-start;max-width:min(100%,430px);margin-left:var(--x,0);
+  transform:rotate(var(--r,0));
+  padding:12px 15px;border-radius:13px 13px 13px 5px;
+  border:1px solid #ffffff14;background:#ffffff08;
+  box-shadow:0 10px 26px #00000059}
+.cm-msg:nth-child(odd){background:#ffffff0a}
+.cm-who{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#787c92}
+.cm-msg p{margin:5px 0 0;font-size:15px;line-height:1.4;color:#c8cbd9;letter-spacing:-.01em}
+.cm-time{display:block;margin-top:6px;font-size:11px;color:#5f6478}
 
-/* every transition is a person — the burden lives in the gaps */
-.hx-hop{flex:none;width:46px;height:1px;position:relative;background:#ffffff26;
-  display:flex;align-items:center;justify-content:center;color:#aeb2c4}
-.hx-hop svg{width:16px;height:16px;display:block;position:relative;top:-1px}
-.hx-hop--clean{width:30px;background:linear-gradient(90deg,#7b4dff59,#7ee7ff73)}
-.hx-note{display:flex;align-items:center;gap:9px;margin:20px 0 0;font-size:15px;color:#8f93a8}
-.hx-note-mark{width:24px;height:1px;background:#ffffff2b;flex:none}
-
-/* the baton: seven discrete hops, one per handoff. steps() IS the stutter. */
-.hx-baton{position:absolute;top:50%;left:0;width:9px;height:9px;margin-top:-4.5px;border-radius:50%;
-  background:#e0b3a8;box-shadow:0 0 14px #e0b3a8a6;z-index:2;
-  animation:hx-relay 6.3s steps(7,end) infinite}
-@keyframes hx-relay{from{left:5%}to{left:96%}}
-
-/* the middle of the journey, carried continuously */
-.hx-band{flex:1 1 340px;min-width:0;position:relative;margin:0 2px;
-  padding:20px 22px 18px;border-radius:13px;text-align:center;
-  border:1px solid #7b4dff5c;
+/* the calm side: one object, and the only thing left for a person */
+.cm-obj{padding:26px 28px 24px;border-radius:16px;
+  border:1px solid #7b4dff59;
   background:
-    radial-gradient(120% 160% at 0% 0%, #7b4dff3d 0%, #7b4dff00 62%),
-    radial-gradient(120% 160% at 100% 100%, #2fd4b833 0%, #2fd4b800 62%),
+    radial-gradient(120% 150% at 0% 0%, #7b4dff2b 0%, #7b4dff00 60%),
+    radial-gradient(120% 150% at 100% 100%, #2fd4b826 0%, #2fd4b800 60%),
     linear-gradient(180deg,#171a2b,#0f1119);
-  box-shadow:0 20px 56px #00000073, inset 0 1px 0 #ffffff14}
-.hx-band-label{display:block;font-size:13px;letter-spacing:.22em;color:#fff;font-weight:560}
-.hx-band-sub{display:block;margin-top:7px;font-size:12.5px;color:#9ba0b4;letter-spacing:.01em}
-/* one smooth pass, holding once where a person is required */
-.hx-clip{position:absolute;inset:0;border-radius:13px;overflow:hidden;pointer-events:none}
-.hx-glide{position:absolute;top:0;bottom:0;left:-150px;width:150px;
-  background:linear-gradient(90deg,#7ee7ff00,#7ee7ff33 45%,#7ee7ff00);
-  animation:hx-glide 6.3s ease-in-out infinite}
-@keyframes hx-glide{
-  0%{left:-150px;opacity:0}
-  10%{opacity:1}
-  44%{left:calc(50% - 75px)}
-  56%{left:calc(50% - 75px)}
-  90%{left:100%;opacity:1}
-  100%{left:100%;opacity:0}}
-
-/* judgment surfaces here, and it is named */
-.hx-judge{position:absolute;left:50%;top:-42px;transform:translateX(-50%);white-space:nowrap;
-  display:flex;align-items:center;gap:8px;z-index:3;
-  font-size:11.5px;letter-spacing:.02em;color:#c8cbd9;
-  padding:7px 13px;border-radius:999px;
-  border:1px solid #ffffff2e;background:linear-gradient(180deg,#1b2032,#12151f);
-  box-shadow:0 12px 30px #00000073}
-.hx-judge svg{width:14px;height:14px;color:#c4b5fd;flex:none}
-.hx-judge b{font-size:9.5px;letter-spacing:.18em;color:#c4b5fd;font-weight:700}
-.hx-judge-stem{position:absolute;left:50%;top:100%;width:1px;height:20px;
-  background:linear-gradient(180deg,#c4b5fd8c,#7b4dff00)}
+  box-shadow:0 26px 70px #00000080, inset 0 1px 0 #ffffff14;
+  display:flex;flex-direction:column}
+.cm-obj-kicker{font-size:10.5px;letter-spacing:.2em;color:#c4b5fd;font-weight:700}
+.cm-obj-title{margin-top:10px;font-size:clamp(20px,2vw,26px);line-height:1.2;letter-spacing:-.03em;
+  color:#fff;font-weight:440}
+.cm-obj-facts{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:13px}
+.cm-obj-facts li{display:flex;align-items:flex-start;gap:11px;font-size:15px;line-height:1.45;color:#c8cbd9}
+.cm-tick{flex:none;width:16px;height:16px;margin-top:2px;border-radius:50%;position:relative;
+  background:linear-gradient(135deg,#7b4dff,#2fd4b8)}
+.cm-tick::after{content:"";position:absolute;left:5px;top:4.5px;width:3.5px;height:6.5px;
+  border:1.6px solid #0f1119;border-top:0;border-left:0;transform:rotate(42deg)}
+.cm-obj-ask{display:flex;align-items:center;gap:11px;margin-top:24px;padding-top:20px;
+  border-top:1px solid #ffffff14;
+  font-size:16px;color:#fff;letter-spacing:-.015em}
+.cm-person{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid #c4b5fd;position:relative}
+.cm-person::before{content:"";position:absolute;left:50%;top:4px;width:6px;height:6px;margin-left:-3px;
+  border-radius:50%;border:1.5px solid #c4b5fd}
+.cm-person::after{content:"";position:absolute;left:50%;top:12px;width:12px;height:7px;margin-left:-6px;
+  border:1.5px solid #c4b5fd;border-bottom:0;border-radius:6px 6px 0 0}
 
 .coord-close{display:flex;align-items:center;gap:24px;max-width:1440px;margin:58px auto 0}
 /* BRAND LAW: the Nieme glyph is the logo mark and nothing else — never a bullet,
@@ -1098,27 +1077,9 @@ h1,h2,h3{text-wrap:balance}
 .jtbd-close{margin:0;font-size:clamp(24px,2.6vw,36px);letter-spacing:-.035em;line-height:1.15;
   color:#fff;font-weight:420}
 
-@media (max-width:1080px){
-  .hx-flow{row-gap:10px}
-  .hx-hop{width:30px}
-  .hx-band{flex:1 1 100%;margin:34px 0 6px}
-  .hx-judge{top:-38px;max-width:calc(100% - 24px);white-space:normal;flex-wrap:wrap;row-gap:2px}
-  .hx-baton{display:none}
-}
-@media (max-width:620px){
-  .hx-flow{flex-direction:column;align-items:flex-start}
-  .hx-node,.hx-band{width:100%;text-align:left}
-  .hx-hop{width:1px;height:26px;margin-left:22px;background:#ffffff1f;flex-direction:column}
-  .hx-hop--clean{background:linear-gradient(180deg,#7b4dff59,#7ee7ff73)}
-  .hx-band{text-align:left}
-  .hx-judge{position:static;transform:none;display:inline-flex;margin-bottom:12px;
-    max-width:100%;white-space:normal;flex-wrap:wrap;row-gap:2px}
-  .hx-judge-stem{display:none}
-}
-@media (prefers-reduced-motion:reduce){
-  .hx-baton,.hx-glide{animation:none}
-  .hx-baton{left:96%}
-  .hx-glide{left:calc(50% - 75px);opacity:.5}
+@media (max-width:1000px){
+  .cmp{grid-template-columns:minmax(0,1fr);gap:44px}
+  .cm-msg{margin-left:0;max-width:100%}
 }
 /* ---- entry paths: bifurcation converging ---- */
 .bifurcate{max-width:1440px;margin:8px auto 0;text-align:center}
@@ -1218,62 +1179,93 @@ h1,h2,h3{text-wrap:balance}
 .swap-unit.is-active{background:#ffffff12;color:#fff}
 .executors-note{max-width:800px;margin:28px auto 0;text-align:center;font-size:16px;color:var(--muted)}
 
+/* ---- learning, told as QUESTIONS BECOMING ANSWERS. The old version showed a
+       line appearing in a list, which read like Nieme had memorised a
+       spreadsheet layout. What an organisation actually gains is that settled
+       things stop being re-litigated: which terms are authoritative, who may
+       decide, what was agreed. The list of things a person must answer gets
+       shorter — that is the compounding, and it is legible at a glance. ---- */
+.qa{max-width:1440px;margin:0 auto;display:grid;
+  grid-template-columns:minmax(0,1fr) 74px minmax(0,1fr);align-items:start}
+.qa-cap{display:inline-block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  padding:5px 11px;border-radius:7px;color:#c8cbd9;background:#ffffff0d;border:1px solid #ffffff1c}
+.qa-cap--settled{color:#fff;border-color:#7b4dff59;
+  background:linear-gradient(100deg,#7b4dff33,#2fd4b81f)}
+.qa-sub{margin:14px 0 18px;font-size:14.5px;line-height:1.5;color:#8f93a8}
+.qa-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.qa-list li{display:flex;align-items:flex-start;gap:13px;padding:15px 17px;border-radius:12px;
+  border:1px solid var(--line);background:#ffffff06;font-size:15.5px;line-height:1.45;color:#c8cbd9;
+  letter-spacing:-.01em}
+/* an open question — the thing somebody has to settle before anything runs */
+.qa-q{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid #ffffff2b;color:#8f93a8;font-size:12.5px;font-weight:600;margin-top:1px}
+/* a settled one — decided once, and it stayed */
+.qa-list--settled li{border-color:#7b4dff33;background:linear-gradient(100deg,#7b4dff12,#2fd4b808)}
+.qa-tick{flex:none;width:22px;height:22px;border-radius:50%;position:relative;margin-top:1px;
+  background:linear-gradient(135deg,#7b4dff,#2fd4b8)}
+.qa-tick::after{content:"";position:absolute;left:8px;top:6.5px;width:4.5px;height:8px;
+  border:1.8px solid #0b0d14;border-top:0;border-left:0;transform:rotate(42deg)}
+.qa-fact{display:block;color:#eef0f7}
+.qa-by{display:block;margin-top:5px;font-size:13px;color:#8b8fa3;line-height:1.45}
+/* what is genuinely new, and therefore still a person's call */
+.qa-open{display:flex;align-items:flex-start;gap:13px;margin-top:16px;padding:15px 17px;
+  border-radius:12px;border:1px dashed #7ee7ff40;background:#7ee7ff08;
+  font-size:15.5px;line-height:1.45;color:#c8cbd9;letter-spacing:-.01em}
+.qa-open .qa-q{border-color:#7ee7ff59;color:#7ee7ff}
+.qa-open .qa-by{color:#7ee7ffb3}
+/* the crossing */
+.qa-shift{position:relative;align-self:center;height:1px;margin:0 12px}
+.qa-shift-line{position:absolute;inset:0;
+  background:linear-gradient(90deg,#7b4dff00,#7b4dff8c 45%,#7ee7ffb3)}
+.qa-shift-dot{position:absolute;top:-2px;left:0;width:5px;height:5px;border-radius:50%;
+  background:var(--cyan);box-shadow:0 0 11px var(--cyan);opacity:0;
+  animation:qa-run 7s ease-in-out infinite}
+@keyframes qa-run{0%{left:0;opacity:0}10%{opacity:1}26%{opacity:1}34%{left:100%;opacity:0}100%{left:100%;opacity:0}}
+.qa-note{max-width:1440px;margin:34px auto 0;font-size:15px;line-height:1.6;color:#8f93a8}
+
+@media (max-width:1000px){
+  .qa{grid-template-columns:minmax(0,1fr);gap:8px}
+  .qa-col--after{margin-top:34px}
+  .qa-shift{align-self:stretch;width:1px;height:38px;margin:0 auto;justify-self:center}
+  .qa-shift-line{background:linear-gradient(180deg,#7b4dff00,#7b4dff8c 45%,#7ee7ffb3)}
+  .qa-shift-dot{top:0;left:-2px;animation-name:qa-run-v}
+  @keyframes qa-run-v{0%{top:0;opacity:0}10%{opacity:1}26%{opacity:1}34%{top:100%;opacity:0}100%{top:100%;opacity:0}}
+}
+@media (prefers-reduced-motion:reduce){
+  .qa-shift-dot{animation:none;left:auto;right:0;opacity:.85}
+}
+/* ---- executors: one socket, a bus, interchangeable units ---- */
+.swap{max-width:1100px;margin:0 auto;display:grid;
+  grid-template-columns:minmax(0,260px) 74px minmax(0,1fr);gap:0;align-items:center}
+.swap-socket{border:1px solid #7b4dff4d;border-radius:18px;padding:26px;text-align:center;
+  background:linear-gradient(180deg,#7b4dff1c,#7b4dff06)}
+.swap-socket-label{font-size:11px;letter-spacing:.2em;color:#fff;margin-bottom:8px}
+.swap-socket-body{font-size:13px;color:#b9bcd0;letter-spacing:.04em}
+/* the bus: the work plugs in here; whichever unit is seated does the work */
+.swap-bus{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+.swap-bus-line{position:absolute;left:0;right:0;top:50%;height:1px;
+  background:linear-gradient(90deg,#7b4dff8c,#7b4dff26)}
+.swap-bus-plug{position:relative;width:9px;height:9px;border-radius:50%;
+  background:#7b4dff;box-shadow:0 0 16px #7b4dffa6}
+.swap-slot{display:flex;flex-direction:column;gap:0;border:1px dashed #ffffff26;border-radius:18px;padding:8px}
+.swap-unit{position:relative;padding:15px 20px 15px 34px;border-radius:12px;font-size:15.5px;color:#9ba0b4;
+  transition:background .22s,color .22s,transform .22s}
+.swap-unit::before{content:"";position:absolute;left:16px;top:50%;width:5px;height:5px;margin-top:-2.5px;
+  border-radius:50%;border:1px solid #ffffff33;transition:background .22s,border-color .22s}
+.swap-unit:hover::before{border-color:#7b4dff8c}
+.swap-unit:hover{background:#ffffff0d;color:#fff;transform:translateX(5px)}
+.swap-unit.is-active::before{background:#7b4dff;border-color:#7b4dff;box-shadow:0 0 12px #7b4dff8c}
+.swap-unit.is-active{background:#ffffff12;color:#fff}
+.executors-note{max-width:800px;margin:28px auto 0;text-align:center;font-size:16px;color:var(--muted)}
+
 /* ---- learning: context carry-forward. Not a circle — the site already uses
        circular language for the constellation, the Runtime core and the logo.
        This shows a specific delta arriving in future Context. ---- */
-.carry{max-width:1440px;margin:0 auto;display:grid;
-  grid-template-columns:minmax(0,1fr) 82px minmax(0,1fr) 82px minmax(0,1fr);
-  gap:0;align-items:stretch}
-.carry-col{display:flex;flex-direction:column;min-width:0}
-.carry-head{font-size:10.5px;letter-spacing:.2em;color:#8b8fa3;margin-bottom:14px;line-height:1.5}
-.carry-panel{flex:1;padding:22px 24px 24px;border-radius:16px;border:1px solid var(--line);
-  background:linear-gradient(180deg,#ffffff08,#ffffff03)}
-.carry-panel-title{font-size:15px;color:#eef0f7;letter-spacing:-.01em;margin-bottom:14px;font-weight:520}
-.carry-lines{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
-.carry-lines li{position:relative;padding-left:15px;font-size:14.5px;line-height:1.45;color:#9ba0b4}
-.carry-lines li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:1px;background:#ffffff33}
 /* the one line that was not there before — present at rest, and visibly arriving */
-.carry-new{color:#eef0f7;margin-top:4px;padding:8px 12px 8px 15px;border-radius:0 9px 9px 0;
-  background:linear-gradient(90deg,#7b4dff1f,#2fd4b80a 62%,#7b4dff00)}
-.carry-new::before{display:none}
-.carry-new-rail{position:absolute;left:0;top:0;bottom:0;width:2px;border-radius:2px;
-  background:linear-gradient(180deg,var(--purple),var(--cyan));
-  animation:carry-arrive 9s ease-in-out infinite}
-@keyframes carry-arrive{
-  0%,50%{opacity:.4}
-  62%,88%{opacity:1;box-shadow:0 0 13px #7ee7ff73}
-  100%{opacity:.4}}
 /* centre: what a person accepted, and the two things that make it defensible */
-.carry-panel--accept{border-color:#7b4dff3d;
-  background:linear-gradient(180deg,#7b4dff14,#2fd4b80a)}
-.carry-accepted{display:flex;align-items:flex-start;gap:11px;font-size:15.5px;line-height:1.35;
-  color:#eef0f7;letter-spacing:-.01em;margin-bottom:16px}
-.carry-tick{flex:none;width:17px;height:17px;margin-top:1px;border-radius:50%;position:relative;
-  background:linear-gradient(135deg,var(--purple),var(--cyan))}
-.carry-tick::after{content:"";position:absolute;left:5px;top:4.5px;width:4px;height:7px;
-  border:1.6px solid #0b0d14;border-top:0;border-left:0;transform:rotate(42deg)}
-.carry-proof{list-style:none;margin:0;padding:14px 0 0;border-top:1px solid #ffffff14;
-  display:flex;flex-direction:column;gap:9px}
-.carry-proof li{font-size:13.5px;line-height:1.45;color:#9ba0b4}
-.carry-proof-k{display:inline-block;min-width:70px;color:#c8cbd9}
 /* the two crossings */
-.carry-link{position:relative;align-self:center;height:1px;margin:0 10px}
-.carry-trace{position:absolute;inset:0;
-  background:linear-gradient(90deg,#7b4dff00,#7b4dff8c 45%,#7ee7ffb3)}
-.carry-dot{position:absolute;top:-2px;left:0;width:5px;height:5px;border-radius:50%;
-  background:var(--cyan);box-shadow:0 0 11px var(--cyan);opacity:0;
-  animation:carry-run 9s ease-in-out infinite}
-.carry-dot--2{animation-delay:2.6s}
-@keyframes carry-run{0%{left:0;opacity:0}8%{opacity:1}22%{opacity:1}30%{left:100%;opacity:0}100%{left:100%;opacity:0}}
-.carry-note{max-width:1440px;margin:30px auto 0;font-size:15px;line-height:1.55;color:#8f93a8}
 @media (max-width:1000px){
-  .carry{grid-template-columns:minmax(0,1fr);gap:0}
-  .carry-col{margin-bottom:0}
-  .carry-link{align-self:stretch;width:1px;height:40px;margin:0 auto;justify-self:center}
-  .carry-trace{background:linear-gradient(180deg,#7b4dff00,#7b4dff8c 45%,#7ee7ffb3)}
-  .carry-dot{top:0;left:-2px;animation-name:carry-run-v}
   @keyframes carry-run-v{0%{top:0;opacity:0}8%{opacity:1}22%{opacity:1}30%{top:100%;opacity:0}100%{top:100%;opacity:0}}
-  .carry-head{margin-top:0}
 }
 
 /* ---- executors: one socket, a bus, interchangeable units ---- */
@@ -1575,14 +1567,11 @@ h1,h2,h3{text-wrap:balance}
 }
 @media (prefers-reduced-motion:reduce){
   .rvx-ring,.rvx-flow,.rvx-return,.cst-pulse,
-  .triptych::after,.carry-dot,.carry-new-rail{animation:none!important}
-  .carry-new-rail{opacity:1}
-  .carry-dot{opacity:.85;left:auto;right:0}
+  .triptych::after{animation:none!important}
   .triptych::after{opacity:1;transform:translateX(200%)}
   .rvx-return{left:16px;opacity:.8}
   .cst-pulse{opacity:.7;transform:translate(-50%,-50%) rotate(var(--a)) translateX(143px)}
   .rvx-flow{background:linear-gradient(90deg,#7b4dff00,#7b4dff8c 45%,#7ee7ffb3)}
-  .carry-new-rail{animation:none!important;opacity:1}
 }
 
 /* --- R3.1 hero balance: the loop hero is two columns, so the display scale

@@ -376,38 +376,57 @@
         <p>AI can produce the answer. People still carry everything around it.</p>
       </div>
 
-      <div class="hx">
-        <div class="hx-lane">
-          <div class="hx-cap">TODAY</div>
-          <div class="hx-flow hx-flow--relay">
-            <span class="hx-baton" aria-hidden="true"></span>
-            <span class="hx-node hx-node--trigger">Something changes</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Notice</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Gather context</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Decide</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Brief AI</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Move result</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Follow up</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Reconstruct context</span>
+      <div class="cmp">
+        <div class="cmp-side cmp-side--noise">
+          <div class="cmp-cap">TODAY</div>
+          <div class="cm-pile">
+            <div class="cm-msg" style="--r:-1.4deg;--x:0px">
+              <span class="cm-who">Finance</span>
+              <p>did the renewal terms change?</p>
+              <span class="cm-time">09:12</span>
+            </div>
+            <div class="cm-msg" style="--r:0.9deg;--x:26px">
+              <span class="cm-who">You</span>
+              <p>can you send me the latest forecast?</p>
+              <span class="cm-time">09:40</span>
+            </div>
+            <div class="cm-msg" style="--r:-0.7deg;--x:10px">
+              <span class="cm-who">Sales</span>
+              <p>who signs off on this one?</p>
+              <span class="cm-time">10:05</span>
+            </div>
+            <div class="cm-msg" style="--r:1.3deg;--x:38px">
+              <span class="cm-who">Finance</span>
+              <p>is this the final version?</p>
+              <span class="cm-time">11:18</span>
+            </div>
+            <div class="cm-msg" style="--r:-1.1deg;--x:16px">
+              <span class="cm-who">You</span>
+              <p>following up on the above</p>
+              <span class="cm-time">14:02</span>
+            </div>
+            <div class="cm-msg" style="--r:0.6deg;--x:44px">
+              <span class="cm-who">Ops</span>
+              <p>what did we decide last quarter?</p>
+              <span class="cm-time">16:47</span>
+            </div>
           </div>
-          <p class="hx-note"><span class="hx-note-mark" aria-hidden="true"></span>Seven handoffs. Every one of them is a person.</p>
+          <p class="cmp-note">Six messages to move one piece of work — and none of them are the work.</p>
         </div>
 
-        <div class="hx-lane hx-lane--after">
-          <div class="hx-cap hx-cap--runtime">WITH NIEME</div>
-          <div class="hx-flow">
-            <span class="hx-node hx-node--trigger">Something changes</span>
-            <span class="hx-hop hx-hop--clean" aria-hidden="true"></span>
-            <span class="hx-band">
-              <span class="hx-clip" aria-hidden="true"><span class="hx-glide"></span></span>
-              <span class="hx-judge">
-                <span class="hx-judge-stem" aria-hidden="true"></span>
-                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.5"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <b>DECISION POINT</b>a person decides where it matters
-              </span>
-              <span class="hx-band-label">NIEME RUNTIME</span>
-              <span class="hx-band-sub">from change to governed outcome</span>
-            </span>
-            <span class="hx-hop hx-hop--clean" aria-hidden="true"></span>
-            <span class="hx-node hx-node--out">Outcome</span>
-            <span class="hx-hop hx-hop--clean" aria-hidden="true"></span>
-            <span class="hx-node hx-node--accept"><span class="hx-tick" aria-hidden="true"></span>Accepted</span>
-            <span class="hx-hop hx-hop--clean" aria-hidden="true"></span>
-            <span class="hx-node hx-node--carry">Context carries forward</span>
+        <div class="cmp-side cmp-side--calm">
+          <div class="cmp-cap cmp-cap--runtime">WITH NIEME</div>
+          <div class="cm-obj">
+            <div class="cm-obj-kicker">ONE GOVERNED PIECE OF WORK</div>
+            <div class="cm-obj-title">Q3 revenue forecast + leadership brief</div>
+            <ul class="cm-obj-facts">
+              <li><span class="cm-tick" aria-hidden="true"></span>Context assembled from the approved renewal terms</li>
+              <li><span class="cm-tick" aria-hidden="true"></span>Evidence attached to the result</li>
+              <li><span class="cm-tick" aria-hidden="true"></span>Carried forward once it is accepted</li>
+            </ul>
+            <div class="cm-obj-ask"><span class="cm-person" aria-hidden="true"></span>What&#39;s left for you: say yes.</div>
           </div>
+          <p class="cmp-note">The same work, carried. Nothing to chase, nothing to reassemble.</p>
         </div>
       </div>
 
@@ -593,48 +612,37 @@
     <!-- SECTION 7 — LEARNING -->
     <section class="learning">
       <div class="section-title">
-        <div class="eyebrow">ORGANIZATIONS LEARN</div>
-        <h2>What happened changes what Nieme knows next time.</h2>
-        <p>Accepted outcomes, supporting Evidence, Decisions and durable observations can strengthen the institutional state used for future work. Not everything becomes knowledge — what a person accepts is what carries forward.</p>
+        <div class="eyebrow">ORGANIZATIONS COMPOUND</div>
+        <h2>The second time, most of the questions are already answered.</h2>
+        <p>What a person accepts does not become a note somebody has to find. It becomes the answer Nieme already has the next time the same work comes round.</p>
       </div>
-      <div class="carry">
-        <div class="carry-col">
-          <div class="carry-head">WHAT NIEME KNEW</div>
-          <div class="carry-panel">
-            <div class="carry-panel-title">Northstar Revenue</div>
-            <ul class="carry-lines">
-            <li>Renewal terms, v2</li>
-            <li>Q2 forecast method</li>
-            <li>Finance owns the number</li>
-            </ul>
-          </div>
+
+      <div class="qa">
+        <div class="qa-col qa-col--before">
+          <div class="qa-cap">THE FIRST TIME</div>
+          <p class="qa-sub">Before anything can run, somebody has to settle:</p>
+          <ul class="qa-list">
+            <li><span class="qa-q" aria-hidden="true">?</span><span>Which renewal terms are we allowed to forecast on?</span></li>
+            <li><span class="qa-q" aria-hidden="true">?</span><span>Who is entitled to sign this off?</span></li>
+            <li><span class="qa-q" aria-hidden="true">?</span><span>What did we agree the method was last quarter?</span></li>
+          </ul>
         </div>
-        <div class="carry-link" aria-hidden="true"><span class="carry-trace"></span><span class="carry-dot"></span></div>
-        <div class="carry-col">
-          <div class="carry-head">WHAT THE COMPANY ACCEPTED</div>
-          <div class="carry-panel carry-panel--accept">
-            <div class="carry-accepted"><span class="carry-tick" aria-hidden="true"></span>Q3 revenue forecast + leadership brief</div>
-            <ul class="carry-proof">
-              <li><span class="carry-proof-k">Evidence</span>the renewal terms it was built from</li>
-              <li><span class="carry-proof-k">Decision</span>accepted by a person, 12 Sep</li>
-            </ul>
-          </div>
-        </div>
-        <div class="carry-link" aria-hidden="true"><span class="carry-trace"></span><span class="carry-dot carry-dot--2"></span></div>
-        <div class="carry-col">
-          <div class="carry-head">WHAT NIEME KNOWS NEXT TIME</div>
-          <div class="carry-panel">
-            <div class="carry-panel-title">Northstar Revenue</div>
-            <ul class="carry-lines">
-            <li>Renewal terms, v2</li>
-            <li>Q2 forecast method</li>
-            <li>Finance owns the number</li>
-              <li class="carry-new"><span class="carry-new-rail" aria-hidden="true"></span>Q3 forecast method, approved 12 Sep</li>
-            </ul>
-          </div>
+
+        <div class="qa-shift" aria-hidden="true"><span class="qa-shift-line"></span><span class="qa-shift-dot"></span></div>
+
+        <div class="qa-col qa-col--after">
+          <div class="qa-cap qa-cap--settled">EVERY TIME AFTER</div>
+          <p class="qa-sub">Already settled, because somebody decided it once:</p>
+          <ul class="qa-list qa-list--settled">
+            <li><span class="qa-tick" aria-hidden="true"></span><div><span class="qa-fact">Renewal terms, v2</span><span class="qa-by">accepted 12 Sep · the forecast is tied to the document it came from</span></div></li>
+            <li><span class="qa-tick" aria-hidden="true"></span><div><span class="qa-fact">Finance signs off on the number</span><span class="qa-by">decided, not guessed — and the work routes there on its own</span></div></li>
+            <li><span class="qa-tick" aria-hidden="true"></span><div><span class="qa-fact">The Q3 method is the accepted one</span><span class="qa-by">the argument does not get had again</span></div></li>
+          </ul>
+          <div class="qa-open"><span class="qa-q" aria-hidden="true">?</span><div><span class="qa-fact">Do the Q4 terms change any of this?</span><span class="qa-by">the only question left for a person</span></div></div>
         </div>
       </div>
-      <p class="carry-note">The next request starts from the fourth line. Nobody had to remember it, and nobody had to write it down.</p>
+
+      <p class="qa-note">Nobody wrote any of this down. It was decided, and the decision stayed — so the next quarter starts three questions ahead.</p>
     </section>
 
     <!-- SOUL LINE -->
