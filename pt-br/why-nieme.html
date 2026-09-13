@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Por que Nieme</title>
-  <meta name="description" content="A Nieme ajuda organizações a direcionar o trabalho de IA, preservar a autoridade humana, rastrear resultados e reutilizar o que aprendem." />
-  <meta property="og:title" content="Por que Nieme" />
-  <meta property="og:description" content="A camada de controle que transforma pedidos à IA em trabalho governado e rastreável, com o qual sua organização pode aprender." />
+  <title>Por que Nieme | O Runtime para o Trabalho com IA</title>
+  <meta name="description" content="A Nieme é o runtime para o trabalho com IA. Mantenha o trabalho nos sistemas onde ele já vive, enquanto contexto, autoridade, Evidência e resultados seguem contínuos entre eles." />
+  <meta property="og:title" content="Por que Nieme | O Runtime para o Trabalho com IA" />
+  <meta property="og:description" content="Uma camada de continuidade sobre o trabalho — governado, rastreável e sem depender de mover tudo para mais uma ferramenta." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nieme.ai/pt-br/why-nieme" />
   <meta property="og:site_name" content="Nieme" />
@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body class="page-inner">
+  <canvas class="pulse" data-pulse aria-hidden="true"></canvas>
   <div class="grain"></div>
   <header class="nav">
     <a class="brand" href="/pt-br">
@@ -49,42 +50,52 @@
       </div>
       <div class="kicker">POR QUE NIEME</div>
       <h1>A IA pode produzir mais trabalho. Sua organização ainda precisa direcioná-lo.</h1>
-      <p class="lede">A Nieme é a camada de controle do trabalho com IA. Ela transforma pedidos em operações governadas, mantém as pessoas no comando das decisões relevantes, conecta resultados a evidências e torna o conhecimento aprovado reutilizável.</p>
+      <p class="lede">A Nieme é o runtime para o trabalho com IA. Ela observa os sistemas que você já usa, transforma pedidos e mudanças relevantes em trabalho governado, mantém as pessoas no comando das decisões consequentes e leva adiante Evidências, decisões e resultados aceitos.</p>
     </section>
 
     <!-- VS. RENTED AI -->
     <section class="vs-section flow">
-      <div class="section-copy section-title">
-        <div class="eyebrow">UM SÓ LUGAR PARA O TRABALHO</div>
-        <h2>Pare de reconstruir o contexto a cada pedido à IA.</h2>
+      <div class="vs-grid">
+        <div class="vs-copy">
+          <div class="eyebrow">UMA CAMADA DE CONTINUIDADE SOBRE O TRABALHO</div>
+          <h2>Mantenha o trabalho onde ele funciona.</h2>
+          <p class="vs-lede">A Nieme não pede que sua empresa mova o trabalho para dentro da Nieme para que a Nieme possa governá-lo. Desenvolvedores continuam no GitHub. Documentos continuam no Drive ou no OneDrive. Times continuam no Slack. Agentes continuam nos seus próprios runtimes. O que a Nieme mantém é a continuidade entre eles — o contexto, a autoridade, as Evidências e os resultados.</p>
+          <p>É fácil gerar resultados com IA e difícil gerenciá-los em equipe. A Nieme organiza trabalhos relevantes em torno de uma operação com objetivo, contexto, status e resultado. Sua equipe pode passar menos tempo reconstruindo briefings e mais tempo avaliando resultados.</p>
+        </div>
+        <div class="vs-art">
         <div class="vs-comparison">
           <div class="vs-col vs-col--them">
-            <div class="vs-col-label">Trabalho de IA disperso</div>
+            <div class="vs-col-label">Trabalho com IA disperso</div>
             <div class="vs-col-items">
-              <span>Contexto espalhado por diferentes chats</span>
-              <span>Resultados separados das decisões</span>
-              <span>Cada repasse exige outra explicação</span>
+              <span>Contexto espalhado por chats e ferramentas</span>
+              <span>Resultados separados das decisões sobre eles</span>
+              <span>Cada sistema é uma ilha de histórico</span>
             </div>
           </div>
           <div class="vs-divider" aria-hidden="true">→</div>
           <div class="vs-col vs-col--us">
             <div class="vs-col-label">Com a Nieme</div>
             <div class="vs-col-items">
-              <span>Uma operação reúne o objetivo</span>
-              <span>Contexto e resultados permanecem conectados</span>
-              <span>Trabalhos futuros podem reutilizar o que foi aprovado</span>
+              <span>O contexto sobrevive ao modelo</span>
+              <span>A autoridade permanece explícita</span>
+              <span>A Evidência viaja com o resultado</span>
+              <span>O aprendizado aceito fortalece o trabalho futuro</span>
             </div>
           </div>
         </div>
-        <p>É fácil gerar resultados com IA e difícil gerenciá-los em equipe. A Nieme organiza trabalhos relevantes em torno de uma operação com objetivo, contexto, status e resultado. Sua equipe pode passar menos tempo reconstruindo briefings e mais tempo avaliando resultados.</p>
+        </div>
       </div>
     </section>
 
     <!-- VS. AGENTS -->
-    <section class="vs-section flow">
-      <div class="section-copy section-title">
-        <div class="eyebrow">AUTORIDADE HUMANA ONDE IMPORTA</div>
-        <h2>Delegue o trabalho sem delegar a decisão.</h2>
+    <section class="vs-section flow vs-section--flip">
+      <div class="vs-grid">
+        <div class="vs-copy">
+          <div class="eyebrow">AUTORIDADE HUMANA ONDE IMPORTA</div>
+          <h2>Delegue o trabalho sem delegar a decisão.</h2>
+          <p>A Nieme separa a proposta do trabalho, sua autorização, sua execução e a aceitação do resultado. Isso dá à IA espaço para realizar um trabalho útil, preservando o julgamento humano sobre objetivos, limites de aprovação e o que passa a fazer parte da organização.</p>
+        </div>
+        <div class="vs-art">
         <div class="vs-comparison">
           <div class="vs-col vs-col--them">
             <div class="vs-col-label">Autoridade pouco clara</div>
@@ -104,43 +115,59 @@
             </div>
           </div>
         </div>
-        <p>A Nieme separa a proposta do trabalho, sua autorização, sua execução e a aceitação do resultado. Isso dá à IA espaço para realizar um trabalho útil, preservando o julgamento humano sobre objetivos, limites de aprovação e o que passa a fazer parte da organização.</p>
+        </div>
       </div>
     </section>
 
     <!-- VS. BUILD IT YOURSELF -->
     <section class="vs-section flow">
-      <div class="section-copy section-title">
-        <div class="eyebrow">EVIDÊNCIAS QUE ACOMPANHAM O RESULTADO</div>
-        <h2>Entenda o que aconteceu sem precisar reconstruir tudo depois.</h2>
-        <div class="vs-comparison">
-          <div class="vs-col vs-col--them">
-            <div class="vs-col-label">Registros desconectados</div>
-            <div class="vs-col-items">
-              <span>As fontes ficam em um lugar</span>
-              <span>O resultado fica em outro</span>
-              <span>A aprovação é difícil de rastrear</span>
-            </div>
-          </div>
-          <div class="vs-divider" aria-hidden="true">→</div>
-          <div class="vs-col vs-col--us">
-            <div class="vs-col-label">Com a Nieme</div>
-            <div class="vs-col-items">
-              <span>Intenção e contexto permanecem conectados</span>
-              <span>As tentativas de execução são preservadas</span>
-              <span>As evidências sustentam a revisão</span>
-            </div>
-          </div>
+      <div class="vs-grid">
+        <div class="vs-copy">
+          <div class="eyebrow">EVIDÊNCIAS QUE ACOMPANHAM O RESULTADO</div>
+          <h2>Entenda o que aconteceu sem precisar reconstruir tudo depois.</h2>
+          <p>A Nieme mantém a intenção aprovada, o contexto das fontes, as tentativas de execução, os artefatos, as evidências e as decisões conectados à operação a que pertencem. Líderes podem revisar o resultado com seu registro de apoio, em vez de depender de um resumo separado da forma como o trabalho foi realizado.</p>
         </div>
-        <p>A Nieme mantém a intenção aprovada, o contexto das fontes, as tentativas de execução, os artefatos, as evidências e as decisões conectados à operação a que pertencem. Líderes podem revisar o resultado com seu registro de apoio, em vez de depender de um resumo separado da forma como o trabalho foi realizado.</p>
+        <div class="vs-art">
+            <div class="uiw ui-receipt">
+              <div class="rc-head">
+                <span class="ar-icon" aria-hidden="true"></span>
+                <div class="rc-id">
+                  <div class="ar-name">Northstar Revenue Q3 Forecast</div>
+                  <div class="ar-file"><span class="ar-kind">XLSX</span>Northstar Revenue Q3 Forecast.xlsx<span class="ar-size">6 KB</span></div>
+                </div>
+                <span class="rc-state">Entregue</span>
+              </div>
+              <div class="rc-peek">
+                <div class="rc-peek-name">FORECAST</div>
+                <div class="rc-peek-row"><span>Q3</span><span>1,310,000.00</span><span>18%</span><span>1,545,800.00</span></div>
+                <div class="rc-peek-fade" aria-hidden="true"></div>
+              </div>
+              <div class="rc-tear" aria-hidden="true"></div>
+              <div class="rc-receipt">
+                <div class="rc-title">RECIBO DE ENTREGA</div>
+                <dl class="rc-rows">
+                  <div class="rc-row"><dt>Decis&atilde;o de review</dt><dd>Aceito pelo Financeiro<em>decision 7c4a91e2</em></dd></div>
+                  <div class="rc-row"><dt>Artefato</dt><dd class="rc-mono">a4e91c08-2f7b-4d16-9c53-18be6f0a72d1</dd></div>
+                  <div class="rc-row"><dt>Evid&ecirc;ncia de execu&ccedil;&atilde;o</dt><dd class="rc-mono">3b6f2d95-81ac-4e70-b2f4-5d9c17ae8830</dd></div>
+                  <div class="rc-row"><dt>Evid&ecirc;ncia de entrega</dt><dd class="rc-mono">e07d41ba-6c29-49f5-8a11-c3fd25b904e6</dd></div>
+                  <div class="rc-row"><dt>Entregue em</dt><dd>2026-09-12 14:22:07 UTC</dd></div>
+                </dl>
+                <p class="rc-note">O resultado e o registro de como ele chegou at&eacute; ali s&atilde;o um objeto s&oacute;. Nada aqui foi remontado depois.</p>
+              </div>
+            </div>
+        </div>
       </div>
     </section>
 
     <!-- VS. AUTOMATION -->
-    <section class="vs-section flow">
-      <div class="section-copy section-title">
-        <div class="eyebrow">CONHECIMENTO QUE PODE SER REUTILIZADO</div>
-        <h2>Torne o trabalho concluído útil para a próxima equipe.</h2>
+    <section class="vs-section flow vs-section--flip">
+      <div class="vs-grid">
+        <div class="vs-copy">
+          <div class="eyebrow">CONHECIMENTO QUE PODE SER REUTILIZADO</div>
+          <h2>Torne o trabalho concluído útil para a próxima equipe.</h2>
+          <p>O trabalho concluído pode produzir fatos, observações, recomendações e contexto reutilizável. A Nieme preserva esse material com suas evidências, enquanto as pessoas decidem o que deve orientar os próximos trabalhos. O aprendizado se torna um ativo da organização, não uma memória privada.</p>
+        </div>
+        <div class="vs-art">
         <div class="vs-comparison">
           <div class="vs-col vs-col--them">
             <div class="vs-col-label">Resultado pontual</div>
@@ -160,7 +187,7 @@
             </div>
           </div>
         </div>
-        <p>O trabalho concluído pode produzir fatos, observações, recomendações e contexto reutilizável. A Nieme preserva esse material com suas evidências, enquanto as pessoas decidem o que deve orientar os próximos trabalhos. O aprendizado se torna um ativo da organização, não uma memória privada.</p>
+        </div>
       </div>
     </section>
 
@@ -178,15 +205,15 @@
       <div class="triad-grid">
         <div class="triad-col card-surface">
           <h3>Mais produção, menos coordenação</h3>
-          <p>Gerencie o trabalho de IA em torno do resultado, em vez de orientar, acompanhar e reunir um prompt de cada vez.</p>
+          <p>Gerencie o trabalho em torno do resultado, em vez de orientar, acompanhar e reunir um prompt de cada vez — nos sistemas onde o trabalho já vive.</p>
         </div>
         <div class="triad-col card-surface">
           <h3>Controle nos pontos de decisão</h3>
-          <p>Mantenha objetivos, autoridade e revisão humana explícitos à medida que o trabalho avança da intenção ao resultado.</p>
+          <p>A autoridade é declarada antes de o trabalho rodar. Decisões consequentes podem exigir uma pessoa; o trabalho rotineiro pode ser pré-autorizado por política.</p>
         </div>
         <div class="triad-col card-surface">
           <h3>Uma próxima operação mais sólida</h3>
-          <p>Preserve evidências e conhecimento aprovado para que o contexto útil siga adiante.</p>
+          <p>Resultados aceitos e suas Evidências podem fortalecer o contexto de onde o próximo trabalho parte.</p>
         </div>
       </div>
     </section>
@@ -199,7 +226,7 @@
     <!-- CTA -->
     <section class="final statement-block">
       <h2>Os modelos mudam.<br><em class="glow">O contexto permanece.</em></h2>
-      <p>A Nieme oferece às equipes uma forma governada e rastreável de transformar o trabalho de IA em conhecimento organizacional reutilizável. Estamos abrindo o acesso para um pequeno grupo de operadores.</p>
+      <p>A Nieme oferece às equipes uma forma governada e rastreável de dirigir o trabalho com IA nos sistemas que já usam e de levar adiante os resultados aceitos. Estamos abrindo para um grupo pequeno de operadores.</p>
       <form class="invite-form" id="invite-form" novalidate>
         <label class="sr-only" for="invite-email">Endereço de e-mail</label>
         <input id="invite-email" name="email" type="email" autocomplete="email" placeholder="Endereço de e-mail" required />
@@ -209,7 +236,7 @@
     </section>
 
   </main>
-  <footer>Nieme. O sistema operacional para o trabalho de IA.</footer>
+  <footer>Nieme. O runtime para o trabalho com IA.</footer>
   <script src="/script.js" defer></script>
 </body>
 </html>

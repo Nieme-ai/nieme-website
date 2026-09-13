@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Why Nieme</title>
-  <meta name="description" content="Nieme helps organizations direct AI work, preserve human authority, trace results, and reuse what they learn." />
-  <meta property="og:title" content="Why Nieme" />
-  <meta property="og:description" content="The control plane that turns AI requests into governed, traceable work your organization can learn from." />
+  <title>Why Nieme | The Runtime for AI Work</title>
+  <meta name="description" content="Nieme is the runtime for AI work. Keep the work in the systems it already lives in, while context, authority, Evidence and outcomes stay continuous across them." />
+  <meta property="og:title" content="Why Nieme | The Runtime for AI Work" />
+  <meta property="og:description" content="One continuity layer across the work — governed, traceable, and not dependent on moving everything into one more tool." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nieme.ai/why-nieme" />
   <meta property="og:site_name" content="Nieme" />
@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body class="page-inner">
+  <canvas class="pulse" data-pulse aria-hidden="true"></canvas>
   <div class="grain"></div>
   <header class="nav">
     <a class="brand" href="/">
@@ -49,21 +50,26 @@
       </div>
       <div class="kicker">WHY NIEME</div>
       <h1>AI can produce more work. Your organization still has to direct it.</h1>
-      <p class="lede">Nieme is the control plane for AI work. It turns requests into governed operations, keeps people in charge of consequential decisions, connects results to evidence, and makes approved knowledge reusable.</p>
+      <p class="lede">Nieme is the runtime for AI work. It observes the systems you already use, turns requests and meaningful changes into governed work, keeps people in charge of consequential decisions, and carries Evidence, decisions and accepted outcomes forward.</p>
     </section>
 
     <!-- VS. RENTED AI -->
     <section class="vs-section flow">
-      <div class="section-copy section-title">
-        <div class="eyebrow">ONE PLACE FOR THE WORK</div>
-        <h2>Stop rebuilding context for every AI request.</h2>
+      <div class="vs-grid">
+        <div class="vs-copy">
+          <div class="eyebrow">ONE CONTINUITY LAYER ACROSS THE WORK</div>
+          <h2>Keep the work where it works.</h2>
+          <p class="vs-lede">Nieme does not ask your company to move its work into Nieme in order for Nieme to govern it. Developers stay in GitHub. Documents stay in Drive or OneDrive. Teams stay in Slack. Agents stay in their own runtimes. What Nieme maintains is the continuity across them — the context, the authority, the Evidence and the outcomes.</p>
+          <p>AI output is easy to generate and hard to manage across a team. Nieme organizes consequential work around an operation with an objective, context, status, and result. Your team can spend less time reconstructing briefs and more time evaluating outcomes.</p>
+        </div>
+        <div class="vs-art">
         <div class="vs-comparison">
           <div class="vs-col vs-col--them">
             <div class="vs-col-label">Scattered AI work</div>
             <div class="vs-col-items">
-              <span>Context spread across chats</span>
-              <span>Results separated from decisions</span>
-              <span>Each handoff needs another explanation</span>
+              <span>Context spread across chats and tools</span>
+              <span>Results separated from the decisions about them</span>
+              <span>Every system a separate island of history</span>
             </div>
           </div>
           <div class="vs-divider" aria-hidden="true">→</div>
@@ -76,15 +82,19 @@
             </div>
           </div>
         </div>
-        <p>AI output is easy to generate and hard to manage across a team. Nieme organizes consequential work around an operation with an objective, context, status, and result. Your team can spend less time reconstructing briefs and more time evaluating outcomes.</p>
+        </div>
       </div>
     </section>
 
     <!-- VS. AGENTS -->
-    <section class="vs-section flow">
-      <div class="section-copy section-title">
-        <div class="eyebrow">HUMAN AUTHORITY WHERE IT MATTERS</div>
-        <h2>Delegate the work without delegating the decision.</h2>
+    <section class="vs-section flow vs-section--flip">
+      <div class="vs-grid">
+        <div class="vs-copy">
+          <div class="eyebrow">HUMAN AUTHORITY WHERE IT MATTERS</div>
+          <h2>Delegate the work without delegating the decision.</h2>
+          <p>Nieme separates proposing work, authorizing it, executing it, and accepting the result. That gives AI room to do useful work while preserving human judgment over objectives, approval boundaries, and what becomes part of the organization.</p>
+        </div>
+        <div class="vs-art">
         <div class="vs-comparison">
           <div class="vs-col vs-col--them">
             <div class="vs-col-label">Unclear authority</div>
@@ -104,43 +114,59 @@
             </div>
           </div>
         </div>
-        <p>Nieme separates proposing work, authorizing it, executing it, and accepting the result. That gives AI room to do useful work while preserving human judgment over objectives, approval boundaries, and what becomes part of the organization.</p>
+        </div>
       </div>
     </section>
 
     <!-- VS. BUILD IT YOURSELF -->
     <section class="vs-section flow">
-      <div class="section-copy section-title">
-        <div class="eyebrow">EVIDENCE THAT TRAVELS WITH THE RESULT</div>
-        <h2>Understand what happened without reconstructing it later.</h2>
-        <div class="vs-comparison">
-          <div class="vs-col vs-col--them">
-            <div class="vs-col-label">Disconnected records</div>
-            <div class="vs-col-items">
-              <span>Sources live in one place</span>
-              <span>The output lives in another</span>
-              <span>Approval is hard to trace</span>
-            </div>
-          </div>
-          <div class="vs-divider" aria-hidden="true">→</div>
-          <div class="vs-col vs-col--us">
-            <div class="vs-col-label">With Nieme</div>
-            <div class="vs-col-items">
-              <span>Intent and context stay linked</span>
-              <span>Execution attempts remain preserved</span>
-              <span>Evidence supports review</span>
-            </div>
-          </div>
+      <div class="vs-grid">
+        <div class="vs-copy">
+          <div class="eyebrow">EVIDENCE THAT TRAVELS WITH THE RESULT</div>
+          <h2>Understand what happened without reconstructing it later.</h2>
+          <p>Nieme keeps approved intent, source context, execution attempts, artifacts, evidence, and decisions connected to the operation they belong to. Leaders can review the outcome with its supporting record instead of relying on a summary detached from how the work was done.</p>
         </div>
-        <p>Nieme keeps approved intent, source context, execution attempts, artifacts, evidence, and decisions connected to the operation they belong to. Leaders can review the outcome with its supporting record instead of relying on a summary detached from how the work was done.</p>
+        <div class="vs-art">
+            <div class="uiw ui-receipt">
+              <div class="rc-head">
+                <span class="ar-icon" aria-hidden="true"></span>
+                <div class="rc-id">
+                  <div class="ar-name">Northstar Revenue Q3 Forecast</div>
+                  <div class="ar-file"><span class="ar-kind">XLSX</span>Northstar Revenue Q3 Forecast.xlsx<span class="ar-size">6 KB</span></div>
+                </div>
+                <span class="rc-state">Shipped</span>
+              </div>
+              <div class="rc-peek">
+                <div class="rc-peek-name">FORECAST</div>
+                <div class="rc-peek-row"><span>Q3</span><span>1,310,000.00</span><span>18%</span><span>1,545,800.00</span></div>
+                <div class="rc-peek-fade" aria-hidden="true"></div>
+              </div>
+              <div class="rc-tear" aria-hidden="true"></div>
+              <div class="rc-receipt">
+                <div class="rc-title">DELIVERY RECEIPT</div>
+                <dl class="rc-rows">
+                  <div class="rc-row"><dt>Review decision</dt><dd>Accepted by Finance<em>decision 7c4a91e2</em></dd></div>
+                  <div class="rc-row"><dt>Artifact</dt><dd class="rc-mono">a4e91c08-2f7b-4d16-9c53-18be6f0a72d1</dd></div>
+                  <div class="rc-row"><dt>Execution evidence</dt><dd class="rc-mono">3b6f2d95-81ac-4e70-b2f4-5d9c17ae8830</dd></div>
+                  <div class="rc-row"><dt>Delivery evidence</dt><dd class="rc-mono">e07d41ba-6c29-49f5-8a11-c3fd25b904e6</dd></div>
+                  <div class="rc-row"><dt>Delivered at</dt><dd>2026-09-12 14:22:07 UTC</dd></div>
+                </dl>
+                <p class="rc-note">The result and the record of how it got there are one object. Nothing here was reconstructed afterwards.</p>
+              </div>
+            </div>
+        </div>
       </div>
     </section>
 
     <!-- VS. AUTOMATION -->
-    <section class="vs-section flow">
-      <div class="section-copy section-title">
-        <div class="eyebrow">KNOWLEDGE THAT CAN BE REUSED</div>
-        <h2>Make completed work useful to the next team.</h2>
+    <section class="vs-section flow vs-section--flip">
+      <div class="vs-grid">
+        <div class="vs-copy">
+          <div class="eyebrow">KNOWLEDGE THAT CAN BE REUSED</div>
+          <h2>Make completed work useful to the next team.</h2>
+          <p>Accepted outcomes, supporting Evidence, Decisions and durable observations can strengthen the institutional state used for future work. People decide what carries forward — learning becomes an organizational asset instead of a private memory.</p>
+        </div>
+        <div class="vs-art">
         <div class="vs-comparison">
           <div class="vs-col vs-col--them">
             <div class="vs-col-label">One-off output</div>
@@ -154,13 +180,14 @@
           <div class="vs-col vs-col--us">
             <div class="vs-col-label">With Nieme</div>
             <div class="vs-col-items">
-              <span>Evidence survives completion</span>
-              <span>People approve what becomes knowledge</span>
-              <span>Future work gets stronger context</span>
+              <span>Context survives the model</span>
+              <span>Authority stays explicit</span>
+              <span>Evidence travels with the outcome</span>
+              <span>Accepted learning strengthens future work</span>
             </div>
           </div>
         </div>
-        <p>Completed work can produce facts, observations, recommendations, and reusable context. Nieme preserves that material with its evidence, while people decide what should guide future work. Learning becomes an organizational asset instead of a private memory.</p>
+        </div>
       </div>
     </section>
 
@@ -178,15 +205,15 @@
       <div class="triad-grid">
         <div class="triad-col card-surface">
           <h3>More output, less coordination</h3>
-          <p>Manage AI work around the outcome instead of briefing, chasing, and collecting one prompt at a time.</p>
+          <p>Manage work around the outcome instead of briefing, chasing and collecting one prompt at a time — in the systems the work already lives in.</p>
         </div>
         <div class="triad-col card-surface">
           <h3>Control at decision points</h3>
-          <p>Keep objectives, authority, and human review explicit as work moves from intent to result.</p>
+          <p>Authority is stated before work runs. Consequential decisions can require a person; routine work can be pre-authorized by policy.</p>
         </div>
         <div class="triad-col card-surface">
           <h3>A stronger next operation</h3>
-          <p>Preserve evidence and approved knowledge so useful context can carry forward.</p>
+          <p>Accepted outcomes and their Evidence can strengthen the context the next piece of work starts from.</p>
         </div>
       </div>
     </section>
@@ -209,7 +236,7 @@
     </section>
 
   </main>
-  <footer>Nieme. The operating system for AI labor.</footer>
+  <footer>Nieme. The runtime for AI work.</footer>
   <script src="./script.js" defer></script>
 </body>
 </html>

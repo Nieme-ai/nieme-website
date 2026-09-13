@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>How It Works | Nieme</title>
-  <meta name="description" content="Follow one operation through Nieme, from delegation to ledger. The operating system for AI labor." />
+  <meta name="description" content="How the Nieme runtime works: work starts when someone asks or when a connected system changes, then runs one governed loop — observe, understand, govern, execute, judge, learn." />
   <meta property="og:title" content="How It Works | Nieme" />
-  <meta property="og:description" content="Every operation follows the same lifecycle. Learn how Nieme works." />
+  <meta property="og:description" content="One runtime loop: observe, understand, govern, execute, judge, learn. See how Nieme works." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nieme.ai/how-it-works" />
   <meta property="og:site_name" content="Nieme" />
@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body class="page-inner">
+  <canvas class="pulse" data-pulse aria-hidden="true"></canvas>
   <div class="grain"></div>
   <header class="nav">
     <a class="brand" href="/">
@@ -47,75 +48,80 @@
         <div class="arch arch-one"></div>
         <div class="arch arch-two"></div>
       </div>
-      <div class="kicker">CONTINUOUS, GOVERNED EXECUTION</div>
-      <h1>Every operation follows the same lifecycle.</h1>
+      <div class="kicker">THE RUNTIME FOR AI WORK</div>
+      <h1>Work can start with a person,<br>or with a change.</h1>
     </section>
 
     <!-- SECTION 1: OPERATION LIFECYCLE -->
     <section class="lifecycle">
       <div class="section-title lifecycle-header">
-        <div class="eyebrow">ONE OPERATION, START TO FINISH</div>
+        <div class="eyebrow">TWO ENTRY PATHS, ONE LOOP</div>
       </div>
-      <div class="composer-wrap">
-        <div class="composer-label">Your request</div>
-        <div class="composer-field">
-          <span class="composer-text">Prepare the quarterly board report.<span class="composer-cursor" aria-hidden="true"></span></span>
-          <div class="composer-send" aria-hidden="true">↑</div>
+      <div class="hiw-entries">
+        <div class="hiw-entry">
+            <div class="composer-label">Someone asks</div>
+            <div class="composer-field">
+              <span class="composer-text">Prepare the quarterly board report.<span class="composer-cursor" aria-hidden="true"></span></span>
+              <div class="composer-send" aria-hidden="true">↑</div>
+            </div>
+        </div>
+        <div class="hiw-or" aria-hidden="true">or</div>
+        <div class="hiw-entry">
+            <div class="composer-label">Something changes</div>
+            <div class="composer-field composer-field--observed">
+              <span class="composer-text">A document changed in a connected Drive folder.</span>
+              <div class="composer-observed" aria-hidden="true">observed</div>
+            </div>
         </div>
       </div>
       <div class="composer-down"></div>
       <div class="lifecycle-flow card-surface">
         <div class="lifecycle-node">
           <span class="lifecycle-node-label">START</span>
-          A person delegates the operation
+          A person delegates an outcome — or a connected system is observed to change
         </div>
-        <div class="lifecycle-connector"></div>
         <div class="lifecycle-node">
           <span class="lifecycle-node-label">RUNTIME</span>
           Runtime assembles the right context
         </div>
-        <div class="lifecycle-connector"></div>
         <div class="lifecycle-node">
           <span class="lifecycle-node-label">VAULT</span>
-          Vault supplies your knowledge, standards, history
+          Vault supplies governed sources, with provenance intact
         </div>
-        <div class="lifecycle-connector"></div>
         <div class="lifecycle-node">
-          <span class="lifecycle-node-label">MODELS</span>
-          Models reason and draft
+          <span class="lifecycle-node-label">EXECUTOR</span>
+          A model, an agent, an external system or a person does the work
         </div>
-        <div class="lifecycle-connector"></div>
         <div class="lifecycle-node">
-          <span class="lifecycle-node-label">ARTIFACT</span>
-          Artifact produced: the board report
+          <span class="lifecycle-node-label">RESULT</span>
+          A result is produced, with the Evidence supporting it
         </div>
-        <div class="lifecycle-connector"></div>
         <div class="lifecycle-node lifecycle-node--review">
           <span class="lifecycle-node-label">REVIEW</span>
-          A person approves
+          A person accepts, requests changes, or rejects
         </div>
-        <div class="lifecycle-connector"></div>
         <div class="lifecycle-node">
-          <span class="lifecycle-node-label">LEDGER</span>
-          Ledger records what happened
+          <span class="lifecycle-node-label">RECORD</span>
+          The decision is preserved with the work it judged
         </div>
-        <div class="lifecycle-connector"></div>
         <div class="lifecycle-node lifecycle-node--bright">
-          <span class="lifecycle-node-label">MEMORY</span>
-          Institutional memory grows
+          <span class="lifecycle-node-label">STATE</span>
+          Accepted outcomes can strengthen future context
         </div>
+        <div class="lifecycle-return" aria-hidden="true"><span>Accepted outcomes feed the next run</span></div>
       </div>
-      <p class="lifecycle-caption">A person decides. AI prepares and executes. The organization learns. Every operation in Nieme follows this lifecycle, which is what makes Nieme the control plane for AI work.</p>
+      <p class="lifecycle-caption">Observe → Understand → Govern → Execute → Judge → Learn. Whether the work began with a request or an observation, it runs the same loop — which is what makes Nieme the runtime for AI work.</p>
     </section>
 
     <!-- SECTION 2: GOVERNANCE -->
     <section class="flow">
       <div class="section-copy section-title">
         <div class="eyebrow">DELEGATE WITHOUT LOSING CONTROL</div>
-        <h2>Nothing meaningful ships without a person.</h2>
-        <p>You decide what Nieme can do on its own and what needs your sign-off. Reversible, internal work can run freely. Anything that leaves the building, sent, published, paid or deleted, waits for a human. Every action is scoped, recorded, and reversible-by-design where it can be.</p>
+        <h2>Human authority where it matters.</h2>
+        <p>You decide in advance what Nieme may do on its own. Work can be explicitly pre-authorized by policy — or by continuous consent — where that is appropriate, so routine and reversible work is not gated on a person being awake. Consequential decisions can require human approval, and the approval is recorded against the exact work it authorized.</p>
+        <p>Authority is stated before the work runs, not reconstructed afterwards.</p>
         <div class="chip-row" style="margin-top:28px">
-          <div class="chip">Policies you set.</div>
+          <div class="chip">Policies you set in advance.</div>
           <div class="chip">Approvals where they matter.</div>
           <div class="chip">Delegation you control.</div>
           <div class="chip">A record you own.</div>
@@ -127,11 +133,11 @@
     <section class="ledger">
       <div class="ledger-content">
         <div class="ledger-text">
-          <div class="ledger-invention-tag">The novel core</div>
+          <div class="ledger-invention-tag">The durable core</div>
           <div class="eyebrow">EVERY OPERATION, ON THE RECORD</div>
-          <h2>Anyone can claim their AI remembers.<br><em class="glow">Nieme proves what happened.</em></h2>
-          <p>Every operation is recorded: the evidence it used, the work it produced, who approved it, when. The record is permanent, it can't be quietly rewritten, and it belongs to you. It isn't an audit feature bolted on afterward. It's the spine of the system.</p>
-          <p class="ledger-invention-note">No other AI system gives your organization a permanent, owned record of every operation. This is what makes intelligence compound, not just execute.</p>
+          <h2>Anyone can claim their AI remembers.<br><em class="glow">Nieme keeps the record.</em></h2>
+          <p>Governed work is recorded: the context it drew on, what it produced, the Evidence supporting it, who decided, and when. The record is durable, it belongs to you, and it is not an audit feature bolted on afterward. It is how a decision can still be explained months later.</p>
+          <p class="ledger-invention-note">A result is what execution produced. Evidence is the record used to evaluate it. A Decision is what a person accepted. Keeping the three distinct is what makes the history worth having.</p>
         </div>
         <div class="ledger-right">
           <div class="ledger-visual card-surface">
@@ -171,9 +177,9 @@
             </div>
           </div>
           <div class="chip-row">
-            <div class="chip">Every operation has a permanent track record.</div>
-            <div class="chip">Every output traceable to its evidence.</div>
-            <div class="chip">Every decision auditable.</div>
+            <div class="chip">Governed work keeps its record.</div>
+            <div class="chip">Results traceable to their Evidence.</div>
+            <div class="chip">Decisions preserved with what they judged.</div>
           </div>
         </div>
       </div>
@@ -182,9 +188,10 @@
     <!-- SECTION 4: THE VAULT -->
     <section class="flow">
       <div class="section-copy section-title">
-        <div class="eyebrow">YOUR ORGANIZATION'S KNOWLEDGE, KEPT</div>
-        <h2>Your organization should never lose what it learns.</h2>
-        <p>The Vault holds your organization's knowledge, context, standards, history, as a living body that grows with every operation. Rented AI starts from zero every morning. Nieme carries what you've learned forward. Good decisions become reusable. Hard lessons become future guidance. It compounds, and it stays yours.</p>
+        <div class="eyebrow">GOVERNED SOURCES, WITH PROVENANCE</div>
+        <h2>Vault preserves what the work is allowed to draw on.</h2>
+        <p>Vault preserves the governed sources and material your Runtime can draw from, with provenance intact — so what informed a piece of work can be named, not guessed at.</p>
+        <p>Vault is not the whole of what your organization knows. Durable institutional state also exists through Nieme's canonical records and relationships: Signals, Operations, Evidence, Decisions and Policies each persist in their own right.</p>
       </div>
     </section>
 
@@ -206,20 +213,20 @@
       </div>
       <div class="chip-row" style="max-width:1440px;margin:0 auto 36px">
         <div class="chip">Operations do the work.</div>
-        <div class="chip">The Ledger records them.</div>
-        <div class="chip">The Vault preserves what was learned.</div>
+        <div class="chip">Evidence supports how they are judged.</div>
+        <div class="chip">Vault preserves the governed sources.</div>
         <div class="chip">The Runtime applies that learning to the next operation.</div>
       </div>
-      <p class="experiment-closing">Every operation leaves a result. Every result becomes evidence. Every piece of evidence strengthens institutional knowledge. Every future decision starts from a better foundation.</p>
-      <p class="experiment-pullquote">Decision quality emerges from evidence. Evidence emerges from operations. Nieme keeps every one.</p>
+      <p class="experiment-closing">Execution produces a result. Evidence is the record used to evaluate it. A person decides what is accepted — and an accepted outcome can strengthen the state the next operation starts from.</p>
+      <p class="experiment-pullquote">Decision quality emerges from evidence. Evidence emerges from work that was actually governed.</p>
     </section>
 
     <!-- SECTION 7: PLATFORM ARCHITECTURE (orbital diagram lives here) -->
     <section id="runtime-intelligence" class="runtime-intelligence reveal">
       <div class="section-copy section-title">
-        <div class="eyebrow">BUILT LIKE AN OPERATING SYSTEM</div>
+        <div class="eyebrow">HOW THE RUNTIME IS BUILT</div>
         <div class="platform-arch-body">
-          <p class="os-intro">Nieme separates the parts most AI products fuse together.</p>
+          <p class="os-intro">Nieme separates the parts most AI products fuse together. Internally this is an institutional runtime; what you work in is the Workspace, and what persists behind it is the Runtime.</p>
           <div class="os-grid">
 
             <div class="os-card card-surface">
@@ -256,9 +263,9 @@
                   <line x1="24" y1="20" x2="28" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
               </div>
-              <span class="os-card-system-label">The processor</span>
+              <span class="os-card-system-label">Reasoning</span>
               <h3 class="os-card-name">Models</h3>
-              <p class="os-card-desc">Interchangeable reasoning. Swap them without losing your context, your record, or anything that matters.</p>
+              <p class="os-card-desc">Interchangeable reasoning providers. Swap them without losing your context, your record, or anything that matters.</p>
             </div>
 
             <div class="os-card card-surface">
@@ -269,9 +276,9 @@
                   <path d="M6 16c0 2.21 4.48 4 10 4s10-1.79 10-4" stroke="currentColor" stroke-width="1.5"/>
                 </svg>
               </div>
-              <span class="os-card-system-label">The filesystem</span>
+              <span class="os-card-system-label">Governed sources</span>
               <h3 class="os-card-name">Vault</h3>
-              <p class="os-card-desc">Your institutional knowledge. Context, standards, and history that compound with every operation.</p>
+              <p class="os-card-desc">The governed sources and material the Runtime may draw from, with provenance intact. Not the whole of institutional state — one substrate within it.</p>
             </div>
 
             <div class="os-card os-card--featured card-surface">
@@ -284,9 +291,9 @@
                   <line x1="13" y1="20" x2="18" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
               </div>
-              <span class="os-card-system-label">The journal</span>
-              <h3 class="os-card-name">Ledger</h3>
-              <p class="os-card-desc">The permanent operational record. Every operation, who approved it, what it produced. Owned by you, tamper-evident by design.</p>
+              <span class="os-card-system-label">Observation</span>
+              <h3 class="os-card-name">Signals</h3>
+              <p class="os-card-desc">What a connected system was observed to do. A Signal is an observation, not an instruction — and observing something never authorizes acting on it.</p>
             </div>
 
             <div class="os-card card-surface">
@@ -300,9 +307,9 @@
                   <path d="M9 22h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
               </div>
-              <span class="os-card-system-label">The operator</span>
+              <span class="os-card-system-label">The interface</span>
               <h3 class="os-card-name">Theon</h3>
-              <p class="os-card-desc">The operating intelligence of Nieme. It helps people and agents delegate work, assemble context, review outcomes, and act through the Runtime.</p>
+              <p class="os-card-desc">Nieme's persistent generalist interface to the Runtime. It helps people delegate work, assemble context and review outcomes. Theon is how you reach the Runtime — not the Runtime itself, and not bound to any one model.</p>
             </div>
 
             <div class="os-card card-surface">
@@ -316,9 +323,9 @@
                   <line x1="22" y1="11" x2="18" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
               </div>
-              <span class="os-card-system-label">The processes</span>
+              <span class="os-card-system-label">Consequential work</span>
               <h3 class="os-card-name">Operations</h3>
-              <p class="os-card-desc">The durable unit of delegated work. Each Operation keeps its objective, authority, execution, evidence, and outcome connected wherever the work happens.</p>
+              <p class="os-card-desc">The durable identity of consequential work, keeping objective, authority, execution, Evidence and outcome connected wherever the work happens. Evidence, Review and Decision travel with it.</p>
             </div>
 
           </div>
@@ -326,10 +333,10 @@
             <div class="os-substrate-label">NATIVE SYSTEM OBJECTS</div>
             <div class="os-substrate-copy">
               <h3>Built on <code>.on</code>.</h3>
-              <p>Work, evidence, decisions, policies, roles, and knowledge become durable <code>.on</code> state — keeping identity, provenance, and relationships intact beyond any one model or application.</p>
+              <p>Nieme's durable institutional representation. Signals, Operations, Executions, Artifacts, Evidence, Decisions, Policies, Roles and the relationships between them become <code>.on</code> state with stable identity and provenance. External APIs and agent payloads are translated into Nieme-owned state rather than stored as someone else's payload.</p>
             </div>
           </div>
-          <p class="os-swap">Swap the model; keep everything that makes it yours.</p>
+          <p class="os-swap">Swap the model, the agent or the executor; keep everything that makes the work yours.</p>
         </div>
       </div>
     </section>
@@ -342,7 +349,7 @@
         <p>Most tools file work into folders. An artifact lives in one project and dies there. Nieme keeps a living record instead: one artifact, used by ten operations, carrying the proof of every one of them.</p>
         <p>A lead magnet that worked in ten campaigns is known to work. A decision that failed is remembered as guidance. Nothing is copied, so nothing loses its history.</p>
       </div>
-      <p class="hierarchy-caption">This is what makes Nieme a platform, not a wrapper.</p>
+      <p class="hierarchy-caption">This is what makes Nieme a runtime, not a wrapper.</p>
     </section>
 
     <!-- CTA -->
@@ -358,7 +365,7 @@
     </section>
 
   </main>
-  <footer>Nieme. The control plane for AI work.</footer>
+  <footer>Nieme. The runtime for AI work.</footer>
   <script src="./script.js" defer></script>
 </body>
 </html>
