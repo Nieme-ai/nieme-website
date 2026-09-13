@@ -1820,30 +1820,72 @@ h1,h2,h3{text-wrap:balance}
    It is now one argument in three moves, and each move gets a form of its
    own: systems that stay put, a record that travels, and a seam that a model
    change cannot cross. */
-/* The three theses all end the same way, and that repetition IS the argument:
-   every one of them is something Nieme does not take from you. So the shared
-   verb is set once per row in the same column, the variable halves carry the
-   weight, and each line states the default it is refusing. */
-.theses{padding:0 var(--section-inline) clamp(48px,7vw,96px)}
-.th-lead{max-width:1440px;margin:0 auto clamp(28px,3.4vw,46px);
-  font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#a9a3ff}
-.th-list{list-style:none;max-width:1440px;margin:0 auto;padding:0;
-  border-top:1px solid var(--line)}
-.th-list li{display:grid;grid-template-columns:auto minmax(0,1fr);
-  column-gap:clamp(16px,2.2vw,34px);row-gap:8px;align-items:baseline;
-  padding:clamp(22px,2.6vw,34px) 0;border-bottom:1px solid var(--line)}
-.th-n{grid-row:1;font-size:11px;letter-spacing:.16em;color:#fff;padding:5px 9px;border-radius:6px;
-  background:linear-gradient(120deg,#7b4dff,#2fd4b8);align-self:center}
-.th-say{grid-column:2;font-size:clamp(26px,4vw,54px);line-height:1.08;letter-spacing:-.045em;
-  color:#8b90a6;font-weight:420}
-.th-say b{font-weight:420;color:#fff}
-.th-say em{font-style:normal;color:#8b90a6}
-.th-not{grid-column:2;font-size:clamp(13px,1.25vw,16px);line-height:1.5;color:#6d7186;
-  text-decoration:line-through;text-decoration-color:#6d718659}
-@media (max-width:700px){
-  .th-list li{grid-template-columns:minmax(0,1fr);row-gap:10px}
-  .th-n{grid-column:1;justify-self:start}
-  .th-say,.th-not{grid-column:1}
+/* ---- the line Nieme does not cross ------------------------------------
+   Three numbered sentences is a table of contents, not a design. The argument
+   here is spatial: three things sit INSIDE your company, three exits reach a
+   boundary and are stopped there. The gradient is deliberately absent — on this
+   site purple->teal means crossing, and the whole point is that nothing does. */
+.theses{padding:var(--section-padding) var(--section-inline)}
+.theses .section-title{max-width:1440px;margin:0 auto clamp(34px,4vw,56px)}
+.theses h2{font-size:clamp(32px,3.6vw,56px);line-height:1.05;letter-spacing:-.05em;
+  font-weight:420;margin:0;max-width:18ch}
+
+.kp{--kpw:clamp(56px,6vw,98px);
+  max-width:1440px;margin:0 auto;position:relative;
+  display:grid;grid-template-columns:minmax(0,1.15fr) var(--kpw) minmax(0,1fr);
+  row-gap:14px;align-items:stretch}
+.kp-head{font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding-bottom:6px}
+.kp-head--in{color:#c4b5fd}
+.kp-head--out{color:#6d7186;padding-left:calc(var(--kpw) / 2)}
+
+/* what stays: solid, lit, present */
+.kp-in{min-width:0;display:grid;grid-template-columns:auto minmax(0,1fr);
+  column-gap:16px;row-gap:6px;align-content:center;
+  padding:22px 26px;border-radius:16px;border:1px solid #7b4dff59;
+  background:
+    radial-gradient(120% 150% at 0% 0%,#7b4dff26 0%,#7b4dff00 58%),
+    linear-gradient(180deg,#171a2b,#0f1119);
+  box-shadow:0 22px 60px #00000066, inset 0 1px 0 #ffffff14}
+.kp-n{grid-row:1 / span 2;align-self:center;font-size:11px;letter-spacing:.14em;color:#c4b5fd;
+  padding:6px 9px;border-radius:7px;border:1px solid #7b4dff4d;background:#7b4dff14}
+.kp-thing{font-size:clamp(20px,2.1vw,28px);line-height:1.1;letter-spacing:-.035em;color:#fff}
+.kp-state{font-size:14.5px;line-height:1.45;color:#a9aec2}
+
+/* the exit: it starts at the card, reaches the line, and is stopped ON it */
+.kp-arrow{position:relative}
+.kp-arrow i{position:absolute;left:8px;right:50%;top:50%;height:1px;
+  background:repeating-linear-gradient(90deg,#8f93a866 0 5px,transparent 5px 10px)}
+.kp-arrow b{position:absolute;left:50%;top:50%;width:22px;height:22px;margin:-11px 0 0 -11px;
+  border-radius:50%;border:1px solid #ffffff33;background:#0c1018;
+  box-shadow:0 0 0 5px #0c1018}
+.kp-arrow b::before,.kp-arrow b::after{content:"";position:absolute;left:50%;top:50%;
+  width:9px;height:1px;margin:-.5px 0 0 -4.5px;background:#9ba0b4}
+.kp-arrow b::before{transform:rotate(45deg)}
+.kp-arrow b::after{transform:rotate(-45deg)}
+
+/* what you would otherwise give up: struck, unlit, on the far side */
+.kp-out{min-width:0;display:flex;align-items:center;padding:18px 4px 18px 6px}
+.kp-out s{font-size:clamp(15px,1.5vw,18px);line-height:1.45;color:#6d7186;
+  text-decoration-color:#6d718666;letter-spacing:-.01em}
+
+/* the boundary itself, drawn through the centre of the arrow column */
+.kp-edge{position:absolute;top:26px;bottom:0;pointer-events:none;width:0;
+  left:calc(1.15 / 2.15 * (100% - var(--kpw)) + var(--kpw) / 2);
+  border-left:1px dashed #ffffff2b}
+.kp-edge span{position:absolute;left:50%;bottom:-6px;transform:translate(-50%,100%);
+  white-space:nowrap;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#787c92}
+
+@media (max-width:900px){
+  /* one column: the card, the exit stopped beneath it, then the struck path.
+     The two column captions only mean something side by side, so they go. */
+  .kp{grid-template-columns:minmax(0,1fr);row-gap:0;--kpw:0px}
+  .kp-head,.kp-edge{display:none}
+  .kp-arrow{height:46px}
+  .kp-arrow i{left:50%;right:auto;top:0;bottom:0;width:1px;height:auto;
+    background:repeating-linear-gradient(180deg,#8f93a866 0 5px,transparent 5px 10px)}
+  .kp-out{justify-content:center;text-align:center;padding:0 0 28px;
+    border-bottom:1px solid var(--line);margin-bottom:28px}
+  .kp > .kp-out:last-of-type{border-bottom:0;margin-bottom:0;padding-bottom:0}
 }
 
 .wn{padding:var(--section-padding) var(--section-inline);border-top:1px solid var(--line)}
