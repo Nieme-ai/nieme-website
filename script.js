@@ -125,14 +125,18 @@
     if (!ctx) return;
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    let W = 0, H = 0, DPR = 1, docH = 1, sy = 0, lastSy = 0, raf = 0;
+    let W = 0, H = 0, DPR = 1, docH = 1, sy = 0, raf = 0;
 
-    // The field is nothing but soft light, so it is drawn tiny and scaled up.
-    // Two full-viewport gradient fills a frame is millions of pixels for no
-    // visible gain; at this size it is a few thousand.
+    // The light is drawn tiny and scaled up — it is nothing but soft gradient,
+    // and two full-viewport fills a frame is millions of pixels for no gain.
     const field = document.createElement('canvas');
     const fctx = field.getContext('2d');
     let FW = 0, FH = 0;
+
+    // Where the breath is centred. When the Runtime sphere is on screen the
+    // focus IS the sphere, so motes visibly run into it and out of it.
+    const orbEl = document.querySelector('[data-orb]');
+    let orbMidDoc = -1, orbH = 0;
 
     const fit = () => {
       DPR = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -148,83 +152,128 @@
       FH = Math.max(1, Math.round(180 * (H / Math.max(1, W))));
       field.width = FW; field.height = FH;
       docH = Math.max(1, document.documentElement.scrollHeight - H);
+      if (orbEl) {
+        const r = orbEl.getBoundingClientRect();
+        orbH = r.height;
+        orbMidDoc = r.top + window.scrollY + r.height / 2;
+      }
     };
 
-    // Signals in the air. They drift, they occasionally flare, they never stop.
-    const MOTES = 38;
+    // Signals in the air: cyan ones run into the focus, purple ones leave it.
+    const MOTES = 44;
     const motes = [];
-    const seed = (m, first) => {
-      m.x = Math.random();
-      m.y = first ? Math.random() : 1.06 + Math.random() * 0.1;
+    const seed = (m, first, fx, fy) => {
+      m.inbound = Math.random() < 0.56;
       m.r = 0.5 + Math.random() * 1.5;
-      m.v = 0.000016 + Math.random() * 0.000040;    // viewport fraction per ms
-      m.drift = (Math.random() - 0.5) * 0.000022;
-      m.depth = 0.3 + Math.random() * 0.9;          // parallax weight against scroll
-      m.cyan = Math.random() < 0.42;
+      m.speed = 0.010 + Math.random() * 0.026;      // viewport-diagonals per second
       m.phase = Math.random() * 6.283;
-      m.flareAt = 1400 + Math.random() * 11000;
-      m.age = first ? Math.random() * 11000 : 0;
+      m.life = 0;
+      m.span = 5200 + Math.random() * 7000;
+      if (m.inbound && !first) {
+        // enter from a random edge and head for the focus
+        const a = Math.random() * 6.283, rad = 0.62 + Math.random() * 0.30;
+        m.x = 0.5 + Math.cos(a) * rad;
+        m.y = 0.5 + Math.sin(a) * rad * 0.9;
+      } else if (!m.inbound && !first) {
+        // born at the focus and pushed outward
+        m.x = (fx / W) + (Math.random() - 0.5) * 0.05;
+        m.y = (fy / H) + (Math.random() - 0.5) * 0.05;
+      } else {
+        m.x = Math.random(); m.y = Math.random();
+        m.life = Math.random() * m.span;
+      }
       return m;
     };
-    for (let i = 0; i < MOTES; i++) motes.push(seed({}, true));
+    for (let i = 0; i < MOTES; i++) motes.push(seed({}, true, 0, 0));
 
     let t0 = 0;
 
     const draw = (ms) => {
       const dt = t0 ? Math.min(64, ms - t0) : 16;
       t0 = ms;
+      // one breath, shared with --breath in styles.css
       const beat = 0.5 + 0.5 * Math.sin((ms / BREATH) * 6.283);
-      const p = Math.min(1, Math.max(0, sy / docH));       // how far down the page
-      const dScroll = sy - lastSy;
-      lastSy = sy;
+      // a chest does not rise and fall symmetrically — the in-breath is quicker
+      const chest = Math.pow(beat, 0.78);
+      const p = Math.min(1, Math.max(0, sy / docH));
+
+      // the page ends in black: the field dies out over the last stretch
+      const tail = p < 0.88 ? 1 : Math.max(0, 1 - (p - 0.88) / 0.12);
+
+      // where everything converges
+      let fx = W * (0.24 + p * 0.5);
+      let fy = H * (0.9 - p * 0.6);
+      if (orbMidDoc >= 0) {
+        const orbY = orbMidDoc - sy;
+        if (orbY > -orbH && orbY < H + orbH) {
+          const pull = 1 - Math.min(1, Math.abs(orbY - H / 2) / (H * 0.9));
+          fx += (W / 2 - fx) * pull;
+          fy += (orbY - fy) * pull;
+        }
+      }
 
       ctx.clearRect(0, 0, W, H);
+      if (tail <= 0) { raf = requestAnimationFrame(draw); return; }
+      ctx.globalAlpha = tail;
 
       fctx.clearRect(0, 0, FW, FH);
-
-      // the purple field — the Runtime's own light, travelling with the reader
-      const fx = FW * (0.22 + p * 0.54);
-      const fy = FH * (0.94 - p * 0.66);
-      const fr = Math.max(FW, FH) * (0.66 + beat * 0.09);
-      const g = fctx.createRadialGradient(fx, fy, 0, fx, fy, fr);
-      g.addColorStop(0, 'rgba(123,77,255,' + (0.085 + beat * 0.038).toFixed(4) + ')');
-      g.addColorStop(0.42, 'rgba(98,80,224,' + (0.030 + beat * 0.015).toFixed(4) + ')');
+      const gx = (fx / W) * FW, gy = (fy / H) * FH;
+      const g = fctx.createRadialGradient(gx, gy, 0, gx, gy, Math.max(FW, FH) * 0.72);
+      g.addColorStop(0, 'rgba(123,77,255,' + (0.10 + chest * 0.085).toFixed(4) + ')');
+      g.addColorStop(0.4, 'rgba(98,80,224,' + (0.032 + chest * 0.028).toFixed(4) + ')');
       g.addColorStop(1, 'rgba(96,74,214,0)');
       fctx.fillStyle = g;
       fctx.fillRect(0, 0, FW, FH);
 
-      // and the teal counter-light, crossing it the other way
-      const tx = FW * (0.88 - p * 0.68);
-      const ty = FH * (0.06 + p * 0.78);
-      const tr = Math.max(FW, FH) * (0.48 + beat * 0.07);
-      const g2 = fctx.createRadialGradient(tx, ty, 0, tx, ty, tr);
-      g2.addColorStop(0, 'rgba(47,212,184,' + (0.052 + beat * 0.024).toFixed(4) + ')');
-      g2.addColorStop(0.5, 'rgba(47,180,200,0.018)');
+      const tx = FW * (0.88 - p * 0.68), ty = FH * (0.06 + p * 0.78);
+      const g2 = fctx.createRadialGradient(tx, ty, 0, tx, ty, Math.max(FW, FH) * 0.5);
+      g2.addColorStop(0, 'rgba(47,212,184,' + (0.055 + chest * 0.035).toFixed(4) + ')');
       g2.addColorStop(1, 'rgba(47,212,184,0)');
       fctx.fillStyle = g2;
       fctx.fillRect(0, 0, FW, FH);
 
-      ctx.drawImage(field, 0, 0, W, H);
+      // THE BREATH: the whole field swells and settles around the focus. This is
+      // the part you feel rather than see — the page inhaling, not a fade.
+      const s = 1 + chest * 0.085;
+      ctx.drawImage(field, fx - (fx) * s, fy - (fy) * s, W * s, H * s);
 
+      // and the edges close in and relax with it
+      const vin = Math.max(W, H) * (0.50 + chest * 0.10);
+      const vout = Math.max(W, H) * 0.92;
+      const v = ctx.createRadialGradient(W / 2, H / 2, vin, W / 2, H / 2, vout);
+      v.addColorStop(0, 'rgba(2,3,8,0)');
+      v.addColorStop(1, 'rgba(2,3,8,' + (0.30 + (1 - chest) * 0.16).toFixed(3) + ')');
+      ctx.fillStyle = v;
+      ctx.fillRect(0, 0, W, H);
+
+      const diag = Math.hypot(W, H);
       for (const m of motes) {
         if (!reduce) {
-          m.age += dt;
-          m.y -= m.v * dt;
-          m.x += m.drift * dt;
-          m.y -= (dScroll * m.depth * 0.16) / H;          // the field reacts to travel
-          if (m.y < -0.1 || m.y > 1.24) seed(m, false);
-          if (m.x < -0.04) m.x = 1.02; else if (m.x > 1.04) m.x = -0.02;
+          m.life += dt;
+          const mx = m.x * W, my = m.y * H;
+          let dx = fx - mx, dy = fy - my;
+          const d = Math.hypot(dx, dy) || 1;
+          // inbound accelerates as it closes; outbound eases as it leaves
+          const near = 1 - Math.min(1, d / (diag * 0.62));
+          const v2 = m.speed * (m.inbound ? 0.45 + near * 1.5 : 1.5 - near * 1.0);
+          const step = (v2 * diag * dt) / 1000;
+          const dir = m.inbound ? 1 : -1;
+          m.x += (dir * (dx / d) * step) / W;
+          m.y += (dir * (dy / d) * step) / H;
+          const done = m.inbound ? d < diag * 0.035 : (m.x < -0.06 || m.x > 1.06 || m.y < -0.06 || m.y > 1.06);
+          if (done || m.life > m.span) { seed(m, false, fx, fy); continue; }
         }
-        const flare = m.age > m.flareAt && m.age < m.flareAt + 950
-          ? Math.sin(((m.age - m.flareAt) / 950) * Math.PI)
-          : 0;
-        const sway = Math.sin(ms * 0.0004 + m.phase) * 0.4;
-        const a = 0.09 + beat * 0.06 + flare * 0.52;
-        ctx.globalAlpha = Math.min(0.8, a);
-        ctx.fillStyle = m.cyan ? '#7ee7ff' : '#b9a6ff';
-        if (flare > 0.06) { ctx.shadowBlur = 10 * flare; ctx.shadowColor = m.cyan ? '#7ee7ff' : '#b9a6ff'; }
+        const mx = m.x * W, my = m.y * H;
+        const d = Math.hypot(fx - mx, fy - my) || 1;
+        const near = 1 - Math.min(1, d / (diag * 0.62));
+        // arriving signals flare as they land; leaving ones fade as they go
+        const glow = m.inbound ? Math.pow(near, 2.2) : Math.pow(1 - near, 1.6);
+        const a = (0.10 + chest * 0.05 + glow * 0.55) * tail;
+        ctx.globalAlpha = Math.min(0.85, a);
+        ctx.fillStyle = m.inbound ? '#7ee7ff' : '#c4b5fd';
+        if (glow > 0.3) { ctx.shadowBlur = 9 * glow; ctx.shadowColor = m.inbound ? '#7ee7ff' : '#c4b5fd'; }
         ctx.beginPath();
-        ctx.arc(m.x * W + sway, m.y * H, m.r + flare * 0.9, 0, 6.283);
+        ctx.arc(mx + Math.sin(ms * 0.0004 + m.phase) * 0.5, my, m.r + glow * 1.1, 0, 6.283);
         ctx.fill();
         ctx.shadowBlur = 0;
       }
@@ -238,7 +287,6 @@
 
     const readScroll = () => { sy = window.scrollY || window.pageYOffset || 0; };
     readScroll();
-    lastSy = sy;
     fit();
 
     if (reduce || document.hidden) { draw(0); stop(); } else { start(); }
