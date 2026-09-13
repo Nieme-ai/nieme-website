@@ -1312,6 +1312,63 @@ h1,h2,h3{text-wrap:balance}
        things stop being re-litigated: which terms are authoritative, who may
        decide, what was agreed. The list of things a person must answer gets
        shorter — that is the compounding, and it is legible at a glance. ---- */
+/* ---- Delivered: one operation, four governed deliverables ---------------
+   Ending the proof on a single spreadsheet undersold the product. The shape
+   here follows the real Operation detail surface — outcome, governed role,
+   success criteria, the declared deliverables, the evidence and the one
+   human decision. Verified against a real multi-deliverable Operation in a
+   Runtime (one operation, one execution, three artifacts, status review);
+   the Project, the file names and the ids are synthetic, as in every other
+   native frame here. */
+.ui-delivered{display:flex;flex-direction:column}
+.dv-head{align-items:flex-start}
+.dv-flags{display:flex;align-items:center;gap:10px;flex-wrap:wrap;flex:none}
+.dv-state{font-size:10.5px;letter-spacing:.14em;line-height:1;padding:6px 11px;border-radius:999px;
+  border:1px solid #7ee7ff4d;color:#a9f0ff;background:#7ee7ff12;white-space:nowrap}
+.dv-imm{font-size:11px;color:var(--ui-muted);white-space:nowrap}
+.dv-meta{margin:0;padding:16px 22px 4px}
+.dv-row{display:grid;grid-template-columns:minmax(0,132px) minmax(0,1fr);gap:16px;
+  padding:10px 0;border-top:1px solid #ffffff0d}
+.dv-row:first-child{border-top:0}
+.dv-row dt{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ui-muted)}
+.dv-row dd{margin:0;min-width:0;font-size:13.5px;line-height:1.4;color:var(--ui-text)}
+.dv-row dd em{display:block;margin-top:3px;font-style:normal;font-size:12px;color:var(--ui-muted)}
+.dv-files{margin:12px 22px 0;border:1px solid var(--ui-line);border-radius:12px;overflow:hidden;
+  background:#ffffff05}
+.dv-files-head{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:11px 15px;border-bottom:1px solid var(--ui-line);
+  font-size:10px;letter-spacing:.2em;color:var(--ui-muted)}
+.dv-count{letter-spacing:.04em;font-size:11.5px;color:#7fe3cd}
+.dv-list{list-style:none;margin:0;padding:0}
+.dv-list li{display:flex;align-items:center;gap:12px;min-width:0;
+  padding:11px 15px;border-top:1px solid #ffffff08;font-size:13.5px}
+.dv-list li:first-child{border-top:0}
+.dv-kind{flex:none;width:46px;text-align:center;font-size:9.5px;letter-spacing:.08em;font-weight:700;
+  line-height:1;padding:5px 0;border-radius:5px;color:#0b0e15}
+.dv-kind--md{background:#9aa3b8}
+.dv-kind--xlsx{background:#4caf7d}
+.dv-kind--docx{background:#5b8def}
+.dv-kind--pdf{background:#e0685f}
+.dv-name{min-width:0;flex:1;color:var(--ui-text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dv-size{flex:none;font-size:12px;color:var(--ui-muted);font-variant-numeric:tabular-nums}
+.dv-ok{flex:none;font-size:11.5px;color:#7fe3cd;display:inline-flex;align-items:center;gap:6px}
+.dv-ok::before{content:"";width:5px;height:5px;border-radius:50%;background:#2fd4b8;
+  box-shadow:0 0 7px #2fd4b899}
+.dv-decide{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  margin-top:16px;padding:14px 22px 16px;border-top:1px solid var(--ui-line);background:#ffffff05}
+.dv-ev{font-size:12px;color:var(--ui-muted)}
+.dv-ev b{font-weight:500;color:var(--ui-soft);
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.dv-acts{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dv-btn{font-size:12.5px;line-height:1;padding:9px 13px;border-radius:8px;
+  border:1px solid var(--ui-line2);color:var(--ui-soft);background:#ffffff08;white-space:nowrap}
+.dv-btn--go{color:#0b0e15;border-color:transparent;background:#7ee7ff;font-weight:600}
+@media (max-width:620px){
+  .dv-row{grid-template-columns:minmax(0,1fr);gap:4px}
+  .dv-list li{flex-wrap:wrap;gap:8px}
+  .dv-name{flex:1 1 100%;order:3;white-space:normal}
+}
+
 /* ---- the Runtime, as a surface rather than a second diagram --------------
    The in/out diagram that used to sit here was the sphere's argument at a
    quarter of the size. This section claims the Runtime is a LAYER that keeps
@@ -1652,7 +1709,6 @@ h1,h2,h3{text-wrap:balance}
 
 /* ---- 03 the Artifact, with the rating a person actually left on it ---- */
 .ui-artifact{max-width:none}
-.ar-head{display:flex;align-items:center;gap:14px;padding:18px 22px;border-bottom:1px solid var(--ui-line)}
 .ar-icon{flex:none;width:30px;height:38px;border-radius:4px;position:relative;
   background:linear-gradient(160deg,#2f8f6a,#1d6349);box-shadow:0 3px 10px #00000066}
 .ar-icon::after{content:"";position:absolute;right:0;top:0;border-width:0 10px 10px 0;
@@ -1662,30 +1718,13 @@ h1,h2,h3{text-wrap:balance}
 .ar-kind{font-size:10px;letter-spacing:.14em;color:var(--ui-soft);border:1px solid var(--ui-line2);
   border-radius:5px;padding:3px 8px;font-weight:700}
 .ar-size{color:var(--ui-muted)}
-.ar-sheet{padding:18px 22px 20px;min-width:0}
 /* the sheet is the one thing allowed to scroll sideways — in its own box,
    never letting the page itself scroll */
-.ar-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.ar-sheet-name{font-size:10.5px;letter-spacing:.18em;color:var(--ui-muted);font-weight:700;margin-bottom:12px}
-.ar-table{width:100%;min-width:520px;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
-.ar-table th,.ar-table td{text-align:left;padding:11px 14px;border:1px solid var(--ui-line)}
-.ar-table th{font-weight:600;color:var(--ui-text);background:#ffffff08;font-size:12.5px}
-.ar-table td{color:var(--ui-soft)}
-.ar-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:0 22px 18px}
-.ar-btn{font-size:12.5px;font-weight:600;color:var(--ui-soft);border:1px solid var(--ui-line2);
-  border-radius:9px;padding:9px 15px}
-.ar-note-drive{font-size:12px;color:var(--ui-muted);max-width:380px;line-height:1.45}
-.ar-feedback{padding:13px 22px 16px;border-top:1px solid var(--ui-line2);background:var(--ui-raised)}
-.ar-stars{font-size:16px;letter-spacing:2px;color:#d9a400}
-.ar-saved{margin-left:12px;font-size:12px;color:var(--ui-muted)}
-.ar-note{margin:7px 0 0;font-size:12.5px;color:var(--ui-soft);font-style:italic;line-height:1.55}
 
 @media (max-width:900px){
   .ui-draft-body{grid-template-columns:minmax(0,1fr)}
   .dr-card{border-right:0;border-bottom:1px solid var(--ui-line)}
   .dr-bar{justify-content:flex-start}
-  .ar-table{font-size:12px}
-  .ar-table th,.ar-table td{padding:9px 10px}
 }
 
 /* ---- product proof: one state per row, full width, so the product is
