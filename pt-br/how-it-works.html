@@ -120,11 +120,23 @@
         <h2>Autoridade humana onde importa.</h2>
         <p>Você decide de antemão o que a Nieme pode fazer por conta própria. O trabalho pode ser explicitamente pré-autorizado por política — ou por consentimento contínuo — quando isso for apropriado, para que o trabalho rotineiro e reversível não dependa de alguém estar acordado. Decisões consequentes podem exigir aprovação humana, e a aprovação fica registrada contra o trabalho exato que autorizou.</p>
         <p>A autoridade é declarada antes de o trabalho rodar, não reconstruída depois.</p>
-        <div class="chip-row" style="margin-top:28px">
-          <div class="chip">Políticas definidas por você.</div>
-          <div class="chip">Aprovações onde importam.</div>
-          <div class="chip">Delegação sob seu controle.</div>
-          <div class="chip">Um registro que pertence a você.</div>
+        <div class="au">
+          <div class="au-band">
+            <span class="au-cap">RODA SOZINHO</span>
+            <span class="au-title">Pr&eacute;-autorizado por Policy</span>
+            <span class="au-note">Trabalho rotineiro e revers&iacute;vel que uma Policy j&aacute; admite. Ningu&eacute;m &eacute; acordado por isso.</span>
+          </div>
+          <div class="au-band">
+            <span class="au-cap">RODA COM VOC&Ecirc; VENDO</span>
+            <span class="au-title">Consentimento cont&iacute;nuo</span>
+            <span class="au-note">Permiss&atilde;o permanente que voc&ecirc; concedeu e pode revogar, gasta uma execu&ccedil;&atilde;o por vez.</span>
+          </div>
+          <div class="au-band au-band--stop">
+            <span class="au-cap">PARA POR UMA PESSOA</span>
+            <span class="au-title">Exige uma decis&atilde;o</span>
+            <span class="au-note">Trabalho consequente espera. A aprova&ccedil;&atilde;o fica registrada contra exatamente o trabalho que autorizou.</span>
+          </div>
+          <p class="au-foot">Voc&ecirc; define onde cada linha cai, antes. Nada se promove sozinho para a faixa de cima.</p>
         </div>
       </div>
     </section>
@@ -202,6 +214,37 @@
         <h2>A Nieme decide o que os modelos devem saber.</h2>
         <p>Antes que qualquer IA comece a trabalhar, o Runtime determina qual é de fato o pedido, que conhecimento é relevante, quais políticas se aplicam e que trabalhos anteriores importam. Só então o contexto adequado é reunido e entregue a um modelo. Sua organização inteira nunca é enviada indiscriminadamente a um modelo. Os modelos raciocinam. O Runtime decide o que eles devem ver.</p>
       </div>
+      <div class="uiw ui-ctx">
+        <div class="uiw-head ctx-head">
+          <div>
+            <div class="uiw-title">Pacote de contexto</div>
+            <p class="uiw-sub">O que esta Operation teve permiss&atilde;o de saber &mdash; decidido antes de qualquer coisa rodar, e guardado.</p>
+          </div>
+          <span class="ctx-frozen">Congelado &middot; bddb9c53ce</span>
+        </div>
+        <div class="ctx-grid">
+          <div class="ctx-col">
+            <div class="ctx-cap ctx-cap--in">INCLU&Iacute;DO<span>6 trechos &middot; 3 fontes</span></div>
+            <ul class="ctx-list">
+              <li><span class="ctx-src">Q4 Campaign Brief.docx</span><span class="ctx-why">Fonte admitida &middot; v4</span></li>
+              <li><span class="ctx-src">Brand Guidelines</span><span class="ctx-why">Fonte admitida &middot; v11</span></li>
+              <li><span class="ctx-src">Termos de renova&ccedil;&atilde;o, aceitos 12 set</span><span class="ctx-why">Decis&atilde;o aceita</span></li>
+            </ul>
+          </div>
+          <div class="ctx-col">
+            <div class="ctx-cap ctx-cap--out">EXCLU&Iacute;DO<span>9 trechos</span></div>
+            <ul class="ctx-list ctx-list--out">
+              <li><span class="ctx-src">#launch-q4 &middot; 4 mensagens</span><span class="ctx-why">observa&ccedil;&atilde;o, n&atilde;o autoridade</span></li>
+              <li><span class="ctx-src">Rascunho de precifica&ccedil;&atilde;o</span><span class="ctx-why">n&atilde;o &eacute; Fonte admitida</span></li>
+              <li><span class="ctx-src">3 trechos mais antigos</span><span class="ctx-why">abaixo da barra de relev&acirc;ncia</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="ctx-foot">
+          <span class="ctx-budget"><b>Or&ccedil;amento</b> 3,180 / 8,192 tokens</span>
+          <span class="ctx-note">As exclus&otilde;es tamb&eacute;m fazem parte do registro. O que um modelo n&atilde;o teve permiss&atilde;o de ver &eacute; t&atilde;o dur&aacute;vel quanto o que teve.</span>
+        </div>
+      </div>
     </section>
 
     <!-- SECTION 6: EVERY OPERATION IS AN EXPERIMENT -->
@@ -210,12 +253,6 @@
         <div class="eyebrow">COMO O SISTEMA ACUMULA CONHECIMENTO</div>
         <h2>Toda operação deixa evidências.</h2>
         <p class="experiment-lead">As organizações melhoram como a ciência, por meio de evidências, não de intuição. A maioria das organizações é péssima em preservar as suas. O conhecimento fica na cabeça das pessoas e vai embora quando elas saem. Decisões são tomadas com base em crenças sem comprovação. A Nieme registra cada operação, preserva as evidências e as aplica à próxima.</p>
-      </div>
-      <div class="chip-row" style="max-width:1440px;margin:0 auto 36px">
-        <div class="chip">As Operations executam o trabalho.</div>
-        <div class="chip">O Ledger registra as operações.</div>
-        <div class="chip">O Vault preserva as fontes governadas.</div>
-        <div class="chip">O Runtime aplica esse aprendizado à próxima operação.</div>
       </div>
       <p class="experiment-closing">A execução produz um resultado. Evidência é o registro usado para avaliá-lo. Uma pessoa decide o que é aceito — e um resultado aceito pode fortalecer o estado de onde a próxima operação parte.</p>
       <p class="experiment-pullquote">A qualidade da decisão emerge da evidência. A evidência emerge de trabalho que foi de fato governado.</p>
@@ -345,9 +382,9 @@
     <section class="hierarchy">
       <div class="section-copy section-title">
         <div class="eyebrow">COMO O TRABALHO SE CONECTA</div>
-        <h2>Nada é simplesmente arquivado. Tudo permanece conectado.</h2>
-        <p>A maioria das ferramentas arquiva o trabalho em pastas. Um artefato fica em um projeto e morre ali. A Nieme preserva um registro vivo: um único artefato, usado por dez operações, carregando as evidências de cada uma delas.</p>
-        <p>Um material de captação que funcionou em dez campanhas é reconhecido como eficaz. Uma decisão que falhou é lembrada como orientação. Nada é copiado, por isso nada perde seu histórico.</p>
+        <h2>O trabalho se conecta. Ele não vai para uma pasta.</h2>
+        <p>A maioria das ferramentas arquiva o trabalho em pastas, onde um artefato fica em um projeto e morre ali. A Nieme preserva as relações: um Artefato continua ligado à Operation que o produziu, às Fontes que ele usou, à Evidência por trás dele e à Decisão que o aceitou.</p>
+        <p>Nada é copiado, então nada perde a história. Quando o mesmo trabalho volta, o que a empresa aceitou está alcançável — não porque alguém arquivou na pasta certa, mas porque a relação faz parte do registro.</p>
       </div>
       <p class="hierarchy-caption">É isso que faz da Nieme uma plataforma, não apenas uma camada sobre outros sistemas.</p>
     </section>

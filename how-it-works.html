@@ -120,11 +120,23 @@
         <h2>Human authority where it matters.</h2>
         <p>You decide in advance what Nieme may do on its own. Work can be explicitly pre-authorized by policy — or by continuous consent — where that is appropriate, so routine and reversible work is not gated on a person being awake. Consequential decisions can require human approval, and the approval is recorded against the exact work it authorized.</p>
         <p>Authority is stated before the work runs, not reconstructed afterwards.</p>
-        <div class="chip-row" style="margin-top:28px">
-          <div class="chip">Policies you set in advance.</div>
-          <div class="chip">Approvals where they matter.</div>
-          <div class="chip">Delegation you control.</div>
-          <div class="chip">A record you own.</div>
+        <div class="au">
+          <div class="au-band">
+            <span class="au-cap">RUNS ON ITS OWN</span>
+            <span class="au-title">Pre-authorized by policy</span>
+            <span class="au-note">Routine, reversible work that a Policy already admits. No person is woken up for it.</span>
+          </div>
+          <div class="au-band">
+            <span class="au-cap">RUNS WHILE YOU WATCH</span>
+            <span class="au-title">Continuous consent</span>
+            <span class="au-note">Standing permission you granted and can revoke, spent one execution at a time.</span>
+          </div>
+          <div class="au-band au-band--stop">
+            <span class="au-cap">STOPS FOR A PERSON</span>
+            <span class="au-title">Requires a decision</span>
+            <span class="au-note">Consequential work waits. The approval is recorded against the exact work it authorized.</span>
+          </div>
+          <p class="au-foot">You set where each line falls, in advance. Nothing moves itself up a band.</p>
         </div>
       </div>
     </section>
@@ -202,6 +214,37 @@
         <h2>Nieme decides what the models should know.</h2>
         <p>Before any AI begins working, the Runtime works out what the request actually is, what knowledge is relevant, what policies apply, and what past work matters. Only then is the right context assembled and handed to a model. Your whole organization never gets shipped wholesale to a model. Models reason. The Runtime decides what they should see.</p>
       </div>
+      <div class="uiw ui-ctx">
+        <div class="uiw-head ctx-head">
+          <div>
+            <div class="uiw-title">Context package</div>
+            <p class="uiw-sub">What this Operation was allowed to know &mdash; decided before anything ran, and kept.</p>
+          </div>
+          <span class="ctx-frozen">Frozen &middot; bddb9c53ce</span>
+        </div>
+        <div class="ctx-grid">
+          <div class="ctx-col">
+            <div class="ctx-cap ctx-cap--in">INCLUDED<span>6 passages &middot; 3 sources</span></div>
+            <ul class="ctx-list">
+              <li><span class="ctx-src">Q4 Campaign Brief.docx</span><span class="ctx-why">admitted Source &middot; v4</span></li>
+              <li><span class="ctx-src">Brand Guidelines</span><span class="ctx-why">admitted Source &middot; v11</span></li>
+              <li><span class="ctx-src">Renewal terms, accepted 12 Sep</span><span class="ctx-why">accepted Decision</span></li>
+            </ul>
+          </div>
+          <div class="ctx-col">
+            <div class="ctx-cap ctx-cap--out">EXCLUDED<span>9 passages</span></div>
+            <ul class="ctx-list ctx-list--out">
+              <li><span class="ctx-src">#launch-q4 &middot; 4 messages</span><span class="ctx-why">observation, not authority</span></li>
+              <li><span class="ctx-src">Draft pricing sheet</span><span class="ctx-why">not an admitted Source</span></li>
+              <li><span class="ctx-src">3 older passages</span><span class="ctx-why">below the relevance bar</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="ctx-foot">
+          <span class="ctx-budget"><b>Budget</b> 3,180 / 8,192 tokens</span>
+          <span class="ctx-note">The exclusions are part of the record too. What a model was not allowed to see is as durable as what it was.</span>
+        </div>
+      </div>
     </section>
 
     <!-- SECTION 6: EVERY OPERATION IS AN EXPERIMENT -->
@@ -210,12 +253,6 @@
         <div class="eyebrow">HOW THE SYSTEM COMPOUNDS</div>
         <h2>Every operation leaves proof.</h2>
         <p class="experiment-lead">Organizations improve the way science does, through evidence rather than intuition. Most organizations are terrible at keeping theirs. Knowledge lives in people's heads and walks out the door when they leave. Decisions get made on folklore. Nieme records every operation, keeps the evidence, and applies it to the next one.</p>
-      </div>
-      <div class="chip-row" style="max-width:1440px;margin:0 auto 36px">
-        <div class="chip">Operations do the work.</div>
-        <div class="chip">Evidence supports how they are judged.</div>
-        <div class="chip">Vault preserves the governed sources.</div>
-        <div class="chip">The Runtime applies that learning to the next operation.</div>
       </div>
       <p class="experiment-closing">Execution produces a result. Evidence is the record used to evaluate it. A person decides what is accepted — and an accepted outcome can strengthen the state the next operation starts from.</p>
       <p class="experiment-pullquote">Decision quality emerges from evidence. Evidence emerges from work that was actually governed.</p>
@@ -345,9 +382,9 @@
     <section class="hierarchy">
       <div class="section-copy section-title">
         <div class="eyebrow">HOW WORK CONNECTS</div>
-        <h2>Nothing is filed. Everything is connected.</h2>
-        <p>Most tools file work into folders. An artifact lives in one project and dies there. Nieme keeps a living record instead: one artifact, used by ten operations, carrying the proof of every one of them.</p>
-        <p>A lead magnet that worked in ten campaigns is known to work. A decision that failed is remembered as guidance. Nothing is copied, so nothing loses its history.</p>
+        <h2>Work connects. It does not get filed away.</h2>
+        <p>Most tools file work into folders, where an artifact lives in one project and dies there. Nieme keeps the relationships instead: an Artifact stays connected to the Operation that produced it, the Sources it drew on, the Evidence behind it and the Decision that accepted it.</p>
+        <p>Nothing is copied, so nothing loses its history. When the same work comes round, what the company accepted is reachable &mdash; not because somebody filed it in the right folder, but because the relationship is part of the record.</p>
       </div>
       <p class="hierarchy-caption">This is what makes Nieme a runtime, not a wrapper.</p>
     </section>

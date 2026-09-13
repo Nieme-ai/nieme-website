@@ -1982,3 +1982,65 @@ h1,h2,h3{text-wrap:balance}
    bar resamples it the same way — it stops at the chrome too */
 .hero-bg{-webkit-mask-image:linear-gradient(180deg,transparent 0,transparent 86px,#000 156px);
   mask-image:linear-gradient(180deg,transparent 0,transparent 86px,#000 156px)}
+
+/* ---- the context package: what a model was allowed to know ---------------
+   How It Works had no product surface at all. This is the one the homepage
+   deliberately does not show, because it is the deeper half of the argument:
+   the Runtime decides what goes in BEFORE anything runs, and what it left out
+   is recorded with the reason. Field shapes follow the real Operation detail
+   (frozen source package with its digest, passages included/excluded, budget);
+   the Project, the files and the counts are synthetic like every other frame. */
+.ui-ctx{max-width:1180px;margin:clamp(34px,4vw,56px) auto 0}
+.ctx-head{align-items:flex-start}
+.ctx-frozen{flex:none;font-size:11px;line-height:1;padding:7px 12px;border-radius:999px;
+  border:1px solid var(--ui-line2);color:var(--ui-soft);background:#ffffff08;white-space:nowrap;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.ctx-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;
+  background:var(--ui-line);border-top:1px solid var(--ui-line)}
+.ctx-col{min-width:0;padding:18px 22px 20px;background:var(--ui-surf)}
+.ctx-cap{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  font-size:9.5px;letter-spacing:.2em;margin-bottom:14px}
+.ctx-cap span{letter-spacing:.02em;font-size:11.5px;color:var(--ui-muted)}
+.ctx-cap--in{color:#7fe3cd}
+.ctx-cap--out{color:#8f93a8}
+.ctx-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.ctx-list li{display:flex;flex-direction:column;gap:3px;min-width:0;
+  padding-left:14px;position:relative}
+.ctx-list li::before{content:"";position:absolute;left:0;top:.45em;width:5px;height:5px;
+  border-radius:50%;background:#2fd4b8;box-shadow:0 0 7px #2fd4b899}
+.ctx-list--out li::before{background:none;border:1px solid #8f93a866;box-shadow:none;
+  top:.4em;width:6px;height:6px}
+.ctx-src{font-size:13.5px;color:var(--ui-text);letter-spacing:-.01em;
+  overflow:hidden;text-overflow:ellipsis}
+.ctx-list--out .ctx-src{color:var(--ui-soft)}
+.ctx-why{font-size:11.5px;color:var(--ui-muted);line-height:1.4}
+.ctx-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:14px 22px 16px;border-top:1px solid var(--ui-line);background:#ffffff05}
+.ctx-budget{flex:none;font-size:12.5px;color:var(--ui-soft);font-variant-numeric:tabular-nums}
+.ctx-budget b{font-weight:500;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ui-muted);margin-right:8px}
+.ctx-note{min-width:0;font-size:12px;line-height:1.5;color:var(--ui-muted);max-width:62ch}
+@media (max-width:760px){
+  .ctx-grid{grid-template-columns:minmax(0,1fr)}
+}
+
+/* ---- the authority ladder -----------------------------------------------
+   Four chips restating the paragraph above them is not a design. Authority in
+   Nieme is a ladder with three rungs, and the whole claim is that YOU place the
+   line — so the rungs are drawn, and the one that stops is the lit one. */
+.au{max-width:1440px;margin:clamp(30px,3.4vw,46px) 0 0;display:flex;flex-direction:column;gap:10px}
+.au-band{display:grid;grid-template-columns:minmax(0,180px) minmax(0,260px) minmax(0,1fr);
+  gap:clamp(14px,2vw,30px);align-items:baseline;
+  padding:20px 24px;border-radius:14px;border:1px solid var(--line);background:#ffffff05}
+.au-band--stop{border-color:#7b4dff59;
+  background:radial-gradient(120% 160% at 0% 0%,#7b4dff1f 0%,#7b4dff00 62%),#ffffff06;
+  box-shadow:inset 0 1px 0 #ffffff14}
+.au-cap{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#787c92}
+.au-band--stop .au-cap{color:#c4b5fd}
+.au-title{font-size:clamp(16px,1.6vw,20px);line-height:1.25;letter-spacing:-.025em;color:#eef0f7}
+.au-note{font-size:14.5px;line-height:1.5;color:#8f93a8}
+.au-foot{margin:16px 0 0;font-size:14.5px;line-height:1.6;color:#787c92}
+@media (max-width:900px){
+  .au-band{grid-template-columns:minmax(0,1fr);gap:6px}
+  .au-cap{order:-1}
+}
