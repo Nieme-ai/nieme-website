@@ -149,111 +149,83 @@
     </section>
 
     <!--
-      ================= PRODUCT-PROOF CAPTURE SPEC — R4 =================
-      ONE synthetic story across all three frames. Never a real customer.
-        Company : Acme Payments
-        Project : Northstar Revenue
-        Source  : a synthetic Slack revenue channel
+      ================= PRODUCT-PROOF CAPTURE SPEC =================
+      ONE synthetic story, one thread, three states. Never a real customer.
+        Company : Acme Payments      Project : Northstar Revenue
 
-      Narrative: a material renewal update is observed -> Nieme relates it to
-      Northstar Revenue and existing institutional context -> Nieme proposes
-      governed work ("Update the Q3 revenue forecast and prepare a leadership
-      brief using the approved renewal terms") -> a person authorizes it ->
-      the Operation executes -> a real Artifact is produced -> Evidence stays
-      attached -> Review accepts -> the accepted outcome becomes eligible to
-      strengthen future Context.
+      01 assets/shots/proof-observed.png  + proof-observed-zoom.png
+         The FOCAL event must be the one that progresses into 02 and must
+         truthfully read "Raised as a Signal". The current crop is the Google
+         Drive change on Northstar Revenue — correct on both counts — with
+         Watching only items above and below it proving Nieme does not promote
+         every event. STILL MISSING: "Why it matters" and the observed time,
+         which live in the detail pane. Recapture the detail pane FOR THIS
+         EVENT, not for the Slack message (that one reads "Recorded, not raised
+         as a Signal" and must never be the event that becomes governed work).
 
-        A assets/shots/proof-observed.png   source/provider, the observed fact,
-                                            provider event time + Nieme observed
-                                            time, the Northstar Revenue relationship,
-                                            "Why it matters", Raised as a Signal, and
-                                            the explicit absence of execution authority.
-                                            A "Watching only" item may sit elsewhere in
-                                            the feed as contrast, but the FOCAL Signal
-                                            must be the one that continues the story.
-        B assets/shots/proof-governed.png   truthful crops from Context / Suggested Work
-                                            + Operation Draft: the Context change, the
-                                            suggested work, the correct Project binding,
-                                            the objective, boundaries/authority, and the
-                                            real governance decision point. This frame is
-                                            the visual centre of the sequence.
-        C assets/shots/proof-executed.png   truthful crops from a real execution +
-                                            Artifact + Evidence/Review: authorized and
-                                            executed state, the actual useful result,
-                                            supporting Evidence, the Review decision, the
-                                            accepted outcome, and future-context carry-
-                                            forward IF the product can truthfully show it
-                                            by capture time.
+      02 assets/shots/proof-governed.png   THE VISUAL CENTRE.
+         Context change, suggested work, the Operation Draft, the correct
+         Project, the objective, and the explicit approval/authority point.
+         POC ONLY — four text blocks were rewritten because the real draft was
+         Nieme's own work and carried the retired category lines verbatim.
 
-      Capture at >= 2560px, device_scale_factor=1, then crop truthfully.
-      ALLOWED around a capture: crop, mask, frame, subtle shadow/glow, partial
-      overlap, external labels/callouts, zoomed inset, animated connector trace.
-      NEVER: rewrite text inside a capture, invent controls, fake state, conceal
-      contradictory state, or pixel-patch a real customer's data.
-      TO SWAP: replace each .proof-shot .shot-placeholder with its <img>.
-      ===================================================================
+      03 assets/shots/proof-executed.png   NOT CAPTURED YET.
+         Compose several truthful crops in one frame: executed state, the
+         actual useful Artifact, Evidence attached, and the Review/Decision.
+         Label it "03 Executed" until the product can VISUALLY prove the
+         carry-forward into future Context; only then does it become
+         "Executed & learned".
+
+      Capture at >= 2560px, crop truthfully. ALLOWED: crop, mask, frame,
+      shadow/glow, partial overlap, external labels, zoom-detail inset.
+      NEVER: rewrite text inside a capture, invent controls, fake state,
+      conceal contradictory state, or pixel-patch a real customer's data.
+      ==============================================================
     -->
     <section class="proof">
       <div class="section-title">
         <div class="eyebrow">WHAT IT LOOKS LIKE IN THE PRODUCT</div>
         <h2>Observed. Governed. Executed.</h2>
       </div>
-      <div class="proof-rail">
-        <figure class="proof-step">
-          <div class="proof-head"><span class="proof-num">01</span><h3>Observed</h3></div>
-          <p class="proof-note">Something changed. Nieme knows where it belongs before anyone has to brief it.</p>
-          <div class="proof-shot">
-            <!-- POC ONLY — NOT SHIPPABLE.
-                 This capture comes from the founder's live Runtime. The pilot customer
-                 name was pixel-patched in two places (the Signals list row and the
-                 Related panel). The R4 art direction forbids exactly this, and the
-                 visible caption under the rail says the site never edits what the
-                 product says. Both hold only because this is a preview for Product
-                 Authority. BEFORE MERGE this must be replaced by a recapture made with
-                 synthetic names from the start, in the marketing Runtime.
-                 Also unresolved: this Signal reads "Recorded, not raised as a Signal",
-                 while the frame-01 spec calls for "Raised as a Signal". This crop proves
-                 observation-without-authority rather than promotion — decide which claim
-                 frame 01 should make. A real channel identifier remains in the crop. -->
-            <img src="/assets/shots/proof-observed.png" alt="Nieme Signals: a Slack message observed in a selected channel, with its source, both timestamps, why it matters, and the status — recorded, not raised as a Signal." loading="lazy" width="1664" height="1040">
+
+      <div class="pf">
+        <div class="pf-trace" aria-hidden="true">
+          <span class="pf-trace-line"></span>
+          <span class="pf-gate"></span>
+          <span class="pf-pulse"></span>
+        </div>
+
+        <figure class="pf-frame pf-frame--a">
+          <figcaption class="pf-cap"><span class="pf-n">01</span><b>Observed</b><span>A change becomes institutional context.</span></figcaption>
+          <div class="pf-shot">
+            <img src="/assets/shots/proof-observed.png" alt="Nieme Signals: a Google Drive document change on the Northstar Revenue project, raised as a Signal, among observations that were only being watched." loading="lazy" width="828" height="600">
+            <span class="pf-zoom"><img src="/assets/shots/proof-observed-zoom.png" alt="" loading="lazy" width="1230" height="126"></span>
           </div>
         </figure>
-        <div class="proof-link" aria-hidden="true"><span class="proof-link-dot"></span></div>
-        <figure class="proof-step proof-step--raised">
-          <div class="proof-head"><span class="proof-num">02</span><h3>Governed</h3></div>
-          <p class="proof-note">Context becomes proposed work. Authority decides whether it may run.</p>
-          <div class="proof-shot">
-            <!-- POC ONLY — NOT SHIPPABLE.
-                 The Operation Draft capture Product Authority supplied. Four text
-                 blocks were rewritten because the real draft was Nieme's own work and
-                 carried, verbatim, both of the retired category lines this whole
-                 reposition exists to remove — so it cannot appear on the page that
-                 removed them. Rewritten: the header title, the TITLE field, the
-                 objective body, and the Project binding.
-                 That is four rewrites inside one product screenshot, which the R4 art
-                 direction forbids outright. It stands only as a composition preview.
-                 BEFORE MERGE: recapture in the marketing Runtime with the Acme Payments
-                 / Northstar Revenue story authored in the product, so nothing is patched.
-                 Real identifiers still visible in the crop: the GitHub repository name
-                 and path, a commit SHA, a frozen-version id, and two NIEME-SRC document
-                 names. Nieme's own, not a customer's — but they do not fit the story. -->
-            <img src="/assets/shots/proof-governed.png" alt="Nieme Operation Draft: a proposed Operation bound to the Northstar Revenue project, with its objective, its declared outputs, its source package, and a Ready to approve state awaiting review." loading="lazy" width="1920" height="1200">
+
+        <figure class="pf-frame pf-frame--b">
+          <figcaption class="pf-cap"><span class="pf-n">02</span><b>Governed</b><span>Context becomes work with explicit authority.</span></figcaption>
+          <div class="pf-shot">
+            <!-- POC ONLY — NOT SHIPPABLE. Four text blocks were rewritten because the
+                 real draft was Nieme's own work and carried the retired category lines
+                 verbatim. Must be recaptured with the story authored in the product. -->
+            <img src="/assets/shots/proof-governed.png" alt="Nieme Operation Draft: proposed work bound to Northstar Revenue, with its objective, its source package and a Ready to approve state awaiting review." loading="lazy" width="1920" height="1200">
           </div>
         </figure>
-        <div class="proof-link" aria-hidden="true"><span class="proof-link-dot"></span></div>
-        <figure class="proof-step">
-          <div class="proof-head"><span class="proof-num">03</span><h3>Executed &amp; learned</h3></div>
-          <p class="proof-note">The work runs. Evidence stays attached. What the company accepts improves what happens next.</p>
-          <div class="proof-shot">
+
+        <figure class="pf-frame pf-frame--c">
+          <figcaption class="pf-cap"><span class="pf-n">03</span><b>Executed</b><span>Work runs with Evidence and a Decision attached.</span></figcaption>
+          <div class="pf-shot">
             <div class="shot-placeholder">
-              <span class="shot-slot-label">PROOF FRAME C · EXECUTED &amp; LEARNED</span>
-              <p class="shot-slot-desc">Authorized and executed state · the actual Artifact · the supporting Evidence · the Review decision · the accepted outcome carrying into future Context</p>
+              <span class="shot-slot-label">03 · EXECUTED</span>
+              <p class="shot-slot-desc">Composed from several truthful crops — the executed state · the actual Artifact · the Evidence attached to it · the Review decision</p>
               <code>proof-executed.png</code>
             </div>
           </div>
         </figure>
       </div>
-      <figcaption class="proof-caption">Real product, cropped. The site frames the story; it never edits what the product says.</figcaption>
+
+      <figcaption class="proof-caption">One thread. From change to governed outcome.</figcaption>
     </section>
 
     <!-- SECTION 0 — THE JOB TO BE DONE -->

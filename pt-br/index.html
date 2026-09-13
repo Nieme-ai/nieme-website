@@ -149,91 +149,81 @@
     </section>
 
     <!--
-      ================= PRODUCT-PROOF CAPTURE SPEC — R4 =================
-      ONE synthetic story across all three frames. Never a real customer.
-        Company : Acme Payments
-        Project : Northstar Revenue
-        Source  : a synthetic Slack revenue channel
+      ================= PRODUCT-PROOF CAPTURE SPEC =================
+      ONE synthetic story, one thread, three states. Never a real customer.
+        Company : Acme Payments      Project : Northstar Revenue
 
-      Narrative: a material renewal update is observed -> Nieme relates it to
-      Northstar Revenue and existing institutional context -> Nieme proposes
-      governed work ("Update the Q3 revenue forecast and prepare a leadership
-      brief using the approved renewal terms") -> a person authorizes it ->
-      the Operation executes -> a real Artifact is produced -> Evidence stays
-      attached -> Review accepts -> the accepted outcome becomes eligible to
-      strengthen future Context.
+      01 assets/shots/proof-observed.png  + proof-observed-zoom.png
+         The FOCAL event must be the one that progresses into 02 and must
+         truthfully read "Raised as a Signal". The current crop is the Google
+         Drive change on Northstar Revenue — correct on both counts — with
+         Watching only items above and below it proving Nieme does not promote
+         every event. STILL MISSING: "Why it matters" and the observed time,
+         which live in the detail pane. Recapture the detail pane FOR THIS
+         EVENT, not for the Slack message (that one reads "Recorded, not raised
+         as a Signal" and must never be the event that becomes governed work).
 
-        A assets/shots/proof-observed.png   source/provider, the observed fact,
-                                            provider event time + Nieme observed
-                                            time, the Northstar Revenue relationship,
-                                            "Why it matters", Raised as a Signal, and
-                                            the explicit absence of execution authority.
-                                            A "Watching only" item may sit elsewhere in
-                                            the feed as contrast, but the FOCAL Signal
-                                            must be the one that continues the story.
-        B assets/shots/proof-governed.png   truthful crops from Context / Suggested Work
-                                            + Operation Draft: the Context change, the
-                                            suggested work, the correct Project binding,
-                                            the objective, boundaries/authority, and the
-                                            real governance decision point. This frame is
-                                            the visual centre of the sequence.
-        C assets/shots/proof-executed.png   truthful crops from a real execution +
-                                            Artifact + Evidence/Review: authorized and
-                                            executed state, the actual useful result,
-                                            supporting Evidence, the Review decision, the
-                                            accepted outcome, and future-context carry-
-                                            forward IF the product can truthfully show it
-                                            by capture time.
+      02 assets/shots/proof-governed.png   THE VISUAL CENTRE.
+         Context change, suggested work, the Operation Draft, the correct
+         Project, the objective, and the explicit approval/authority point.
+         POC ONLY — four text blocks were rewritten because the real draft was
+         Nieme's own work and carried the retired category lines verbatim.
 
-      Capture at >= 2560px, device_scale_factor=1, then crop truthfully.
-      ALLOWED around a capture: crop, mask, frame, subtle shadow/glow, partial
-      overlap, external labels/callouts, zoomed inset, animated connector trace.
-      NEVER: rewrite text inside a capture, invent controls, fake state, conceal
-      contradictory state, or pixel-patch a real customer's data.
-      TO SWAP: replace each .proof-shot .shot-placeholder with its <img>.
-      ===================================================================
+      03 assets/shots/proof-executed.png   NOT CAPTURED YET.
+         Compose several truthful crops in one frame: executed state, the
+         actual useful Artifact, Evidence attached, and the Review/Decision.
+         Label it "03 Executed" until the product can VISUALLY prove the
+         carry-forward into future Context; only then does it become
+         "Executed & learned".
+
+      Capture at >= 2560px, crop truthfully. ALLOWED: crop, mask, frame,
+      shadow/glow, partial overlap, external labels, zoom-detail inset.
+      NEVER: rewrite text inside a capture, invent controls, fake state,
+      conceal contradictory state, or pixel-patch a real customer's data.
+      ==============================================================
     -->
     <section class="proof">
       <div class="section-title">
         <div class="eyebrow">COMO ISSO APARECE NO PRODUTO</div>
         <h2>Observado. Governado. Executado.</h2>
       </div>
-      <div class="proof-rail">
-        <figure class="proof-step">
-          <div class="proof-head"><span class="proof-num">01</span><h3>Observado</h3></div>
-          <p class="proof-note">Algo mudou. A Nieme sabe onde aquilo pertence antes de alguém precisar explicar.</p>
-          <div class="proof-shot">
-            <!-- POC ONLY — NOT SHIPPABLE. See the note on the English page.
-                 Pilot customer name pixel-patched; must be replaced by a recapture made
-                 with synthetic names from the start before merge. -->
-            <img src="/assets/shots/proof-observed.png" alt="Sinais da Nieme: uma mensagem do Slack observada num canal selecionado, com a fonte, os dois horários, por que importa e o status — registrado, não elevado a Sinal." loading="lazy" width="1664" height="1040">
+
+      <div class="pf">
+        <div class="pf-trace" aria-hidden="true">
+          <span class="pf-trace-line"></span>
+          <span class="pf-gate"></span>
+          <span class="pf-pulse"></span>
+        </div>
+
+        <figure class="pf-frame pf-frame--a">
+          <figcaption class="pf-cap"><span class="pf-n">01</span><b>Observado</b><span>Uma mudança vira contexto institucional.</span></figcaption>
+          <div class="pf-shot">
+            <img src="/assets/shots/proof-observed.png" alt="Sinais da Nieme: a mudança de um documento do Google Drive no projeto Northstar Revenue, registrada como Sinal, entre observações que estavam apenas sendo observadas." loading="lazy" width="828" height="600">
+            <span class="pf-zoom"><img src="/assets/shots/proof-observed-zoom.png" alt="" loading="lazy" width="1230" height="126"></span>
           </div>
         </figure>
-        <div class="proof-link" aria-hidden="true"><span class="proof-link-dot"></span></div>
-        <figure class="proof-step proof-step--raised">
-          <div class="proof-head"><span class="proof-num">02</span><h3>Governado</h3></div>
-          <p class="proof-note">O contexto vira trabalho proposto. A autoridade decide se ele pode rodar.</p>
-          <div class="proof-shot">
-            <!-- POC ONLY — NOT SHIPPABLE. See the note on the English page.
-                 Four text blocks rewritten because the real draft carried the retired
-                 positioning. Must be recaptured with the story authored in the product. -->
-            <img src="/assets/shots/proof-governed.png" alt="Rascunho de Operação da Nieme: uma Operação proposta vinculada ao projeto Northstar Revenue, com objetivo, entregáveis declarados, pacote de fontes e o estado Pronto para aprovar aguardando revisão." loading="lazy" width="1920" height="1200">
+
+        <figure class="pf-frame pf-frame--b">
+          <figcaption class="pf-cap"><span class="pf-n">02</span><b>Governado</b><span>O contexto vira trabalho com autoridade explícita.</span></figcaption>
+          <div class="pf-shot">
+            <!-- POC ONLY — NOT SHIPPABLE. Ver a nota na página em inglês. -->
+            <img src="/assets/shots/proof-governed.png" alt="Rascunho de Operação da Nieme: trabalho proposto vinculado a Northstar Revenue, com objetivo, pacote de fontes e o estado Pronto para aprovar aguardando revisão." loading="lazy" width="1920" height="1200">
           </div>
         </figure>
-        <div class="proof-link" aria-hidden="true"><span class="proof-link-dot"></span></div>
-        <figure class="proof-step">
-          <div class="proof-head"><span class="proof-num">03</span><h3>Executado e aprendido</h3></div>
-          <p class="proof-note">O trabalho roda. A evidência continua anexada. O que a empresa aceita melhora o que acontece depois.</p>
-          <div class="proof-shot">
+
+        <figure class="pf-frame pf-frame--c">
+          <figcaption class="pf-cap"><span class="pf-n">03</span><b>Executado</b><span>O trabalho roda com Evidência e uma Decisão anexadas.</span></figcaption>
+          <div class="pf-shot">
             <div class="shot-placeholder">
-              <span class="shot-slot-label">PROOF FRAME C · EXECUTED &amp; LEARNED</span>
-              <p class="shot-slot-desc">Estado autorizado e executado · o Artefato real · a Evidência de apoio · a decisão de Review · o resultado aceito seguindo para o Contexto futuro</p>
+              <span class="shot-slot-label">03 · EXECUTADO</span>
+              <p class="shot-slot-desc">Composto de vários recortes verdadeiros — o estado executado · o Artefato real · a Evidência anexada · a decisão de Review</p>
               <code>proof-executed.png</code>
             </div>
           </div>
         </figure>
       </div>
-      <figcaption class="proof-caption">Produto real, recortado. O site emoldura a história; nunca edita o que o produto diz.</figcaption>
+
+      <figcaption class="proof-caption">Um só fio. Da mudança ao resultado governado.</figcaption>
     </section>
 
     <!-- SECTION 0 — THE JOB TO BE DONE -->
