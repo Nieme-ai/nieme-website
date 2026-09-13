@@ -187,7 +187,6 @@
       <div class="pf">
         <div class="pf-trace" aria-hidden="true">
           <span class="pf-trace-line"></span><span class="pf-end pf-end--a"></span><span class="pf-end pf-end--b"></span>
-          <span class="pf-gate"><i>AUTORIDADE</i></span>
           <span class="pf-pulse"></span>
         </div>
 
@@ -331,6 +330,7 @@
           </div>
         </figure>
 
+        <div class="pf-gate" aria-hidden="true"><span class="pf-gate-mark"></span><i>AUTORIDADE</i></div>
         <figure class="pf-frame pf-frame--c">
           <figcaption class="pf-cap"><span class="pf-n">03</span><b>Executado</b><span>O trabalho roda com Evidência e uma Decisão anexadas.</span></figcaption>
           <div class="pf-shot">
@@ -344,10 +344,12 @@
             </div>
             <div class="ar-sheet">
               <div class="ar-sheet-name">PREVISÃO</div>
+              <div class="ar-scroll">
               <table class="ar-table">
                 <thead><tr><th>Trimestre</th><th>Contratado</th><th>Aumento de renovação</th><th>Previsão</th></tr></thead>
                 <tbody><tr><td>T1</td><td>1.240.000,00</td><td>0%</td><td>1.240.000,00</td></tr><tr><td>T2</td><td>1.310.000,00</td><td>0%</td><td>1.310.000,00</td></tr><tr><td>T3</td><td>1.310.000,00</td><td>18%</td><td>1.545.800,00</td></tr></tbody>
               </table>
+              </div>
             </div>
             <div class="ar-actions">
               <span class="ar-btn">Copiar</span><span class="ar-btn">Baixar</span>
@@ -371,14 +373,17 @@
       <div class="section-title">
         <div class="eyebrow">O PROBLEMA POR BAIXO</div>
         <h2>A tarefa foi automatizada.<br>A coordenação não.</h2>
-        <p>A IA consegue produzir a resposta. As pessoas ainda precisam perceber o que mudou, reunir o contexto, decidir o que deve acontecer, explicar para a IA, levar o resultado adiante, acompanhar e remontar o contexto da próxima vez.</p>
+        <p>A IA consegue produzir a resposta. As pessoas ainda carregam tudo em volta dela.</p>
       </div>
 
       <div class="hx">
         <div class="hx-lane">
           <div class="hx-cap">HOJE</div>
-          <div class="hx-flow"><span class="hx-node hx-node--trigger">Algo muda</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Perceber</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Reunir contexto</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Decidir</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Explicar para a IA</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Levar o resultado</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Acompanhar</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Remontar contexto</span></div>
-          <p class="hx-note"><span class="hx-note-mark" aria-hidden="true"></span>Cada transição é carregada por uma pessoa.</p>
+          <div class="hx-flow hx-flow--relay">
+            <span class="hx-baton" aria-hidden="true"></span>
+            <span class="hx-node hx-node--trigger">Algo muda</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Perceber</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Reunir contexto</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Decidir</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Explicar para a IA</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Levar o resultado</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Acompanhar</span><span class="hx-hop" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.4"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><span class="hx-node">Remontar contexto</span>
+          </div>
+          <p class="hx-note"><span class="hx-note-mark" aria-hidden="true"></span>Sete passagens de bastão. Cada uma é uma pessoa.</p>
         </div>
 
         <div class="hx-lane hx-lane--after">
@@ -387,12 +392,19 @@
             <span class="hx-node hx-node--trigger">Algo muda</span>
             <span class="hx-hop hx-hop--clean" aria-hidden="true"></span>
             <span class="hx-band">
-              <span class="hx-judge"><span class="hx-judge-stem" aria-hidden="true"></span>uma pessoa decide onde importa</span>
+              <span class="hx-clip" aria-hidden="true"><span class="hx-glide"></span></span>
+              <span class="hx-judge">
+                <span class="hx-judge-stem" aria-hidden="true"></span>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.5"/><path d="M3.2 13.4c.5-2.6 2.4-4 4.8-4s4.3 1.4 4.8 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <b>PONTO DE DECISÃO</b>uma pessoa decide onde importa
+              </span>
               <span class="hx-band-label">NIEME RUNTIME</span>
-              <span class="hx-band-sub">percebe · reúne contexto · prepara o trabalho governado · executa · reconcilia</span>
+              <span class="hx-band-sub">da mudança ao resultado governado</span>
             </span>
             <span class="hx-hop hx-hop--clean" aria-hidden="true"></span>
             <span class="hx-node hx-node--out">Resultado</span>
+            <span class="hx-hop hx-hop--clean" aria-hidden="true"></span>
+            <span class="hx-node hx-node--accept"><span class="hx-tick" aria-hidden="true"></span>Aceito</span>
             <span class="hx-hop hx-hop--clean" aria-hidden="true"></span>
             <span class="hx-node hx-node--carry">O contexto segue adiante</span>
           </div>

@@ -1014,34 +1014,45 @@ h1,h2,h3{text-wrap:balance}
 
 /* hero: an observation is not a request — the send action is not armed for it */
 
-/* ---- the coordination handoff. Two lanes of the SAME journey. Above, a
-       person carries every transition between stages — the burden lives in the
-       gaps, not in the boxes. Below, the middle stages compress into one
-       continuous Runtime band, and judgment surfaces out of it where it is
-       required. Not a matrix, and not an architecture diagram. ---- */
+/* ---- the coordination handoff, told by MOTION rather than by reading.
+       Above: a baton that stutters across seven human handoffs — seven discrete
+       jumps, one per person. Below: the same journey as a single smooth glide
+       that pauses once, at the decision point. Same duration for both, so the
+       contrast lands in the first second without a word being read. ---- */
 .hx{max-width:1440px;margin:0 auto}
-.hx-lane + .hx-lane{margin-top:54px}
+.hx-lane + .hx-lane{margin-top:58px}
 .hx-cap{display:inline-block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
   padding:5px 11px;border-radius:7px;margin-bottom:18px;
   color:#c8cbd9;background:#ffffff0d;border:1px solid #ffffff1c}
 .hx-cap--runtime{color:#fff;border-color:#7b4dff59;
   background:linear-gradient(100deg,#7b4dff33,#2fd4b81f)}
-.hx-flow{display:flex;align-items:center;flex-wrap:wrap;row-gap:14px}
+.hx-flow{position:relative;display:flex;align-items:center;flex-wrap:wrap;row-gap:14px}
 
 .hx-node{flex:none;padding:13px 15px;border-radius:11px;font-size:14px;line-height:1.3;
   letter-spacing:-.01em;color:#9ba0b4;border:1px solid #ffffff14;background:#ffffff07}
 .hx-node--trigger{color:#eef0f7;border-color:#ffffff2b;background:#ffffff12}
-.hx-node--out{color:#fff;border-color:#7b4dff59;
-  background:linear-gradient(100deg,#7b4dff2b,#2fd4b814)}
+.hx-node--out{color:#fff;border-color:#7b4dff59;background:linear-gradient(100deg,#7b4dff2b,#2fd4b814)}
+.hx-node--accept{display:flex;align-items:center;gap:9px;color:#fff;border-color:#5ad6a04d;
+  background:#5ad6a012}
+.hx-tick{flex:none;width:15px;height:15px;border-radius:50%;position:relative;
+  background:linear-gradient(135deg,#5ad6a0,#2fd4b8)}
+.hx-tick::after{content:"";position:absolute;left:4.5px;top:4px;width:3.5px;height:6px;
+  border:1.5px solid #0b0d14;border-top:0;border-left:0;transform:rotate(42deg)}
 .hx-node--carry{color:#a9b4ca;border-style:dashed;border-color:#7ee7ff45;background:#7ee7ff0a}
 
-/* the burden lives in the transitions: a person carries every single one */
+/* every transition is a person — the burden lives in the gaps */
 .hx-hop{flex:none;width:46px;height:1px;position:relative;background:#ffffff26;
-  display:flex;align-items:center;justify-content:center;color:#9ba0b4}
-.hx-hop svg{width:16px;height:16px;display:block;position:relative;top:-1px;color:#aeb2c4}
+  display:flex;align-items:center;justify-content:center;color:#aeb2c4}
+.hx-hop svg{width:16px;height:16px;display:block;position:relative;top:-1px}
 .hx-hop--clean{width:30px;background:linear-gradient(90deg,#7b4dff59,#7ee7ff73)}
 .hx-note{display:flex;align-items:center;gap:9px;margin:20px 0 0;font-size:15px;color:#8f93a8}
 .hx-note-mark{width:24px;height:1px;background:#ffffff2b;flex:none}
+
+/* the baton: seven discrete hops, one per handoff. steps() IS the stutter. */
+.hx-baton{position:absolute;top:50%;left:0;width:9px;height:9px;margin-top:-4.5px;border-radius:50%;
+  background:#e0b3a8;box-shadow:0 0 14px #e0b3a8a6;z-index:2;
+  animation:hx-relay 6.3s steps(7,end) infinite}
+@keyframes hx-relay{from{left:5%}to{left:96%}}
 
 /* the middle of the journey, carried continuously */
 .hx-band{flex:1 1 340px;min-width:0;position:relative;margin:0 2px;
@@ -1054,17 +1065,32 @@ h1,h2,h3{text-wrap:balance}
   box-shadow:0 20px 56px #00000073, inset 0 1px 0 #ffffff14}
 .hx-band-label{display:block;font-size:13px;letter-spacing:.22em;color:#fff;font-weight:560}
 .hx-band-sub{display:block;margin-top:7px;font-size:12.5px;color:#9ba0b4;letter-spacing:.01em}
+/* one smooth pass, holding once where a person is required */
+.hx-clip{position:absolute;inset:0;border-radius:13px;overflow:hidden;pointer-events:none}
+.hx-glide{position:absolute;top:0;bottom:0;left:-150px;width:150px;
+  background:linear-gradient(90deg,#7ee7ff00,#7ee7ff33 45%,#7ee7ff00);
+  animation:hx-glide 6.3s ease-in-out infinite}
+@keyframes hx-glide{
+  0%{left:-150px;opacity:0}
+  10%{opacity:1}
+  44%{left:calc(50% - 75px)}
+  56%{left:calc(50% - 75px)}
+  90%{left:100%;opacity:1}
+  100%{left:100%;opacity:0}}
 
-/* judgment surfaces out of the band — where it is required, not once and only once */
-.hx-judge{position:absolute;left:50%;top:-40px;transform:translateX(-50%);white-space:nowrap;
-  font-size:11.5px;letter-spacing:.02em;color:#fff;
+/* judgment surfaces here, and it is named */
+.hx-judge{position:absolute;left:50%;top:-42px;transform:translateX(-50%);white-space:nowrap;
+  display:flex;align-items:center;gap:8px;z-index:3;
+  font-size:11.5px;letter-spacing:.02em;color:#c8cbd9;
   padding:7px 13px;border-radius:999px;
   border:1px solid #ffffff2e;background:linear-gradient(180deg,#1b2032,#12151f);
   box-shadow:0 12px 30px #00000073}
-.hx-judge-stem{position:absolute;left:50%;top:100%;width:1px;height:18px;
-  background:linear-gradient(180deg,#ffffff40,#7b4dff00)}
+.hx-judge svg{width:14px;height:14px;color:#c4b5fd;flex:none}
+.hx-judge b{font-size:9.5px;letter-spacing:.18em;color:#c4b5fd;font-weight:700}
+.hx-judge-stem{position:absolute;left:50%;top:100%;width:1px;height:20px;
+  background:linear-gradient(180deg,#c4b5fd8c,#7b4dff00)}
 
-.coord-close{display:flex;align-items:center;gap:24px;max-width:1440px;margin:54px auto 0}
+.coord-close{display:flex;align-items:center;gap:24px;max-width:1440px;margin:58px auto 0}
 /* BRAND LAW: the Nieme glyph is the logo mark and nothing else — never a bullet,
    node, completion mark, flow endpoint, diagram ornament or status icon. */
 .coord-close-trace{flex:none;width:72px;height:1px;
@@ -1075,19 +1101,25 @@ h1,h2,h3{text-wrap:balance}
 @media (max-width:1080px){
   .hx-flow{row-gap:10px}
   .hx-hop{width:30px}
-  .hx-band{flex:1 1 100%;margin:6px 0}
-  .hx-judge{position:static;transform:none;display:inline-block;margin-bottom:12px}
-  .hx-judge-stem{display:none}
+  .hx-band{flex:1 1 100%;margin:34px 0 6px}
+  .hx-judge{top:-38px;max-width:calc(100% - 24px);white-space:normal;flex-wrap:wrap;row-gap:2px}
+  .hx-baton{display:none}
 }
 @media (max-width:620px){
   .hx-flow{flex-direction:column;align-items:flex-start}
   .hx-node,.hx-band{width:100%;text-align:left}
-  .hx-hop{width:1px;height:26px;margin-left:22px;
-    background:#ffffff1f;flex-direction:column}
+  .hx-hop{width:1px;height:26px;margin-left:22px;background:#ffffff1f;flex-direction:column}
   .hx-hop--clean{background:linear-gradient(180deg,#7b4dff59,#7ee7ff73)}
   .hx-band{text-align:left}
+  .hx-judge{position:static;transform:none;display:inline-flex;margin-bottom:12px;
+    max-width:100%;white-space:normal;flex-wrap:wrap;row-gap:2px}
+  .hx-judge-stem{display:none}
 }
-
+@media (prefers-reduced-motion:reduce){
+  .hx-baton,.hx-glide{animation:none}
+  .hx-baton{left:96%}
+  .hx-glide{left:calc(50% - 75px);opacity:.5}
+}
 /* ---- entry paths: bifurcation converging ---- */
 .bifurcate{max-width:1440px;margin:8px auto 0;text-align:center}
 .bifurcate-svg{width:100%;max-width:720px;height:90px;display:block;margin:0 auto}
@@ -1320,7 +1352,7 @@ h1,h2,h3{text-wrap:balance}
   border:1px solid var(--ui-line2);border-radius:16px;overflow:hidden;
   background:linear-gradient(180deg,#12151f,#0c0e15);
   box-shadow:0 40px 110px #00000099, inset 0 1px 0 #ffffff0d;
-  color:var(--ui-soft);font-size:13px;line-height:1.5}
+  color:var(--ui-soft);font-size:13px;line-height:1.5;min-width:0;max-width:100%}
 .uiw-head{padding:20px 24px 18px;border-bottom:1px solid var(--ui-line);
   display:flex;align-items:flex-start;justify-content:space-between;gap:28px;flex-wrap:wrap}
 .uiw-title{font-size:21px;font-weight:600;color:var(--ui-text);letter-spacing:-.02em}
@@ -1442,9 +1474,12 @@ h1,h2,h3{text-wrap:balance}
 .ar-kind{font-size:10px;letter-spacing:.14em;color:var(--ui-soft);border:1px solid var(--ui-line2);
   border-radius:5px;padding:3px 8px;font-weight:700}
 .ar-size{color:var(--ui-muted)}
-.ar-sheet{padding:18px 22px 20px}
+.ar-sheet{padding:18px 22px 20px;min-width:0}
+/* the sheet is the one thing allowed to scroll sideways — in its own box,
+   never letting the page itself scroll */
+.ar-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .ar-sheet-name{font-size:10.5px;letter-spacing:.18em;color:var(--ui-muted);font-weight:700;margin-bottom:12px}
-.ar-table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+.ar-table{width:100%;min-width:520px;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
 .ar-table th,.ar-table td{text-align:left;padding:11px 14px;border:1px solid var(--ui-line)}
 .ar-table th{font-weight:600;color:var(--ui-text);background:#ffffff08;font-size:12.5px}
 .ar-table td{color:var(--ui-soft)}
@@ -1476,12 +1511,13 @@ h1,h2,h3{text-wrap:balance}
 .pf-end{position:absolute;left:-2px;width:5px;height:5px;border-radius:50%;background:#7b4dff}
 .pf-end--a{top:-2px}
 .pf-end--b{bottom:-2px;background:var(--cyan);box-shadow:0 0 10px #7ee7ff8c}
-/* the gate: the pulse stops here until a person authorizes */
-.pf-gate{position:absolute;left:-9px;top:50%;width:19px;height:2px;margin-top:-1px;border-radius:2px;
-  background:#c4b5fd;box-shadow:0 0 12px #7b4dff8c;animation:pf-gate-hold 9s ease-in-out infinite}
+/* the gate sits in the gap between 02 and 03, where its label has room */
+.pf-gate{position:relative;z-index:3;display:flex;align-items:center;gap:12px;
+  margin:-36px 0 -36px -72px;padding-left:6px;height:0}
+.pf-gate-mark{flex:none;width:19px;height:2px;border-radius:2px;background:#c4b5fd;
+  box-shadow:0 0 12px #7b4dff8c;animation:pf-gate-hold 9s ease-in-out infinite}
 @keyframes pf-gate-hold{0%,26%{opacity:.35}32%,56%{opacity:1;box-shadow:0 0 18px #c4b5fdcc}62%,100%{opacity:.35}}
-.pf-gate i{position:absolute;left:26px;top:50%;transform:translateY(-50%);font-style:normal;
-  font-size:9.5px;letter-spacing:.2em;color:#c4b5fd;white-space:nowrap}
+.pf-gate i{font-style:normal;font-size:9.5px;letter-spacing:.2em;color:#c4b5fd;white-space:nowrap}
 .pf-pulse{position:absolute;left:-2.5px;width:6px;height:6px;border-radius:50%;
   background:var(--cyan);box-shadow:0 0 14px var(--cyan);
   animation:pf-pulse-run 9s ease-in-out infinite}
@@ -1495,15 +1531,16 @@ h1,h2,h3{text-wrap:balance}
 .pf-n{font-size:11.5px;letter-spacing:.18em;color:var(--purple);flex:none}
 .pf-cap b{font-size:clamp(21px,2vw,28px);letter-spacing:-.03em;font-weight:440;color:#eef0f7}
 .pf-cap span{flex:1 1 100%;margin-top:6px;font-size:15.5px;line-height:1.45;color:var(--muted)}
-.pf-shot{position:relative}
+.pf-shot{position:relative;min-width:0}
 .proof-caption{display:block;max-width:820px;margin:52px auto 0;text-align:center;font-size:15px;color:#8f93a8}
 @media (max-width:760px){
   .pf{padding-left:0;gap:52px}
   .pf-trace{display:none}
+  .pf-gate{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   .pf-pulse{animation:none;top:50%;opacity:.9}
-  .pf-gate{animation:none;opacity:1}
+  .pf-gate-mark{animation:none;opacity:1}
 }
 
 /* outcomes keep their card treatment but gain state */
