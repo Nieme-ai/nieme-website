@@ -1700,6 +1700,11 @@ h1,h2,h3{text-wrap:balance}
 .dr-hint{margin:7px 0 0;font-size:11px;color:var(--ui-muted)}
 .dr-side{padding:20px 22px 24px;background:#ffffff04}
 .dr-proj{margin:12px 0 0;font-size:14px;font-weight:600;color:var(--ui-text)}
+/* the visible thread back to frame 01: this Draft came FROM that Signal */
+.dr-from{margin:6px 0 0;padding-left:11px;position:relative;font-size:12px;line-height:1.4;
+  color:#a9f0ff}
+.dr-from::before{content:"";position:absolute;left:0;top:.35em;bottom:.35em;width:2px;
+  border-radius:2px;background:linear-gradient(180deg,#7b4dff,#7ee7ff)}
 .dr-selected{margin:8px 0 0;font-size:12px;color:var(--ui-soft);line-height:1.5}
 .dr-src{margin-top:16px;padding:13px 14px;border:1px solid var(--ui-line);border-radius:11px;background:#ffffff05}
 .dr-src-kind{font-size:9.5px;letter-spacing:.16em;color:#7ee7ff;font-weight:700}
