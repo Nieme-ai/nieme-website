@@ -2049,3 +2049,58 @@ h1,h2,h3{text-wrap:balance}
   .au-band{grid-template-columns:minmax(0,1fr);gap:6px}
   .au-cap{order:-1}
 }
+
+/* ---- execution is not the end -------------------------------------------
+   The loop the rest of the page implies but never showed: a governed run that
+   missed the objective is still a miss, so the loop closes on a person saying
+   whether it was any good. Drawn as a PROGRESSION, not a circle — the same work
+   three times, converging, until it has earned a place further up the ladder.
+   The mechanism is real: work_feedback/v1 is an append-only ledger bound to an
+   exact Artifact and an exact Execution, and it reaches future context as
+   quality evidence, never as an instruction and never as authority. */
+.feedback{padding:var(--section-padding) var(--section-inline);border-top:1px solid var(--line)}
+.feedback .section-copy{max-width:1440px;margin:0 auto}
+.feedback h2{font-size:clamp(32px,3.6vw,56px);line-height:1.05;letter-spacing:-.05em;
+  font-weight:420;margin:0 0 24px;max-width:16ch}
+.feedback .section-copy p{font-size:clamp(16px,1.5vw,19px);line-height:1.65;color:#b6bac8;
+  margin:0 0 16px;max-width:76ch}
+.feedback .section-copy p em{font-style:normal;color:#fff}
+
+.fb{max-width:1440px;margin:clamp(36px,4.5vw,64px) auto 0}
+.fb-runs{display:flex;flex-direction:column;gap:10px}
+.fb-run{display:grid;
+  grid-template-columns:minmax(0,130px) minmax(0,1fr) auto minmax(0,1.5fr);
+  gap:clamp(14px,2vw,28px);align-items:center;
+  padding:18px 24px;border-radius:14px;border:1px solid var(--line);background:#ffffff05}
+.fb-run--best{border-color:#7b4dff59;
+  background:radial-gradient(120% 160% at 0% 0%,#7b4dff1f 0%,#7b4dff00 62%),#ffffff06;
+  box-shadow:inset 0 1px 0 #ffffff14}
+.fb-when{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#787c92}
+.fb-run--best .fb-when{color:#c4b5fd}
+.fb-res{font-size:15.5px;color:#eef0f7;letter-spacing:-.015em;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fb-stars{white-space:nowrap;font-size:15px;letter-spacing:2px;color:#d9a400}
+.fb-s.is-off{color:#ffffff26}
+.fb-note{font-size:14.5px;line-height:1.5;color:#8f93a8;text-wrap:pretty;
+  min-height:calc(14.5px * 1.5 * 2)}
+
+.fb-arrive{display:flex;align-items:flex-start;gap:18px;margin-top:22px;padding-left:24px}
+.fb-arrive-line{flex:none;width:1px;height:46px;margin-top:2px;
+  background:linear-gradient(180deg,#7b4dff8c,#2fd4b8)}
+.fb-arrive p{margin:0;font-size:clamp(16px,1.6vw,20px);line-height:1.5;color:#eef0f7;
+  letter-spacing:-.02em;max-width:70ch}
+
+.fb-law{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,38px);
+  margin-top:clamp(32px,4vw,54px);padding-top:26px;border-top:1px solid var(--line)}
+.fb-law-item{min-width:0}
+.fb-law-item b{display:block;font-size:14.5px;font-weight:500;color:#eef0f7;letter-spacing:-.01em}
+.fb-law-item span{display:block;margin-top:7px;font-size:13.5px;line-height:1.5;color:#8f93a8}
+
+@media (max-width:1000px){
+  .fb-run{grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;align-items:baseline}
+  .fb-when{grid-column:1}
+  .fb-stars{grid-column:2;grid-row:1;justify-self:end}
+  .fb-res{grid-column:1 / -1}
+  .fb-note{grid-column:1 / -1;min-height:0}
+  .fb-law{grid-template-columns:minmax(0,1fr);gap:20px}
+}
