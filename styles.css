@@ -6,13 +6,13 @@ body{margin:0;background:radial-gradient(circle at 80% 5%,#17264f 0%,transparent
 /* --breath is the single period every pulsing thing on this page uses.
    script.js draws the ambient canvas on the same number (BREATH=3900). */
 :root{--breath:3900ms}
-/* The nav is a blurred translucent bar. Anything moving behind it is resampled
-   by backdrop-filter every frame, which is what was left making the header
-   shimmer while the page sat still. The field simply does not paint under the
-   chrome — it has nothing to say up there anyway. */
-.pulse{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block;
-  -webkit-mask-image:linear-gradient(180deg,transparent 0,transparent 86px,#000 156px);
-  mask-image:linear-gradient(180deg,transparent 0,transparent 86px,#000 156px)}
+/* The nav is a blurred translucent bar, so anything moving behind it is
+   resampled by backdrop-filter every frame — that is why the field must not
+   paint under the chrome. It is faded out INSIDE the canvas instead of with a
+   CSS mask: a fixed, full-viewport, masked layer sitting under .grain's
+   mix-blend-mode is a compositing stack Chrome is known to leave stale tiles
+   in, and this page reportedly renders with smeared trails until a reload. */
+.pulse{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
 main,footer,.nav{position:relative;z-index:1}
 .nav{z-index:20}
 @keyframes nieme-breath{0%,100%{opacity:.62;transform:scale(1)}50%{opacity:1;transform:scale(1.035)}}
@@ -22,7 +22,7 @@ main,footer,.nav{position:relative;z-index:1}
    thousands, which is what reads on a phone as the header moving by itself. */
 @keyframes nieme-glow{0%,100%{opacity:.35}50%{opacity:1}}
 .glyph::after{content:"";position:absolute;inset:-6px;border-radius:50%;pointer-events:none;
-  box-shadow:0 0 26px 2px #6c4cff8c;opacity:.6;will-change:opacity;
+  box-shadow:0 0 26px 2px #6c4cff8c;opacity:.6;
   animation:nieme-glow var(--breath) ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){
   .glyph::after{animation:none;opacity:.6}
@@ -195,8 +195,37 @@ h3{font-size:26px;margin:16px 0}
 .final{padding:140px 8vw 180px;text-align:center}.final em{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45),0 0 28px rgba(123,92,255,.38),0 0 70px rgba(123,92,255,.22),0 0 140px rgba(123,92,255,.10)}
 /* The page ends in black. Everything above has been light and motion; this is
    where it stops, and the last thing on screen is what Nieme is for. */
-footer{padding:0 8vw 48px;text-align:center;color:var(--muted);font-size:14px;
-  position:relative;z-index:1;background:#000}
+/* the line stays where it was, centred; the legal links sit in the right
+   corner and nowhere else — they are an obligation, not navigation */
+footer{padding:0 8vw 48px;color:var(--muted);font-size:14px;
+  position:relative;z-index:1;background:#000;
+  display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center}
+.foot-line{grid-column:2;text-align:center}
+.foot-legal{grid-column:3;justify-self:end;display:flex;gap:18px}
+.foot-legal a{color:#5f6478;text-decoration:none;font-size:12.5px;
+  transition:color 180ms ease}
+.foot-legal a:hover{color:#9ba0b4}
+@media (max-width:700px){
+  footer{grid-template-columns:minmax(0,1fr);gap:14px;text-align:center}
+  .foot-line{grid-column:1}
+  .foot-legal{grid-column:1;justify-self:center}
+}
+
+/* ---- the legal pages: quiet, read-only, nothing to sell ---- */
+.legal{max-width:820px;margin:0 auto;padding:calc(var(--section-padding) + 40px) var(--section-inline) var(--section-padding)}
+.legal-head{padding-bottom:34px;margin-bottom:38px;border-bottom:1px solid var(--line)}
+.legal h1{font-size:clamp(34px,4.4vw,60px);line-height:1.04;letter-spacing:-.05em;
+  font-weight:420;margin:0;max-width:16ch}
+.legal-meta{margin:18px 0 0;font-size:13px;letter-spacing:.06em;color:#6d7186}
+.legal-body h2{font-size:clamp(18px,1.8vw,22px);line-height:1.25;letter-spacing:-.025em;
+  font-weight:500;color:#eef0f7;margin:38px 0 12px}
+.legal-body h2:first-child{margin-top:0}
+.legal-body p{font-size:16px;line-height:1.75;color:#9ba0b4;margin:0 0 14px;max-width:72ch}
+.legal-body strong{color:#d7d8e5;font-weight:500}
+.legal-body a{color:#a98bff;text-decoration:none;border-bottom:1px solid #a98bff47}
+.legal-body a:hover{color:#c9b6ff;border-color:#c9b6ff8c}
+.legal-body ul{margin:0 0 14px;padding-left:20px}
+.legal-body li{font-size:16px;line-height:1.75;color:#9ba0b4;margin-bottom:6px}
 /* the run into black happens BEHIND the last section's copy, never over it */
 .final.statement-block{background:linear-gradient(180deg,#00000000 0%,#000000a6 62%,#000 100%)}
 .epilogue{max-width:520px;margin:70px auto 110px;padding:0 22px;text-align:center;color:var(--muted)}
@@ -1982,3 +2011,125 @@ h1,h2,h3{text-wrap:balance}
    bar resamples it the same way — it stops at the chrome too */
 .hero-bg{-webkit-mask-image:linear-gradient(180deg,transparent 0,transparent 86px,#000 156px);
   mask-image:linear-gradient(180deg,transparent 0,transparent 86px,#000 156px)}
+
+/* ---- the context package: what a model was allowed to know ---------------
+   How It Works had no product surface at all. This is the one the homepage
+   deliberately does not show, because it is the deeper half of the argument:
+   the Runtime decides what goes in BEFORE anything runs, and what it left out
+   is recorded with the reason. Field shapes follow the real Operation detail
+   (frozen source package with its digest, passages included/excluded, budget);
+   the Project, the files and the counts are synthetic like every other frame. */
+.ui-ctx{max-width:1180px;margin:clamp(34px,4vw,56px) auto 0}
+.ctx-head{align-items:flex-start}
+.ctx-frozen{flex:none;font-size:11px;line-height:1;padding:7px 12px;border-radius:999px;
+  border:1px solid var(--ui-line2);color:var(--ui-soft);background:#ffffff08;white-space:nowrap;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.ctx-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;
+  background:var(--ui-line);border-top:1px solid var(--ui-line)}
+.ctx-col{min-width:0;padding:18px 22px 20px;background:var(--ui-surf)}
+.ctx-cap{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  font-size:9.5px;letter-spacing:.2em;margin-bottom:14px}
+.ctx-cap span{letter-spacing:.02em;font-size:11.5px;color:var(--ui-muted)}
+.ctx-cap--in{color:#7fe3cd}
+.ctx-cap--out{color:#8f93a8}
+.ctx-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.ctx-list li{display:flex;flex-direction:column;gap:3px;min-width:0;
+  padding-left:14px;position:relative}
+.ctx-list li::before{content:"";position:absolute;left:0;top:.45em;width:5px;height:5px;
+  border-radius:50%;background:#2fd4b8;box-shadow:0 0 7px #2fd4b899}
+.ctx-list--out li::before{background:none;border:1px solid #8f93a866;box-shadow:none;
+  top:.4em;width:6px;height:6px}
+.ctx-src{font-size:13.5px;color:var(--ui-text);letter-spacing:-.01em;
+  overflow:hidden;text-overflow:ellipsis}
+.ctx-list--out .ctx-src{color:var(--ui-soft)}
+.ctx-why{font-size:11.5px;color:var(--ui-muted);line-height:1.4}
+.ctx-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:14px 22px 16px;border-top:1px solid var(--ui-line);background:#ffffff05}
+.ctx-budget{flex:none;font-size:12.5px;color:var(--ui-soft);font-variant-numeric:tabular-nums}
+.ctx-budget b{font-weight:500;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ui-muted);margin-right:8px}
+.ctx-note{min-width:0;font-size:12px;line-height:1.5;color:var(--ui-muted);max-width:62ch}
+@media (max-width:760px){
+  .ctx-grid{grid-template-columns:minmax(0,1fr)}
+}
+
+/* ---- the authority ladder -----------------------------------------------
+   Four chips restating the paragraph above them is not a design. Authority in
+   Nieme is a ladder with three rungs, and the whole claim is that YOU place the
+   line — so the rungs are drawn, and the one that stops is the lit one. */
+.au{max-width:1440px;margin:clamp(30px,3.4vw,46px) 0 0;display:flex;flex-direction:column;gap:10px}
+.au-band{display:grid;grid-template-columns:minmax(0,180px) minmax(0,260px) minmax(0,1fr);
+  gap:clamp(14px,2vw,30px);align-items:baseline;
+  padding:20px 24px;border-radius:14px;border:1px solid var(--line);background:#ffffff05}
+.au-band--stop{border-color:#7b4dff59;
+  background:radial-gradient(120% 160% at 0% 0%,#7b4dff1f 0%,#7b4dff00 62%),#ffffff06;
+  box-shadow:inset 0 1px 0 #ffffff14}
+.au-cap{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#787c92}
+.au-band--stop .au-cap{color:#c4b5fd}
+.au-title{font-size:clamp(16px,1.6vw,20px);line-height:1.25;letter-spacing:-.025em;color:#eef0f7}
+/* Tuning the three strings to the same length fixes one viewport width and
+   breaks another — the wrap point moves with the container, not with the copy.
+   So the guarantee is structural: every band reserves two lines, and the rows
+   are the same height whether a note takes one line or two. */
+.au-note{font-size:14.5px;line-height:1.5;color:#8f93a8;text-wrap:pretty;
+  min-height:calc(14.5px * 1.5 * 2)}
+.au-foot{margin:16px 0 0;font-size:14.5px;line-height:1.6;color:#787c92}
+@media (max-width:900px){
+  .au-band{grid-template-columns:minmax(0,1fr);gap:6px}
+  .au-cap{order:-1}
+}
+
+/* ---- execution is not the end -------------------------------------------
+   The loop the rest of the page implies but never showed: a governed run that
+   missed the objective is still a miss, so the loop closes on a person saying
+   whether it was any good. Drawn as a PROGRESSION, not a circle — the same work
+   three times, converging, until it has earned a place further up the ladder.
+   The mechanism is real: work_feedback/v1 is an append-only ledger bound to an
+   exact Artifact and an exact Execution, and it reaches future context as
+   quality evidence, never as an instruction and never as authority. */
+.feedback{padding:var(--section-padding) var(--section-inline);border-top:1px solid var(--line)}
+.feedback .section-copy{max-width:1440px;margin:0 auto}
+.feedback h2{font-size:clamp(32px,3.6vw,56px);line-height:1.05;letter-spacing:-.05em;
+  font-weight:420;margin:0 0 24px;max-width:16ch}
+.feedback .section-copy p{font-size:clamp(16px,1.5vw,19px);line-height:1.65;color:#b6bac8;
+  margin:0 0 16px;max-width:76ch}
+.feedback .section-copy p em{font-style:normal;color:#fff}
+
+.fb{max-width:1440px;margin:clamp(36px,4.5vw,64px) auto 0}
+.fb-runs{display:flex;flex-direction:column;gap:10px}
+.fb-run{display:grid;
+  grid-template-columns:minmax(0,130px) minmax(0,1fr) auto minmax(0,1.5fr);
+  gap:clamp(14px,2vw,28px);align-items:center;
+  padding:18px 24px;border-radius:14px;border:1px solid var(--line);background:#ffffff05}
+.fb-run--best{border-color:#7b4dff59;
+  background:radial-gradient(120% 160% at 0% 0%,#7b4dff1f 0%,#7b4dff00 62%),#ffffff06;
+  box-shadow:inset 0 1px 0 #ffffff14}
+.fb-when{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#787c92}
+.fb-run--best .fb-when{color:#c4b5fd}
+.fb-res{font-size:15.5px;color:#eef0f7;letter-spacing:-.015em;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fb-stars{white-space:nowrap;font-size:15px;letter-spacing:2px;color:#d9a400}
+.fb-s.is-off{color:#ffffff26}
+.fb-note{font-size:14.5px;line-height:1.5;color:#8f93a8;text-wrap:pretty;
+  min-height:calc(14.5px * 1.5 * 2)}
+
+.fb-arrive{display:flex;align-items:flex-start;gap:18px;margin-top:22px;padding-left:24px}
+.fb-arrive-line{flex:none;width:1px;height:46px;margin-top:2px;
+  background:linear-gradient(180deg,#7b4dff8c,#2fd4b8)}
+.fb-arrive p{margin:0;font-size:clamp(16px,1.6vw,20px);line-height:1.5;color:#eef0f7;
+  letter-spacing:-.02em;max-width:70ch}
+
+.fb-law{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,38px);
+  margin-top:clamp(32px,4vw,54px);padding-top:26px;border-top:1px solid var(--line)}
+.fb-law-item{min-width:0}
+.fb-law-item b{display:block;font-size:14.5px;font-weight:500;color:#eef0f7;letter-spacing:-.01em}
+.fb-law-item span{display:block;margin-top:7px;font-size:13.5px;line-height:1.5;color:#8f93a8}
+
+@media (max-width:1000px){
+  .fb-run{grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;align-items:baseline}
+  .fb-when{grid-column:1}
+  .fb-stars{grid-column:2;grid-row:1;justify-self:end}
+  .fb-res{grid-column:1 / -1}
+  .fb-note{grid-column:1 / -1;min-height:0}
+  .fb-law{grid-template-columns:minmax(0,1fr);gap:20px}
+}
