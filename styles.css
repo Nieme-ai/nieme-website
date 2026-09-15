@@ -1366,6 +1366,25 @@ h1,h2,h3{text-wrap:balance}
 .dv-kind--xlsx{background:#4caf7d}
 .dv-kind--docx{background:#5b8def}
 .dv-kind--pdf{background:#e0685f}
+/* REVIEW-PRESENTATION-002 — o quinto entregavel e uma pagina, e ela e navegavel antes
+   da decisao. A previa vive DENTRO da lista porque a pagina e um entregavel como os
+   outros; um painel separado sugeriria que ela e outra coisa. */
+.dv-kind--html{background:#7ee7ff}
+.dv-list li.dv-lead{background:#7ee7ff0d}
+.dv-list li.dv-lead .dv-name{font-weight:600;color:#fff}
+.dv-prev{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:13px 15px;border-top:1px solid var(--ui-line);background:#ffffff05}
+.dv-prev img{flex:none;width:118px;height:74px;object-fit:cover;object-position:top left;
+  border:1px solid var(--ui-line2);border-radius:7px}
+.dv-prev-t{min-width:0;flex:1 1 210px}
+.dv-prev-t b{display:block;font-size:13.5px;font-weight:600;color:var(--ui-text)}
+.dv-prev-t span{display:block;margin-top:3px;font-size:12px;line-height:1.5;color:var(--ui-muted)}
+.dv-url{flex:none;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
+  color:#7fe3cd;padding:7px 10px;border-radius:7px;border:1px solid #2fd4b833;background:#2fd4b810}
+@media (max-width:620px){
+  .dv-prev{gap:10px}
+  .dv-prev img{width:92px;height:58px}
+}
 .dv-name{min-width:0;flex:1;color:var(--ui-text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dv-size{flex:none;font-size:12px;color:var(--ui-muted);font-variant-numeric:tabular-nums}
 .dv-ok{flex:none;font-size:11.5px;color:#7fe3cd;display:inline-flex;align-items:center;gap:6px}
