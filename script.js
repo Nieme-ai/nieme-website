@@ -443,6 +443,7 @@
         el.querySelector('.stg-meta').textContent = r[1];
         el.dataset.end = r[2];
       });
+      if (modelEl) modelEl.textContent = providers[providerIdx];
       if (s.artifact) {
         if (artName) artName.textContent = s.artifact.name;
         if (artMeta) artMeta.textContent = s.artifact.meta;
@@ -468,6 +469,11 @@
       return;
     }
 
+    // Any provider can execute the same governed work. Rotating it here makes
+    // provider neutrality something the page shows rather than claims.
+    const providers = ['Opus 5', 'Sol 5.6', 'Gemini 3.8'];
+    const modelEl = thcEl.querySelector('.thc-select--model');
+    let providerIdx = 0;
     let sceneIdx = 0;
 
     const runScene = () => {
@@ -533,7 +539,13 @@
         rowEls.forEach((el) => el.classList.remove('is-visible'));
         artEl && artEl.classList.remove('is-visible');
         draftEl && draftEl.classList.remove('is-visible');
-        at(620, () => { sceneIdx = (sceneIdx + 1) % scenes.length; runScene(); });
+        if (modelEl) modelEl.classList.add('is-swapping');
+        at(620, () => {
+          sceneIdx = (sceneIdx + 1) % scenes.length;
+          providerIdx = (providerIdx + 1) % providers.length;
+          runScene();
+          if (modelEl) at(40, () => modelEl.classList.remove('is-swapping'));
+        });
       };
     };
 
