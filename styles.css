@@ -751,6 +751,11 @@ em.glow{font-style:normal;color:#8d6cff;text-shadow:0 0 10px rgba(123,92,255,.45
   .thc-placeholder{left:48px;right:13px}
   .thc-attach{width:25px;height:25px}
   .thc-select{font-size:11px;padding:5px 9px}
+/* The executor is not a fixed vendor. The hero rotates the provider so the page
+   demonstrates provider neutrality instead of asserting it. */
+.thc-select--model{min-width:74px;text-align:center;transition:opacity 260ms ease}
+.thc-select--model.is-swapping{opacity:0}
+
   .thc-send{width:29px;height:29px;font-size:13px}
   .thc-draft-title{font-size:15px}
 }
